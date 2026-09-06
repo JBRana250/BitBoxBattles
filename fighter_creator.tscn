@@ -1,17 +1,37 @@
 [gd_scene format=3 uid="uid://cow1icr0l4phi"]
 
-[ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://default.theme" id="1_t73hb"]
-[ext_resource type="LabelSettings" uid="uid://ssy37mkivlh4" path="res://scene_header.tres" id="2_bfom8"]
-[ext_resource type="Theme" uid="uid://x2wss8uibcsu" path="res://stats.theme" id="3_bfom8"]
+[ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://themes/default.theme" id="1_bfom8"]
+[ext_resource type="LabelSettings" uid="uid://ssy37mkivlh4" path="res://themes/scene_header.tres" id="2_bfom8"]
+[ext_resource type="Theme" uid="uid://x2wss8uibcsu" path="res://themes/stats.theme" id="3_dyfq3"]
+[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://prog_bar_drag.gd" id="4_dyfq3"]
+[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://label_update_stats.gd" id="5_1q2d6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aalt6"]
 bg_color = Color(0, 0.6313726, 0.11764706, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q2d6"]
+bg_color = Color(8.615404e-06, 0.762326, 0.15058672, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cfr6"]
+bg_color = Color(0.67102677, 0.6783634, 0.66004914, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyfq3"]
 bg_color = Color(0.6, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4q62"]
+bg_color = Color(0.8012637, 1.540184e-06, 6.738305e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbb47"]
+bg_color = Color(0.6960143, 0.70306516, 0.68547404, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puomn"]
 bg_color = Color(0, 0.6749431, 0.7624917, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s60cs"]
+bg_color = Color(0, 0.8001032, 0.9012306, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ie0h"]
+bg_color = Color(0.6751786, 0.6824716, 0.66426766, 1)
 
 [node name="FighterCreator" type="Control" unique_id=604107992]
 layout_mode = 3
@@ -20,7 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_t73hb")
+theme = ExtResource("1_bfom8")
 
 [node name="BGColor" type="ColorRect" parent="." unique_id=1976071163]
 layout_mode = 1
@@ -100,7 +120,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
-theme = ExtResource("3_bfom8")
+theme = ExtResource("3_dyfq3")
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats" unique_id=1109432442]
 layout_mode = 1
@@ -183,8 +203,34 @@ text = "Health"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_aalt6")
+min_value = 1.0
 value = 20.0
+allow_greater = true
 show_percentage = false
+script = ExtResource("4_dyfq3")
+default_fill = SubResource("StyleBoxFlat_aalt6")
+hover_fill = SubResource("StyleBoxFlat_1q2d6")
+hover_bg = SubResource("StyleBoxFlat_2cfr6")
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" unique_id=1257370270]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.25
+offset_top = -15.5
+offset_right = 4.75
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("5_1q2d6")
 
 [node name="Damage" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=420451632]
 custom_minimum_size = Vector2(0, 40)
@@ -214,7 +260,34 @@ size_flags_vertical = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_dyfq3")
 max_value = 10.0
 value = 1.0
+allow_greater = true
+allow_lesser = true
 show_percentage = false
+script = ExtResource("4_dyfq3")
+default_fill = SubResource("StyleBoxFlat_dyfq3")
+hover_fill = SubResource("StyleBoxFlat_e4q62")
+hover_bg = SubResource("StyleBoxFlat_dbb47")
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" unique_id=1198642005]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.25
+offset_top = -15.5
+offset_right = 4.75
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("5_1q2d6")
+negative_allowed = true
 
 [node name="Speed" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=1012138660]
 custom_minimum_size = Vector2(0, 40)
@@ -244,7 +317,34 @@ size_flags_vertical = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_puomn")
 max_value = 10.0
 value = 1.0
+allow_greater = true
+allow_lesser = true
 show_percentage = false
+script = ExtResource("4_dyfq3")
+default_fill = SubResource("StyleBoxFlat_puomn")
+hover_fill = SubResource("StyleBoxFlat_s60cs")
+hover_bg = SubResource("StyleBoxFlat_7ie0h")
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" unique_id=114618268]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.25
+offset_top = -15.5
+offset_right = 4.75
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("5_1q2d6")
+negative_allowed = true
 
 [node name="Abilities" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer" unique_id=2020706949]
 layout_mode = 2
@@ -271,3 +371,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.31085148, 0.30705145, 0.33363408, 1)
+
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]

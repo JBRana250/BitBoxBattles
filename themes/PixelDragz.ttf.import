@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dbykyhloqml1k"
-path="res://.godot/imported/PixelDragz.ttf-676903c7c3007f5535074a0711c32eb3.fontdata"
+path="res://.godot/imported/PixelDragz.ttf-5433add39f14fc118695c1c02a6336be.fontdata"
 
 [deps]
 
-source_file="res://PixelDragz.ttf"
-dest_files=["res://.godot/imported/PixelDragz.ttf-676903c7c3007f5535074a0711c32eb3.fontdata"]
+source_file="res://themes/PixelDragz.ttf"
+dest_files=["res://.godot/imported/PixelDragz.ttf-5433add39f14fc118695c1c02a6336be.fontdata"]
 
 [params]
 
