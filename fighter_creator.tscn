@@ -3,8 +3,10 @@
 [ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://themes/default.theme" id="1_bfom8"]
 [ext_resource type="LabelSettings" uid="uid://ssy37mkivlh4" path="res://themes/scene_header.tres" id="2_bfom8"]
 [ext_resource type="Theme" uid="uid://x2wss8uibcsu" path="res://themes/stats.theme" id="3_dyfq3"]
-[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://prog_bar_drag.gd" id="4_dyfq3"]
-[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://label_update_stats.gd" id="5_1q2d6"]
+[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="4_2cfr6"]
+[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="5_e4q62"]
+[ext_resource type="Theme" uid="uid://cew8ls5daab5h" path="res://themes/main_sprite_editor.theme" id="6_2cfr6"]
+[ext_resource type="Script" uid="uid://comvrmxd8vt68" path="res://fighter_creator/appearance/pixel_art_editor.gd" id="7_e4q62"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aalt6"]
 bg_color = Color(0, 0.6313726, 0.11764706, 1)
@@ -89,11 +91,13 @@ text = "Fighter Creator"
 label_settings = ExtResource("2_bfom8")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer" unique_id=1957585535]
+propagate_maximum_size = false
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="FighterProperties" type="Control" parent="VBoxContainer/HSplitContainer" unique_id=857496378]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -117,6 +121,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BaseStats" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer" unique_id=1233600735]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
@@ -207,7 +212,7 @@ min_value = 1.0
 value = 20.0
 allow_greater = true
 show_percentage = false
-script = ExtResource("4_dyfq3")
+script = ExtResource("4_2cfr6")
 default_fill = SubResource("StyleBoxFlat_aalt6")
 hover_fill = SubResource("StyleBoxFlat_1q2d6")
 hover_bg = SubResource("StyleBoxFlat_2cfr6")
@@ -230,7 +235,7 @@ alignment = 1
 editable = false
 expand_to_text_length = true
 virtual_keyboard_type = 2
-script = ExtResource("5_1q2d6")
+script = ExtResource("5_e4q62")
 
 [node name="Damage" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=420451632]
 custom_minimum_size = Vector2(0, 40)
@@ -263,7 +268,7 @@ value = 1.0
 allow_greater = true
 allow_lesser = true
 show_percentage = false
-script = ExtResource("4_dyfq3")
+script = ExtResource("4_2cfr6")
 default_fill = SubResource("StyleBoxFlat_dyfq3")
 hover_fill = SubResource("StyleBoxFlat_e4q62")
 hover_bg = SubResource("StyleBoxFlat_dbb47")
@@ -286,7 +291,7 @@ alignment = 1
 editable = false
 expand_to_text_length = true
 virtual_keyboard_type = 2
-script = ExtResource("5_1q2d6")
+script = ExtResource("5_e4q62")
 negative_allowed = true
 
 [node name="Speed" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=1012138660]
@@ -320,7 +325,7 @@ value = 1.0
 allow_greater = true
 allow_lesser = true
 show_percentage = false
-script = ExtResource("4_dyfq3")
+script = ExtResource("4_2cfr6")
 default_fill = SubResource("StyleBoxFlat_puomn")
 hover_fill = SubResource("StyleBoxFlat_s60cs")
 hover_bg = SubResource("StyleBoxFlat_7ie0h")
@@ -343,10 +348,11 @@ alignment = 1
 editable = false
 expand_to_text_length = true
 virtual_keyboard_type = 2
-script = ExtResource("5_1q2d6")
+script = ExtResource("5_e4q62")
 negative_allowed = true
 
 [node name="Abilities" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer" unique_id=2020706949]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -360,6 +366,7 @@ grow_vertical = 2
 color = Color(0.47816533, 0.47319335, 0.5083372, 1)
 
 [node name="FighterAppearance" type="Control" parent="VBoxContainer/HSplitContainer" unique_id=310075832]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -371,6 +378,132 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.31085148, 0.30705145, 0.33363408, 1)
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance" unique_id=1886246265]
+propagate_maximum_size = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainSprite" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer" unique_id=332106532]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+theme = ExtResource("6_2cfr6")
+
+[node name="SpriteEditorBG" type="ColorRect" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite" unique_id=1515340909]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5765176, 0.5671871, 0.6777169, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite" unique_id=720907104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer" unique_id=526055112]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/Header" unique_id=120277413]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69135684, 0.6913568, 0.69135684, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/Header" unique_id=1356802582]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -9.5
+offset_right = 54.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Appearance"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer" unique_id=1015903905]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Tools" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer" unique_id=375804479]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools" unique_id=2116187016]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.37285328, 0.31658885, 0.39916047, 1)
+
+[node name="Canvas" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer" unique_id=2062265039]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Canvas" unique_id=672469254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PixelArtEditor" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Canvas/AspectRatioContainer" unique_id=699658705]
+layout_mode = 2
+script = ExtResource("7_e4q62")
+
+[node name="ColorRect" type="Panel" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Canvas/AspectRatioContainer/PixelArtEditor" unique_id=1406746952]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Colors" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer" unique_id=2093660520]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Colors" unique_id=1201794386]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.37285328, 0.31658885, 0.39916047, 1)
+
+[node name="OtherThing" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer" unique_id=55813706]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
 
 [connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
