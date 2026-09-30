@@ -6,7 +6,13 @@
 [ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="4_2cfr6"]
 [ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="5_e4q62"]
 [ext_resource type="Theme" uid="uid://cew8ls5daab5h" path="res://themes/main_sprite_editor.theme" id="6_2cfr6"]
+[ext_resource type="Texture2D" uid="uid://c6uka32r3jvlj" path="res://textures/pencil_light.png" id="7_7ie0h"]
+[ext_resource type="Script" uid="uid://cexwsdvwhiowx" path="res://fighter_creator/appearance/main_sprite_state_machine.gd" id="7_36jj5"]
 [ext_resource type="Script" uid="uid://comvrmxd8vt68" path="res://fighter_creator/appearance/pixel_art_editor.gd" id="7_e4q62"]
+[ext_resource type="Texture2D" uid="uid://c4hetthwkunt5" path="res://textures/pencil_darker.png" id="8_36jj5"]
+[ext_resource type="ButtonGroup" uid="uid://br0gxv55c5n2v" path="res://themes/main_sprite_editor.tres" id="8_plimy"]
+[ext_resource type="Texture2D" uid="uid://mi3vbm0yt53s" path="res://textures/pencil_dark.png" id="9_07o5e"]
+[ext_resource type="Script" uid="uid://b4uf77evjkjl2" path="res://fighter_creator/appearance/editor_state_button.gd" id="11_07o5e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aalt6"]
 bg_color = Color(0, 0.6313726, 0.11764706, 1)
@@ -72,7 +78,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.39715803, 0.39271733, 0.42390403, 1)
+color = Color(0.5573855, 0.43697125, 0.54525447, 1)
 
 [node name="Label" type="Label" parent="VBoxContainer/TopBar" unique_id=943777232]
 layout_mode = 1
@@ -396,6 +402,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 theme = ExtResource("6_2cfr6")
 
+[node name="StateMachine" type="Node" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite" unique_id=1492112147]
+script = ExtResource("7_36jj5")
+
 [node name="SpriteEditorBG" type="ColorRect" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite" unique_id=1515340909]
 layout_mode = 1
 anchors_preset = 15
@@ -461,6 +470,50 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.37285328, 0.31658885, 0.39916047, 1)
 
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools" unique_id=1057981179]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pencil" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer" unique_id=1259316699]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Pencil" unique_id=503514236]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Pencil/MarginContainer" unique_id=848343204]
+layout_mode = 2
+stretch_mode = 0
+alignment_vertical = 0
+
+[node name="Pencil" type="TextureButton" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Pencil/MarginContainer/AspectRatioContainer" unique_id=1595882318 node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("8_plimy")
+texture_normal = ExtResource("7_7ie0h")
+texture_pressed = ExtResource("8_36jj5")
+texture_hover = ExtResource("9_07o5e")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("11_07o5e")
+state_machine = NodePath("../../../../../../../../StateMachine")
+state = 1
+
+[node name="Space" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer" unique_id=349165689]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.92
+
 [node name="Canvas" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer" unique_id=2062265039]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -473,17 +526,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PixelArtEditor" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Canvas/AspectRatioContainer" unique_id=699658705]
+[node name="PixelArtEditor" type="TextureRect" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Canvas/AspectRatioContainer" unique_id=610416038 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 script = ExtResource("7_e4q62")
-
-[node name="ColorRect" type="Panel" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Canvas/AspectRatioContainer/PixelArtEditor" unique_id=1406746952]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+state_machine = NodePath("../../../../../StateMachine")
+canvas_dimensions = Vector2i(32, 32)
 
 [node name="Colors" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer" unique_id=2093660520]
 clip_contents = true
@@ -523,3 +570,4 @@ size_flags_vertical = 3
 [connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Pencil/MarginContainer/AspectRatioContainer/Pencil" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Pencil/MarginContainer/AspectRatioContainer/Pencil" method="_on_pressed"]

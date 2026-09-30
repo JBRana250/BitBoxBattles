@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://csav5yl8t4cc5"]
+
+[ext_resource type="Script" uid="uid://ce6ra4pgb6dkv" path="res://preset_color.gd" id="1_2xma7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wr4qc"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2784314, 0.2784314, 0.2784314, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 5
+
+[node name="Preset" type="Control" unique_id=1940667558 node_paths=PackedStringArray("button")]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("1_2xma7")
+normal_stylebox = SubResource("StyleBoxFlat_wr4qc")
+hover_stylebox = SubResource("StyleBoxFlat_wr4qc")
+pressed_stylebox = SubResource("StyleBoxFlat_wr4qc")
+button = NodePath("MarginContainer/AspectRatioContainer/Button")
+darken_amount = 0.1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=387561695]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer" unique_id=692107568]
+layout_mode = 2
+alignment_vertical = 0
+
+[node name="Button" type="Button" parent="MarginContainer/AspectRatioContainer" unique_id=732693427]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dx6rq21thlw8l"]
+
+[ext_resource type="Texture2D" uid="uid://drciia5lg1cxo" path="res://textures/white_square_texture.png" id="1_mqutd"]
+[ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="2_tiqy5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0kn"]
+size = Vector2(20, 750)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mqutd"]
+font = ExtResource("2_tiqy5")
+font_size = 72
+
+[node name="Battle" type="Node2D" unique_id=620461860]
+
+[node name="Arena" type="Node2D" parent="." unique_id=745186057]
+position = Vector2(960, 540)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Arena" unique_id=405591808]
+modulate = Color(0.30282405, 0.08609175, 0.26198784, 1)
+scale = Vector2(790, 790)
+texture = ExtResource("1_mqutd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arena" unique_id=2015674661]
+scale = Vector2(750, 750)
+texture = ExtResource("1_mqutd")
+
+[node name="Wall" type="StaticBody2D" parent="Arena" unique_id=230725582]
+position = Vector2(-385, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall" unique_id=877982110]
+shape = SubResource("RectangleShape2D_ra0kn")
+
+[node name="Wall2" type="StaticBody2D" parent="Arena" unique_id=497991748]
+position = Vector2(386, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall2" unique_id=274236766]
+shape = SubResource("RectangleShape2D_ra0kn")
+
+[node name="Wall3" type="StaticBody2D" parent="Arena" unique_id=1739745027]
+position = Vector2(0, 385)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall3" unique_id=700311408]
+shape = SubResource("RectangleShape2D_ra0kn")
+
+[node name="Wall4" type="StaticBody2D" parent="Arena" unique_id=1840024919]
+position = Vector2(0, -385)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall4" unique_id=1836540888]
+shape = SubResource("RectangleShape2D_ra0kn")
+
+[node name="Label" type="Label" parent="." unique_id=710436953]
+offset_left = 780.0
+offset_top = 29.0
+offset_right = 1151.0
+offset_bottom = 146.0
+text = "BATTLE"
+label_settings = SubResource("LabelSettings_mqutd")

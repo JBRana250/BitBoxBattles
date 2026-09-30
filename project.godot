@@ -11,14 +11,25 @@ config_version=5
 [application]
 
 config/name="BitBoxBattles"
-run/main_scene="uid://cow1icr0l4phi"
+run/main_scene="uid://dx6rq21thlw8l"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://battle/": "red",
+"res://fighter_creator/": "pink",
+"res://textures/": "gray",
+"res://themes/": "purple"
+}
 
 [physics]
 
