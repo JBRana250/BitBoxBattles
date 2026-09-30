@@ -7,7 +7,7 @@ class_name Fighter extends RigidBody2D
 @onready var current_health: int = 100
 @export var contact_damage: int
 @export var fighter_id: String 
-@export var fighter_state_machine: Node
+@export var fighter_state_machine: FighterStateMachine
 
 func _ready() -> void:
 	apply_force(global_transform.x * 500)
@@ -15,10 +15,11 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
 	if !body.is_in_group("fighter"):
 		return
-	if body.get_state() == FighterStateMachine.State.INACTIVE:
+	if body.get_state() != FighterStateMachine.State.ACTIVE:
 		return
 	sprite.modulate = onhit_modulate
 	current_health -= contact_damage
+	body.hit_enemy()
 	BattleEventBus.fighter_damaged.emit(fighter_id)
 	if (current_health <= 0):
 		BattleEventBus.fighter_death.emit(fighter_id)
@@ -30,3 +31,6 @@ func _on_onhit_flash_timeout() -> void:
 
 func get_state():
 	return fighter_state_machine.get_state()
+
+func hit_enemy():
+	fighter_state_machine.set_state_contact_cooldown(3)
