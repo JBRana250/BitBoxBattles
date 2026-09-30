@@ -15,6 +15,7 @@ func _spawn_fighter() -> void:
 	fighter_instance.contact_damage = contact_damage
 	fighter_instance.fighter_id = fighter_id
 	fighter_instance.position = position
+	fighter_instance.rotation = randf_range(0.0, TAU)
 	spawn_parent.add_child(fighter_instance)
 	
 	fighter_health_label.fighter = fighter_instance
