@@ -61,7 +61,9 @@ label_settings = SubResource("LabelSettings_mqutd")
 
 [node name="fighter" parent="." unique_id=678717569 instance=ExtResource("3_qubjc")]
 position = Vector2(742.9999, 338.99997)
+contact_damage = 10
 
 [node name="fighter2" parent="." unique_id=1427317877 instance=ExtResource("3_qubjc")]
 position = Vector2(1122, 734)
 rotation = 2.2078414
+contact_damage = 25
