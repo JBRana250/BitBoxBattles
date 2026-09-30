@@ -5,7 +5,6 @@ extends Label
 
 func _ready() -> void:
 	BattleEventBus.fighter_damaged.connect(on_fighter_damaged)
-	update_text()
 
 func on_fighter_damaged(hit_fighter_id: String) -> void:
 	if fighter_id != hit_fighter_id:

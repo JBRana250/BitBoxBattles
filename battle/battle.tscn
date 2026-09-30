@@ -2,9 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://drciia5lg1cxo" path="res://textures/white_square_texture.png" id="1_mqutd"]
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="2_tiqy5"]
-[ext_resource type="Script" uid="uid://cg6bu0aawho42" path="res://battle/on_fighter_victory.gd" id="3_4mnim"]
-[ext_resource type="PackedScene" uid="uid://fwomuuw06drq" path="res://battle/fighter.tscn" id="3_qubjc"]
+[ext_resource type="Script" uid="uid://cg6bu0aawho42" path="res://battle/title_label.gd" id="3_4mnim"]
 [ext_resource type="PackedScene" uid="uid://fh5cicrt02gf" path="res://battle/fighter_health.tscn" id="4_6hnvb"]
+[ext_resource type="Script" uid="uid://d0juuwk2fard8" path="res://battle/retry_button.gd" id="6_l1kiu"]
+[ext_resource type="Script" uid="uid://brhj2j6a17vlr" path="res://battle/battle_start_manager.gd" id="7_7fucf"]
+[ext_resource type="PackedScene" uid="uid://crb4208838c1l" path="res://battle/fighter_marker.tscn" id="7_iorop"]
+[ext_resource type="PackedScene" uid="uid://fwomuuw06drq" path="res://battle/fighter.tscn" id="8_iorop"]
+[ext_resource type="Script" uid="uid://bxp2m8nkthwia" path="res://battle/fighters.gd" id="9_rxlun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0kn"]
 size = Vector2(20, 750)
@@ -61,30 +65,56 @@ offset_bottom = 146.0
 text = "BATTLE"
 label_settings = SubResource("LabelSettings_mqutd")
 horizontal_alignment = 1
-
-[node name="on_fighter_victory" type="Node" parent="Title" unique_id=823897244 node_paths=PackedStringArray("title_label")]
 script = ExtResource("3_4mnim")
-title_label = NodePath("..")
 
-[node name="fighter" parent="." unique_id=678717569 instance=ExtResource("3_qubjc")]
-position = Vector2(742.9999, 338.99997)
-contact_damage = 10
+[node name="FighterHealth" parent="." unique_id=1658565350 instance=ExtResource("4_6hnvb")]
 fighter_id = "Fighter 1"
 
-[node name="fighter2" parent="." unique_id=1427317877 instance=ExtResource("3_qubjc")]
-position = Vector2(1122, 734)
-rotation = 2.2078414
-contact_damage = 25
-fighter_id = "Fighter 2"
-
-[node name="FighterHealth" parent="." unique_id=1658565350 node_paths=PackedStringArray("fighter") instance=ExtResource("4_6hnvb")]
-fighter = NodePath("../fighter")
-fighter_id = "Fighter 1"
-
-[node name="FighterHealth2" parent="." unique_id=2136252536 node_paths=PackedStringArray("fighter") instance=ExtResource("4_6hnvb")]
+[node name="FighterHealth2" parent="." unique_id=2136252536 instance=ExtResource("4_6hnvb")]
 offset_left = 1550.0
 offset_top = 177.0
 offset_right = 1726.0
 offset_bottom = 200.0
-fighter = NodePath("../fighter2")
 fighter_id = "Fighter 2"
+
+[node name="RetryButton" type="Button" parent="." unique_id=1078579175]
+visible = false
+offset_left = 837.0
+offset_top = 971.0
+offset_right = 1052.0
+offset_bottom = 1036.0
+theme_override_fonts/font = ExtResource("2_tiqy5")
+theme_override_font_sizes/font_size = 48
+text = "RETRY"
+script = ExtResource("6_l1kiu")
+
+[node name="FighterMarker" parent="." unique_id=160553202 node_paths=PackedStringArray("spawn_parent", "fighter_health_label") instance=ExtResource("7_iorop")]
+position = Vector2(752, 340)
+fighter_id = "Fighter 1"
+contact_damage = 10
+fighter_scene = ExtResource("8_iorop")
+spawn_parent = NodePath("../Fighters")
+fighter_health_label = NodePath("../FighterHealth")
+
+[node name="FighterMarker2" parent="." unique_id=1444415074 node_paths=PackedStringArray("spawn_parent", "fighter_health_label") instance=ExtResource("7_iorop")]
+position = Vector2(1187, 778)
+fighter_id = "Fighter 2"
+contact_damage = 25
+fighter_scene = ExtResource("8_iorop")
+spawn_parent = NodePath("../Fighters")
+fighter_health_label = NodePath("../FighterHealth2")
+
+[node name="BattleStartManager" type="Node" parent="." unique_id=1073837026]
+script = ExtResource("7_7fucf")
+
+[node name="BattleStartTimer" type="Timer" parent="BattleStartManager" unique_id=1952246195]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="Fighters" type="Node2D" parent="." unique_id=660823832]
+script = ExtResource("9_rxlun")
+
+[connection signal="pressed" from="RetryButton" to="RetryButton" method="_on_pressed"]
+[connection signal="timeout" from="BattleStartManager/BattleStartTimer" to="BattleStartManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="BattleStartManager/BattleStartTimer" to="BattleStartManager" method="_on_battle_start_timer_timeout"]

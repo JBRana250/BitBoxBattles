@@ -1,4 +1,4 @@
-extends RigidBody2D
+class_name Fighter extends RigidBody2D
 
 @export var sprite: Sprite2D
 @export var onhit_timer: Timer
