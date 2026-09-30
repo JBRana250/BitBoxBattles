@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://drciia5lg1cxo" path="res://textures/white_square_texture.png" id="1_mqutd"]
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="2_tiqy5"]
+[ext_resource type="Script" uid="uid://rjp67l3g8phv" path="res://battle/fighter.gd" id="3_6hnvb"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="3_qubjc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0kn"]
 size = Vector2(20, 750)
@@ -9,6 +11,13 @@ size = Vector2(20, 750)
 [sub_resource type="LabelSettings" id="LabelSettings_mqutd"]
 font = ExtResource("2_tiqy5")
 font_size = 72
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6hnvb"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6hnvb"]
+radius = 46.84016
 
 [node name="Battle" type="Node2D" unique_id=620461860]
 
@@ -57,3 +66,38 @@ offset_right = 1151.0
 offset_bottom = 146.0
 text = "BATTLE"
 label_settings = SubResource("LabelSettings_mqutd")
+
+[node name="fighter" type="RigidBody2D" parent="." unique_id=1698593857]
+position = Vector2(802, 465)
+rotation = -0.23561946
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_6hnvb")
+gravity_scale = 0.0
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("3_6hnvb")
+
+[node name="Sprite2D" type="Sprite2D" parent="fighter" unique_id=443130555]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_qubjc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fighter" unique_id=1334411763]
+shape = SubResource("CircleShape2D_6hnvb")
+
+[node name="fighter2" type="RigidBody2D" parent="." unique_id=784980517]
+position = Vector2(1172.9999, 464.99997)
+rotation = -3.843215
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_6hnvb")
+gravity_scale = 0.0
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("3_6hnvb")
+
+[node name="Sprite2D" type="Sprite2D" parent="fighter2" unique_id=1455675769]
+modulate = Color(1, 0.47785366, 0.41005626, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_qubjc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fighter2" unique_id=905403557]
+shape = SubResource("CircleShape2D_6hnvb")
