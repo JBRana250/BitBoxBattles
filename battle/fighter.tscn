@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://fwomuuw06drq"]
+
+[ext_resource type="Script" uid="uid://rjp67l3g8phv" path="res://battle/fighter.gd" id="1_xnk44"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="2_ladtm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6hnvb"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6hnvb"]
+radius = 46.84016
+
+[node name="fighter" type="RigidBody2D" unique_id=678717569 node_paths=PackedStringArray("sprite", "onhit_timer") groups=["fighter"]]
+rotation = -0.23561946
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_6hnvb")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 10
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_xnk44")
+sprite = NodePath("Sprite2D")
+onhit_timer = NodePath("onhitFlash")
+onhit_modulate = Color(0.5659736, 0, 0.1455484, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1995630749]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_ladtm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=732105405]
+shape = SubResource("CircleShape2D_6hnvb")
+
+[node name="onhitFlash" type="Timer" parent="." unique_id=1664589322]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="onhitFlash" to="." method="_on_onhit_flash_timeout"]
