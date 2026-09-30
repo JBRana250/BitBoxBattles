@@ -17,7 +17,7 @@ enum State {
 @export var colshape: CollisionShape2D
 
 func _ready() -> void:
-	set_fighter_contact_cooldown()
+	set_fighter_inactive()
 
 func get_state() -> State:
 	return current_state
@@ -26,6 +26,7 @@ func set_state_contact_cooldown(time: float) -> void:
 	active_timer.stop()
 	inactive_timer.stop()
 	contact_cooldown_timer.stop()
+	print_debug(time)
 	contact_cooldown_timer.start(time)
 	set_fighter_contact_cooldown()
 
@@ -61,5 +62,6 @@ func _on_inactive_timer_timeout() -> void:
 	active_timer.start(randf_range(0.1, 1))
 	
 func _on_contact_cooldown_timer_timeout() -> void:
+	print_debug("back to active")
 	set_fighter_active()
 	active_timer.start(randf_range(0.1, 1))
