@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://drciia5lg1cxo" path="res://textures/white_square_texture.png" id="1_mqutd"]
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="2_tiqy5"]
+[ext_resource type="Script" uid="uid://cg6bu0aawho42" path="res://battle/on_fighter_victory.gd" id="3_4mnim"]
 [ext_resource type="PackedScene" uid="uid://fwomuuw06drq" path="res://battle/fighter.tscn" id="3_qubjc"]
+[ext_resource type="PackedScene" uid="uid://fh5cicrt02gf" path="res://battle/fighter_health.tscn" id="4_6hnvb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0kn"]
 size = Vector2(20, 750)
@@ -51,19 +53,38 @@ rotation = 1.5707964
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall4" unique_id=1836540888]
 shape = SubResource("RectangleShape2D_ra0kn")
 
-[node name="Label" type="Label" parent="." unique_id=710436953]
-offset_left = 780.0
+[node name="Title" type="Label" parent="." unique_id=710436953]
+offset_left = 436.0
 offset_top = 29.0
-offset_right = 1151.0
+offset_right = 1489.0
 offset_bottom = 146.0
 text = "BATTLE"
 label_settings = SubResource("LabelSettings_mqutd")
+horizontal_alignment = 1
+
+[node name="on_fighter_victory" type="Node" parent="Title" unique_id=823897244 node_paths=PackedStringArray("title_label")]
+script = ExtResource("3_4mnim")
+title_label = NodePath("..")
 
 [node name="fighter" parent="." unique_id=678717569 instance=ExtResource("3_qubjc")]
 position = Vector2(742.9999, 338.99997)
 contact_damage = 10
+fighter_id = "Fighter 1"
 
 [node name="fighter2" parent="." unique_id=1427317877 instance=ExtResource("3_qubjc")]
 position = Vector2(1122, 734)
 rotation = 2.2078414
 contact_damage = 25
+fighter_id = "Fighter 2"
+
+[node name="FighterHealth" parent="." unique_id=1658565350 node_paths=PackedStringArray("fighter") instance=ExtResource("4_6hnvb")]
+fighter = NodePath("../fighter")
+fighter_id = "Fighter 1"
+
+[node name="FighterHealth2" parent="." unique_id=2136252536 node_paths=PackedStringArray("fighter") instance=ExtResource("4_6hnvb")]
+offset_left = 1550.0
+offset_top = 177.0
+offset_right = 1726.0
+offset_bottom = 200.0
+fighter = NodePath("../fighter2")
+fighter_id = "Fighter 2"
