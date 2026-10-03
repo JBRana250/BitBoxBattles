@@ -1,7 +1,7 @@
 extends Label
 
-@onready var initial_fighters = ["Fighter 1", "Fighter 2"]
-@onready var fighters = ["Fighter 1", "Fighter 2"]
+@onready var initial_fighters = ["Past Bot", "Future Bot"]
+@onready var fighters = ["Past Bot", "Future Bot"]
 
 func _ready() -> void:
 	BattleEventBus.fighter_death.connect(on_fighter_death)
@@ -20,5 +20,5 @@ func on_fighter_death(fighter_id: String) -> void:
 		return
 
 func on_start_battle() -> void:
-	text = "Battle"
-	fighters = initial_fighters
+	fighters = initial_fighters.duplicate()
+	text = " vs ".join(fighters)
