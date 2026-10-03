@@ -1,6 +1,8 @@
-extends Label
+extends Node
 
-@export var fighter: RigidBody2D
+@export var health_label: Label
+@export var health_bar: TextureProgressBar
 
-func update_text() -> void:
-	text = str(fighter.current_health)
+func update_health(health: int) -> void:
+	health_label.text = str(health)
+	health_bar.value = health

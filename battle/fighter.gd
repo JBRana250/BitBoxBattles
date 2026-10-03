@@ -5,7 +5,7 @@ class_name Fighter extends RigidBody2D
 @export var onhit_timer: Timer
 @export var fighter_state_machine: FighterStateMachine
 @export var fighter_sprite_manager: FighterSpriteManager
-@export var fighter_health_label: Label
+@export var fighter_health_manager: Node
 
 @export_group("Properties")
 @export var onhit_modulate: Color
@@ -15,21 +15,20 @@ class_name Fighter extends RigidBody2D
 @export var contact_cooldown: float
 @export var fighter_id: String 
 
-func _ready() -> void:
-	apply_force(global_transform.x * 500)
-
 @warning_ignore("shadowed_variable", "shadowed_variable_base_class")
-func init_fighter(fighter_id: String, current_health: int, contact_damage: int, contact_cooldown: float, position: Vector2, rotation: float, active_image: Texture, inactive_image: Texture) -> void:
+func init_fighter(fighter_id: String, current_health: int, contact_damage: int, contact_cooldown: float, position: Vector2, rotation: float, active_image: Texture, inactive_image: Texture, starting_force: float) -> void:
 	self.fighter_id = fighter_id
 	self.position = position
 	self.rotation = rotation
-	self.current_health = 100
+	self.current_health = current_health
 	self.contact_damage = contact_damage
 	self.contact_cooldown = contact_cooldown
 	
 	fighter_sprite_manager.init_sprites(active_image, inactive_image)
 	fighter_state_machine.init_states()
-	fighter_health_label.update_text()
+	fighter_health_manager.update_health(current_health)
+	
+	apply_force(global_transform.x * starting_force)
 	
 
 func _on_body_entered(body: Node) -> void:
@@ -40,7 +39,7 @@ func _on_body_entered(body: Node) -> void:
 	
 	sprite.modulate = onhit_modulate
 	current_health -= contact_damage
-	fighter_health_label.update_text()
+	fighter_health_manager.update_health(current_health)
 	body.hit_enemy()
 	
 	BattleEventBus.fighter_damaged.emit(fighter_id)

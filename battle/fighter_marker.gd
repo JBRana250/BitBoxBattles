@@ -9,6 +9,7 @@ extends Marker2D
 @export var contact_damage: int
 @export var contact_cooldown: float
 @export var starting_health: int
+@export var starting_force: float
 @export var active_image: Texture
 @export var inactive_image: Texture
 
@@ -17,6 +18,6 @@ func _ready() -> void:
 
 func _spawn_fighter() -> void:
 	var fighter_instance: Fighter = fighter_scene.instantiate()
-	fighter_instance.init_fighter(fighter_id, starting_health, contact_damage, contact_cooldown, position, randf_range(0.0, TAU), active_image, inactive_image)
+	fighter_instance.init_fighter(fighter_id, starting_health, contact_damage, contact_cooldown, position, randf_range(0.0, TAU), active_image, inactive_image, starting_force)
 	
 	spawn_parent.add_child(fighter_instance)
