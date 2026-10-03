@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://crb4208838c1l"]
-
-[ext_resource type="Script" uid="uid://dtf7arkcdds8b" path="res://battle/fighter_marker.gd" id="1_t8evg"]
-
-[node name="FighterMarker" type="Marker2D" unique_id=160553202]
-script = ExtResource("1_t8evg")

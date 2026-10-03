@@ -5,7 +5,7 @@ class_name Fighter extends RigidBody2D
 @export var onhit_timer: Timer
 @export var fighter_state_machine: FighterStateMachine
 @export var fighter_sprite_manager: FighterSpriteManager
-@export var fighter_health_manager: Node
+@export var fighter_health_manager: FighterHealthManager
 
 @export_group("Properties")
 @export var onhit_modulate: Color
@@ -30,30 +30,13 @@ func init_fighter(fighter_id: String, max_health: int, contact_damage: int, cont
 	fighter_health_manager.init_health(max_health)
 	
 	apply_force(global_transform.x * starting_force)
-	
-
-func _on_body_entered(body: Node) -> void:
-	if !body.is_in_group("fighter"):
-		return
-	if body.get_state() != FighterStateMachine.State.ACTIVE:
-		return
-	
-	sprite.modulate = onhit_modulate
-	current_health -= contact_damage
-	fighter_health_manager.update_health(current_health)
-	body.hit_enemy()
-	
-	BattleEventBus.fighter_damaged.emit(fighter_id)
-	if (current_health <= 0):
-		BattleEventBus.fighter_death.emit(fighter_id)
-		queue_free()
-	onhit_timer.start()
-
-func _on_onhit_flash_timeout() -> void:
-	sprite.modulate = default_modulate
 
 func get_state():
 	return fighter_state_machine.get_state()
 
 func hit_enemy():
 	fighter_state_machine.on_hit(contact_cooldown)
+
+func take_damage(amount: int):
+	fighter_health_manager.reduce_health(amount)
+	fighter_sprite_manager.onhit_flash()

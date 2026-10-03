@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://fh5cicrt02gf"]
 
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="1_w12h1"]
-[ext_resource type="Script" uid="uid://dqly1sjufce6k" path="res://battle/fighter_health.gd" id="2_xs7xm"]
+[ext_resource type="Script" uid="uid://dqly1sjufce6k" path="res://battle/fighter/fighter_health.gd" id="2_xs7xm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qubjc"]
 font = ExtResource("1_w12h1")

@@ -22,6 +22,8 @@ func get_state() -> State:
 	return current_state
 
 func on_hit(time: float) -> void:
+	if (time == 0):
+		time = 0.0001
 	inactive_timer.stop()
 	inactive_timer.wait_time = time
 	set_fighter_inactive()

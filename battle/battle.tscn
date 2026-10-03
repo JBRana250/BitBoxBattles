@@ -5,9 +5,9 @@
 [ext_resource type="Script" uid="uid://cg6bu0aawho42" path="res://battle/title_label.gd" id="3_4mnim"]
 [ext_resource type="Script" uid="uid://d0juuwk2fard8" path="res://battle/retry_button.gd" id="6_l1kiu"]
 [ext_resource type="Script" uid="uid://brhj2j6a17vlr" path="res://battle/battle_start_manager.gd" id="7_7fucf"]
-[ext_resource type="PackedScene" uid="uid://crb4208838c1l" path="res://battle/fighter_marker.tscn" id="7_iorop"]
+[ext_resource type="PackedScene" uid="uid://crb4208838c1l" path="res://battle/fighter_spawner.tscn" id="7_iorop"]
 [ext_resource type="Texture2D" uid="uid://deojq6or0epof" path="res://textures/future_robot_idle.png" id="8_hvjow"]
-[ext_resource type="PackedScene" uid="uid://fwomuuw06drq" path="res://battle/fighter.tscn" id="8_iorop"]
+[ext_resource type="PackedScene" uid="uid://fwomuuw06drq" path="res://battle/fighter/fighter.tscn" id="8_iorop"]
 [ext_resource type="Texture2D" uid="uid://bnkcbjk3hunw8" path="res://textures/future_robot_thinking.png" id="9_qybyd"]
 [ext_resource type="Script" uid="uid://bxp2m8nkthwia" path="res://battle/fighters.gd" id="9_rxlun"]
 [ext_resource type="Texture2D" uid="uid://b71jpmvkmwfv8" path="res://textures/past_robot_idle.png" id="10_eu6g2"]
@@ -60,7 +60,39 @@ rotation = 1.5707964
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall4" unique_id=1836540888]
 shape = SubResource("RectangleShape2D_ra0kn")
 
-[node name="Title" type="Label" parent="." unique_id=710436953]
+[node name="Spawners" type="Node2D" parent="." unique_id=929348381]
+
+[node name="FighterSpawner" parent="Spawners" unique_id=160553202 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("7_iorop")]
+position = Vector2(752, 340)
+fighter_scene = ExtResource("8_iorop")
+spawn_parent = NodePath("../../Fighters")
+fighter_id = "Future Bot"
+contact_damage = 25
+contact_cooldown = 5.0
+starting_health = 100
+starting_force = 150.0
+mass = 10.0
+active_image = ExtResource("8_hvjow")
+inactive_image = ExtResource("9_qybyd")
+
+[node name="FighterSpawner2" parent="Spawners" unique_id=1444415074 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("7_iorop")]
+position = Vector2(1187, 778)
+fighter_scene = ExtResource("8_iorop")
+spawn_parent = NodePath("../../Fighters")
+fighter_id = "Past Bot"
+contact_damage = 10
+starting_health = 100
+starting_force = 500.0
+mass = 1.0
+active_image = ExtResource("10_eu6g2")
+inactive_image = ExtResource("11_t8p1f")
+
+[node name="Fighters" type="Node2D" parent="." unique_id=660823832]
+script = ExtResource("9_rxlun")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=164281733]
+
+[node name="Title" type="Label" parent="CanvasLayer" unique_id=710436953]
 offset_left = 436.0
 offset_top = 29.0
 offset_right = 1489.0
@@ -70,7 +102,7 @@ label_settings = SubResource("LabelSettings_mqutd")
 horizontal_alignment = 1
 script = ExtResource("3_4mnim")
 
-[node name="RetryButton" type="Button" parent="." unique_id=1078579175]
+[node name="RetryButton" type="Button" parent="CanvasLayer" unique_id=1078579175]
 visible = false
 offset_left = 837.0
 offset_top = 971.0
@@ -81,43 +113,16 @@ theme_override_font_sizes/font_size = 48
 text = "RETRY"
 script = ExtResource("6_l1kiu")
 
-[node name="FighterMarker" parent="." unique_id=160553202 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("7_iorop")]
-position = Vector2(752, 340)
-fighter_scene = ExtResource("8_iorop")
-spawn_parent = NodePath("../Fighters")
-fighter_id = "Future Bot"
-contact_damage = 10
-contact_cooldown = 5.0
-starting_health = 100
-starting_force = 150.0
-mass = 10.0
-active_image = ExtResource("8_hvjow")
-inactive_image = ExtResource("9_qybyd")
+[node name="Components" type="Node" parent="." unique_id=458130242]
 
-[node name="FighterMarker2" parent="." unique_id=1444415074 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("7_iorop")]
-position = Vector2(1187, 778)
-fighter_scene = ExtResource("8_iorop")
-spawn_parent = NodePath("../Fighters")
-fighter_id = "Past Bot"
-contact_damage = 25
-contact_cooldown = 0.5
-starting_health = 100
-starting_force = 500.0
-mass = 1.0
-active_image = ExtResource("10_eu6g2")
-inactive_image = ExtResource("11_t8p1f")
-
-[node name="BattleStartManager" type="Node" parent="." unique_id=1073837026]
+[node name="BattleStartManager" type="Node" parent="Components" unique_id=1073837026]
 script = ExtResource("7_7fucf")
 
-[node name="BattleStartTimer" type="Timer" parent="BattleStartManager" unique_id=1952246195]
+[node name="BattleStartTimer" type="Timer" parent="Components/BattleStartManager" unique_id=1952246195]
 wait_time = 0.1
 one_shot = true
 autostart = true
 
-[node name="Fighters" type="Node2D" parent="." unique_id=660823832]
-script = ExtResource("9_rxlun")
-
-[connection signal="pressed" from="RetryButton" to="RetryButton" method="_on_pressed"]
-[connection signal="timeout" from="BattleStartManager/BattleStartTimer" to="BattleStartManager" method="_on_timer_timeout"]
-[connection signal="timeout" from="BattleStartManager/BattleStartTimer" to="BattleStartManager" method="_on_battle_start_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/RetryButton" to="CanvasLayer/RetryButton" method="_on_pressed"]
+[connection signal="timeout" from="Components/BattleStartManager/BattleStartTimer" to="Components/BattleStartManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="Components/BattleStartManager/BattleStartTimer" to="Components/BattleStartManager" method="_on_battle_start_timer_timeout"]

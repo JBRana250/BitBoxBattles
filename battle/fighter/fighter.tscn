@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://fwomuuw06drq"]
+
+[ext_resource type="Script" uid="uid://rjp67l3g8phv" path="res://battle/fighter/fighter.gd" id="1_05pdn"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="2_ladtm"]
+[ext_resource type="Theme" uid="uid://vurjv1gvv8k" path="res://themes/battle.tres" id="3_4dc5m"]
+[ext_resource type="Texture2D" uid="uid://d2gl08f6vn5a5" path="res://textures/empty_hpbar.png" id="4_gb4mi"]
+[ext_resource type="Texture2D" uid="uid://byjpjy0nht5uk" path="res://textures/full_hpbar.png" id="5_4sxhs"]
+[ext_resource type="Script" uid="uid://dqly1sjufce6k" path="res://battle/fighter/fighter_health.gd" id="6_05pdn"]
+[ext_resource type="Script" uid="uid://da7gvjomliao7" path="res://battle/fighter/fighter_state_machine.gd" id="7_657b4"]
+[ext_resource type="Script" uid="uid://dd5gqcqo4uw5l" path="res://battle/fighter/fighter_sprite_manager.gd" id="8_wn1im"]
+[ext_resource type="Script" uid="uid://c7emsuewp3xxs" path="res://battle/fighter/fighter_collision_manager.gd" id="9_vkd1v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6hnvb"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6hnvb"]
+radius = 63.007935
+
+[sub_resource type="Gradient" id="Gradient_gb4mi"]
+offsets = PackedFloat32Array(0, 0.5106383, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.82871497, 0.65557426, 0, 1, 0, 1, 0, 1)
+
+[node name="fighter" type="RigidBody2D" unique_id=678717569 node_paths=PackedStringArray("sprite", "onhit_timer", "fighter_state_machine", "fighter_sprite_manager", "fighter_health_manager") groups=["fighter"]]
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_6hnvb")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 10
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_05pdn")
+sprite = NodePath("FighterPosition/Polygon2D/Sprite2D")
+onhit_timer = NodePath("Components/FighterSpriteManager/onhitTimer")
+fighter_state_machine = NodePath("Components/FighterStateMachine")
+fighter_sprite_manager = NodePath("Components/FighterSpriteManager")
+fighter_health_manager = NodePath("Components/FighterHealthManager")
+onhit_modulate = Color(0.5659736, 0, 0.1455484, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=732105405]
+shape = SubResource("CircleShape2D_6hnvb")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=322167764]
+remote_path = NodePath("../FighterPosition")
+update_rotation = false
+update_scale = false
+
+[node name="FighterPosition" type="Marker2D" parent="." unique_id=1225624291]
+top_level = true
+
+[node name="Polygon2D" type="Polygon2D" parent="FighterPosition" unique_id=1028999094]
+clip_children = 1
+polygon = PackedVector2Array(-65, -65, 65, -65, 65, 65, -65, 65)
+
+[node name="Sprite2D" type="Sprite2D" parent="FighterPosition/Polygon2D" unique_id=1995630749]
+texture = ExtResource("2_ladtm")
+region_rect = Rect2(0, 0, 128, 128)
+region_filter_clip_enabled = true
+
+[node name="ProgressBar" type="TextureProgressBar" parent="FighterPosition" unique_id=517349858]
+offset_left = -80.0
+offset_top = 68.0
+offset_right = 80.0
+offset_bottom = 82.0
+theme = ExtResource("3_4dc5m")
+value = 100.0
+allow_lesser = true
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("4_gb4mi")
+texture_progress = ExtResource("5_4sxhs")
+
+[node name="Components" type="Node" parent="." unique_id=1292699193]
+
+[node name="FighterHealthManager" type="Node" parent="Components" unique_id=2041625990 node_paths=PackedStringArray("health_bar")]
+script = ExtResource("6_05pdn")
+health_gradient = SubResource("Gradient_gb4mi")
+health_bar = NodePath("../../FighterPosition/ProgressBar")
+
+[node name="FighterStateMachine" type="Node" parent="Components" unique_id=1829989557 node_paths=PackedStringArray("fighter", "inactive_timer", "fighter_sprite_manager", "sprite", "colshape")]
+script = ExtResource("7_657b4")
+fighter = NodePath("../..")
+inactive_timer = NodePath("InactiveTimer")
+fighter_sprite_manager = NodePath("../FighterSpriteManager")
+current_state = 1
+sprite = NodePath("../../FighterPosition/Polygon2D/Sprite2D")
+colshape = NodePath("../../CollisionShape2D")
+
+[node name="InactiveTimer" type="Timer" parent="Components/FighterStateMachine" unique_id=563924531]
+one_shot = true
+
+[node name="FighterSpriteManager" type="Node" parent="Components" unique_id=1011372442 node_paths=PackedStringArray("fighter_sprite", "onhit_timer")]
+script = ExtResource("8_wn1im")
+fighter_sprite = NodePath("../../FighterPosition/Polygon2D/Sprite2D")
+onhit_timer = NodePath("onhitTimer")
+onhit_modulate = Color(1, 0, 0, 1)
+
+[node name="onhitTimer" type="Timer" parent="Components/FighterSpriteManager" unique_id=1664589322]
+wait_time = 0.05
+one_shot = true
+
+[node name="FighterCollisionManager" type="Node" parent="Components" unique_id=764332491 node_paths=PackedStringArray("fighter_sprite_manager", "fighter_health_manager")]
+script = ExtResource("9_vkd1v")
+fighter_sprite_manager = NodePath("../FighterSpriteManager")
+fighter_health_manager = NodePath("../FighterHealthManager")
+
+[connection signal="body_entered" from="." to="Components/FighterCollisionManager" method="_on_fighter_body_entered"]
+[connection signal="timeout" from="Components/FighterStateMachine/InactiveTimer" to="Components/FighterStateMachine" method="_on_inactive_timer_timeout"]
+[connection signal="timeout" from="Components/FighterSpriteManager/onhitTimer" to="Components/FighterSpriteManager" method="_on_onhit_timer_timeout"]
