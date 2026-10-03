@@ -13,6 +13,11 @@ func on_fighter_death(fighter_id: String) -> void:
 		var winner_id = fighters.front()
 		text = winner_id + " Wins!"
 		BattleEventBus.victory.emit()
+		return
+	if fighters.size() == 0:
+		text = "It's a tie!"
+		BattleEventBus.victory.emit()
+		return
 
 func on_start_battle() -> void:
 	text = "Battle"
