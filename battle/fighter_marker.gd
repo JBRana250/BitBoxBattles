@@ -3,7 +3,6 @@ extends Marker2D
 @export_group("References")
 @export var fighter_scene: PackedScene
 @export var spawn_parent: Node2D
-@export var fighter_health_label: Label
 
 @export_group("Properties")
 @export var fighter_id: String
@@ -21,7 +20,3 @@ func _spawn_fighter() -> void:
 	fighter_instance.init_fighter(fighter_id, starting_health, contact_damage, contact_cooldown, position, randf_range(0.0, TAU), active_image, inactive_image)
 	
 	spawn_parent.add_child(fighter_instance)
-	
-	fighter_health_label.fighter = fighter_instance
-	fighter_health_label.fighter_id = fighter_id
-	fighter_health_label.update_text()
