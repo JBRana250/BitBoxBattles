@@ -36,4 +36,4 @@ func get_state():
 	return fighter_state_machine.get_state()
 
 func hit_enemy():
-	fighter_state_machine.set_state_contact_cooldown(contact_cooldown)
+	fighter_state_machine.on_hit(contact_cooldown)

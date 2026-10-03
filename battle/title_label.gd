@@ -1,5 +1,6 @@
 extends Label
 
+@onready var initial_fighters = ["Fighter 1", "Fighter 2"]
 @onready var fighters = ["Fighter 1", "Fighter 2"]
 
 func _ready() -> void:
@@ -15,3 +16,4 @@ func on_fighter_death(fighter_id: String) -> void:
 
 func on_start_battle() -> void:
 	text = "Battle"
+	fighters = initial_fighters
