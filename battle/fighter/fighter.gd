@@ -6,6 +6,7 @@ class_name Fighter extends RigidBody2D
 @export var fighter_state_machine: FighterStateMachine
 @export var fighter_sprite_manager: FighterSpriteManager
 @export var fighter_health_manager: FighterHealthManager
+@export var fighter_dash_manager: FighterDashManager
 
 @export_group("Properties")
 @export var onhit_modulate: Color
@@ -16,7 +17,7 @@ class_name Fighter extends RigidBody2D
 @export var fighter_id: String 
 
 @warning_ignore("shadowed_variable", "shadowed_variable_base_class")
-func init_fighter(fighter_id: String, max_health: int, contact_damage: int, contact_cooldown: float, position: Vector2, rotation: float, active_image: Texture, inactive_image: Texture, starting_force: float, mass: float) -> void:
+func init_fighter(fighter_id: String, max_health: int, contact_damage: int, contact_cooldown: float, position: Vector2, rotation: float, active_image: Texture, inactive_image: Texture, starting_force: float, mass: float, accel_dash_force: float, accel_dash_cooldown: float) -> void:
 	self.fighter_id = fighter_id
 	self.position = position
 	self.rotation = rotation
@@ -28,6 +29,7 @@ func init_fighter(fighter_id: String, max_health: int, contact_damage: int, cont
 	fighter_sprite_manager.init_sprites(active_image, inactive_image)
 	fighter_state_machine.init_states()
 	fighter_health_manager.init_health(max_health)
+	fighter_dash_manager.init_dash(accel_dash_force, accel_dash_cooldown)
 	
 	apply_force(global_transform.x * starting_force)
 

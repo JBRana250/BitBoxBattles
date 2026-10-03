@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://da7gvjomliao7" path="res://battle/fighter/fighter_state_machine.gd" id="7_657b4"]
 [ext_resource type="Script" uid="uid://dd5gqcqo4uw5l" path="res://battle/fighter/fighter_sprite_manager.gd" id="8_wn1im"]
 [ext_resource type="Script" uid="uid://c7emsuewp3xxs" path="res://battle/fighter/fighter_collision_manager.gd" id="9_vkd1v"]
+[ext_resource type="Script" uid="uid://dc5xyijsdfrap" path="res://battle/fighter/fighter_dash_manager.gd" id="10_657b4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6hnvb"]
 friction = 0.0
@@ -21,20 +22,23 @@ radius = 63.007935
 offsets = PackedFloat32Array(0, 0.5106383, 1)
 colors = PackedColorArray(1, 0, 0, 1, 0.82871497, 0.65557426, 0, 1, 0, 1, 0, 1)
 
-[node name="fighter" type="RigidBody2D" unique_id=678717569 node_paths=PackedStringArray("sprite", "onhit_timer", "fighter_state_machine", "fighter_sprite_manager", "fighter_health_manager") groups=["fighter"]]
+[node name="fighter" type="RigidBody2D" unique_id=678717569 node_paths=PackedStringArray("sprite", "onhit_timer", "fighter_state_machine", "fighter_sprite_manager", "fighter_health_manager", "fighter_dash_manager") groups=["fighter"]]
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_6hnvb")
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 10
 linear_damp_mode = 1
+linear_damp = 0.1
 angular_damp_mode = 1
+angular_damp = 0.1
 script = ExtResource("1_05pdn")
 sprite = NodePath("FighterPosition/Polygon2D/Sprite2D")
 onhit_timer = NodePath("Components/FighterSpriteManager/onhitTimer")
 fighter_state_machine = NodePath("Components/FighterStateMachine")
 fighter_sprite_manager = NodePath("Components/FighterSpriteManager")
 fighter_health_manager = NodePath("Components/FighterHealthManager")
+fighter_dash_manager = NodePath("Components/FighterDashManager")
 onhit_modulate = Color(0.5659736, 0, 0.1455484, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=732105405]
@@ -107,6 +111,14 @@ script = ExtResource("9_vkd1v")
 fighter_sprite_manager = NodePath("../FighterSpriteManager")
 fighter_health_manager = NodePath("../FighterHealthManager")
 
+[node name="FighterDashManager" type="Node" parent="Components" unique_id=309360726 node_paths=PackedStringArray("accel_dash_timer")]
+script = ExtResource("10_657b4")
+accel_dash_timer = NodePath("accelDashTimer")
+
+[node name="accelDashTimer" type="Timer" parent="Components/FighterDashManager" unique_id=210372534]
+autostart = true
+
 [connection signal="body_entered" from="." to="Components/FighterCollisionManager" method="_on_fighter_body_entered"]
 [connection signal="timeout" from="Components/FighterStateMachine/InactiveTimer" to="Components/FighterStateMachine" method="_on_inactive_timer_timeout"]
 [connection signal="timeout" from="Components/FighterSpriteManager/onhitTimer" to="Components/FighterSpriteManager" method="_on_onhit_timer_timeout"]
+[connection signal="timeout" from="Components/FighterDashManager/accelDashTimer" to="Components/FighterDashManager" method="_on_accel_dash_timer_timeout"]
