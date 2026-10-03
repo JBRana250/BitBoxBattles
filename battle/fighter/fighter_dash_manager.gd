@@ -8,7 +8,9 @@ func init_dash(accel_dash_force: float, accel_dash_cooldown: float) -> void:
 	if (accel_dash_force == 0):
 		return # no accel dash
 	self.force = accel_dash_force
-	accel_dash_timer.wait_time = accel_dash_force
-
+	accel_dash_timer.wait_time = accel_dash_cooldown
+	await accel_dash_timer.tree_entered
+	accel_dash_timer.start()
+	
 func _on_accel_dash_timer_timeout() -> void:
 	owner.apply_force(owner.linear_velocity.normalized() * force)

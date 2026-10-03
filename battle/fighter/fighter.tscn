@@ -116,7 +116,6 @@ script = ExtResource("10_657b4")
 accel_dash_timer = NodePath("accelDashTimer")
 
 [node name="accelDashTimer" type="Timer" parent="Components/FighterDashManager" unique_id=210372534]
-autostart = true
 
 [connection signal="body_entered" from="." to="Components/FighterCollisionManager" method="_on_fighter_body_entered"]
 [connection signal="timeout" from="Components/FighterStateMachine/InactiveTimer" to="Components/FighterStateMachine" method="_on_inactive_timer_timeout"]

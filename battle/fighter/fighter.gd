@@ -17,21 +17,27 @@ class_name Fighter extends RigidBody2D
 @export var fighter_id: String 
 
 @warning_ignore("shadowed_variable", "shadowed_variable_base_class")
-func init_fighter(fighter_id: String, max_health: int, contact_damage: int, contact_cooldown: float, position: Vector2, rotation: float, active_image: Texture, inactive_image: Texture, starting_force: float, mass: float, accel_dash_force: float, accel_dash_cooldown: float) -> void:
-	self.fighter_id = fighter_id
-	self.position = position
-	self.rotation = rotation
-	self.current_health = max_health
-	self.contact_damage = contact_damage
-	self.contact_cooldown = contact_cooldown
-	self.mass = mass
+func init_fighter(init_resource: FighterInitResource, health_resource: FighterHealthResource, 
+contact_resource: FighterContactResource, texture_resource: FighterTextureResource, 
+dash_resource: FighterDashResource) -> void:
 	
-	fighter_sprite_manager.init_sprites(active_image, inactive_image)
+	self.fighter_id = init_resource.fighter_id
+	self.position = init_resource.position
+	self.rotation = init_resource.rotation
+	self.mass = init_resource.fighter_mass / 10
+	
+	self.current_health = health_resource.max_health
+	
+	self.contact_damage = contact_resource.contact_damage
+	self.contact_cooldown = contact_resource.contact_cooldown
+	
+	
+	fighter_sprite_manager.init_sprites(texture_resource.active_image, texture_resource.inactive_image)
 	fighter_state_machine.init_states()
-	fighter_health_manager.init_health(max_health)
-	fighter_dash_manager.init_dash(accel_dash_force, accel_dash_cooldown)
+	fighter_health_manager.init_health(health_resource.max_health)
+	fighter_dash_manager.init_dash(dash_resource.accel_dash_force, dash_resource.accel_dash_cooldown)
 	
-	apply_force(global_transform.x * starting_force)
+	apply_force(global_transform.x * init_resource.starting_force)
 
 func get_state():
 	return fighter_state_machine.get_state()

@@ -3,18 +3,82 @@
 [ext_resource type="Texture2D" uid="uid://drciia5lg1cxo" path="res://textures/white_square_texture.png" id="1_mqutd"]
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="2_tiqy5"]
 [ext_resource type="Script" uid="uid://cg6bu0aawho42" path="res://battle/title_label.gd" id="3_4mnim"]
+[ext_resource type="Script" uid="uid://bbyqng0l5d8mh" path="res://battle/fighter/fighter_property_resources/fighter_init_resource.gd" id="4_qybyd"]
+[ext_resource type="Script" uid="uid://blqpe5hp7jofi" path="res://battle/fighter/fighter_property_resources/fighter_health_resource.gd" id="5_rgsk0"]
 [ext_resource type="Script" uid="uid://d0juuwk2fard8" path="res://battle/retry_button.gd" id="6_l1kiu"]
+[ext_resource type="Script" uid="uid://rg6n5h53gu5k" path="res://battle/fighter/fighter_property_resources/fighter_contact_resource.gd" id="6_tkkqt"]
 [ext_resource type="Script" uid="uid://brhj2j6a17vlr" path="res://battle/battle_start_manager.gd" id="7_7fucf"]
+[ext_resource type="Script" uid="uid://bpymebmol4evd" path="res://battle/fighter/fighter_property_resources/fighter_texture_resource.gd" id="7_eu6g2"]
 [ext_resource type="PackedScene" uid="uid://crb4208838c1l" path="res://battle/fighter_spawner.tscn" id="7_iorop"]
 [ext_resource type="Texture2D" uid="uid://deojq6or0epof" path="res://textures/future_robot_idle.png" id="8_hvjow"]
 [ext_resource type="PackedScene" uid="uid://fwomuuw06drq" path="res://battle/fighter/fighter.tscn" id="8_iorop"]
 [ext_resource type="Texture2D" uid="uid://bnkcbjk3hunw8" path="res://textures/future_robot_thinking.png" id="9_qybyd"]
 [ext_resource type="Script" uid="uid://bxp2m8nkthwia" path="res://battle/fighters.gd" id="9_rxlun"]
+[ext_resource type="Script" uid="uid://b70xtb2eos81q" path="res://battle/fighter/fighter_property_resources/fighter_dash_resource.gd" id="10_a56dj"]
 [ext_resource type="Texture2D" uid="uid://b71jpmvkmwfv8" path="res://textures/past_robot_idle.png" id="10_eu6g2"]
 [ext_resource type="Texture2D" uid="uid://cfcxo13hw6tav" path="res://textures/past_robot_thinking.png" id="11_t8p1f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0kn"]
 size = Vector2(20, 750)
+
+[sub_resource type="Resource" id="Resource_pqfrt"]
+script = ExtResource("4_qybyd")
+fighter_id = "Future Bot"
+starting_force = 150.0
+fighter_mass = 1.0
+metadata/_custom_type_script = "uid://bbyqng0l5d8mh"
+
+[sub_resource type="Resource" id="Resource_qybyd"]
+script = ExtResource("5_rgsk0")
+max_health = 100
+metadata/_custom_type_script = "uid://blqpe5hp7jofi"
+
+[sub_resource type="Resource" id="Resource_eu6g2"]
+script = ExtResource("6_tkkqt")
+contact_damage = 25
+contact_cooldown = 4.0
+metadata/_custom_type_script = "uid://rg6n5h53gu5k"
+
+[sub_resource type="Resource" id="Resource_crpow"]
+script = ExtResource("7_eu6g2")
+active_image = ExtResource("8_hvjow")
+inactive_image = ExtResource("9_qybyd")
+metadata/_custom_type_script = "uid://bpymebmol4evd"
+
+[sub_resource type="Resource" id="Resource_t8p1f"]
+script = ExtResource("10_a56dj")
+accel_dash_force = 1000.0
+accel_dash_cooldown = 4.0
+metadata/_custom_type_script = "uid://b70xtb2eos81q"
+
+[sub_resource type="Resource" id="Resource_phvbk"]
+script = ExtResource("4_qybyd")
+fighter_id = "Past Bot"
+starting_force = 500.0
+fighter_mass = 0.1
+metadata/_custom_type_script = "uid://bbyqng0l5d8mh"
+
+[sub_resource type="Resource" id="Resource_sf8fp"]
+script = ExtResource("5_rgsk0")
+max_health = 100
+metadata/_custom_type_script = "uid://blqpe5hp7jofi"
+
+[sub_resource type="Resource" id="Resource_ihybe"]
+script = ExtResource("6_tkkqt")
+contact_damage = 10
+metadata/_custom_type_script = "uid://rg6n5h53gu5k"
+
+[sub_resource type="Resource" id="Resource_dxsh4"]
+script = ExtResource("7_eu6g2")
+active_image = ExtResource("10_eu6g2")
+inactive_image = ExtResource("11_t8p1f")
+metadata/_custom_type_script = "uid://bpymebmol4evd"
+
+[sub_resource type="Resource" id="Resource_220ih"]
+script = ExtResource("10_a56dj")
+accel_dash_force = 50.0
+accel_dash_cooldown = 0.5
+metadata/_custom_type_script = "uid://b70xtb2eos81q"
 
 [sub_resource type="LabelSettings" id="LabelSettings_mqutd"]
 font = ExtResource("2_tiqy5")
@@ -66,30 +130,21 @@ shape = SubResource("RectangleShape2D_ra0kn")
 position = Vector2(752, 340)
 fighter_scene = ExtResource("8_iorop")
 spawn_parent = NodePath("../../Fighters")
-fighter_id = "Future Bot"
-contact_damage = 25
-contact_cooldown = 5.0
-starting_health = 100
-starting_force = 150.0
-mass = 10.0
-dash_force = 1000.0
-dash_cooldown = 5.0
-active_image = ExtResource("8_hvjow")
-inactive_image = ExtResource("9_qybyd")
+init_resource = SubResource("Resource_pqfrt")
+health_resource = SubResource("Resource_qybyd")
+contact_resource = SubResource("Resource_eu6g2")
+texture_resource = SubResource("Resource_crpow")
+dash_resource = SubResource("Resource_t8p1f")
 
 [node name="FighterSpawner2" parent="Spawners" unique_id=1444415074 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("7_iorop")]
 position = Vector2(1187, 778)
 fighter_scene = ExtResource("8_iorop")
 spawn_parent = NodePath("../../Fighters")
-fighter_id = "Past Bot"
-contact_damage = 10
-starting_health = 100
-starting_force = 500.0
-mass = 1.0
-dash_force = 50.0
-dash_cooldown = 0.5
-active_image = ExtResource("10_eu6g2")
-inactive_image = ExtResource("11_t8p1f")
+init_resource = SubResource("Resource_phvbk")
+health_resource = SubResource("Resource_sf8fp")
+contact_resource = SubResource("Resource_ihybe")
+texture_resource = SubResource("Resource_dxsh4")
+dash_resource = SubResource("Resource_220ih")
 
 [node name="Fighters" type="Node2D" parent="." unique_id=660823832]
 script = ExtResource("9_rxlun")
@@ -122,11 +177,4 @@ script = ExtResource("6_l1kiu")
 [node name="BattleStartManager" type="Node" parent="Components" unique_id=1073837026]
 script = ExtResource("7_7fucf")
 
-[node name="BattleStartTimer" type="Timer" parent="Components/BattleStartManager" unique_id=1952246195]
-wait_time = 0.1
-one_shot = true
-autostart = true
-
 [connection signal="pressed" from="CanvasLayer/RetryButton" to="CanvasLayer/RetryButton" method="_on_pressed"]
-[connection signal="timeout" from="Components/BattleStartManager/BattleStartTimer" to="Components/BattleStartManager" method="_on_timer_timeout"]
-[connection signal="timeout" from="Components/BattleStartManager/BattleStartTimer" to="Components/BattleStartManager" method="_on_battle_start_timer_timeout"]
