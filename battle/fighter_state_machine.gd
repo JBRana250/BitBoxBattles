@@ -2,6 +2,7 @@ class_name FighterStateMachine extends Node
 
 @export var fighter: Fighter
 @export var inactive_timer: Timer
+@export var fighter_sprite_manager: FighterSpriteManager
 
 enum State {
 	ACTIVE,
@@ -14,7 +15,7 @@ enum State {
 @export var sprite: Sprite2D
 @export var colshape: CollisionShape2D
 
-func _ready() -> void:
+func init_states() -> void:
 	set_fighter_active()
 
 func get_state() -> State:
@@ -28,11 +29,11 @@ func on_hit(time: float) -> void:
 
 func set_fighter_active() -> void:
 	current_state = State.ACTIVE
-	set_fighter_scale(1)
+	fighter_sprite_manager.set_sprite_active()
 
 func set_fighter_inactive() -> void:
 	current_state = State.INACTIVE
-	set_fighter_scale(0.85)
+	fighter_sprite_manager.set_sprite_inactive()
 
 func set_fighter_scale(scale: float) -> void:
 	var scale_v2 = Vector2(scale, scale)

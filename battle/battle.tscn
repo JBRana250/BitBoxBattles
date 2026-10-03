@@ -7,8 +7,12 @@
 [ext_resource type="Script" uid="uid://d0juuwk2fard8" path="res://battle/retry_button.gd" id="6_l1kiu"]
 [ext_resource type="Script" uid="uid://brhj2j6a17vlr" path="res://battle/battle_start_manager.gd" id="7_7fucf"]
 [ext_resource type="PackedScene" uid="uid://crb4208838c1l" path="res://battle/fighter_marker.tscn" id="7_iorop"]
+[ext_resource type="Texture2D" uid="uid://deojq6or0epof" path="res://textures/future_robot_idle.png" id="8_hvjow"]
 [ext_resource type="PackedScene" uid="uid://fwomuuw06drq" path="res://battle/fighter.tscn" id="8_iorop"]
+[ext_resource type="Texture2D" uid="uid://bnkcbjk3hunw8" path="res://textures/future_robot_thinking.png" id="9_qybyd"]
 [ext_resource type="Script" uid="uid://bxp2m8nkthwia" path="res://battle/fighters.gd" id="9_rxlun"]
+[ext_resource type="Texture2D" uid="uid://b71jpmvkmwfv8" path="res://textures/past_robot_idle.png" id="10_eu6g2"]
+[ext_resource type="Texture2D" uid="uid://cfcxo13hw6tav" path="res://textures/past_robot_thinking.png" id="11_t8p1f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0kn"]
 size = Vector2(20, 750)
@@ -90,21 +94,27 @@ script = ExtResource("6_l1kiu")
 
 [node name="FighterMarker" parent="." unique_id=160553202 node_paths=PackedStringArray("spawn_parent", "fighter_health_label") instance=ExtResource("7_iorop")]
 position = Vector2(752, 340)
-fighter_id = "Fighter 1"
-contact_damage = 10
-contact_cooldown = 4.0
 fighter_scene = ExtResource("8_iorop")
 spawn_parent = NodePath("../Fighters")
 fighter_health_label = NodePath("../FighterHealth")
+fighter_id = "Fighter 1"
+contact_damage = 10
+contact_cooldown = 5.0
+starting_health = 100
+active_image = ExtResource("8_hvjow")
+inactive_image = ExtResource("9_qybyd")
 
 [node name="FighterMarker2" parent="." unique_id=1444415074 node_paths=PackedStringArray("spawn_parent", "fighter_health_label") instance=ExtResource("7_iorop")]
 position = Vector2(1187, 778)
-fighter_id = "Fighter 2"
-contact_damage = 25
-contact_cooldown = 0.5
 fighter_scene = ExtResource("8_iorop")
 spawn_parent = NodePath("../Fighters")
 fighter_health_label = NodePath("../FighterHealth2")
+fighter_id = "Fighter 2"
+contact_damage = 25
+contact_cooldown = 0.5
+starting_health = 100
+active_image = ExtResource("10_eu6g2")
+inactive_image = ExtResource("11_t8p1f")
 
 [node name="BattleStartManager" type="Node" parent="." unique_id=1073837026]
 script = ExtResource("7_7fucf")

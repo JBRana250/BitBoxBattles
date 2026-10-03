@@ -1,17 +1,34 @@
 class_name Fighter extends RigidBody2D
 
+@export_group("References")
 @export var sprite: Sprite2D
 @export var onhit_timer: Timer
+@export var fighter_state_machine: FighterStateMachine
+@export var fighter_sprite_manager: FighterSpriteManager
+
+@export_group("Properties")
 @export var onhit_modulate: Color
 @onready var default_modulate: Color = Color(1,1,1,1)
-@onready var current_health: int = 100
+@export var current_health: int
 @export var contact_damage: int
 @export var contact_cooldown: float
 @export var fighter_id: String 
-@export var fighter_state_machine: FighterStateMachine
 
 func _ready() -> void:
 	apply_force(global_transform.x * 500)
+
+@warning_ignore("shadowed_variable", "shadowed_variable_base_class")
+func init_fighter(fighter_id: String, current_health: int, contact_damage: int, contact_cooldown: float, position: Vector2, rotation: float, active_image: Texture, inactive_image: Texture) -> void:
+	self.fighter_id = fighter_id
+	self.position = position
+	self.rotation = rotation
+	self.current_health = 100
+	self.contact_damage = contact_damage
+	self.contact_cooldown = contact_cooldown
+	
+	fighter_sprite_manager.init_sprites(active_image, inactive_image)
+	fighter_state_machine.init_states()
+	
 
 func _on_body_entered(body: Node) -> void:
 	if !body.is_in_group("fighter"):

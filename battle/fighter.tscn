@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://rjp67l3g8phv" path="res://battle/fighter.gd" id="1_xnk44"]
 [ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="2_ladtm"]
 [ext_resource type="Script" uid="uid://da7gvjomliao7" path="res://battle/fighter_state_machine.gd" id="3_ladtm"]
+[ext_resource type="Script" uid="uid://dd5gqcqo4uw5l" path="res://battle/fighter_sprite_manager.gd" id="4_ipxd0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6hnvb"]
 friction = 0.0
@@ -11,8 +12,7 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6hnvb"]
 radius = 61.846584
 
-[node name="fighter" type="RigidBody2D" unique_id=678717569 node_paths=PackedStringArray("sprite", "onhit_timer", "fighter_state_machine") groups=["fighter"]]
-rotation = -0.23561946
+[node name="fighter" type="RigidBody2D" unique_id=678717569 node_paths=PackedStringArray("sprite", "onhit_timer", "fighter_state_machine", "fighter_sprite_manager") groups=["fighter"]]
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_6hnvb")
 gravity_scale = 0.0
@@ -23,10 +23,16 @@ angular_damp_mode = 1
 script = ExtResource("1_xnk44")
 sprite = NodePath("Sprite2D")
 onhit_timer = NodePath("onhitFlash")
-onhit_modulate = Color(0.5659736, 0, 0.1455484, 1)
 fighter_state_machine = NodePath("FighterStateMachine")
+fighter_sprite_manager = NodePath("FighterSpriteManager")
+onhit_modulate = Color(0.5659736, 0, 0.1455484, 1)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=322167764]
+remote_path = NodePath("../Sprite2D")
+update_rotation = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1995630749]
+top_level = true
 texture = ExtResource("2_ladtm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=732105405]
@@ -36,16 +42,21 @@ shape = SubResource("CircleShape2D_6hnvb")
 wait_time = 0.05
 one_shot = true
 
-[node name="FighterStateMachine" type="Node" parent="." unique_id=1829989557 node_paths=PackedStringArray("fighter", "inactive_timer", "sprite", "colshape")]
+[node name="FighterStateMachine" type="Node" parent="." unique_id=1829989557 node_paths=PackedStringArray("fighter", "inactive_timer", "fighter_sprite_manager", "sprite", "colshape")]
 script = ExtResource("3_ladtm")
 fighter = NodePath("..")
 inactive_timer = NodePath("InactiveTimer")
+fighter_sprite_manager = NodePath("../FighterSpriteManager")
 current_state = 1
 sprite = NodePath("../Sprite2D")
 colshape = NodePath("../CollisionShape2D")
 
 [node name="InactiveTimer" type="Timer" parent="FighterStateMachine" unique_id=563924531]
 one_shot = true
+
+[node name="FighterSpriteManager" type="Node" parent="." unique_id=1011372442 node_paths=PackedStringArray("fighter_sprite")]
+script = ExtResource("4_ipxd0")
+fighter_sprite = NodePath("../Sprite2D")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="onhitFlash" to="." method="_on_onhit_flash_timeout"]
