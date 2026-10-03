@@ -16,17 +16,18 @@ class_name Fighter extends RigidBody2D
 @export var fighter_id: String 
 
 @warning_ignore("shadowed_variable", "shadowed_variable_base_class")
-func init_fighter(fighter_id: String, current_health: int, contact_damage: int, contact_cooldown: float, position: Vector2, rotation: float, active_image: Texture, inactive_image: Texture, starting_force: float) -> void:
+func init_fighter(fighter_id: String, max_health: int, contact_damage: int, contact_cooldown: float, position: Vector2, rotation: float, active_image: Texture, inactive_image: Texture, starting_force: float, mass: float) -> void:
 	self.fighter_id = fighter_id
 	self.position = position
 	self.rotation = rotation
-	self.current_health = current_health
+	self.current_health = max_health
 	self.contact_damage = contact_damage
 	self.contact_cooldown = contact_cooldown
+	self.mass = mass
 	
 	fighter_sprite_manager.init_sprites(active_image, inactive_image)
 	fighter_state_machine.init_states()
-	fighter_health_manager.update_health(current_health)
+	fighter_health_manager.init_health(max_health)
 	
 	apply_force(global_transform.x * starting_force)
 	

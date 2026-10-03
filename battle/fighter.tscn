@@ -6,9 +6,7 @@
 [ext_resource type="Script" uid="uid://da7gvjomliao7" path="res://battle/fighter_state_machine.gd" id="3_ladtm"]
 [ext_resource type="Texture2D" uid="uid://d2gl08f6vn5a5" path="res://textures/empty_hpbar.png" id="4_gb4mi"]
 [ext_resource type="Script" uid="uid://dd5gqcqo4uw5l" path="res://battle/fighter_sprite_manager.gd" id="4_ipxd0"]
-[ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="4_so10r"]
 [ext_resource type="Texture2D" uid="uid://byjpjy0nht5uk" path="res://textures/full_hpbar.png" id="5_4sxhs"]
-[ext_resource type="PackedScene" uid="uid://fh5cicrt02gf" path="res://battle/fighter_health.tscn" id="5_qvn7c"]
 [ext_resource type="Script" uid="uid://dqly1sjufce6k" path="res://battle/fighter_health.gd" id="6_ibxnw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6hnvb"]
@@ -18,9 +16,9 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6hnvb"]
 radius = 63.007935
 
-[sub_resource type="LabelSettings" id="LabelSettings_4dc5m"]
-font = ExtResource("4_so10r")
-font_color = Color(0, 0.19176069, 3.6098065e-08, 1)
+[sub_resource type="Gradient" id="Gradient_gb4mi"]
+offsets = PackedFloat32Array(0, 0.5106383, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.82871497, 0.65557426, 0, 1, 0, 1, 0, 1)
 
 [node name="fighter" type="RigidBody2D" unique_id=678717569 node_paths=PackedStringArray("sprite", "onhit_timer", "fighter_state_machine", "fighter_sprite_manager", "fighter_health_manager") groups=["fighter"]]
 mass = 0.01
@@ -35,7 +33,7 @@ sprite = NodePath("FighterPosition/Polygon2D/Sprite2D")
 onhit_timer = NodePath("onhitFlash")
 fighter_state_machine = NodePath("FighterStateMachine")
 fighter_sprite_manager = NodePath("FighterSpriteManager")
-fighter_health_manager = NodePath("FighterPosition/ProgressBar/FighterHealthLabel/HealthUIManager")
+fighter_health_manager = NodePath("FighterPosition/ProgressBar/HealthUIManager")
 onhit_modulate = Color(0.5659736, 0, 0.1455484, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=732105405]
@@ -59,14 +57,13 @@ region_rect = Rect2(0, 0, 128, 128)
 region_filter_clip_enabled = true
 
 [node name="ProgressBar" type="TextureProgressBar" parent="FighterPosition" unique_id=517349858]
-offset_left = -79.0
-offset_top = 69.0
-offset_right = 81.0
-offset_bottom = 83.0
+offset_left = -80.0
+offset_top = 68.0
+offset_right = 80.0
+offset_bottom = 82.0
 theme = ExtResource("3_4dc5m")
 value = 100.0
 allow_lesser = true
-fill_mode = 6
 nine_patch_stretch = true
 stretch_margin_left = 4
 stretch_margin_top = 4
@@ -75,22 +72,11 @@ stretch_margin_bottom = 4
 texture_under = ExtResource("4_gb4mi")
 texture_progress = ExtResource("5_4sxhs")
 
-[node name="FighterHealthLabel" parent="FighterPosition/ProgressBar" unique_id=1658565350 instance=ExtResource("5_qvn7c")]
-layout_mode = 0
-offset_left = -6.0
-offset_top = -2.0
-offset_right = 170.0
-offset_bottom = 21.0
-text = "X"
-label_settings = SubResource("LabelSettings_4dc5m")
-horizontal_alignment = 1
-vertical_alignment = 1
-script = null
-
-[node name="HealthUIManager" type="Node" parent="FighterPosition/ProgressBar/FighterHealthLabel" unique_id=2041625990 node_paths=PackedStringArray("health_label", "health_bar")]
+[node name="HealthUIManager" type="Node" parent="FighterPosition/ProgressBar" unique_id=2041625990 node_paths=PackedStringArray("health_label", "health_bar")]
 script = ExtResource("6_ibxnw")
-health_label = NodePath("..")
-health_bar = NodePath("../..")
+health_gradient = SubResource("Gradient_gb4mi")
+health_label = NodePath("")
+health_bar = NodePath("..")
 
 [node name="onhitFlash" type="Timer" parent="." unique_id=1664589322]
 wait_time = 0.05

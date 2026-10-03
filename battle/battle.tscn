@@ -90,6 +90,7 @@ contact_damage = 10
 contact_cooldown = 5.0
 starting_health = 100
 starting_force = 150.0
+mass = 10.0
 active_image = ExtResource("8_hvjow")
 inactive_image = ExtResource("9_qybyd")
 
@@ -101,7 +102,8 @@ fighter_id = "Fighter 2"
 contact_damage = 25
 contact_cooldown = 0.5
 starting_health = 100
-starting_force = 300.0
+starting_force = 500.0
+mass = 1.0
 active_image = ExtResource("10_eu6g2")
 inactive_image = ExtResource("11_t8p1f")
 
