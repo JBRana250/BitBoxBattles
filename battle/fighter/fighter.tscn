@@ -77,7 +77,7 @@ stretch_margin_bottom = 4
 texture_under = ExtResource("4_gb4mi")
 texture_progress = ExtResource("5_4sxhs")
 
-[node name="Components" type="Node" parent="." unique_id=1292699193]
+[node name="Components" type="Node2D" parent="." unique_id=659261010]
 
 [node name="FighterHealthManager" type="Node" parent="Components" unique_id=2041625990 node_paths=PackedStringArray("health_bar")]
 script = ExtResource("6_05pdn")
@@ -111,13 +111,18 @@ script = ExtResource("9_vkd1v")
 fighter_sprite_manager = NodePath("../FighterSpriteManager")
 fighter_health_manager = NodePath("../FighterHealthManager")
 
-[node name="FighterDashManager" type="Node" parent="Components" unique_id=309360726 node_paths=PackedStringArray("accel_dash_timer")]
+[node name="FighterDashManager" type="Node2D" parent="Components" unique_id=1114177163 node_paths=PackedStringArray("accel_dash_timer", "fighter_dash_timer")]
+z_index = 100
 script = ExtResource("10_657b4")
 accel_dash_timer = NodePath("accelDashTimer")
+fighter_dash_timer = NodePath("fighterDashTimer")
 
 [node name="accelDashTimer" type="Timer" parent="Components/FighterDashManager" unique_id=210372534]
+
+[node name="fighterDashTimer" type="Timer" parent="Components/FighterDashManager" unique_id=962799376]
 
 [connection signal="body_entered" from="." to="Components/FighterCollisionManager" method="_on_fighter_body_entered"]
 [connection signal="timeout" from="Components/FighterStateMachine/InactiveTimer" to="Components/FighterStateMachine" method="_on_inactive_timer_timeout"]
 [connection signal="timeout" from="Components/FighterSpriteManager/onhitTimer" to="Components/FighterSpriteManager" method="_on_onhit_timer_timeout"]
 [connection signal="timeout" from="Components/FighterDashManager/accelDashTimer" to="Components/FighterDashManager" method="_on_accel_dash_timer_timeout"]
+[connection signal="timeout" from="Components/FighterDashManager/fighterDashTimer" to="Components/FighterDashManager" method="_on_fighter_dash_timer_timeout"]

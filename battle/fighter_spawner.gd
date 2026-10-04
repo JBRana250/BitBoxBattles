@@ -2,7 +2,7 @@ extends Marker2D
 
 @export_group("References")
 @export var fighter_scene: PackedScene
-@export var spawn_parent: Node2D
+@export var fighter_manager: FighterManager
 
 @export_group("Properties")
 @export var init_resource: FighterInitResource
@@ -18,6 +18,6 @@ func _spawn_fighter() -> void:
 	var fighter_instance: Fighter = fighter_scene.instantiate()
 	init_resource.position = self.position
 	init_resource.rotation = randf_range(0, TAU)
-	fighter_instance.init_fighter(init_resource, health_resource, contact_resource, texture_resource, dash_resource)
+	fighter_instance.init_fighter(fighter_manager, init_resource, health_resource, contact_resource, texture_resource, dash_resource)
 	
-	spawn_parent.add_child(fighter_instance)
+	fighter_manager.add_child(fighter_instance)

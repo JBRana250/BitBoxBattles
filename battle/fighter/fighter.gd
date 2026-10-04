@@ -7,6 +7,7 @@ class_name Fighter extends RigidBody2D
 @export var fighter_sprite_manager: FighterSpriteManager
 @export var fighter_health_manager: FighterHealthManager
 @export var fighter_dash_manager: FighterDashManager
+@export var fighter_manager: FighterManager
 
 @export_group("Properties")
 @export var onhit_modulate: Color
@@ -16,10 +17,11 @@ class_name Fighter extends RigidBody2D
 @export var contact_cooldown: float
 @export var fighter_id: String 
 
-@warning_ignore("shadowed_variable", "shadowed_variable_base_class")
-func init_fighter(init_resource: FighterInitResource, health_resource: FighterHealthResource, 
-contact_resource: FighterContactResource, texture_resource: FighterTextureResource, 
-dash_resource: FighterDashResource) -> void:
+func init_fighter(_fighter_manager: FighterManager, init_resource: FighterInitResource, 
+health_resource: FighterHealthResource, contact_resource: FighterContactResource, 
+texture_resource: FighterTextureResource, dash_resource: FighterDashResource) -> void:
+	
+	self.fighter_manager = _fighter_manager
 	
 	self.fighter_id = init_resource.fighter_id
 	self.position = init_resource.position
@@ -35,7 +37,7 @@ dash_resource: FighterDashResource) -> void:
 	fighter_sprite_manager.init_sprites(texture_resource.active_image, texture_resource.inactive_image)
 	fighter_state_machine.init_states()
 	fighter_health_manager.init_health(health_resource.max_health)
-	fighter_dash_manager.init_dash(dash_resource.accel_dash_force, dash_resource.accel_dash_cooldown)
+	fighter_dash_manager.init_dash(dash_resource)
 	
 	apply_force(global_transform.x * init_resource.starting_force)
 

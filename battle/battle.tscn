@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://deojq6or0epof" path="res://textures/future_robot_idle.png" id="8_hvjow"]
 [ext_resource type="PackedScene" uid="uid://fwomuuw06drq" path="res://battle/fighter/fighter.tscn" id="8_iorop"]
 [ext_resource type="Texture2D" uid="uid://bnkcbjk3hunw8" path="res://textures/future_robot_thinking.png" id="9_qybyd"]
-[ext_resource type="Script" uid="uid://bxp2m8nkthwia" path="res://battle/fighters.gd" id="9_rxlun"]
+[ext_resource type="Script" uid="uid://bxp2m8nkthwia" path="res://battle/fighter_manager.gd" id="9_rxlun"]
 [ext_resource type="Script" uid="uid://b70xtb2eos81q" path="res://battle/fighter/fighter_property_resources/fighter_dash_resource.gd" id="10_a56dj"]
 [ext_resource type="Texture2D" uid="uid://b71jpmvkmwfv8" path="res://textures/past_robot_idle.png" id="10_eu6g2"]
 [ext_resource type="Texture2D" uid="uid://cfcxo13hw6tav" path="res://textures/past_robot_thinking.png" id="11_t8p1f"]
@@ -47,8 +47,10 @@ metadata/_custom_type_script = "uid://bpymebmol4evd"
 
 [sub_resource type="Resource" id="Resource_t8p1f"]
 script = ExtResource("10_a56dj")
-accel_dash_force = 1000.0
+accel_dash_force = 250.0
 accel_dash_cooldown = 4.0
+fighter_dash_force = -100.0
+fighter_dash_cooldown = 0.1
 metadata/_custom_type_script = "uid://b70xtb2eos81q"
 
 [sub_resource type="Resource" id="Resource_phvbk"]
@@ -126,27 +128,27 @@ shape = SubResource("RectangleShape2D_ra0kn")
 
 [node name="Spawners" type="Node2D" parent="." unique_id=929348381]
 
-[node name="FighterSpawner" parent="Spawners" unique_id=160553202 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("7_iorop")]
+[node name="FighterSpawner" parent="Spawners" unique_id=160553202 node_paths=PackedStringArray("fighter_manager") instance=ExtResource("7_iorop")]
 position = Vector2(752, 340)
 fighter_scene = ExtResource("8_iorop")
-spawn_parent = NodePath("../../Fighters")
+fighter_manager = NodePath("../../FighterManager")
 init_resource = SubResource("Resource_pqfrt")
 health_resource = SubResource("Resource_qybyd")
 contact_resource = SubResource("Resource_eu6g2")
 texture_resource = SubResource("Resource_crpow")
 dash_resource = SubResource("Resource_t8p1f")
 
-[node name="FighterSpawner2" parent="Spawners" unique_id=1444415074 node_paths=PackedStringArray("spawn_parent") instance=ExtResource("7_iorop")]
+[node name="FighterSpawner2" parent="Spawners" unique_id=1444415074 node_paths=PackedStringArray("fighter_manager") instance=ExtResource("7_iorop")]
 position = Vector2(1187, 778)
 fighter_scene = ExtResource("8_iorop")
-spawn_parent = NodePath("../../Fighters")
+fighter_manager = NodePath("../../FighterManager")
 init_resource = SubResource("Resource_phvbk")
 health_resource = SubResource("Resource_sf8fp")
 contact_resource = SubResource("Resource_ihybe")
 texture_resource = SubResource("Resource_dxsh4")
 dash_resource = SubResource("Resource_220ih")
 
-[node name="Fighters" type="Node2D" parent="." unique_id=660823832]
+[node name="FighterManager" type="Node2D" parent="." unique_id=660823832]
 script = ExtResource("9_rxlun")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=164281733]
