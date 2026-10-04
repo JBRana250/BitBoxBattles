@@ -17,11 +17,15 @@ class_name Fighter extends RigidBody2D
 @export var contact_cooldown: float
 @export var fighter_id: String 
 
-func init_fighter(_fighter_manager: FighterManager, init_resource: FighterInitResource, 
-health_resource: FighterHealthResource, contact_resource: FighterContactResource, 
-texture_resource: FighterTextureResource, action_resource: FighterActionResource) -> void:
+func init_fighter(_fighter_manager: FighterManager, fighter_profile: FighterProfile) -> void:
 	
 	self.fighter_manager = _fighter_manager
+	
+	var init_resource: FighterInitResource = fighter_profile.init_resource
+	var health_resource: FighterHealthResource = fighter_profile.health_resource
+	var contact_resource: FighterContactResource = fighter_profile.contact_resource
+	var texture_resource: FighterTextureResource = fighter_profile.texture_resource
+	var action_resource: FighterActionResource = fighter_profile.action_resource
 	
 	self.fighter_id = init_resource.fighter_id
 	self.position = init_resource.position
