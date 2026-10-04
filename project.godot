@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BitBoxBattles"
-run/main_scene="uid://dx6rq21thlw8l"
+run/main_scene="uid://beocfr14uysh"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

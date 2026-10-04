@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://beocfr14uysh"]
+
+[ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://themes/default.theme" id="1_snjg7"]
+[ext_resource type="Script" uid="uid://kgatr1mesxo0" path="res://title/nav_button.gd" id="2_wvfy4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wvfy4"]
+font_size = 128
+
+[node name="TitleScreen" type="Node2D" unique_id=1148741730]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1378429766]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1776080378]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_snjg7")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=1190917244]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=418916943]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 155.0
+offset_right = 1747.0
+offset_bottom = 462.0
+text = "BIT BOX 
+BATTLES"
+label_settings = SubResource("LabelSettings_wvfy4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BattleButton" type="Button" parent="CanvasLayer/Control" unique_id=1714375569]
+layout_mode = 0
+offset_left = 837.0
+offset_top = 564.0
+offset_right = 1085.0
+offset_bottom = 621.0
+text = "BATTLE"
+script = ExtResource("2_wvfy4")
+scene_path = "res://battle/battle.tscn"
+
+[node name="CreateButton" type="Button" parent="CanvasLayer/Control" unique_id=1742328386]
+layout_mode = 0
+offset_left = 834.0
+offset_top = 653.0
+offset_right = 1082.0
+offset_bottom = 710.0
+text = "CREATE"
+script = ExtResource("2_wvfy4")
+scene_path = "res://fighter_creator/fighter_creator.tscn"
+
+[connection signal="pressed" from="CanvasLayer/Control/BattleButton" to="CanvasLayer/Control/BattleButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CreateButton" to="CanvasLayer/Control/CreateButton" method="_on_pressed"]
