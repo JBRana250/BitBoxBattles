@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://themes/default.theme" id="1_bfom8"]
 [ext_resource type="LabelSettings" uid="uid://ssy37mkivlh4" path="res://themes/scene_header.tres" id="2_bfom8"]
+[ext_resource type="Script" uid="uid://kgatr1mesxo0" path="res://title/nav_button.gd" id="3_8g1jf"]
 [ext_resource type="Theme" uid="uid://x2wss8uibcsu" path="res://themes/stats.theme" id="3_dyfq3"]
 [ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="4_2cfr6"]
 [ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="5_e4q62"]
@@ -342,6 +343,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("1_bfom8")
 
 [node name="BGColor" type="ColorRect" parent="." unique_id=1976071163]
@@ -351,6 +353,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.32482433, 0.32209387, 0.34924692, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1412912169]
@@ -364,6 +367,7 @@ grow_vertical = 2
 [node name="TopBar" type="Control" parent="VBoxContainer" unique_id=1875400867]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="TopBarColor" type="ColorRect" parent="VBoxContainer/TopBar" unique_id=1752600905]
 layout_mode = 1
@@ -372,6 +376,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.5573855, 0.43697125, 0.54525447, 1)
 
 [node name="Label" type="Label" parent="VBoxContainer/TopBar" unique_id=943777232]
@@ -389,6 +394,19 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Fighter Creator"
 label_settings = ExtResource("2_bfom8")
+
+[node name="BattleButton" type="Button" parent="VBoxContainer/TopBar" unique_id=455839529]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 24.0
+offset_right = 273.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.2520274, 0.25202763, 0.25202823, 1)
+theme_override_font_sizes/font_size = 32
+text = "TO BATTLE"
+script = ExtResource("3_8g1jf")
+scene_path = "res://battle/battle.tscn"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer" unique_id=1957585535]
 propagate_maximum_size = false
@@ -1082,6 +1100,7 @@ clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
+[connection signal="pressed" from="VBoxContainer/TopBar/BattleButton" to="VBoxContainer/TopBar/BattleButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
 [connection signal="value_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]

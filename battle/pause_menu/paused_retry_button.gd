@@ -1,0 +1,8 @@
+extends Button
+
+@export var pause_menu: Control
+
+func _on_pressed() -> void:
+	pause_menu.visible = false
+	get_tree().paused = false
+	BattleEventBus.start_battle.emit()

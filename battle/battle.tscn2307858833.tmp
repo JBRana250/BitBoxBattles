@@ -5,18 +5,16 @@
 [ext_resource type="Script" uid="uid://cg6bu0aawho42" path="res://battle/title_label.gd" id="3_4mnim"]
 [ext_resource type="Resource" uid="uid://bqnmyuc7467k0" path="res://battle/fighter/fighter_property_resources/premade_profiles/future_bot.tres" id="4_rxlun"]
 [ext_resource type="Resource" uid="uid://dxglvxvxwft3x" path="res://battle/fighter/fighter_property_resources/premade_profiles/past_bot.tres" id="5_vlrs1"]
-[ext_resource type="Script" uid="uid://d0juuwk2fard8" path="res://battle/on_victory_menu/on_victory_retry_button.gd" id="6_l1kiu"]
+[ext_resource type="Script" uid="uid://d0juuwk2fard8" path="res://battle/retry_button.gd" id="6_l1kiu"]
 [ext_resource type="Script" uid="uid://brhj2j6a17vlr" path="res://battle/battle_start_manager.gd" id="7_7fucf"]
 [ext_resource type="PackedScene" uid="uid://crb4208838c1l" path="res://battle/fighter_spawner.tscn" id="7_iorop"]
 [ext_resource type="PackedScene" uid="uid://fwomuuw06drq" path="res://battle/fighter/fighter.tscn" id="8_iorop"]
 [ext_resource type="Script" uid="uid://bxp2m8nkthwia" path="res://battle/fighter_manager.gd" id="9_rxlun"]
 [ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://themes/default.theme" id="10_hvjow"]
 [ext_resource type="Script" uid="uid://kgatr1mesxo0" path="res://title/nav_button.gd" id="11_qybyd"]
-[ext_resource type="Script" uid="uid://bgb5jwns30d2e" path="res://battle/pause_menu/pause_menu.gd" id="11_rgsk0"]
-[ext_resource type="Script" uid="uid://b5bgwuhwkgq4u" path="res://battle/pause_menu/paused_retry_button.gd" id="12_eu6g2"]
-[ext_resource type="Script" uid="uid://c5aiwuhvnquby" path="res://battle/pause_menu/resume_button.gd" id="13_t8p1f"]
-[ext_resource type="Script" uid="uid://08k437rqynhu" path="res://battle/on_victory_menu/on_victory_menu.gd" id="14_tkkqt"]
-[ext_resource type="Script" uid="uid://bqc5pdtjjd6jg" path="res://battle/on_victory_menu/on_victory_create_button.gd" id="16_a56dj"]
+[ext_resource type="Script" uid="uid://bgb5jwns30d2e" path="res://battle/pause_menu.gd" id="11_rgsk0"]
+[ext_resource type="Script" uid="uid://b5bgwuhwkgq4u" path="res://battle/paused_retry_button.gd" id="12_eu6g2"]
+[ext_resource type="Script" uid="uid://c5aiwuhvnquby" path="res://battle/resume_button.gd" id="13_t8p1f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0kn"]
 size = Vector2(20, 750)
@@ -98,6 +96,18 @@ label_settings = SubResource("LabelSettings_mqutd")
 horizontal_alignment = 1
 script = ExtResource("3_4mnim")
 
+[node name="RetryButton" type="Button" parent="CanvasLayer" unique_id=1078579175]
+visible = false
+offset_left = 837.0
+offset_top = 971.0
+offset_right = 1052.0
+offset_bottom = 1036.0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_tiqy5")
+theme_override_font_sizes/font_size = 48
+text = "RETRY"
+script = ExtResource("6_l1kiu")
+
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=910488134]
 process_mode = 3
 visible = false
@@ -159,11 +169,10 @@ text = "CREATE"
 script = ExtResource("11_qybyd")
 scene_path = "res://fighter_creator/fighter_creator.tscn"
 
-[node name="RetryButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=747267114 node_paths=PackedStringArray("pause_menu")]
+[node name="RetryButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=747267114]
 layout_mode = 2
 text = "RETRY"
 script = ExtResource("12_eu6g2")
-pause_menu = NodePath("../../../../../..")
 
 [node name="ResumeButton" type="Button" parent="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1707073083 node_paths=PackedStringArray("pause_menu")]
 layout_mode = 2
@@ -171,41 +180,12 @@ text = "RESUME"
 script = ExtResource("13_t8p1f")
 pause_menu = NodePath("../../../../../..")
 
-[node name="OnVictoryMenu" type="HBoxContainer" parent="CanvasLayer" unique_id=2141523448]
-visible = false
-offset_left = 726.0
-offset_top = 967.0
-offset_right = 1229.0
-offset_bottom = 1032.0
-theme_override_constants/separation = 32
-script = ExtResource("14_tkkqt")
-
-[node name="RetryButton" type="Button" parent="CanvasLayer/OnVictoryMenu" unique_id=1078579175 node_paths=PackedStringArray("on_victory_menu")]
-layout_mode = 2
-mouse_filter = 1
-theme_override_fonts/font = ExtResource("2_tiqy5")
-theme_override_font_sizes/font_size = 48
-text = "RETRY"
-script = ExtResource("6_l1kiu")
-on_victory_menu = NodePath("..")
-
-[node name="CreateButton" type="Button" parent="CanvasLayer/OnVictoryMenu" unique_id=418178938 node_paths=PackedStringArray("on_victory_menu")]
-layout_mode = 2
-mouse_filter = 1
-theme_override_fonts/font = ExtResource("2_tiqy5")
-theme_override_font_sizes/font_size = 48
-text = "CREATE"
-script = ExtResource("16_a56dj")
-on_victory_menu = NodePath("..")
-scene_path = "res://fighter_creator/fighter_creator.tscn"
-
 [node name="Components" type="Node" parent="." unique_id=458130242]
 
 [node name="BattleStartManager" type="Node" parent="Components" unique_id=1073837026]
 script = ExtResource("7_7fucf")
 
+[connection signal="pressed" from="CanvasLayer/RetryButton" to="CanvasLayer/RetryButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/CreateButton" to="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/CreateButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/RetryButton" to="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/RetryButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/ResumeButton" to="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/ResumeButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/OnVictoryMenu/RetryButton" to="CanvasLayer/OnVictoryMenu/RetryButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/OnVictoryMenu/CreateButton" to="CanvasLayer/OnVictoryMenu/CreateButton" method="_on_pressed"]
