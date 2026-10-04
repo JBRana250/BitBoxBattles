@@ -6,7 +6,7 @@ class_name Fighter extends RigidBody2D
 @export var fighter_state_machine: FighterStateMachine
 @export var fighter_sprite_manager: FighterSpriteManager
 @export var fighter_health_manager: FighterHealthManager
-@export var fighter_dash_manager: FighterDashManager
+@export var fighter_event_manager: FighterEventManager
 @export var fighter_manager: FighterManager
 
 @export_group("Properties")
@@ -19,7 +19,7 @@ class_name Fighter extends RigidBody2D
 
 func init_fighter(_fighter_manager: FighterManager, init_resource: FighterInitResource, 
 health_resource: FighterHealthResource, contact_resource: FighterContactResource, 
-texture_resource: FighterTextureResource, dash_resource: FighterDashResource) -> void:
+texture_resource: FighterTextureResource, action_resource: FighterActionResource) -> void:
 	
 	self.fighter_manager = _fighter_manager
 	
@@ -37,9 +37,10 @@ texture_resource: FighterTextureResource, dash_resource: FighterDashResource) ->
 	fighter_sprite_manager.init_sprites(texture_resource.active_image, texture_resource.inactive_image)
 	fighter_state_machine.init_states()
 	fighter_health_manager.init_health(health_resource.max_health)
-	fighter_dash_manager.init_dash(dash_resource)
+	if (action_resource != null):
+		fighter_event_manager.init_events(action_resource)
 	
-	apply_force(global_transform.x * init_resource.starting_force)
+	apply_central_impulse(global_transform.x * init_resource.starting_force)
 
 func get_state():
 	return fighter_state_machine.get_state()

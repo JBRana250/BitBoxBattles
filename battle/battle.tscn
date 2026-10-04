@@ -14,9 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://fwomuuw06drq" path="res://battle/fighter/fighter.tscn" id="8_iorop"]
 [ext_resource type="Texture2D" uid="uid://bnkcbjk3hunw8" path="res://textures/future_robot_thinking.png" id="9_qybyd"]
 [ext_resource type="Script" uid="uid://bxp2m8nkthwia" path="res://battle/fighter_manager.gd" id="9_rxlun"]
-[ext_resource type="Script" uid="uid://b70xtb2eos81q" path="res://battle/fighter/fighter_property_resources/fighter_dash_resource.gd" id="10_a56dj"]
+[ext_resource type="Script" uid="uid://b70xtb2eos81q" path="res://battle/fighter/fighter_property_resources/fighter_action_resource.gd" id="10_a56dj"]
+[ext_resource type="Script" uid="uid://ds7a348a1ofw8" path="res://battle/fighter/events/resource/event.gd" id="10_dxsh4"]
 [ext_resource type="Texture2D" uid="uid://b71jpmvkmwfv8" path="res://textures/past_robot_idle.png" id="10_eu6g2"]
+[ext_resource type="Script" uid="uid://d2sxe6pkfjomi" path="res://battle/fighter/actions/fighter_action.gd" id="11_ihybe"]
 [ext_resource type="Texture2D" uid="uid://cfcxo13hw6tav" path="res://textures/past_robot_thinking.png" id="11_t8p1f"]
+[ext_resource type="Script" uid="uid://e8bg70fs2mo0" path="res://battle/fighter/actions/fighter_dash_action.gd" id="12_220ih"]
+[ext_resource type="Script" uid="uid://daesrn56aihs6" path="res://battle/fighter/events/resource/repeating_timer_event.gd" id="13_ju8jl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0kn"]
 size = Vector2(20, 750)
@@ -45,22 +49,30 @@ active_image = ExtResource("8_hvjow")
 inactive_image = ExtResource("9_qybyd")
 metadata/_custom_type_script = "uid://bpymebmol4evd"
 
-[sub_resource type="Resource" id="Resource_t8p1f"]
-script = ExtResource("10_a56dj")
-accel_dash_force = 250.0
-accel_dash_cooldown = 4.0
-fighter_dash_force = -100.0
-fighter_dash_cooldown = 0.1
-metadata/_custom_type_script = "uid://b70xtb2eos81q"
+[sub_resource type="Resource" id="Resource_657b4"]
+script = ExtResource("12_220ih")
+fighter_dash_force = -50.0
+metadata/_custom_type_script = "uid://e8bg70fs2mo0"
 
 [sub_resource type="Resource" id="Resource_phvbk"]
+script = ExtResource("13_ju8jl")
+time = 0.5
+actions = Array[ExtResource("11_ihybe")]([SubResource("Resource_657b4")])
+metadata/_custom_type_script = "uid://daesrn56aihs6"
+
+[sub_resource type="Resource" id="Resource_lybdx"]
+script = ExtResource("10_a56dj")
+action_events = Array[ExtResource("10_dxsh4")]([SubResource("Resource_phvbk")])
+metadata/_custom_type_script = "uid://b70xtb2eos81q"
+
+[sub_resource type="Resource" id="Resource_xmbur"]
 script = ExtResource("4_qybyd")
 fighter_id = "Past Bot"
 starting_force = 500.0
 fighter_mass = 0.1
 metadata/_custom_type_script = "uid://bbyqng0l5d8mh"
 
-[sub_resource type="Resource" id="Resource_sf8fp"]
+[sub_resource type="Resource" id="Resource_as1q7"]
 script = ExtResource("5_rgsk0")
 max_health = 100
 metadata/_custom_type_script = "uid://blqpe5hp7jofi"
@@ -75,12 +87,6 @@ script = ExtResource("7_eu6g2")
 active_image = ExtResource("10_eu6g2")
 inactive_image = ExtResource("11_t8p1f")
 metadata/_custom_type_script = "uid://bpymebmol4evd"
-
-[sub_resource type="Resource" id="Resource_220ih"]
-script = ExtResource("10_a56dj")
-accel_dash_force = 50.0
-accel_dash_cooldown = 0.5
-metadata/_custom_type_script = "uid://b70xtb2eos81q"
 
 [sub_resource type="LabelSettings" id="LabelSettings_mqutd"]
 font = ExtResource("2_tiqy5")
@@ -136,17 +142,16 @@ init_resource = SubResource("Resource_pqfrt")
 health_resource = SubResource("Resource_qybyd")
 contact_resource = SubResource("Resource_eu6g2")
 texture_resource = SubResource("Resource_crpow")
-dash_resource = SubResource("Resource_t8p1f")
+action_resource = SubResource("Resource_lybdx")
 
 [node name="FighterSpawner2" parent="Spawners" unique_id=1444415074 node_paths=PackedStringArray("fighter_manager") instance=ExtResource("7_iorop")]
 position = Vector2(1187, 778)
 fighter_scene = ExtResource("8_iorop")
 fighter_manager = NodePath("../../FighterManager")
-init_resource = SubResource("Resource_phvbk")
-health_resource = SubResource("Resource_sf8fp")
+init_resource = SubResource("Resource_xmbur")
+health_resource = SubResource("Resource_as1q7")
 contact_resource = SubResource("Resource_ihybe")
 texture_resource = SubResource("Resource_dxsh4")
-dash_resource = SubResource("Resource_220ih")
 
 [node name="FighterManager" type="Node2D" parent="." unique_id=660823832]
 script = ExtResource("9_rxlun")
