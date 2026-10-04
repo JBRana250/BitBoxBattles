@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dd5gqcqo4uw5l" path="res://battle/fighter/managers/fighter_sprite_manager.gd" id="8_wn1im"]
 [ext_resource type="Script" uid="uid://c7emsuewp3xxs" path="res://battle/fighter/managers/fighter_collision_manager.gd" id="9_vkd1v"]
 [ext_resource type="Script" uid="uid://bqnsyf2nea5g8" path="res://battle/fighter/managers/fighter_event_manager.gd" id="10_wn1im"]
-[ext_resource type="PackedScene" uid="uid://c2qmsvra8ogxh" path="res://battle/fighter/events/repeating_timer_event.tscn" id="11_wn1im"]
+[ext_resource type="PackedScene" uid="uid://c2qmsvra8ogxh" path="res://battle/fighter/eca_framework/events/repeating_timer_event.tscn" id="11_wn1im"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6hnvb"]
 friction = 0.0

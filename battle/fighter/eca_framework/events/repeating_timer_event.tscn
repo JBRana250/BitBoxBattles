@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c2qmsvra8ogxh"]
 
-[ext_resource type="Script" uid="uid://csb1lkx815nlv" path="res://battle/fighter/events/repeating_timer_event_scene.gd" id="1_raneq"]
+[ext_resource type="Script" uid="uid://csb1lkx815nlv" path="res://battle/fighter/eca_framework/events/repeating_timer_event_scene.gd" id="1_raneq"]
 
 [node name="RepeatingTimerEvent" type="Node" unique_id=24416991 node_paths=PackedStringArray("timer")]
 script = ExtResource("1_raneq")

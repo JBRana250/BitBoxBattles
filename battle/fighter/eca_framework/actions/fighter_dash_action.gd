@@ -5,6 +5,9 @@ class_name FighterDashAction extends FighterAction
 # Dash in direction of closest fighter
 func execute(context: Dictionary = {}) -> void:
 	var actor := context.get("actor") as Fighter
+	
+	if !(pass_conditions(context)):
+		return
 
 	var closest_fighter: Fighter = actor.fighter_manager.get_closest_fighter_with_exception(actor.position, actor)
 	if (closest_fighter == null):

@@ -6,8 +6,7 @@ class_name FighterStateMachine extends Node
 
 enum State {
 	ACTIVE,
-	INACTIVE,
-	CONTACT_COOLDOWN
+	INACTIVE
 }
 
 @export var current_state: State

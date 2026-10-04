@@ -15,12 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://bnkcbjk3hunw8" path="res://textures/future_robot_thinking.png" id="9_qybyd"]
 [ext_resource type="Script" uid="uid://bxp2m8nkthwia" path="res://battle/fighter_manager.gd" id="9_rxlun"]
 [ext_resource type="Script" uid="uid://b70xtb2eos81q" path="res://battle/fighter/fighter_property_resources/fighter_action_resource.gd" id="10_a56dj"]
-[ext_resource type="Script" uid="uid://ds7a348a1ofw8" path="res://battle/fighter/events/resource/event.gd" id="10_dxsh4"]
+[ext_resource type="Script" uid="uid://ds7a348a1ofw8" path="res://battle/fighter/eca_framework/events/resource/event.gd" id="10_dxsh4"]
 [ext_resource type="Texture2D" uid="uid://b71jpmvkmwfv8" path="res://textures/past_robot_idle.png" id="10_eu6g2"]
-[ext_resource type="Script" uid="uid://d2sxe6pkfjomi" path="res://battle/fighter/actions/fighter_action.gd" id="11_ihybe"]
+[ext_resource type="Script" uid="uid://d2sxe6pkfjomi" path="res://battle/fighter/eca_framework/actions/fighter_action.gd" id="11_ihybe"]
 [ext_resource type="Texture2D" uid="uid://cfcxo13hw6tav" path="res://textures/past_robot_thinking.png" id="11_t8p1f"]
-[ext_resource type="Script" uid="uid://e8bg70fs2mo0" path="res://battle/fighter/actions/fighter_dash_action.gd" id="12_220ih"]
-[ext_resource type="Script" uid="uid://daesrn56aihs6" path="res://battle/fighter/events/resource/repeating_timer_event.gd" id="13_ju8jl"]
+[ext_resource type="Script" uid="uid://e8bg70fs2mo0" path="res://battle/fighter/eca_framework/actions/fighter_dash_action.gd" id="12_220ih"]
+[ext_resource type="Script" uid="uid://bjx403himfv61" path="res://battle/fighter/eca_framework/conditions/condition.gd" id="12_ju8jl"]
+[ext_resource type="Script" uid="uid://daesrn56aihs6" path="res://battle/fighter/eca_framework/events/resource/repeating_timer_event.gd" id="13_ju8jl"]
+[ext_resource type="Script" uid="uid://dy6f1u2suab0t" path="res://battle/fighter/eca_framework/conditions/state_condition.gd" id="13_xmbur"]
+[ext_resource type="Script" uid="uid://bqthginsqy3v4" path="res://battle/fighter/eca_framework/actions/accel_dash_action.gd" id="19_xmbur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0kn"]
 size = Vector2(20, 750)
@@ -49,20 +52,43 @@ active_image = ExtResource("8_hvjow")
 inactive_image = ExtResource("9_qybyd")
 metadata/_custom_type_script = "uid://bpymebmol4evd"
 
+[sub_resource type="Resource" id="Resource_pc1y4"]
+script = ExtResource("13_xmbur")
+accepted_states = Array[int]([1])
+metadata/_custom_type_script = "uid://dy6f1u2suab0t"
+
 [sub_resource type="Resource" id="Resource_657b4"]
 script = ExtResource("12_220ih")
-fighter_dash_force = -50.0
+fighter_dash_force = -5.0
+conditions = Array[ExtResource("12_ju8jl")]([SubResource("Resource_pc1y4")])
 metadata/_custom_type_script = "uid://e8bg70fs2mo0"
 
 [sub_resource type="Resource" id="Resource_phvbk"]
 script = ExtResource("13_ju8jl")
-time = 0.5
+time = 0.1
 actions = Array[ExtResource("11_ihybe")]([SubResource("Resource_657b4")])
+metadata/_custom_type_script = "uid://daesrn56aihs6"
+
+[sub_resource type="Resource" id="Resource_2t7ue"]
+script = ExtResource("13_xmbur")
+accepted_states = Array[int]([0])
+metadata/_custom_type_script = "uid://dy6f1u2suab0t"
+
+[sub_resource type="Resource" id="Resource_7njrs"]
+script = ExtResource("12_220ih")
+fighter_dash_force = 5.0
+conditions = Array[ExtResource("12_ju8jl")]([SubResource("Resource_2t7ue")])
+metadata/_custom_type_script = "uid://e8bg70fs2mo0"
+
+[sub_resource type="Resource" id="Resource_ju8jl"]
+script = ExtResource("13_ju8jl")
+time = 0.1
+actions = Array[ExtResource("11_ihybe")]([SubResource("Resource_7njrs")])
 metadata/_custom_type_script = "uid://daesrn56aihs6"
 
 [sub_resource type="Resource" id="Resource_lybdx"]
 script = ExtResource("10_a56dj")
-action_events = Array[ExtResource("10_dxsh4")]([SubResource("Resource_phvbk")])
+action_events = Array[ExtResource("10_dxsh4")]([SubResource("Resource_phvbk"), SubResource("Resource_ju8jl")])
 metadata/_custom_type_script = "uid://b70xtb2eos81q"
 
 [sub_resource type="Resource" id="Resource_xmbur"]
@@ -87,6 +113,22 @@ script = ExtResource("7_eu6g2")
 active_image = ExtResource("10_eu6g2")
 inactive_image = ExtResource("11_t8p1f")
 metadata/_custom_type_script = "uid://bpymebmol4evd"
+
+[sub_resource type="Resource" id="Resource_kc5qh"]
+script = ExtResource("19_xmbur")
+accel_dash_force = 0.5
+metadata/_custom_type_script = "uid://bqthginsqy3v4"
+
+[sub_resource type="Resource" id="Resource_562sy"]
+script = ExtResource("13_ju8jl")
+time = 1.0
+actions = Array[ExtResource("11_ihybe")]([SubResource("Resource_kc5qh")])
+metadata/_custom_type_script = "uid://daesrn56aihs6"
+
+[sub_resource type="Resource" id="Resource_j5lq4"]
+script = ExtResource("10_a56dj")
+action_events = Array[ExtResource("10_dxsh4")]([SubResource("Resource_562sy")])
+metadata/_custom_type_script = "uid://b70xtb2eos81q"
 
 [sub_resource type="LabelSettings" id="LabelSettings_mqutd"]
 font = ExtResource("2_tiqy5")
@@ -152,6 +194,7 @@ init_resource = SubResource("Resource_xmbur")
 health_resource = SubResource("Resource_as1q7")
 contact_resource = SubResource("Resource_ihybe")
 texture_resource = SubResource("Resource_dxsh4")
+action_resource = SubResource("Resource_j5lq4")
 
 [node name="FighterManager" type="Node2D" parent="." unique_id=660823832]
 script = ExtResource("9_rxlun")

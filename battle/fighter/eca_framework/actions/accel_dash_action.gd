@@ -6,6 +6,9 @@ class_name AccelDashAction extends FighterAction
 func execute(context: Dictionary = {}) -> void:
 	var actor := context.get("actor") as Fighter
 	
+	if !(pass_conditions(context)):
+		return
+	
 	if !(actor is Fighter):
 		return
 	var accel_dash_vector = actor.linear_velocity.normalized()
