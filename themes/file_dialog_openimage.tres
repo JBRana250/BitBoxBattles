@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://bwyakhw7i7e0n"]
+
+[ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="1_7udvv"]
+
+[resource]
+Button/font_sizes/font_size = 16
+FileDialog/fonts/title_font = ExtResource("1_7udvv")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("1_7udvv")
