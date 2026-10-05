@@ -30,7 +30,7 @@ func init_fighter(_fighter_manager: FighterManager, fighter_profile: FighterProf
 	self.fighter_id = init_resource.fighter_id
 	self.position = init_resource.position
 	self.rotation = init_resource.rotation
-	self.mass = init_resource.fighter_mass / 10
+	self.mass = init_resource.fighter_mass / 1000
 	
 	self.current_health = health_resource.max_health
 	
