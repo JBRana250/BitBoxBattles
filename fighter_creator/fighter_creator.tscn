@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://x2wss8uibcsu" path="res://themes/stats.theme" id="3_dyfq3"]
 [ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="4_2cfr6"]
 [ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="5_e4q62"]
+[ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="5_hvy83"]
 [ext_resource type="Theme" uid="uid://cew8ls5daab5h" path="res://themes/main_sprite_editor.theme" id="6_2cfr6"]
 [ext_resource type="Texture2D" uid="uid://c6uka32r3jvlj" path="res://textures/pencil_light.png" id="7_7ie0h"]
 [ext_resource type="Script" uid="uid://cexwsdvwhiowx" path="res://fighter_creator/appearance/main_sprite_state_machine.gd" id="7_36jj5"]
@@ -17,6 +18,13 @@
 [ext_resource type="Shader" uid="uid://bso3aavmnxgsq" path="res://checkerboard.gdshader" id="13_5vvps"]
 [ext_resource type="PackedScene" uid="uid://csav5yl8t4cc5" path="res://preset_color.tscn" id="15_07s76"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tirwg"]
+bg_color = Color(0.13682574, 0.13682574, 0.13682568, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aalt6"]
 bg_color = Color(0, 0.6313726, 0.11764706, 1)
 
@@ -25,6 +33,9 @@ bg_color = Color(8.615404e-06, 0.762326, 0.15058672, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cfr6"]
 bg_color = Color(0.67102677, 0.6783634, 0.66004914, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8g1jf"]
+bg_color = Color(0.41598046, 0.41598046, 0.41598028, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyfq3"]
 bg_color = Color(0.6, 0, 0, 1)
@@ -38,11 +49,32 @@ bg_color = Color(0.6960143, 0.70306516, 0.68547404, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puomn"]
 bg_color = Color(0, 0.6749431, 0.7624917, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s60cs"]
-bg_color = Color(0, 0.8001032, 0.9012306, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5x8o3"]
+bg_color = Color(4.6205523e-06, 0.7723315, 0.87017477, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ie0h"]
 bg_color = Color(0.6751786, 0.6824716, 0.66426766, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ospfe"]
+bg_color = Color(0.4857033, 0.4857036, 0.4857034, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au8nn"]
+bg_color = Color(0.5882353, 0.3764706, 0.19607843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvy83"]
+bg_color = Color(0.5883991, 0.37530592, 0.19577149, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8ccr"]
+bg_color = Color(0.7398162, 0.48789412, 0.27649614, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6bhd"]
+bg_color = Color(0.65882355, 0.34509805, 0.2509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyiuw"]
+bg_color = Color(0.660289, 0.3464246, 0.25146827, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0bke"]
+bg_color = Color(0.7602619, 0.41724962, 0.3143985, 1)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_07s76"]
 
@@ -442,7 +474,7 @@ grow_vertical = 2
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
+size_flags_stretch_ratio = 0.6
 theme = ExtResource("3_dyfq3")
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats" unique_id=1109432442]
@@ -460,6 +492,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 150.0
 grow_horizontal = 2
+theme_override_constants/separation = 10
 
 [node name="Header" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=896049460]
 custom_minimum_size = Vector2(0, 30)
@@ -493,6 +526,46 @@ text = "Base Stats"
 [node name="Control" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=1574553183]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+
+[node name="FighterID" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=288921649]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/FighterID" unique_id=578260867]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/FighterID/MarginContainer" unique_id=186049186]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/FighterID/MarginContainer/VBoxContainer" unique_id=567065401]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/FighterID/MarginContainer/VBoxContainer/HBoxContainer" unique_id=861206252]
+layout_mode = 2
+text = "Fighter ID"
+
+[node name="TextEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/FighterID/MarginContainer/VBoxContainer" unique_id=1771484409]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_hvy83")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_tirwg")
 
 [node name="HP" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=1843634540]
 custom_minimum_size = Vector2(0, 40)
@@ -555,12 +628,19 @@ expand_to_text_length = true
 virtual_keyboard_type = 2
 script = ExtResource("5_e4q62")
 
-[node name="Damage" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=420451632]
+[node name="Contact" type="PanelContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=917539548]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8g1jf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact" unique_id=1971039411]
+layout_mode = 2
+
+[node name="Contact Damage" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer" unique_id=420451632]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage" unique_id=825455098]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage" unique_id=825455098]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -568,21 +648,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer" unique_id=1065463780]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer" unique_id=1065463780]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer" unique_id=1065441525]
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer" unique_id=1065441525]
 layout_mode = 2
-text = "Damage"
+text = "Contact Damage"
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer" unique_id=1303586838]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer" unique_id=1303586838]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_dyfq3")
-max_value = 10.0
-value = 1.0
+max_value = 25.0
+value = 10.0
 allow_greater = true
 allow_lesser = true
 show_percentage = false
@@ -591,7 +671,7 @@ default_fill = SubResource("StyleBoxFlat_dyfq3")
 hover_fill = SubResource("StyleBoxFlat_e4q62")
 hover_bg = SubResource("StyleBoxFlat_dbb47")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" unique_id=1198642005]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" unique_id=1198642005]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -612,12 +692,12 @@ virtual_keyboard_type = 2
 script = ExtResource("5_e4q62")
 negative_allowed = true
 
-[node name="Speed" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=1012138660]
+[node name="Contact Cooldown" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer" unique_id=1012138660]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed" unique_id=842555687]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown" unique_id=842555687]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -625,30 +705,147 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer" unique_id=1900114930]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer" unique_id=1900114930]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer" unique_id=1056988830]
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer" unique_id=1056988830]
 layout_mode = 2
-text = "Speed"
+text = "Contact Cooldown"
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer" unique_id=1032099609]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer" unique_id=1032099609]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_puomn")
 max_value = 10.0
 value = 1.0
 allow_greater = true
-allow_lesser = true
 show_percentage = false
 script = ExtResource("4_2cfr6")
 default_fill = SubResource("StyleBoxFlat_puomn")
-hover_fill = SubResource("StyleBoxFlat_s60cs")
+hover_fill = SubResource("StyleBoxFlat_5x8o3")
 hover_bg = SubResource("StyleBoxFlat_7ie0h")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" unique_id=114618268]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" unique_id=114618268]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.25
+offset_top = -15.5
+offset_right = 4.75
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("5_e4q62")
+negative_allowed = true
+
+[node name="Physics" type="PanelContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer" unique_id=1898267077]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ospfe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics" unique_id=1078276401]
+layout_mode = 2
+
+[node name="Contact Damage" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer" unique_id=1242677328]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage" unique_id=82526248]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer" unique_id=677559052]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer" unique_id=956793381]
+layout_mode = 2
+text = "Mass"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer" unique_id=1092913453]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_au8nn")
+value = 25.0
+allow_greater = true
+show_percentage = false
+script = ExtResource("4_2cfr6")
+default_fill = SubResource("StyleBoxFlat_hvy83")
+hover_fill = SubResource("StyleBoxFlat_v8ccr")
+hover_bg = SubResource("StyleBoxFlat_dbb47")
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" unique_id=1283309615]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.25
+offset_top = -15.5
+offset_right = 4.75
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("5_e4q62")
+negative_allowed = true
+
+[node name="Contact Cooldown" type="Control" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer" unique_id=1763978644]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown" unique_id=596328105]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer" unique_id=12265319]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer" unique_id=306214913]
+layout_mode = 2
+text = "Starting Force"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer" unique_id=2135514844]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_v6bhd")
+max_value = 250.0
+value = 100.0
+allow_greater = true
+show_percentage = false
+script = ExtResource("4_2cfr6")
+default_fill = SubResource("StyleBoxFlat_pyiuw")
+hover_fill = SubResource("StyleBoxFlat_e0bke")
+hover_bg = SubResource("StyleBoxFlat_7ie0h")
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" unique_id=312926800]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1107,18 +1304,30 @@ size_flags_vertical = 3
 [connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Speed/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Pencil/MarginContainer/AspectRatioContainer/Pencil" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Pencil/MarginContainer/AspectRatioContainer/Pencil" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Eraser/MarginContainer/AspectRatioContainer/Eraser" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Eraser/MarginContainer/AspectRatioContainer/Eraser" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Fill/MarginContainer/AspectRatioContainer/Fill" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/MainSprite/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Fill/MarginContainer/AspectRatioContainer/Fill" method="_on_pressed"]
