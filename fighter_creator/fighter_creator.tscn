@@ -14,11 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="7_hvy83"]
 [ext_resource type="Texture2D" uid="uid://c4hetthwkunt5" path="res://textures/pencil_darker.png" id="8_36jj5"]
 [ext_resource type="Script" uid="uid://s848whytimwr" path="res://fighter_creator/import_player_image.gd" id="8_au8nn"]
+[ext_resource type="Script" uid="uid://dultqiu6evion" path="res://fighter_creator/imported_image_controller.gd" id="8_e0bke"]
 [ext_resource type="ButtonGroup" uid="uid://br0gxv55c5n2v" path="res://themes/main_sprite_editor.tres" id="8_plimy"]
 [ext_resource type="Texture2D" uid="uid://mi3vbm0yt53s" path="res://textures/pencil_dark.png" id="9_07o5e"]
-[ext_resource type="Theme" uid="uid://bwyakhw7i7e0n" path="res://themes/file_dialog_openimage.tres" id="9_au8nn"]
+[ext_resource type="PackedScene" uid="uid://c55k6irkrvoyf" path="res://fighter_creator/file_dialog_image_downloads.tscn" id="10_pyiuw"]
+[ext_resource type="Script" uid="uid://cm63lxdka3b1a" path="res://fighter_creator/open_file_dialog_image_download.gd" id="10_v6bhd"]
 [ext_resource type="Script" uid="uid://b4uf77evjkjl2" path="res://fighter_creator/appearance/editor_state_button.gd" id="11_07o5e"]
 [ext_resource type="Shader" uid="uid://bso3aavmnxgsq" path="res://checkerboard.gdshader" id="13_5vvps"]
+[ext_resource type="Script" uid="uid://re51mesvaa4b" path="res://fighter_creator/import_image_manager.gd" id="13_5x8o3"]
 [ext_resource type="PackedScene" uid="uid://csav5yl8t4cc5" path="res://preset_color.tscn" id="15_07s76"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tirwg"]
@@ -78,6 +81,31 @@ bg_color = Color(0.660289, 0.3464246, 0.25146827, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0bke"]
 bg_color = Color(0.7602619, 0.41724962, 0.3143985, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ra0kn"]
+
+[sub_resource type="Theme" id="Theme_pyiuw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ra0kn"]
+bg_color = Color(0.029506553, 0.029506562, 0.029506536, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1h2v"]
+bg_color = Color(0.33288068, 0.3328807, 0.33288056, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjyn1"]
+bg_color = Color(0.18717611, 0.18717617, 0.18717602, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_07s76"]
 
@@ -923,36 +951,121 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="ImportPlayerImage" type="TextureButton" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer" unique_id=406646152 node_paths=PackedStringArray("file_dialog")]
+[node name="Active" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer" unique_id=415069133]
 layout_mode = 2
-texture_normal = ExtResource("7_hvy83")
-script = ExtResource("8_au8nn")
-file_dialog = NodePath("FileDialog")
 
-[node name="FileDialog" type="FileDialog" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/ImportPlayerImage" unique_id=1158488403]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(519, 160)
-size = Vector2i(827, 360)
-theme = ExtResource("9_au8nn")
-file_mode = 0
-access = 2
-
-[node name="ImportPlayerImage2" type="TextureButton" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer" unique_id=1755796964 node_paths=PackedStringArray("file_dialog")]
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active" unique_id=1737229376]
 layout_mode = 2
-texture_normal = ExtResource("7_hvy83")
+text = "ACTIVE"
+label_settings = SubResource("LabelSettings_ra0kn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="PanelContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active" unique_id=1900006609 node_paths=PackedStringArray("texture_rect")]
+custom_minimum_size = Vector2(150, 150)
+custom_maximum_size = Vector2(150, 150)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("8_e0bke")
+texture_rect = NodePath("SubViewportContainer/SubViewport/ImportedImage")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active/Control" unique_id=260568357]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active/Control/SubViewportContainer" unique_id=235914398]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(150, 150)
+render_target_update_mode = 4
+
+[node name="ImportedImage" type="TextureRect" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active/Control/SubViewportContainer/SubViewport" unique_id=1294780964]
+offset_left = 11.0
+offset_top = 13.0
+offset_right = 139.0
+offset_bottom = 141.0
+texture = ExtResource("7_hvy83")
 script = ExtResource("8_au8nn")
-file_dialog = NodePath("FileDialog")
+
+[node name="Button" type="Button" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active" unique_id=239547085 node_paths=PackedStringArray("file_dialog")]
+layout_mode = 2
+theme = SubResource("Theme_pyiuw")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ra0kn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g1h2v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vjyn1")
+text = "Change Image"
+script = ExtResource("10_v6bhd")
+file_dialog = NodePath("../FileDialog")
+
+[node name="FileDialog" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active" unique_id=1940853409 instance=ExtResource("10_pyiuw")]
+hidden_files_toggle_enabled = false
+
+[node name="ImportImageManager" type="Node" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active" unique_id=1519072317 node_paths=PackedStringArray("viewport")]
+script = ExtResource("13_5x8o3")
+viewport = NodePath("../Control/SubViewportContainer/SubViewport")
+
+[node name="Inactive" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer" unique_id=1637036810]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive" unique_id=1561108916]
+layout_mode = 2
+text = "INACTIVE"
+label_settings = SubResource("LabelSettings_ra0kn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="PanelContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive" unique_id=1921103876 node_paths=PackedStringArray("texture_rect")]
+custom_minimum_size = Vector2(150, 150)
+custom_maximum_size = Vector2(150, 150)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("8_e0bke")
+texture_rect = NodePath("SubViewportContainer/SubViewport/ImportedImage")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive/Control" unique_id=1657508729]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive/Control/SubViewportContainer" unique_id=1628941007]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(150, 150)
+render_target_update_mode = 4
+
+[node name="ImportedImage" type="TextureRect" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive/Control/SubViewportContainer/SubViewport" unique_id=1720111801]
+offset_left = 11.0
+offset_top = 13.0
+offset_right = 139.0
+offset_bottom = 141.0
+texture = ExtResource("7_hvy83")
+script = ExtResource("8_au8nn")
+
+[node name="Button" type="Button" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive" unique_id=690046258 node_paths=PackedStringArray("file_dialog")]
+layout_mode = 2
+theme = SubResource("Theme_pyiuw")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ra0kn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g1h2v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vjyn1")
+text = "Change Image"
+script = ExtResource("10_v6bhd")
+file_dialog = NodePath("../FileDialog")
+
+[node name="FileDialog" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive" unique_id=5957504 instance=ExtResource("10_pyiuw")]
+hidden_files_toggle_enabled = false
+
+[node name="ImportImageManager" type="Node" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive" unique_id=864181942 node_paths=PackedStringArray("viewport")]
+script = ExtResource("13_5x8o3")
 fighter_sprite_type = 1
-
-[node name="FileDialog" type="FileDialog" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/ImportPlayerImage2" unique_id=1946646212]
-oversampling_override = 1.0
-title = "Open a File"
-position = Vector2i(519, 160)
-size = Vector2i(827, 360)
-theme = ExtResource("9_au8nn")
-file_mode = 0
-access = 2
+viewport = NodePath("../../Active/Control/SubViewportContainer/SubViewport")
 
 [node name="SpriteEditor" type="Control" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer" unique_id=332106532]
 visible = false
@@ -1374,8 +1487,10 @@ size_flags_stretch_ratio = 4.0
 [connection signal="mouse_entered" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HSplitContainer/FighterProperties/VSplitContainer/BaseStats/VBoxContainer/Physics/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/ImportPlayerImage" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/ImportPlayerImage" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/ImportPlayerImage2" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/ImportPlayerImage2" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active/Button" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active/Button" method="_on_pressed"]
+[connection signal="file_selected" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active/FileDialog" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active/Control/SubViewportContainer/SubViewport/ImportedImage" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive/Button" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive/Button" method="_on_pressed"]
+[connection signal="file_selected" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive/FileDialog" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Inactive/Control/SubViewportContainer/SubViewport/ImportedImage" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/SpriteEditor/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Pencil/MarginContainer/AspectRatioContainer/Pencil" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/SpriteEditor/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Pencil/MarginContainer/AspectRatioContainer/Pencil" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/SpriteEditor/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Eraser/MarginContainer/AspectRatioContainer/Eraser" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/SpriteEditor/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Eraser/MarginContainer/AspectRatioContainer/Eraser" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/SpriteEditor/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Fill/MarginContainer/AspectRatioContainer/Fill" to="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/SpriteEditor/VBoxContainer/HBoxContainer/Tools/VBoxContainer/Fill/MarginContainer/AspectRatioContainer/Fill" method="_on_pressed"]

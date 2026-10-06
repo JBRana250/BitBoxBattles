@@ -4,6 +4,7 @@
 
 [resource]
 Button/font_sizes/font_size = 16
+Button/fonts/font = null
 FileDialog/fonts/title_font = ExtResource("1_7udvv")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 8

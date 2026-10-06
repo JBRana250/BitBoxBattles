@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c55k6irkrvoyf"]
+
+[ext_resource type="Theme" uid="uid://bwyakhw7i7e0n" path="res://themes/file_dialog_openimage.tres" id="1_txxje"]
+[ext_resource type="Script" uid="uid://bi2h5m7748c5y" path="res://fighter_creator/file_dialog_image_downloads.gd" id="2_65w20"]
+
+[node name="FileDialog" type="FileDialog" unique_id=5957504]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(519, 160)
+size = Vector2i(827, 360)
+theme = ExtResource("1_txxje")
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.jpg", "*.png", "*.jpeg")
+use_native_dialog = true
+file_filter_toggle_enabled = false
+folder_creation_enabled = false
+favorites_enabled = false
+recent_list_enabled = false
+deleting_enabled = false
+script = ExtResource("2_65w20")
