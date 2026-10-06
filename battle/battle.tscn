@@ -257,6 +257,8 @@ theme_override_constants/separation = 10
 layout_mode = 2
 text = "Setup Battle"
 label_settings = SubResource("LabelSettings_phvbk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1837868824]
 layout_mode = 2
