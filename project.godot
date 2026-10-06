@@ -31,6 +31,7 @@ window/stretch/aspect="expand"
 folder_colors={
 "res://battle/": "red",
 "res://fighter_creator/": "pink",
+"res://important_resources/": "orange",
 "res://textures/": "gray",
 "res://themes/": "purple"
 }

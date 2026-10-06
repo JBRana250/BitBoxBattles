@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FighterProfiles" format=3 uid="uid://82lu7qbnryuy"]
+
+[ext_resource type="Script" uid="uid://co45optnb8qec" path="res://battle/fighter/fighter_property_resources/fighter_profile.gd" id="1_yx8tp"]
+[ext_resource type="Script" uid="uid://bbyqng0l5d8mh" path="res://battle/fighter/fighter_property_resources/fighter_init_resource.gd" id="2_ojo67"]
+[ext_resource type="Script" uid="uid://kx3al7hfk68c" path="res://important_resources/fighter_profiles.gd" id="3_x2sia"]
+
+[sub_resource type="Resource" id="Resource_0kk2c"]
+script = ExtResource("2_ojo67")
+metadata/_custom_type_script = "uid://bbyqng0l5d8mh"
+
+[sub_resource type="Resource" id="Resource_7aum2"]
+script = ExtResource("1_yx8tp")
+init_resource = SubResource("Resource_0kk2c")
+metadata/_custom_type_script = "uid://co45optnb8qec"
+
+[resource]
+script = ExtResource("3_x2sia")
+profiles = Array[ExtResource("1_yx8tp")]([SubResource("Resource_7aum2")])
+metadata/_custom_type_script = "uid://kx3al7hfk68c"

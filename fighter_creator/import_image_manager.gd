@@ -8,7 +8,7 @@ enum FighterSpriteType {
 @export var fighter_sprite_type: FighterSpriteType
 @export var viewport: SubViewport
 
-func capture_and_save_avatar() -> ImageTexture:
+func get_sprite() -> ImageTexture:
 	
 	# Wait for Godot to complete the current render frame
 	await RenderingServer.frame_post_draw
