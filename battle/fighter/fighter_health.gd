@@ -12,6 +12,7 @@ func get_current_health() -> int:
 func init_health(_max_health: int) -> void:
 	self.max_health = _max_health
 	current_health = _max_health
+	health_bar.max_value = _max_health
 	update_health_values()
 
 func reduce_health(amount: int) -> void:
@@ -26,6 +27,7 @@ func update_health_values() -> void:
 	check_death()
 	
 	health_bar.value = current_health
+	
 	var health_ratio = float(current_health) / max_health
 	var health_color = health_gradient.sample(health_ratio)
 	health_bar.tint_progress = health_color

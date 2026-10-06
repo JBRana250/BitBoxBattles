@@ -6,13 +6,10 @@
 [ext_resource type="Theme" uid="uid://x2wss8uibcsu" path="res://themes/stats.theme" id="3_dyfq3"]
 [ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="4_2cfr6"]
 [ext_resource type="Script" uid="uid://dnt6btjnq20h" path="res://fighter_creator/save_fighter_button.gd" id="4_ospfe"]
+[ext_resource type="Resource" uid="uid://82lu7qbnryuy" path="res://important_resources/fighter_profiles.tres" id="5_0kk2c"]
 [ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="5_e4q62"]
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="5_hvy83"]
-[ext_resource type="Script" uid="uid://co45optnb8qec" path="res://battle/fighter/fighter_property_resources/fighter_profile.gd" id="5_w17tl"]
 [ext_resource type="Theme" uid="uid://cew8ls5daab5h" path="res://themes/main_sprite_editor.theme" id="6_2cfr6"]
-[ext_resource type="Script" uid="uid://ds7a348a1ofw8" path="res://battle/fighter/eca_framework/events/resource/event.gd" id="6_4k6nc"]
-[ext_resource type="Script" uid="uid://kx3al7hfk68c" path="res://important_resources/fighter_profiles.gd" id="6_pfspe"]
-[ext_resource type="Script" uid="uid://b70xtb2eos81q" path="res://battle/fighter/fighter_property_resources/fighter_action_resource.gd" id="7_1mh7u"]
 [ext_resource type="Texture2D" uid="uid://c6uka32r3jvlj" path="res://textures/pencil_light.png" id="7_7ie0h"]
 [ext_resource type="Script" uid="uid://cexwsdvwhiowx" path="res://fighter_creator/appearance/main_sprite_state_machine.gd" id="7_36jj5"]
 [ext_resource type="Script" uid="uid://comvrmxd8vt68" path="res://fighter_creator/appearance/pixel_art_editor.gd" id="7_e4q62"]
@@ -30,20 +27,6 @@
 [ext_resource type="Script" uid="uid://re51mesvaa4b" path="res://fighter_creator/import_image_manager.gd" id="13_5x8o3"]
 [ext_resource type="PackedScene" uid="uid://csav5yl8t4cc5" path="res://preset_color.tscn" id="15_07s76"]
 [ext_resource type="Script" uid="uid://bn3b1d3b8jdgj" path="res://fighter_creator/fighter_sprite_manager.gd" id="16_7aum2"]
-
-[sub_resource type="Resource" id="Resource_w17tl"]
-script = ExtResource("7_1mh7u")
-metadata/_custom_type_script = "uid://b70xtb2eos81q"
-
-[sub_resource type="Resource" id="Resource_qrd11"]
-script = ExtResource("5_w17tl")
-action_resource = SubResource("Resource_w17tl")
-metadata/_custom_type_script = "uid://co45optnb8qec"
-
-[sub_resource type="Resource" id="Resource_iokft"]
-script = ExtResource("6_pfspe")
-profiles = Array[ExtResource("5_w17tl")]([SubResource("Resource_qrd11")])
-metadata/_custom_type_script = "uid://kx3al7hfk68c"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tirwg"]
 bg_color = Color(0.13682574, 0.13682574, 0.13682568, 1)
@@ -505,7 +488,7 @@ text = "SAVE FIGHTER"
 script = ExtResource("4_ospfe")
 base_stat_manager = NodePath("../../HSplitContainer/FighterProperties/VSplitContainer/BaseStats/BaseStatManager")
 fighter_sprite_manager = NodePath("../../HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/FighterSpriteManager")
-fighter_profiles = SubResource("Resource_iokft")
+fighter_profiles = ExtResource("5_0kk2c")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer" unique_id=1957585535]
 propagate_maximum_size = false
@@ -1024,6 +1007,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer/HSplitContainer/FighterAppearance/VSplitContainer/ImportImages/MarginContainer/HBoxContainer/Active/Control/SubViewportContainer" unique_id=235914398]
 disable_3d = true
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(150, 150)
 render_target_update_mode = 4
 

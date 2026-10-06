@@ -1,7 +1,8 @@
 extends Button
 
+@export var battle_setup_menu: Control
 @export var on_victory_menu: HBoxContainer
 
 func _on_pressed() -> void:
-	BattleEventBus.start_battle.emit()
+	battle_setup_menu.visible = true
 	on_victory_menu.visible = false
