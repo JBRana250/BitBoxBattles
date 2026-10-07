@@ -4,7 +4,7 @@
 [ext_resource type="LabelSettings" uid="uid://ssy37mkivlh4" path="res://themes/scene_header.tres" id="2_bfom8"]
 [ext_resource type="Script" uid="uid://kgatr1mesxo0" path="res://title/nav_button.gd" id="3_8g1jf"]
 [ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="4_2cfr6"]
-[ext_resource type="Script" uid="uid://dnt6btjnq20h" path="res://fighter_creator/save_fighter_button.gd" id="4_ospfe"]
+[ext_resource type="Script" uid="uid://dnt6btjnq20h" path="res://fighter_creator/workspace/save_fighter_managers/save_fighter_button.gd" id="4_ospfe"]
 [ext_resource type="Resource" uid="uid://82lu7qbnryuy" path="res://important_resources/fighter_profiles.tres" id="5_0kk2c"]
 [ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="5_e4q62"]
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="5_hvy83"]
@@ -12,11 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="7_hvy83"]
 [ext_resource type="Script" uid="uid://s848whytimwr" path="res://fighter_creator/import_player_image.gd" id="8_au8nn"]
 [ext_resource type="Script" uid="uid://dultqiu6evion" path="res://fighter_creator/imported_image_controller.gd" id="8_e0bke"]
-[ext_resource type="Script" uid="uid://dtdmle4hynxr7" path="res://fighter_creator/base_stat_manager.gd" id="9_tirwg"]
+[ext_resource type="Script" uid="uid://dtdmle4hynxr7" path="res://fighter_creator/workspace/save_fighter_managers/base_stat_manager.gd" id="9_tirwg"]
 [ext_resource type="PackedScene" uid="uid://c55k6irkrvoyf" path="res://fighter_creator/file_dialog_image_downloads.tscn" id="10_pyiuw"]
 [ext_resource type="Script" uid="uid://cm63lxdka3b1a" path="res://fighter_creator/open_file_dialog_image_download.gd" id="10_v6bhd"]
-[ext_resource type="Script" uid="uid://re51mesvaa4b" path="res://fighter_creator/import_image_manager.gd" id="13_5x8o3"]
+[ext_resource type="Script" uid="uid://re51mesvaa4b" path="res://fighter_creator/workspace/save_fighter_managers/import_image_manager.gd" id="13_5x8o3"]
 [ext_resource type="Script" uid="uid://bn3b1d3b8jdgj" path="res://fighter_creator/fighter_sprite_manager.gd" id="16_7aum2"]
+[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="18_v8ccr"]
+[ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_event_popup/add_event_popup_menu.gd" id="19_au8nn"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_event_button.gd" id="19_v6bhd"]
+[ext_resource type="Script" uid="uid://bku060rexjoog" path="res://fighter_creator/popups/add_event_popup/add_event_cancel_button.gd" id="20_pyiuw"]
+[ext_resource type="Script" uid="uid://caos305qgk772" path="res://fighter_creator/popups/add_event_popup/create_event_button.gd" id="21_e0bke"]
+[ext_resource type="Resource" uid="uid://bh1np0mqmlwtt" path="res://fighter_creator/workspace/nodes/node_resources/repeated_timer_event_node.tres" id="22_5x8o3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tirwg"]
 bg_color = Color(0.288518, 0.28851798, 0.28851798, 1)
@@ -32,7 +38,7 @@ bg_color = Color(0, 0.6313726, 0.11764706, 1)
 bg_color = Color(8.615404e-06, 0.762326, 0.15058672, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cfr6"]
-bg_color = Color(0.67102677, 0.6783634, 0.66004914, 1)
+bg_color = Color(0, 0.81960785, 0.91764706, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w17tl"]
 
@@ -98,6 +104,29 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_v8ccr"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v8ccr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7aum2"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ospfe"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kk2c"]
+bg_color = Color(0, 0.81960785, 0.91764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w17tl"]
+bg_color = Color(1.540184e-06, 0.8195543, 0.91693926, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfspe"]
+bg_color = Color(0.48116404, 0.9243736, 0.99999994, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k6nc"]
+bg_color = Color(0.48116404, 0.9243736, 0.99999994, 1)
 
 [node name="FighterCreator" type="Node" unique_id=1672563842]
 
@@ -195,21 +224,29 @@ connections = Array[Dictionary]([{
 "keep_alive": true,
 "to_node": &"FighterBaseSprites",
 "to_port": 0
+}, {
+"from_node": &"Fighter",
+"from_port": 2,
+"keep_alive": true,
+"to_node": &"FighterAbilities",
+"to_port": 0
 }])
+zoom = 0.75
 
 [node name="FighterBaseStats" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1472307853]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
-offset_left = 472.0
-offset_top = 63.0
-offset_right = 972.0
-offset_bottom = 447.0
+offset_left = 375.75
+offset_top = 87.1875
+offset_right = 875.75
+offset_bottom = 471.1875
+scale = Vector2(0.75, 0.75)
 mouse_filter = 1
-position_offset = Vector2(472, 63)
+position_offset = Vector2(501, 116.25)
 title = "Fighter Base Stats"
 slot/0/left_enabled = true
 slot/0/left_type = 0
-slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_color = Color(0.9999998, 0.60250616, 0.2572266, 1)
 slot/0/left_icon = null
 slot/0/right_enabled = false
 slot/0/right_type = 0
@@ -321,7 +358,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_aalt6")
 min_value = 1.0
-value = 20.0
+max_value = 250.0
+value = 100.0
 allow_greater = true
 show_percentage = false
 script = ExtResource("4_2cfr6")
@@ -589,12 +627,13 @@ negative_allowed = true
 
 [node name="Fighter" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1116060944]
 layout_mode = 0
-offset_left = 249.0
-offset_top = 405.0
-offset_right = 402.0
-offset_bottom = 496.0
+offset_left = 124.875
+offset_top = 428.625
+offset_right = 277.875
+offset_bottom = 540.625
+scale = Vector2(0.75, 0.75)
 mouse_filter = 1
-position_offset = Vector2(249, 405)
+position_offset = Vector2(166.5, 571.5)
 title = "Fighter"
 slot/0/left_enabled = false
 slot/0/left_type = 0
@@ -614,6 +653,15 @@ slot/1/right_type = 1
 slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = true
+slot/2/right_type = 2
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
 
 [node name="Slot1" type="PanelContainer" parent="UI/VBoxContainer/Workspace/Fighter" unique_id=1764027746]
 layout_mode = 2
@@ -629,18 +677,26 @@ layout_mode = 2
 layout_mode = 2
 text = "BaseSprites"
 
+[node name="Slot3" type="PanelContainer" parent="UI/VBoxContainer/Workspace/Fighter" unique_id=861707778]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/Fighter/Slot3" unique_id=2126707030]
+layout_mode = 2
+text = "Abilities"
+
 [node name="FighterBaseSprites" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1379392962]
 layout_mode = 0
-offset_left = 481.0
-offset_top = 474.0
-offset_right = 886.0
-offset_bottom = 753.0
+offset_left = 365.66016
+offset_top = 423.52734
+offset_right = 770.66016
+offset_bottom = 702.52734
+scale = Vector2(0.75, 0.75)
 mouse_filter = 1
-position_offset = Vector2(481, 474)
+position_offset = Vector2(487.54688, 564.7031)
 title = "Fighter Base Sprites"
 slot/0/left_enabled = true
 slot/0/left_type = 0
-slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_color = Color(0, 1, 0, 1)
 slot/0/left_icon = null
 slot/0/right_enabled = false
 slot/0/right_type = 0
@@ -786,6 +842,321 @@ script = ExtResource("16_7aum2")
 active_import_image_manager = NodePath("../MarginContainer/HBoxContainer/Active/ImportImageManager")
 inactive_import_image_manager = NodePath("../MarginContainer/HBoxContainer/Inactive/ImportImageManager")
 
+[node name="FighterAbilities" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=594931252]
+layout_mode = 0
+offset_left = 354.9375
+offset_top = 694.6875
+offset_right = 818.9375
+offset_bottom = 937.6875
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+position_offset = Vector2(473.25, 926.25)
+title = "Fighter Abilities"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(0.79123324, 0.41937134, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="Abilities" type="PanelContainer" parent="UI/VBoxContainer/Workspace/FighterAbilities" unique_id=562641754]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/FighterAbilities/Abilities" unique_id=1220260014]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer/Workspace/FighterAbilities/Abilities/HBoxContainer" unique_id=218215853]
+modulate = Color(0, 0.91779244, 0, 1)
+layout_mode = 2
+texture = ExtResource("18_v8ccr")
+expand_mode = 2
+
+[node name="Button" type="Label" parent="UI/VBoxContainer/Workspace/FighterAbilities/Abilities/HBoxContainer" unique_id=588638057]
+layout_mode = 2
+text = "Event"
+label_settings = SubResource("LabelSettings_v8ccr")
+vertical_alignment = 1
+
+[node name="AddEventButton" type="Button" parent="UI/VBoxContainer/Workspace/FighterAbilities/Abilities" unique_id=1870206087 node_paths=PackedStringArray("owner_node", "add_event_popup_menu")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v8ccr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
+script = ExtResource("19_v6bhd")
+owner_node = NodePath("../..")
+add_event_popup_menu = NodePath("../../../../../PopupMenus/AddEventPopupMenu")
+
+[node name="RepeatedTimerEvent" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1965719324]
+layout_mode = 0
+offset_left = 793.125
+offset_top = 704.25
+offset_right = 993.125
+offset_bottom = 826.25
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+position_offset = Vector2(1057.5, 939)
+title = "RepeatedTimerEvent"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(0.8857902, 0.77873605, 0.95894545, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+
+[node name="Properties" type="PanelContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent" unique_id=774642288]
+layout_mode = 2
+
+[node name="Time" type="Control" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties" unique_id=1649884174]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time" unique_id=1376622162]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer" unique_id=1354646620]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer" unique_id=1870332665]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1487157642]
+layout_mode = 2
+text = "Time"
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer" unique_id=1270263700]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_0kk2c")
+min_value = 0.01
+max_value = 10.0
+value = 1.0
+allow_greater = true
+show_percentage = false
+script = ExtResource("4_2cfr6")
+default_fill = SubResource("StyleBoxFlat_w17tl")
+hover_fill = SubResource("StyleBoxFlat_pfspe")
+hover_bg = SubResource("StyleBoxFlat_4k6nc")
+
+[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" unique_id=521150685]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.25
+offset_top = -15.5
+offset_right = 4.75
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("5_e4q62")
+
+[node name="Actions" type="PanelContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent" unique_id=828286408]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Actions" unique_id=1922466287]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Actions/HBoxContainer" unique_id=1029252536]
+modulate = Color(0, 0.91779244, 0, 1)
+layout_mode = 2
+texture = ExtResource("18_v8ccr")
+expand_mode = 2
+
+[node name="Button" type="Label" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Actions/HBoxContainer" unique_id=1842667488]
+layout_mode = 2
+text = "Action"
+label_settings = SubResource("LabelSettings_v8ccr")
+vertical_alignment = 1
+
+[node name="AddActionButton" type="Button" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Actions" unique_id=1346068115]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v8ccr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
+
+[node name="PopupMenus" type="Control" parent="UI" unique_id=592969624]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_bfom8")
+
+[node name="AddEventPopupMenu" type="Control" parent="UI/PopupMenus" unique_id=1721226689]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_au8nn")
+
+[node name="ColorRect" type="ColorRect" parent="UI/PopupMenus/AddEventPopupMenu" unique_id=1226433857]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18039216, 0.18039216, 0.18039216, 0.78431374)
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PopupMenus/AddEventPopupMenu" unique_id=121890588]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer" unique_id=1790486995]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer" unique_id=250623111]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=2056637171]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=69829073]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Add Event Node"
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=174018075]
+layout_mode = 2
+
+[node name="CreateEventButton" type="Button" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1064190608 node_paths=PackedStringArray("add_event_popup_menu")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "RepeatedTimerEvent"
+script = ExtResource("21_e0bke")
+add_event_popup_menu = NodePath("../../../../../..")
+node_resource = ExtResource("22_5x8o3")
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2032369111]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1327497691 node_paths=PackedStringArray("add_event_popup_menu")]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Cancel"
+script = ExtResource("20_pyiuw")
+add_event_popup_menu = NodePath("../../../../../..")
+
+[node name="AddActionPopupMenu" type="Control" parent="UI/PopupMenus" unique_id=697001719]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_au8nn")
+
+[node name="ColorRect" type="ColorRect" parent="UI/PopupMenus/AddActionPopupMenu" unique_id=1687155304]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18039216, 0.18039216, 0.18039216, 0.78431374)
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PopupMenus/AddActionPopupMenu" unique_id=1970025666]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer" unique_id=1891627205]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer" unique_id=900833054]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=622051223]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=301421864]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Add Action Node"
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2066654409]
+layout_mode = 2
+
+[node name="CreateActionButton" type="Button" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=968418178 node_paths=PackedStringArray("add_event_popup_menu")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "AccelDashAction"
+script = ExtResource("21_e0bke")
+add_event_popup_menu = NodePath("../../../../../..")
+node_resource = ExtResource("22_5x8o3")
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1210833578]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2" unique_id=739881231 node_paths=PackedStringArray("add_event_popup_menu")]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Cancel"
+script = ExtResource("20_pyiuw")
+add_event_popup_menu = NodePath("../../../../../..")
+
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/BattleButton" to="UI/VBoxContainer/TopBar/BattleButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/SaveFighterButton" to="UI/VBoxContainer/TopBar/SaveFighterButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
@@ -822,3 +1193,14 @@ inactive_import_image_manager = NodePath("../MarginContainer/HBoxContainer/Inact
 [connection signal="file_selected" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/FileDialog" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/Control/SubViewportContainer/SubViewport/ImportedImage" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Button" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Button" method="_on_pressed"]
 [connection signal="file_selected" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/FileDialog" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Control/SubViewportContainer/SubViewport/ImportedImage" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="UI/VBoxContainer/Workspace/FighterAbilities/Abilities/AddEventButton" to="UI/VBoxContainer/Workspace/FighterAbilities/Abilities/AddEventButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="pressed" from="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" to="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" to="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
