@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b10jqdids3ob8"]
+
+[ext_resource type="Script" uid="uid://cs7wknqaabvm1" path="res://fighter_creator/workspace/nodes/slots/slot.gd" id="1_uu00f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ospfe"]
+font_size = 8
+
+[node name="Slot" type="PanelContainer" unique_id=1908730634 node_paths=PackedStringArray("label")]
+script = ExtResource("1_uu00f")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=1325388849]
+layout_mode = 2
+text = "EventName"
+label_settings = SubResource("LabelSettings_ospfe")
+horizontal_alignment = 2
+vertical_alignment = 1

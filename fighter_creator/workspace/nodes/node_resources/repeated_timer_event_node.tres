@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="RepeatedTimerEventNodeResource" format=3 uid="uid://bh1np0mqmlwtt"]
-
-[ext_resource type="Script" uid="uid://cv68g6fsg3bnu" path="res://fighter_creator/workspace/nodes/node_resources/repeated_timer_event_node.gd" id="1_lwiw3"]
-
-[resource]
-script = ExtResource("1_lwiw3")
-metadata/_custom_type_script = "uid://cv68g6fsg3bnu"

@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://cd2m44iltcwv6"]
+
+[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="1_n75on"]
+[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="2_65ao4"]
+[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="3_38ioe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kk2c"]
+bg_color = Color(0, 0.81960785, 0.91764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w17tl"]
+bg_color = Color(1.540184e-06, 0.8195543, 0.91693926, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfspe"]
+bg_color = Color(0.48116404, 0.9243736, 0.99999994, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k6nc"]
+bg_color = Color(0.48116404, 0.9243736, 0.99999994, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v8ccr"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v8ccr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7aum2"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ospfe"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+
+[node name="RepeatingTimerEvent" type="GraphNode" unique_id=93470441]
+offset_left = 793.125
+offset_top = 704.25
+offset_right = 993.125
+offset_bottom = 826.25
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+position_offset = Vector2(1057.5, 939)
+title = "Repeating Timer Event"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(0.8857902, 0.77873605, 0.95894545, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+
+[node name="Properties" type="PanelContainer" parent="." unique_id=889812309]
+layout_mode = 2
+
+[node name="Time" type="Control" parent="Properties" unique_id=308775673]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Properties/Time" unique_id=1225315237]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Properties/Time/MarginContainer" unique_id=1936773769]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Properties/Time/MarginContainer/VBoxContainer" unique_id=1635213050]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Properties/Time/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1281442430]
+layout_mode = 2
+text = "Time"
+
+[node name="ProgressBar" type="ProgressBar" parent="Properties/Time/MarginContainer/VBoxContainer" unique_id=501963765]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_0kk2c")
+min_value = 0.01
+max_value = 10.0
+value = 1.0
+allow_greater = true
+show_percentage = false
+script = ExtResource("1_n75on")
+default_fill = SubResource("StyleBoxFlat_w17tl")
+hover_fill = SubResource("StyleBoxFlat_pfspe")
+hover_bg = SubResource("StyleBoxFlat_4k6nc")
+
+[node name="LineEdit" type="LineEdit" parent="Properties/Time/MarginContainer/VBoxContainer/ProgressBar" unique_id=646244855]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.25
+offset_top = -15.5
+offset_right = 4.75
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("2_65ao4")
+
+[node name="Actions" type="PanelContainer" parent="." unique_id=810951611]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Actions" unique_id=1480334451]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Actions/HBoxContainer" unique_id=324070082]
+modulate = Color(0, 0.91779244, 0, 1)
+layout_mode = 2
+texture = ExtResource("3_38ioe")
+expand_mode = 2
+
+[node name="Button" type="Label" parent="Actions/HBoxContainer" unique_id=1172972217]
+layout_mode = 2
+text = "Action"
+label_settings = SubResource("LabelSettings_v8ccr")
+vertical_alignment = 1
+
+[node name="AddActionButton" type="Button" parent="Actions" unique_id=1477995983]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v8ccr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
+
+[connection signal="mouse_entered" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]

@@ -17,12 +17,14 @@
 [ext_resource type="Script" uid="uid://cm63lxdka3b1a" path="res://fighter_creator/open_file_dialog_image_download.gd" id="10_v6bhd"]
 [ext_resource type="Script" uid="uid://re51mesvaa4b" path="res://fighter_creator/workspace/save_fighter_managers/import_image_manager.gd" id="13_5x8o3"]
 [ext_resource type="Script" uid="uid://bn3b1d3b8jdgj" path="res://fighter_creator/fighter_sprite_manager.gd" id="16_7aum2"]
+[ext_resource type="Script" uid="uid://caoc6liueitec" path="res://fighter_creator/workspace/nodes/base_nodes/fighter_abilities.gd" id="18_ospfe"]
 [ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="18_v8ccr"]
 [ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_event_popup/add_event_popup_menu.gd" id="19_au8nn"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="19_tirwg"]
 [ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_event_button.gd" id="19_v6bhd"]
 [ext_resource type="Script" uid="uid://bku060rexjoog" path="res://fighter_creator/popups/add_event_popup/add_event_cancel_button.gd" id="20_pyiuw"]
 [ext_resource type="Script" uid="uid://caos305qgk772" path="res://fighter_creator/popups/add_event_popup/create_event_button.gd" id="21_e0bke"]
-[ext_resource type="Resource" uid="uid://bh1np0mqmlwtt" path="res://fighter_creator/workspace/nodes/node_resources/repeated_timer_event_node.tres" id="22_5x8o3"]
+[ext_resource type="Resource" uid="uid://bh1np0mqmlwtt" path="res://fighter_creator/workspace/nodes/graph_node_resources/repeating_timer_event_node.tres" id="22_5x8o3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tirwg"]
 bg_color = Color(0.288518, 0.28851798, 0.28851798, 1)
@@ -115,18 +117,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ospfe"]
 bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kk2c"]
-bg_color = Color(0, 0.81960785, 0.91764706, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w17tl"]
-bg_color = Color(1.540184e-06, 0.8195543, 0.91693926, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfspe"]
-bg_color = Color(0.48116404, 0.9243736, 0.99999994, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k6nc"]
-bg_color = Color(0.48116404, 0.9243736, 0.99999994, 1)
 
 [node name="FighterCreator" type="Node" unique_id=1672563842]
 
@@ -842,7 +832,7 @@ script = ExtResource("16_7aum2")
 active_import_image_manager = NodePath("../MarginContainer/HBoxContainer/Active/ImportImageManager")
 inactive_import_image_manager = NodePath("../MarginContainer/HBoxContainer/Inactive/ImportImageManager")
 
-[node name="FighterAbilities" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=594931252]
+[node name="FighterAbilities" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=594931252 node_paths=PackedStringArray("workspace")]
 layout_mode = 0
 offset_left = 354.9375
 offset_top = 694.6875
@@ -861,55 +851,6 @@ slot/0/right_type = 0
 slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
-
-[node name="Abilities" type="PanelContainer" parent="UI/VBoxContainer/Workspace/FighterAbilities" unique_id=562641754]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/FighterAbilities/Abilities" unique_id=1220260014]
-layout_mode = 2
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer/Workspace/FighterAbilities/Abilities/HBoxContainer" unique_id=218215853]
-modulate = Color(0, 0.91779244, 0, 1)
-layout_mode = 2
-texture = ExtResource("18_v8ccr")
-expand_mode = 2
-
-[node name="Button" type="Label" parent="UI/VBoxContainer/Workspace/FighterAbilities/Abilities/HBoxContainer" unique_id=588638057]
-layout_mode = 2
-text = "Event"
-label_settings = SubResource("LabelSettings_v8ccr")
-vertical_alignment = 1
-
-[node name="AddEventButton" type="Button" parent="UI/VBoxContainer/Workspace/FighterAbilities/Abilities" unique_id=1870206087 node_paths=PackedStringArray("owner_node", "add_event_popup_menu")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_v8ccr")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
-script = ExtResource("19_v6bhd")
-owner_node = NodePath("../..")
-add_event_popup_menu = NodePath("../../../../../PopupMenus/AddEventPopupMenu")
-
-[node name="RepeatedTimerEvent" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1965719324]
-layout_mode = 0
-offset_left = 793.125
-offset_top = 704.25
-offset_right = 993.125
-offset_bottom = 826.25
-scale = Vector2(0.75, 0.75)
-mouse_filter = 1
-position_offset = Vector2(1057.5, 939)
-title = "RepeatedTimerEvent"
-slot/0/left_enabled = true
-slot/0/left_type = 0
-slot/0/left_color = Color(0.8857902, 0.77873605, 0.95894545, 1)
-slot/0/left_icon = null
-slot/0/right_enabled = false
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
-slot/0/draw_stylebox = true
 slot/1/left_enabled = false
 slot/1/left_type = 0
 slot/1/left_color = Color(1, 1, 1, 1)
@@ -919,97 +860,42 @@ slot/1/right_type = 0
 slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
+script = ExtResource("18_ospfe")
+slot = ExtResource("19_tirwg")
+workspace = NodePath("..")
+output_slot_color = Color(0.7921569, 0.41960785, 1, 1)
 
-[node name="Properties" type="PanelContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent" unique_id=774642288]
+[node name="FighterSlot0" type="Control" parent="UI/VBoxContainer/Workspace/FighterAbilities" unique_id=957609407]
 layout_mode = 2
 
-[node name="Time" type="Control" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties" unique_id=1649884174]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time" unique_id=1376622162]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -7.5
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer" unique_id=1354646620]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer" unique_id=1870332665]
+[node name="AddEvent" type="PanelContainer" parent="UI/VBoxContainer/Workspace/FighterAbilities" unique_id=562641754]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1487157642]
-layout_mode = 2
-text = "Time"
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer" unique_id=1270263700]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_0kk2c")
-min_value = 0.01
-max_value = 10.0
-value = 1.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("4_2cfr6")
-default_fill = SubResource("StyleBoxFlat_w17tl")
-hover_fill = SubResource("StyleBoxFlat_pfspe")
-hover_bg = SubResource("StyleBoxFlat_4k6nc")
-
-[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" unique_id=521150685]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("5_e4q62")
-
-[node name="Actions" type="PanelContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent" unique_id=828286408]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Actions" unique_id=1922466287]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent" unique_id=1220260014]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Actions/HBoxContainer" unique_id=1029252536]
+[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent/HBoxContainer" unique_id=218215853]
 modulate = Color(0, 0.91779244, 0, 1)
 layout_mode = 2
 texture = ExtResource("18_v8ccr")
 expand_mode = 2
 
-[node name="Button" type="Label" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Actions/HBoxContainer" unique_id=1842667488]
+[node name="Button" type="Label" parent="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent/HBoxContainer" unique_id=588638057]
 layout_mode = 2
-text = "Action"
+text = "Event"
 label_settings = SubResource("LabelSettings_v8ccr")
 vertical_alignment = 1
 
-[node name="AddActionButton" type="Button" parent="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Actions" unique_id=1346068115]
+[node name="AddEventButton" type="Button" parent="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent" unique_id=1870206087 node_paths=PackedStringArray("owner_node", "add_event_popup_menu")]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_v8ccr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
+script = ExtResource("19_v6bhd")
+owner_node = NodePath("../..")
+add_event_popup_menu = NodePath("../../../../../PopupMenus/AddEventPopupMenu")
 
 [node name="PopupMenus" type="Control" parent="UI" unique_id=592969624]
 layout_mode = 3
@@ -1021,7 +907,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_bfom8")
 
-[node name="AddEventPopupMenu" type="Control" parent="UI/PopupMenus" unique_id=1721226689]
+[node name="AddEventPopupMenu" type="Control" parent="UI/PopupMenus" unique_id=1721226689 node_paths=PackedStringArray("workspace")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1030,6 +916,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_au8nn")
+workspace = NodePath("../../VBoxContainer/Workspace")
 
 [node name="ColorRect" type="ColorRect" parent="UI/PopupMenus/AddEventPopupMenu" unique_id=1226433857]
 layout_mode = 1
@@ -1193,13 +1080,7 @@ add_event_popup_menu = NodePath("../../../../../..")
 [connection signal="file_selected" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/FileDialog" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/Control/SubViewportContainer/SubViewport/ImportedImage" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Button" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Button" method="_on_pressed"]
 [connection signal="file_selected" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/FileDialog" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Control/SubViewportContainer/SubViewport/ImportedImage" method="_on_file_dialog_file_selected"]
-[connection signal="pressed" from="UI/VBoxContainer/Workspace/FighterAbilities/Abilities/AddEventButton" to="UI/VBoxContainer/Workspace/FighterAbilities/Abilities/AddEventButton" method="_on_pressed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/RepeatedTimerEvent/Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="pressed" from="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent/AddEventButton" to="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent/AddEventButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" to="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" to="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" method="_on_pressed"]

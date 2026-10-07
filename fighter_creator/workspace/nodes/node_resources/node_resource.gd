@@ -1,1 +1,0 @@
-class_name NodeResource extends Resource
