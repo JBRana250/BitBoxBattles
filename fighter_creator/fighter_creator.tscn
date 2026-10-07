@@ -183,7 +183,6 @@ fighter_profiles = ExtResource("5_0kk2c")
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("6_w17tl")
-scroll_offset = Vector2(0, -32)
 connections = Array[Dictionary]([{
 "from_node": &"Fighter",
 "from_port": 0,
@@ -202,9 +201,9 @@ connections = Array[Dictionary]([{
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
 offset_left = 472.0
-offset_top = 95.0
+offset_top = 63.0
 offset_right = 972.0
-offset_bottom = 479.0
+offset_bottom = 447.0
 mouse_filter = 1
 position_offset = Vector2(472, 63)
 title = "Fighter Base Stats"
@@ -591,9 +590,9 @@ negative_allowed = true
 [node name="Fighter" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1116060944]
 layout_mode = 0
 offset_left = 249.0
-offset_top = 437.0
+offset_top = 405.0
 offset_right = 402.0
-offset_bottom = 528.0
+offset_bottom = 496.0
 mouse_filter = 1
 position_offset = Vector2(249, 405)
 title = "Fighter"
@@ -633,9 +632,9 @@ text = "BaseSprites"
 [node name="FighterBaseSprites" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1379392962]
 layout_mode = 0
 offset_left = 481.0
-offset_top = 506.0
+offset_top = 474.0
 offset_right = 886.0
-offset_bottom = 785.0
+offset_bottom = 753.0
 mouse_filter = 1
 position_offset = Vector2(481, 474)
 title = "Fighter Base Sprites"
