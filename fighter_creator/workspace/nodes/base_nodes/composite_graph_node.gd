@@ -1,10 +1,13 @@
-extends GraphNode
+class_name CompositeGraphNode extends GraphNode
 
 @export var slot: PackedScene
-@export var workspace: GraphEdit
+@export var workspace: Workspace
 @export var output_slot_color: Color
 var num_slots: int = 0
 var recent_port_id: int = 0
+
+func init_node(_workspace: Workspace):
+	self.workspace = _workspace
 
 func add_slot(node_resource: NodeResource, instance_name: String):
 	var slot_name: String = node_resource.graph_node_name

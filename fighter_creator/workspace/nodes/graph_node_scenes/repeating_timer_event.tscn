@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cd2m44iltcwv6"]
 
 [ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="1_n75on"]
+[ext_resource type="Script" uid="uid://caoc6liueitec" path="res://fighter_creator/workspace/nodes/base_nodes/composite_graph_node.gd" id="1_xsaxl"]
 [ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="2_65ao4"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_xsaxl"]
 [ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="3_38ioe"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="4_sr1os"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kk2c"]
 bg_color = Color(0, 0.81960785, 0.91764706, 1)
@@ -54,6 +57,9 @@ slot/1/right_type = 0
 slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
+script = ExtResource("1_xsaxl")
+slot = ExtResource("2_xsaxl")
+output_slot_color = Color(0.8862745, 0.78039217, 0.9607843, 1)
 
 [node name="Properties" type="PanelContainer" parent="." unique_id=889812309]
 layout_mode = 2
@@ -140,11 +146,14 @@ text = "Action"
 label_settings = SubResource("LabelSettings_v8ccr")
 vertical_alignment = 1
 
-[node name="AddActionButton" type="Button" parent="Actions" unique_id=1477995983]
+[node name="AddActionButton" type="Button" parent="Actions" unique_id=1477995983 node_paths=PackedStringArray("owner_node")]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_v8ccr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
+script = ExtResource("4_sr1os")
+owner_node = NodePath("../..")
+menu_type = 1
 
 [connection signal="mouse_entered" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
@@ -152,3 +161,4 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
 [connection signal="mouse_entered" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
 [connection signal="text_changed" from="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Time/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="pressed" from="Actions/AddActionButton" to="Actions/AddActionButton" method="_on_pressed"]

@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="5_e4q62"]
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="5_hvy83"]
 [ext_resource type="Theme" uid="uid://t0356dc8uyvi" path="res://themes/fighter_workspace.tres" id="6_w17tl"]
+[ext_resource type="Script" uid="uid://b00qu3b3ric6m" path="res://fighter_creator/workspace/workspace.gd" id="7_4k6nc"]
 [ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="7_hvy83"]
 [ext_resource type="Script" uid="uid://s848whytimwr" path="res://fighter_creator/import_player_image.gd" id="8_au8nn"]
 [ext_resource type="Script" uid="uid://dultqiu6evion" path="res://fighter_creator/imported_image_controller.gd" id="8_e0bke"]
@@ -17,15 +18,18 @@
 [ext_resource type="Script" uid="uid://cm63lxdka3b1a" path="res://fighter_creator/open_file_dialog_image_download.gd" id="10_v6bhd"]
 [ext_resource type="Script" uid="uid://re51mesvaa4b" path="res://fighter_creator/workspace/save_fighter_managers/import_image_manager.gd" id="13_5x8o3"]
 [ext_resource type="Script" uid="uid://bn3b1d3b8jdgj" path="res://fighter_creator/fighter_sprite_manager.gd" id="16_7aum2"]
-[ext_resource type="Script" uid="uid://caoc6liueitec" path="res://fighter_creator/workspace/nodes/base_nodes/fighter_abilities.gd" id="18_ospfe"]
+[ext_resource type="Script" uid="uid://caoc6liueitec" path="res://fighter_creator/workspace/nodes/base_nodes/composite_graph_node.gd" id="18_ospfe"]
 [ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="18_v8ccr"]
 [ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_event_popup/add_event_popup_menu.gd" id="19_au8nn"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="19_tirwg"]
-[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_event_button.gd" id="19_v6bhd"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="19_v6bhd"]
 [ext_resource type="Script" uid="uid://bku060rexjoog" path="res://fighter_creator/popups/add_event_popup/add_event_cancel_button.gd" id="20_pyiuw"]
 [ext_resource type="Script" uid="uid://caos305qgk772" path="res://fighter_creator/popups/add_event_popup/create_event_button.gd" id="21_e0bke"]
 [ext_resource type="Resource" uid="uid://bh1np0mqmlwtt" path="res://fighter_creator/workspace/nodes/graph_node_resources/repeating_timer_event_node.tres" id="22_5x8o3"]
+[ext_resource type="Script" uid="uid://b2qmdplex0fek" path="res://fighter_creator/popups/popup_menus.gd" id="22_pfspe"]
+[ext_resource type="Resource" uid="uid://bwqe50uk8mere" path="res://fighter_creator/workspace/nodes/graph_node_resources/accel_dash_action_node.tres" id="26_0kk2c"]
 [ext_resource type="Script" uid="uid://bcgunl33x4jcb" path="res://fighter_creator/workspace/node_creation_manager.gd" id="26_7aum2"]
+[ext_resource type="Resource" uid="uid://cxbxo1tso2sk1" path="res://fighter_creator/workspace/nodes/graph_node_resources/fighter_dash_action_node.tres" id="27_w17tl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tirwg"]
 bg_color = Color(0.288518, 0.28851798, 0.28851798, 1)
@@ -207,7 +211,7 @@ base_stat_manager = NodePath("../../Workspace/FighterBaseStats/BaseStats/BaseSta
 fighter_sprite_manager = NodePath("../../Workspace/FighterBaseSprites/ImportImages/FighterSpriteManager")
 fighter_profiles = ExtResource("5_0kk2c")
 
-[node name="Workspace" type="GraphEdit" parent="UI/VBoxContainer" unique_id=2145063965]
+[node name="Workspace" type="GraphEdit" parent="UI/VBoxContainer" unique_id=2145063965 node_paths=PackedStringArray("popup_menu_manager")]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("6_w17tl")
@@ -231,6 +235,8 @@ connections = Array[Dictionary]([{
 "to_port": 0
 }])
 zoom = 0.75
+script = ExtResource("7_4k6nc")
+popup_menu_manager = NodePath("../../PopupMenuManager")
 
 [node name="FighterBaseStats" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1472307853]
 custom_minimum_size = Vector2(200, 200)
@@ -901,16 +907,15 @@ text = "Event"
 label_settings = SubResource("LabelSettings_v8ccr")
 vertical_alignment = 1
 
-[node name="AddEventButton" type="Button" parent="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent" unique_id=1870206087 node_paths=PackedStringArray("owner_node", "add_event_popup_menu")]
+[node name="AddEventButton" type="Button" parent="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent" unique_id=1870206087 node_paths=PackedStringArray("owner_node")]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_v8ccr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
 script = ExtResource("19_v6bhd")
 owner_node = NodePath("../..")
-add_event_popup_menu = NodePath("../../../../../PopupMenus/AddEventPopupMenu")
 
-[node name="PopupMenus" type="Control" parent="UI" unique_id=592969624]
+[node name="PopupMenuManager" type="Control" parent="UI" unique_id=592969624 node_paths=PackedStringArray("workspace", "event_popup_menu", "action_popup_menu", "condition_popup_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -919,8 +924,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_bfom8")
+script = ExtResource("22_pfspe")
+workspace = NodePath("../VBoxContainer/Workspace")
+event_popup_menu = NodePath("AddEventPopupMenu")
+action_popup_menu = NodePath("AddActionPopupMenu")
+condition_popup_menu = NodePath("AddConditionPopupMenu")
 
-[node name="AddEventPopupMenu" type="Control" parent="UI/PopupMenus" unique_id=1721226689]
+[node name="AddEventPopupMenu" type="Control" parent="UI/PopupMenuManager" unique_id=1721226689]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -930,7 +940,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_au8nn")
 
-[node name="ColorRect" type="ColorRect" parent="UI/PopupMenus/AddEventPopupMenu" unique_id=1226433857]
+[node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/AddEventPopupMenu" unique_id=1226433857]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -939,7 +949,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.18039216, 0.18039216, 0.18039216, 0.78431374)
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/PopupMenus/AddEventPopupMenu" unique_id=121890588]
+[node name="CenterContainer" type="CenterContainer" parent="UI/PopupMenuManager/AddEventPopupMenu" unique_id=121890588]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -947,29 +957,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer" unique_id=1790486995]
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer" unique_id=1790486995]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer" unique_id=250623111]
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer" unique_id=250623111]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=2056637171]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=2056637171]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=69829073]
+[node name="Label" type="Label" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=69829073]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Add Event Node"
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=174018075]
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=174018075]
 layout_mode = 2
 
-[node name="CreateEventButton" type="Button" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1064190608 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
+[node name="CreateEventButton" type="Button" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1064190608 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "RepeatedTimerEvent"
@@ -978,10 +988,10 @@ add_event_popup_menu = NodePath("../../../../../..")
 node_creation_manager = NodePath("../../../../../../../../../Components/NodeCreationManager")
 node_resource = ExtResource("22_5x8o3")
 
-[node name="PanelContainer2" type="PanelContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2032369111]
+[node name="PanelContainer2" type="PanelContainer" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2032369111]
 layout_mode = 2
 
-[node name="CancelButton" type="Button" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1327497691 node_paths=PackedStringArray("add_event_popup_menu")]
+[node name="CancelButton" type="Button" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1327497691 node_paths=PackedStringArray("add_event_popup_menu")]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -989,7 +999,7 @@ text = "Cancel"
 script = ExtResource("20_pyiuw")
 add_event_popup_menu = NodePath("../../../../../..")
 
-[node name="AddActionPopupMenu" type="Control" parent="UI/PopupMenus" unique_id=697001719]
+[node name="AddActionPopupMenu" type="Control" parent="UI/PopupMenuManager" unique_id=697001719]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -999,7 +1009,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_au8nn")
 
-[node name="ColorRect" type="ColorRect" parent="UI/PopupMenus/AddActionPopupMenu" unique_id=1687155304]
+[node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/AddActionPopupMenu" unique_id=1687155304]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1008,7 +1018,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.18039216, 0.18039216, 0.18039216, 0.78431374)
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/PopupMenus/AddActionPopupMenu" unique_id=1970025666]
+[node name="CenterContainer" type="CenterContainer" parent="UI/PopupMenuManager/AddActionPopupMenu" unique_id=1970025666]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1016,40 +1026,134 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer" unique_id=1891627205]
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer" unique_id=1891627205]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer" unique_id=900833054]
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer" unique_id=900833054]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=622051223]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=622051223]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=301421864]
+[node name="Label" type="Label" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=301421864]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Add Action Node"
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2066654409]
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2066654409]
 layout_mode = 2
 
-[node name="CreateActionButton" type="Button" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=968418178 node_paths=PackedStringArray("add_event_popup_menu")]
+[node name="CreateActionButton" type="Button" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=968418178 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "AccelDashAction"
 script = ExtResource("21_e0bke")
 add_event_popup_menu = NodePath("../../../../../..")
-node_resource = ExtResource("22_5x8o3")
+node_creation_manager = NodePath("../../../../../../../../../Components/NodeCreationManager")
+node_resource = ExtResource("26_0kk2c")
 
-[node name="PanelContainer2" type="PanelContainer" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1210833578]
+[node name="PanelContainer3" type="PanelContainer" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=938937348]
 layout_mode = 2
 
-[node name="CancelButton" type="Button" parent="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2" unique_id=739881231 node_paths=PackedStringArray("add_event_popup_menu")]
+[node name="CreateActionButton" type="Button" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3" unique_id=1406300855 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "FighterDashAction"
+script = ExtResource("21_e0bke")
+add_event_popup_menu = NodePath("../../../../../..")
+node_creation_manager = NodePath("../../../../../../../../../Components/NodeCreationManager")
+node_resource = ExtResource("27_w17tl")
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1210833578]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2" unique_id=739881231 node_paths=PackedStringArray("add_event_popup_menu")]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Cancel"
+script = ExtResource("20_pyiuw")
+add_event_popup_menu = NodePath("../../../../../..")
+
+[node name="AddConditionPopupMenu" type="Control" parent="UI/PopupMenuManager" unique_id=1705040422]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_au8nn")
+
+[node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/AddConditionPopupMenu" unique_id=529264101]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18039216, 0.18039216, 0.18039216, 0.78431374)
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PopupMenuManager/AddConditionPopupMenu" unique_id=277686549]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer" unique_id=433886272]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer" unique_id=314904147]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=794824989]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=668878253]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Add Action Node"
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1524189163]
+layout_mode = 2
+
+[node name="CreateActionButton" type="Button" parent="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1024454704 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "AccelDashAction"
+script = ExtResource("21_e0bke")
+add_event_popup_menu = NodePath("../../../../../..")
+node_creation_manager = NodePath("../../../../../../../../../Components/NodeCreationManager")
+node_resource = ExtResource("26_0kk2c")
+
+[node name="PanelContainer3" type="PanelContainer" parent="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1158463463]
+layout_mode = 2
+
+[node name="CreateActionButton" type="Button" parent="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3" unique_id=562954516 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "FighterDashAction"
+script = ExtResource("21_e0bke")
+add_event_popup_menu = NodePath("../../../../../..")
+node_creation_manager = NodePath("../../../../../../../../../Components/NodeCreationManager")
+node_resource = ExtResource("27_w17tl")
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1683452593]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2" unique_id=890535718 node_paths=PackedStringArray("add_event_popup_menu")]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
@@ -1100,7 +1204,11 @@ workspace = NodePath("../../UI/VBoxContainer/Workspace")
 [connection signal="pressed" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Button" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Button" method="_on_pressed"]
 [connection signal="file_selected" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/FileDialog" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Control/SubViewportContainer/SubViewport/ImportedImage" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent/AddEventButton" to="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent/AddEventButton" method="_on_pressed"]
-[connection signal="pressed" from="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" to="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" method="_on_pressed"]
-[connection signal="pressed" from="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
-[connection signal="pressed" from="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" to="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" method="_on_pressed"]
-[connection signal="pressed" from="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenus/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" to="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateActionButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateActionButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" to="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateActionButton" to="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateActionButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
