@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://bku060rexjoog" path="res://fighter_creator/popups/add_event_popup/add_event_cancel_button.gd" id="20_pyiuw"]
 [ext_resource type="Script" uid="uid://caos305qgk772" path="res://fighter_creator/popups/add_event_popup/create_event_button.gd" id="21_e0bke"]
 [ext_resource type="Resource" uid="uid://bh1np0mqmlwtt" path="res://fighter_creator/workspace/nodes/graph_node_resources/repeating_timer_event_node.tres" id="22_5x8o3"]
+[ext_resource type="Script" uid="uid://bcgunl33x4jcb" path="res://fighter_creator/workspace/node_creation_manager.gd" id="26_7aum2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tirwg"]
 bg_color = Color(0.288518, 0.28851798, 0.28851798, 1)
@@ -53,6 +54,12 @@ bg_color = Color(0.8012637, 1.540184e-06, 6.738305e-07, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbb47"]
 bg_color = Color(0.6960143, 0.70306516, 0.68547404, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hbte0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tj8sy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qg2f3"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puomn"]
 bg_color = Color(0, 0.6749431, 0.7624917, 1)
 
@@ -61,6 +68,8 @@ bg_color = Color(4.6205523e-06, 0.7723315, 0.87017477, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ie0h"]
 bg_color = Color(0.6751786, 0.6824716, 0.66426766, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukhtx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pfspe"]
 
@@ -433,6 +442,9 @@ offset_right = 4.75
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hbte0")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_tj8sy")
+theme_override_styles/focus = SubResource("StyleBoxTexture_qg2f3")
 text = "XX"
 alignment = 1
 editable = false
@@ -489,6 +501,7 @@ offset_right = 4.75
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ukhtx")
 text = "XX"
 alignment = 1
 editable = false
@@ -907,7 +920,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_bfom8")
 
-[node name="AddEventPopupMenu" type="Control" parent="UI/PopupMenus" unique_id=1721226689 node_paths=PackedStringArray("workspace")]
+[node name="AddEventPopupMenu" type="Control" parent="UI/PopupMenus" unique_id=1721226689]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -916,7 +929,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_au8nn")
-workspace = NodePath("../../VBoxContainer/Workspace")
 
 [node name="ColorRect" type="ColorRect" parent="UI/PopupMenus/AddEventPopupMenu" unique_id=1226433857]
 layout_mode = 1
@@ -957,12 +969,13 @@ text = "Add Event Node"
 [node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=174018075]
 layout_mode = 2
 
-[node name="CreateEventButton" type="Button" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1064190608 node_paths=PackedStringArray("add_event_popup_menu")]
+[node name="CreateEventButton" type="Button" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1064190608 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "RepeatedTimerEvent"
 script = ExtResource("21_e0bke")
 add_event_popup_menu = NodePath("../../../../../..")
+node_creation_manager = NodePath("../../../../../../../../../Components/NodeCreationManager")
 node_resource = ExtResource("22_5x8o3")
 
 [node name="PanelContainer2" type="PanelContainer" parent="UI/PopupMenus/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2032369111]
@@ -1043,6 +1056,12 @@ theme_override_font_sizes/font_size = 32
 text = "Cancel"
 script = ExtResource("20_pyiuw")
 add_event_popup_menu = NodePath("../../../../../..")
+
+[node name="Components" type="Node" parent="." unique_id=828218517]
+
+[node name="NodeCreationManager" type="Node" parent="Components" unique_id=1446744500 node_paths=PackedStringArray("workspace")]
+script = ExtResource("26_7aum2")
+workspace = NodePath("../../UI/VBoxContainer/Workspace")
 
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/BattleButton" to="UI/VBoxContainer/TopBar/BattleButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/SaveFighterButton" to="UI/VBoxContainer/TopBar/SaveFighterButton" method="_on_pressed"]

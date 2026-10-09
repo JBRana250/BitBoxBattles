@@ -1,6 +1,6 @@
 extends Button
 
-@export var add_event_popup_menu: Control
+@export var add_event_popup_menu: AddNodePopupMenu
 
 func _on_pressed() -> void:
-	add_event_popup_menu.visible = false
+	add_event_popup_menu.option_selected()

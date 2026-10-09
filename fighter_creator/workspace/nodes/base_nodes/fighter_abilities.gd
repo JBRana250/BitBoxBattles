@@ -6,7 +6,7 @@ extends GraphNode
 var num_slots: int = 0
 var recent_port_id: int = 0
 
-func add_slot(node_resource: NodeResource, instance_title: String):
+func add_slot(node_resource: NodeResource, instance_name: String):
 	var slot_name: String = node_resource.graph_node_name
 	var slot_instance: PanelContainer = slot.instantiate()
 	slot_instance.init_slot(slot_name)
@@ -18,7 +18,7 @@ func add_slot(node_resource: NodeResource, instance_title: String):
 	set_slot_color_right(slot_idx, output_slot_color)
 	
 	# minus one to account for fighterslot0
-	workspace.connect_node(title.replace(" ", ""), slot_idx - 1, instance_title.replace(" ", ""), 0, true)
+	workspace.connect_node(name, slot_idx - 1, instance_name, 0, true)
 	recent_port_id = slot_idx
 	num_slots += 1
 
