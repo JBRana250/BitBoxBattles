@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RepeatedTimerEventNodeResource" format=3 uid="uid://bh1np0mqmlwtt"]
 
 [ext_resource type="PackedScene" uid="uid://cd2m44iltcwv6" path="res://fighter_creator/workspace/nodes/graph_node_scenes/repeating_timer_event.tscn" id="1_gflyt"]
-[ext_resource type="Script" uid="uid://cv68g6fsg3bnu" path="res://fighter_creator/workspace/nodes/graph_node_resources/repeating_timer_event_node.gd" id="2_pht7f"]
+[ext_resource type="Script" uid="uid://cv68g6fsg3bnu" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/repeating_timer_event_node.gd" id="2_pht7f"]
 
 [resource]
 script = ExtResource("2_pht7f")
