@@ -8,4 +8,4 @@ func create_node(parent_node: CompositeGraphNode, node_resource: NodeResource) -
 	instance.position_offset = parent_node.position_offset + child_position_offset
 	instance.init_node(workspace)
 	workspace.add_child(instance)
-	parent_node.add_slot(node_resource, instance.name)
+	parent_node.add_output_node(node_resource, instance)

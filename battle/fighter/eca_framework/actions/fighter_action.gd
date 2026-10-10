@@ -1,6 +1,6 @@
-@abstract class_name FighterAction extends Resource
+@abstract class_name FighterAction extends Action
 
-@export var conditions: Array[Condition] = []
+#@export var conditions: Array[Condition] = []
 
 # requires the actor to be a fighter in context
 func execute(context: Dictionary = {}) -> void:

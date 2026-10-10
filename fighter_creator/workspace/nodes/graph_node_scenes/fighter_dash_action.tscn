@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpyuw4c40dogw"]
 
-[ext_resource type="Script" uid="uid://caoc6liueitec" path="res://fighter_creator/workspace/nodes/base_nodes/composite_graph_node.gd" id="1_0a2s7"]
+[ext_resource type="Script" uid="uid://by54nj8scop5t" path="res://fighter_creator/workspace/nodes/graph_node_scripts/fighter_dash_action.gd" id="1_0a2s7"]
 [ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="1_xw5dl"]
 [ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="2_8cq70"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_b8w7k"]
@@ -30,7 +30,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0ebg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
 
-[node name="FighterDashAction" type="GraphNode" unique_id=1481881836]
+[node name="FighterDashAction" type="GraphNode" unique_id=1481881836 node_paths=PackedStringArray("force_progbar")]
 offset_left = 1026.5625
 offset_top = 691.875
 offset_right = 1222.5625
@@ -58,6 +58,7 @@ slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
 script = ExtResource("1_0a2s7")
+force_progbar = NodePath("Properties/Force/MarginContainer/VBoxContainer/ProgressBar")
 slot = ExtResource("2_b8w7k")
 output_slot_color = Color(0.68235296, 0.72156864, 0, 1)
 

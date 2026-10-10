@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dbfdtrh2pempw"]
 
-[ext_resource type="Script" uid="uid://caoc6liueitec" path="res://fighter_creator/workspace/nodes/base_nodes/composite_graph_node.gd" id="1_mtaf0"]
-[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_vftyp"]
+[ext_resource type="Script" uid="uid://hsd15ik6cjje" path="res://fighter_creator/workspace/nodes/graph_node_scripts/state_graph_node.gd" id="1_mtaf0"]
 
 [node name="ActiveState" type="GraphNode" unique_id=1853044709]
 title = "State"
@@ -15,8 +14,6 @@ slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_mtaf0")
-slot = ExtResource("2_vftyp")
-metadata/_custom_type_script = "uid://caoc6liueitec"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1901850195]
 layout_mode = 2

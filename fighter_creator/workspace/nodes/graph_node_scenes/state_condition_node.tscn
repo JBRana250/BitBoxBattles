@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d15d0k4njx1ca"]
 
-[ext_resource type="Script" uid="uid://caoc6liueitec" path="res://fighter_creator/workspace/nodes/base_nodes/composite_graph_node.gd" id="1_qufg7"]
+[ext_resource type="Script" uid="uid://vio4w6r0sr46" path="res://fighter_creator/workspace/nodes/graph_node_scripts/state_condition_node.gd" id="1_ifpqc"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_1x005"]
 [ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="3_vro1u"]
 [ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="4_ee7o1"]
@@ -43,10 +43,9 @@ slot/1/right_type = 0
 slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
-script = ExtResource("1_qufg7")
+script = ExtResource("1_ifpqc")
 slot = ExtResource("2_1x005")
-output_slot_color = Color(0.8436621, 0.37809598, 0, 1)
-metadata/_custom_type_script = "uid://caoc6liueitec"
+output_slot_color = Color(0.84313726, 0.3764706, 0, 1)
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=889786804]
 layout_mode = 2

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cd2m44iltcwv6"]
 
-[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="1_n75on"]
-[ext_resource type="Script" uid="uid://caoc6liueitec" path="res://fighter_creator/workspace/nodes/base_nodes/composite_graph_node.gd" id="1_xsaxl"]
-[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="2_65ao4"]
-[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_xsaxl"]
-[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="3_38ioe"]
-[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="4_sr1os"]
+[ext_resource type="Script" uid="uid://c253ivll12scg" path="res://fighter_creator/workspace/nodes/graph_node_scripts/repeating_timer_event_graphnode.gd" id="1_d4u0x"]
+[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="2_4gm0w"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_i3m85"]
+[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="3_i3m85"]
+[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="4_5xob1"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="5_337cl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kk2c"]
 bg_color = Color(0, 0.81960785, 0.91764706, 1)
@@ -30,7 +30,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ospfe"]
 bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
 
-[node name="RepeatingTimerEvent" type="GraphNode" unique_id=93470441]
+[node name="RepeatingTimerEvent" type="GraphNode" unique_id=93470441 node_paths=PackedStringArray("time_progbar")]
 offset_left = 793.125
 offset_top = 704.25
 offset_right = 993.125
@@ -57,8 +57,9 @@ slot/1/right_type = 0
 slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
-script = ExtResource("1_xsaxl")
-slot = ExtResource("2_xsaxl")
+script = ExtResource("1_d4u0x")
+time_progbar = NodePath("Properties/Time/MarginContainer/VBoxContainer/ProgressBar")
+slot = ExtResource("2_i3m85")
 output_slot_color = Color(0.8862745, 0.78039217, 0.9607843, 1)
 
 [node name="Properties" type="PanelContainer" parent="." unique_id=889812309]
@@ -101,7 +102,7 @@ max_value = 10.0
 value = 1.0
 allow_greater = true
 show_percentage = false
-script = ExtResource("1_n75on")
+script = ExtResource("2_4gm0w")
 default_fill = SubResource("StyleBoxFlat_w17tl")
 hover_fill = SubResource("StyleBoxFlat_pfspe")
 hover_bg = SubResource("StyleBoxFlat_4k6nc")
@@ -124,7 +125,7 @@ alignment = 1
 editable = false
 expand_to_text_length = true
 virtual_keyboard_type = 2
-script = ExtResource("2_65ao4")
+script = ExtResource("3_i3m85")
 
 [node name="Actions" type="PanelContainer" parent="." unique_id=810951611]
 layout_mode = 2
@@ -137,7 +138,7 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Actions/HBoxContainer" unique_id=324070082]
 modulate = Color(0, 0.91779244, 0, 1)
 layout_mode = 2
-texture = ExtResource("3_38ioe")
+texture = ExtResource("4_5xob1")
 expand_mode = 2
 
 [node name="Button" type="Label" parent="Actions/HBoxContainer" unique_id=1172972217]
@@ -151,7 +152,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_v8ccr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
-script = ExtResource("4_sr1os")
+script = ExtResource("5_337cl")
 owner_node = NodePath("../..")
 menu_type = 1
 

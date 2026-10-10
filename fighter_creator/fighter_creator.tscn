@@ -18,15 +18,16 @@
 [ext_resource type="Script" uid="uid://cm63lxdka3b1a" path="res://fighter_creator/open_file_dialog_image_download.gd" id="10_v6bhd"]
 [ext_resource type="Script" uid="uid://re51mesvaa4b" path="res://fighter_creator/workspace/save_fighter_managers/import_image_manager.gd" id="13_5x8o3"]
 [ext_resource type="Script" uid="uid://bn3b1d3b8jdgj" path="res://fighter_creator/fighter_sprite_manager.gd" id="16_7aum2"]
-[ext_resource type="Script" uid="uid://caoc6liueitec" path="res://fighter_creator/workspace/nodes/base_nodes/composite_graph_node.gd" id="18_ospfe"]
 [ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="18_v8ccr"]
 [ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_event_popup/add_event_popup_menu.gd" id="19_au8nn"]
+[ext_resource type="Script" uid="uid://e7dme8cl2jih" path="res://fighter_creator/workspace/nodes/base_nodes/fighter_abilities_graph_node.gd" id="19_nmg4h"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="19_tirwg"]
 [ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="19_v6bhd"]
 [ext_resource type="Script" uid="uid://bku060rexjoog" path="res://fighter_creator/popups/add_event_popup/add_event_cancel_button.gd" id="20_pyiuw"]
 [ext_resource type="Script" uid="uid://caos305qgk772" path="res://fighter_creator/popups/add_event_popup/create_event_button.gd" id="21_e0bke"]
 [ext_resource type="Resource" uid="uid://bh1np0mqmlwtt" path="res://fighter_creator/workspace/nodes/graph_node_resources/repeating_timer_event_node.tres" id="22_5x8o3"]
 [ext_resource type="Script" uid="uid://b2qmdplex0fek" path="res://fighter_creator/popups/popup_menus.gd" id="22_pfspe"]
+[ext_resource type="Script" uid="uid://s0kpam316qdb" path="res://fighter_creator/workspace/save_fighter_managers/fighter_abilities_manager.gd" id="23_g7w7c"]
 [ext_resource type="Resource" uid="uid://bwqe50uk8mere" path="res://fighter_creator/workspace/nodes/graph_node_resources/accel_dash_action_node.tres" id="26_0kk2c"]
 [ext_resource type="Script" uid="uid://bcgunl33x4jcb" path="res://fighter_creator/workspace/node_creation_manager.gd" id="26_7aum2"]
 [ext_resource type="Resource" uid="uid://cxbxo1tso2sk1" path="res://fighter_creator/workspace/nodes/graph_node_resources/fighter_dash_action_node.tres" id="27_w17tl"]
@@ -199,7 +200,7 @@ text = "TO BATTLE"
 script = ExtResource("3_8g1jf")
 scene_path = "res://battle/battle.tscn"
 
-[node name="SaveFighterButton" type="Button" parent="UI/VBoxContainer/TopBar" unique_id=1360401392 node_paths=PackedStringArray("base_stat_manager", "fighter_sprite_manager")]
+[node name="SaveFighterButton" type="Button" parent="UI/VBoxContainer/TopBar" unique_id=1360401392 node_paths=PackedStringArray("base_stat_manager", "fighter_sprite_manager", "fighter_abilities_manager")]
 layout_mode = 0
 offset_left = 1583.0
 offset_top = 24.0
@@ -212,6 +213,7 @@ text = "SAVE FIGHTER"
 script = ExtResource("4_ospfe")
 base_stat_manager = NodePath("../../Workspace/FighterBaseStats/BaseStats/BaseStatManager")
 fighter_sprite_manager = NodePath("../../Workspace/FighterBaseSprites/ImportImages/FighterSpriteManager")
+fighter_abilities_manager = NodePath("../../Workspace/FighterAbilities/FighterAbilitiesManager")
 fighter_profiles = ExtResource("5_0kk2c")
 
 [node name="Workspace" type="GraphEdit" parent="UI/VBoxContainer" unique_id=2145063965 node_paths=PackedStringArray("popup_menu_manager")]
@@ -882,7 +884,7 @@ slot/1/right_type = 0
 slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
-script = ExtResource("18_ospfe")
+script = ExtResource("19_nmg4h")
 slot = ExtResource("19_tirwg")
 workspace = NodePath("..")
 output_slot_color = Color(0.7921569, 0.41960785, 1, 1)
@@ -917,6 +919,10 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
 script = ExtResource("19_v6bhd")
 owner_node = NodePath("../..")
+
+[node name="FighterAbilitiesManager" type="Node" parent="UI/VBoxContainer/Workspace/FighterAbilities" unique_id=218499516 node_paths=PackedStringArray("fighter_abilities")]
+script = ExtResource("23_g7w7c")
+fighter_abilities = NodePath("..")
 
 [node name="PopupMenuManager" type="Control" parent="UI" unique_id=592969624 node_paths=PackedStringArray("workspace", "event_popup_menu", "action_popup_menu", "condition_popup_menu", "state_popup_menu")]
 layout_mode = 3
