@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ds7a348a1ofw8" path="res://battle/fighter/eca_framework/events/resource/event.gd" id="1_7snke"]
 [ext_resource type="Script" uid="uid://co45optnb8qec" path="res://battle/fighter/fighter_property_resources/fighter_profile.gd" id="1_677sl"]
-[ext_resource type="Script" uid="uid://d2sxe6pkfjomi" path="res://battle/fighter/eca_framework/actions/fighter_action.gd" id="2_0vwl5"]
+[ext_resource type="Script" uid="uid://ifw0gnaqvax2" path="res://battle/fighter/eca_framework/actions/action.gd" id="2_7snke"]
 [ext_resource type="Script" uid="uid://bjx403himfv61" path="res://battle/fighter/eca_framework/conditions/condition.gd" id="3_cktky"]
 [ext_resource type="Script" uid="uid://dy6f1u2suab0t" path="res://battle/fighter/eca_framework/conditions/state_condition.gd" id="4_5hdlo"]
 [ext_resource type="Script" uid="uid://e8bg70fs2mo0" path="res://battle/fighter/eca_framework/actions/fighter_dash_action.gd" id="5_3idbv"]
@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://e8bg70fs2mo0"
 [sub_resource type="Resource" id="Resource_bebh5"]
 script = ExtResource("6_8a8sh")
 time = 0.1
-actions = Array[ExtResource("2_0vwl5")]([SubResource("Resource_umdcp")])
+actions = Array[ExtResource("2_7snke")]([SubResource("Resource_umdcp")])
 metadata/_custom_type_script = "uid://daesrn56aihs6"
 
 [sub_resource type="Resource" id="Resource_route"]
@@ -46,7 +46,7 @@ metadata/_custom_type_script = "uid://e8bg70fs2mo0"
 [sub_resource type="Resource" id="Resource_7wyv5"]
 script = ExtResource("6_8a8sh")
 time = 0.1
-actions = Array[ExtResource("2_0vwl5")]([SubResource("Resource_1b53g")])
+actions = Array[ExtResource("2_7snke")]([SubResource("Resource_1b53g")])
 metadata/_custom_type_script = "uid://daesrn56aihs6"
 
 [sub_resource type="Resource" id="Resource_yhoa3"]
