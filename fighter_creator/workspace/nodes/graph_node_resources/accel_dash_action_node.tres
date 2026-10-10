@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AccelDashActionNodeResource" format=3 uid="uid://bwqe50uk8mere"]
+
+[ext_resource type="PackedScene" uid="uid://bhwb08v06rol8" path="res://fighter_creator/workspace/nodes/graph_node_scenes/accel_dash_action.tscn" id="1_5x4gv"]
+[ext_resource type="Script" uid="uid://beshw8nic01n4" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/accel_dash_action_node.gd" id="1_dygyj"]
+
+[resource]
+script = ExtResource("1_dygyj")
+graph_node_scene = ExtResource("1_5x4gv")
+graph_node_name = "AccelDashAction"
+metadata/_custom_type_script = "uid://beshw8nic01n4"

@@ -1,13 +1,16 @@
-extends Button
+extends Node
 
 @export var base_stat_manager: Node
 @export var fighter_sprite_manager: Node
+@export var fighter_abilities_manager: Node
 
 @export var fighter_profiles: FighterProfiles
 
-func _on_pressed() -> void:
+func save_fighter() -> void:
 	var base_stats: Dictionary = base_stat_manager.get_base_stats()
 	var sprites: Dictionary = await fighter_sprite_manager.get_fighter_sprites()
+	var abilities: Array[Event] = fighter_abilities_manager.get_abilities()
+	
 	
 	var init_resource: FighterInitResource = FighterInitResource.new()
 	init_resource.fighter_id = base_stats.fighter_id
@@ -26,6 +29,7 @@ func _on_pressed() -> void:
 	texture_resource.inactive_image = sprites.inactive
 	
 	var action_resource: FighterActionResource = FighterActionResource.new()
+	action_resource.action_events = abilities
 	
 	var fighter_profile: FighterProfile = FighterProfile.new()
 	fighter_profile.init_resource = init_resource

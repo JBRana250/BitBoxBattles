@@ -26,3 +26,5 @@ func _gui_input(event):
 	# Handle Mouse Motion while Dragging
 	elif event is InputEventMouseMotion and is_dragging:
 		texture_rect.position += event.relative
+	
+	get_viewport().set_input_as_handled()

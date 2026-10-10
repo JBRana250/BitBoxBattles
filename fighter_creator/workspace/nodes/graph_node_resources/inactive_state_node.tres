@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StateNodeResource" format=3 uid="uid://crrlcocjbx1oq"]
+
+[ext_resource type="Script" uid="uid://qs3vcnlh5jvs" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/state_node_resource.gd" id="1_fwkkw"]
+[ext_resource type="PackedScene" uid="uid://p12n3hbyafh7" path="res://fighter_creator/workspace/nodes/graph_node_scenes/inactive_state.tscn" id="1_j4u74"]
+
+[resource]
+script = ExtResource("1_fwkkw")
+state = 1
+graph_node_scene = ExtResource("1_j4u74")
+graph_node_name = "Inactive State"
+metadata/_custom_type_script = "uid://qs3vcnlh5jvs"

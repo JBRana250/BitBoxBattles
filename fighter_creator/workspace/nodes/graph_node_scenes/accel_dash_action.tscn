@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://bhwb08v06rol8"]
+
+[ext_resource type="Script" uid="uid://n8isxrh5gxrx" path="res://fighter_creator/workspace/nodes/graph_node_scripts/accel_dash_action.gd" id="1_ce041"]
+[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="1_gnkyh"]
+[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="2_47pta"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_ce041"]
+[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="3_ce041"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="6_5b7no"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w17tl"]
+bg_color = Color(0, 0.8745098, 0.38039216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfspe"]
+bg_color = Color(1.8289685e-06, 0.8740246, 0.38187727, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k6nc"]
+bg_color = Color(0.20720628, 0.9999998, 0.6043494, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mh7u"]
+bg_color = Color(0.3017619, 0.9999997, 0.49924552, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qrd11"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmg4h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7w7c"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0ebg"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+
+[node name="AccelDashAction" type="GraphNode" unique_id=1481881836 node_paths=PackedStringArray("force_progbar")]
+offset_left = 1026.5625
+offset_top = 691.875
+offset_right = 1222.5625
+offset_bottom = 813.875
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+position_offset = Vector2(1368.75, 922.5)
+title = "Accel Dash Action"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(0, 1, 0, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_ce041")
+force_progbar = NodePath("Properties/Force/MarginContainer/VBoxContainer/ProgressBar")
+slot = ExtResource("2_ce041")
+output_slot_color = Color(0, 1, 0, 1)
+
+[node name="Properties" type="PanelContainer" parent="." unique_id=1731946883]
+layout_mode = 2
+
+[node name="Force" type="Control" parent="Properties" unique_id=1379347586]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Properties/Force" unique_id=662874790]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Properties/Force/MarginContainer" unique_id=1351489513]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Properties/Force/MarginContainer/VBoxContainer" unique_id=1352783463]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Properties/Force/MarginContainer/VBoxContainer/HBoxContainer" unique_id=58305351]
+layout_mode = 2
+text = "Force"
+
+[node name="ProgressBar" type="ProgressBar" parent="Properties/Force/MarginContainer/VBoxContainer" unique_id=2015984166]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_w17tl")
+min_value = 0.01
+max_value = 10.0
+value = 1.0
+allow_greater = true
+allow_lesser = true
+show_percentage = false
+script = ExtResource("1_gnkyh")
+default_fill = SubResource("StyleBoxFlat_pfspe")
+hover_fill = SubResource("StyleBoxFlat_4k6nc")
+hover_bg = SubResource("StyleBoxFlat_1mh7u")
+
+[node name="LineEdit" type="LineEdit" parent="Properties/Force/MarginContainer/VBoxContainer/ProgressBar" unique_id=127894416]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.25
+offset_top = -15.5
+offset_right = 4.75
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("2_47pta")
+negative_allowed = true
+
+[node name="Actions" type="PanelContainer" parent="." unique_id=403929689]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Actions" unique_id=1077150476]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Actions/HBoxContainer" unique_id=1529512454]
+modulate = Color(0, 0.91779244, 0, 1)
+layout_mode = 2
+texture = ExtResource("3_ce041")
+expand_mode = 2
+
+[node name="Button" type="Label" parent="Actions/HBoxContainer" unique_id=895678568]
+layout_mode = 2
+text = "Condition"
+label_settings = SubResource("LabelSettings_qrd11")
+vertical_alignment = 1
+
+[node name="AddConditionButton" type="Button" parent="Actions" unique_id=1314842003 node_paths=PackedStringArray("owner_node")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nmg4h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g7w7c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a0ebg")
+script = ExtResource("6_5b7no")
+owner_node = NodePath("../..")
+menu_type = 2
+
+[connection signal="mouse_entered" from="Properties/Force/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Force/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Properties/Force/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Force/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="Properties/Force/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="pressed" from="Actions/AddConditionButton" to="Actions/AddConditionButton" method="_on_pressed"]
