@@ -34,6 +34,7 @@
 [ext_resource type="Resource" uid="uid://dwo7fllcswk55" path="res://fighter_creator/workspace/nodes/graph_node_resources/active_state_node.tres" id="30_1mh7u"]
 [ext_resource type="Resource" uid="uid://edka8c4s8nol" path="res://fighter_creator/workspace/nodes/graph_node_resources/state_condition_node.tres" id="30_nmg4h"]
 [ext_resource type="Resource" uid="uid://crrlcocjbx1oq" path="res://fighter_creator/workspace/nodes/graph_node_resources/inactive_state_node.tres" id="31_qrd11"]
+[ext_resource type="Script" uid="uid://ys20qwe1vhw4" path="res://fighter_creator/workspace/save_fighter_managers/fighter_save_manager.gd" id="35_a0ebg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tirwg"]
 bg_color = Color(0.288518, 0.28851798, 0.28851798, 1)
@@ -200,7 +201,7 @@ text = "TO BATTLE"
 script = ExtResource("3_8g1jf")
 scene_path = "res://battle/battle.tscn"
 
-[node name="SaveFighterButton" type="Button" parent="UI/VBoxContainer/TopBar" unique_id=1360401392 node_paths=PackedStringArray("base_stat_manager", "fighter_sprite_manager", "fighter_abilities_manager")]
+[node name="SaveFighterButton" type="Button" parent="UI/VBoxContainer/TopBar" unique_id=1360401392 node_paths=PackedStringArray("fighter_save_manager")]
 layout_mode = 0
 offset_left = 1583.0
 offset_top = 24.0
@@ -211,10 +212,7 @@ theme_override_colors/font_hover_color = Color(0.2520274, 0.25202763, 0.25202823
 theme_override_font_sizes/font_size = 32
 text = "SAVE FIGHTER"
 script = ExtResource("4_ospfe")
-base_stat_manager = NodePath("../../Workspace/FighterBaseStats/BaseStats/BaseStatManager")
-fighter_sprite_manager = NodePath("../../Workspace/FighterBaseSprites/ImportImages/FighterSpriteManager")
-fighter_abilities_manager = NodePath("../../Workspace/FighterAbilities/FighterAbilitiesManager")
-fighter_profiles = ExtResource("5_0kk2c")
+fighter_save_manager = NodePath("../../../../Components/FighterSaveManager")
 
 [node name="Workspace" type="GraphEdit" parent="UI/VBoxContainer" unique_id=2145063965 node_paths=PackedStringArray("popup_menu_manager")]
 layout_mode = 2
@@ -1246,6 +1244,13 @@ add_event_popup_menu = NodePath("../../../../../..")
 [node name="NodeCreationManager" type="Node" parent="Components" unique_id=1446744500 node_paths=PackedStringArray("workspace")]
 script = ExtResource("26_7aum2")
 workspace = NodePath("../../UI/VBoxContainer/Workspace")
+
+[node name="FighterSaveManager" type="Node" parent="Components" unique_id=2016473248 node_paths=PackedStringArray("base_stat_manager", "fighter_sprite_manager", "fighter_abilities_manager")]
+script = ExtResource("35_a0ebg")
+base_stat_manager = NodePath("../../UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/BaseStatManager")
+fighter_sprite_manager = NodePath("../../UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/FighterSpriteManager")
+fighter_abilities_manager = NodePath("../../UI/VBoxContainer/Workspace/FighterAbilities/FighterAbilitiesManager")
+fighter_profiles = ExtResource("5_0kk2c")
 
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/BattleButton" to="UI/VBoxContainer/TopBar/BattleButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/SaveFighterButton" to="UI/VBoxContainer/TopBar/SaveFighterButton" method="_on_pressed"]

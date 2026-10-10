@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ds7a348a1ofw8" path="res://battle/fighter/eca_framework/events/resource/event.gd" id="1_6n1oh"]
 [ext_resource type="Script" uid="uid://co45optnb8qec" path="res://battle/fighter/fighter_property_resources/fighter_profile.gd" id="1_ue2ji"]
-[ext_resource type="Script" uid="uid://d2sxe6pkfjomi" path="res://battle/fighter/eca_framework/actions/fighter_action.gd" id="2_tsefw"]
+[ext_resource type="Script" uid="uid://ifw0gnaqvax2" path="res://battle/fighter/eca_framework/actions/action.gd" id="2_6n1oh"]
 [ext_resource type="Script" uid="uid://bjx403himfv61" path="res://battle/fighter/eca_framework/conditions/condition.gd" id="3_p1qvd"]
 [ext_resource type="Script" uid="uid://bqthginsqy3v4" path="res://battle/fighter/eca_framework/actions/accel_dash_action.gd" id="4_bvd3n"]
 [ext_resource type="Script" uid="uid://daesrn56aihs6" path="res://battle/fighter/eca_framework/events/resource/repeating_timer_event.gd" id="5_pofq0"]
@@ -22,7 +22,7 @@ metadata/_custom_type_script = "uid://bqthginsqy3v4"
 [sub_resource type="Resource" id="Resource_5grhf"]
 script = ExtResource("5_pofq0")
 time = 0.1
-actions = Array[ExtResource("2_tsefw")]([SubResource("Resource_d3j3p")])
+actions = Array[ExtResource("2_6n1oh")]([SubResource("Resource_d3j3p")])
 metadata/_custom_type_script = "uid://daesrn56aihs6"
 
 [sub_resource type="Resource" id="Resource_yoieg"]
