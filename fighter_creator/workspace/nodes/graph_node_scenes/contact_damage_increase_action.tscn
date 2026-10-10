@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://dir1fwpnwmi5f"]
+
+[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="1_aqyum"]
+[ext_resource type="Script" uid="uid://drufef1lebfpw" path="res://fighter_creator/workspace/nodes/graph_node_scripts/contact_damage_increase_action.gd" id="1_wca25"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_ljv6o"]
+[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="2_wca25"]
+[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="3_ljv6o"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="4_dmwf5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ohdi"]
+bg_color = Color(1, 0.18039216, 0.1764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuieq"]
+bg_color = Color(1, 0.18039216, 0.1764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6s0s"]
+bg_color = Color(1, 0.28417137, 0.2520557, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdcvk"]
+bg_color = Color(1, 0.4327695, 0.38311395, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ohdi"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uuieq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vqhb"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbqos"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+
+[node name="ContactDamageIncreaseAction" type="GraphNode" unique_id=1254716545 node_paths=PackedStringArray("amount_progbar")]
+offset_left = 816.75
+offset_top = 276.1875
+offset_right = 1135.75
+offset_bottom = 398.1875
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+position_offset = Vector2(1089, 368.25)
+title = "Contact Damage Increase Action"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 0, 0, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_wca25")
+amount_progbar = NodePath("Properties/Amount/MarginContainer/VBoxContainer/ProgressBar")
+slot = ExtResource("2_ljv6o")
+output_slot_color = Color(1, 0, 0, 1)
+
+[node name="Properties" type="PanelContainer" parent="." unique_id=1422160321]
+layout_mode = 2
+
+[node name="Amount" type="Control" parent="Properties" unique_id=812344142]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Properties/Amount" unique_id=1583228788]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Properties/Amount/MarginContainer" unique_id=1048759774]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Properties/Amount/MarginContainer/VBoxContainer" unique_id=1658075417]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Properties/Amount/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1416616952]
+layout_mode = 2
+text = "Amount"
+
+[node name="ProgressBar" type="ProgressBar" parent="Properties/Amount/MarginContainer/VBoxContainer" unique_id=871791062]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_0ohdi")
+min_value = 0.01
+max_value = 10.0
+value = 1.0
+allow_greater = true
+allow_lesser = true
+show_percentage = false
+script = ExtResource("1_aqyum")
+default_fill = SubResource("StyleBoxFlat_uuieq")
+hover_fill = SubResource("StyleBoxFlat_v6s0s")
+hover_bg = SubResource("StyleBoxFlat_rdcvk")
+
+[node name="LineEdit" type="LineEdit" parent="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar" unique_id=814379624]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.25
+offset_top = -15.5
+offset_right = 4.75
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("2_wca25")
+negative_allowed = true
+
+[node name="Conditions" type="PanelContainer" parent="." unique_id=1640079337]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Conditions" unique_id=1198140035]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Conditions/HBoxContainer" unique_id=2141517977]
+modulate = Color(0, 0.91779244, 0, 1)
+layout_mode = 2
+texture = ExtResource("3_ljv6o")
+expand_mode = 2
+
+[node name="Button" type="Label" parent="Conditions/HBoxContainer" unique_id=1716850224]
+layout_mode = 2
+text = "Condition"
+label_settings = SubResource("LabelSettings_0ohdi")
+vertical_alignment = 1
+
+[node name="AddConditionButton" type="Button" parent="Conditions" unique_id=417986416 node_paths=PackedStringArray("owner_node")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uuieq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8vqhb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jbqos")
+script = ExtResource("4_dmwf5")
+owner_node = NodePath("../..")
+menu_type = 2
+
+[connection signal="mouse_entered" from="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar" to="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Amount/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="pressed" from="Conditions/AddConditionButton" to="Conditions/AddConditionButton" method="_on_pressed"]

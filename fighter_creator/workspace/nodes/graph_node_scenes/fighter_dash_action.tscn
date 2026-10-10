@@ -129,27 +129,27 @@ virtual_keyboard_type = 2
 script = ExtResource("2_8cq70")
 negative_allowed = true
 
-[node name="Actions" type="PanelContainer" parent="." unique_id=403929689]
+[node name="Conditions" type="PanelContainer" parent="." unique_id=403929689]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Actions" unique_id=1077150476]
+[node name="HBoxContainer" type="HBoxContainer" parent="Conditions" unique_id=1077150476]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Actions/HBoxContainer" unique_id=1529512454]
+[node name="TextureRect" type="TextureRect" parent="Conditions/HBoxContainer" unique_id=1529512454]
 modulate = Color(0, 0.91779244, 0, 1)
 layout_mode = 2
 texture = ExtResource("3_0a2s7")
 expand_mode = 2
 
-[node name="Button" type="Label" parent="Actions/HBoxContainer" unique_id=895678568]
+[node name="Button" type="Label" parent="Conditions/HBoxContainer" unique_id=895678568]
 layout_mode = 2
 text = "Condition"
 label_settings = SubResource("LabelSettings_qrd11")
 vertical_alignment = 1
 
-[node name="AddConditionButton" type="Button" parent="Actions" unique_id=1314842003 node_paths=PackedStringArray("owner_node")]
+[node name="AddConditionButton" type="Button" parent="Conditions" unique_id=1314842003 node_paths=PackedStringArray("owner_node")]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_nmg4h")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_g7w7c")
@@ -164,4 +164,4 @@ menu_type = 2
 [connection signal="mouse_entered" from="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
 [connection signal="text_changed" from="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="Properties/Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="pressed" from="Actions/AddConditionButton" to="Actions/AddConditionButton" method="_on_pressed"]
+[connection signal="pressed" from="Conditions/AddConditionButton" to="Conditions/AddConditionButton" method="_on_pressed"]
