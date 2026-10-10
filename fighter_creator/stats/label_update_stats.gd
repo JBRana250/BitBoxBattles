@@ -1,5 +1,6 @@
 extends LineEdit
 
+@export var allow_decimal: bool
 @export var negative_allowed: bool
 
 func _ready() -> void:
@@ -12,7 +13,10 @@ func _on_progress_bar_value_changed(new_value: float) -> void:
 
 # On progress bar value change, update the text
 func _update_label_text(val: float) -> void:
-	text = str(int(val))
+	if allow_decimal:
+		text = str(val)
+	else:
+		text = str(int(val))
 
 func _gui_input(event):
 	# on double click turn into line edit

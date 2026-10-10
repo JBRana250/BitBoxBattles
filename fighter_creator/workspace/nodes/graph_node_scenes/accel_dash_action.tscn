@@ -101,6 +101,7 @@ min_value = 0.01
 max_value = 10.0
 value = 1.0
 allow_greater = true
+allow_lesser = true
 show_percentage = false
 script = ExtResource("1_gnkyh")
 default_fill = SubResource("StyleBoxFlat_pfspe")
@@ -126,6 +127,7 @@ editable = false
 expand_to_text_length = true
 virtual_keyboard_type = 2
 script = ExtResource("2_47pta")
+negative_allowed = true
 
 [node name="Actions" type="PanelContainer" parent="." unique_id=403929689]
 layout_mode = 2

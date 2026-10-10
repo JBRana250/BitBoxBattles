@@ -98,8 +98,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_0kk2c")
 min_value = 0.01
-max_value = 10.0
-value = 1.0
+max_value = 2.5
+value = 0.5
 allow_greater = true
 show_percentage = false
 script = ExtResource("2_4gm0w")
@@ -126,6 +126,7 @@ editable = false
 expand_to_text_length = true
 virtual_keyboard_type = 2
 script = ExtResource("3_i3m85")
+allow_decimal = true
 
 [node name="Actions" type="PanelContainer" parent="." unique_id=810951611]
 layout_mode = 2
