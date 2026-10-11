@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://byjpjy0nht5uk" path="res://textures/full_hpbar.png" id="5_4sxhs"]
 [ext_resource type="Script" uid="uid://dqly1sjufce6k" path="res://battle/fighter/fighter_health.gd" id="6_05pdn"]
 [ext_resource type="Script" uid="uid://da7gvjomliao7" path="res://battle/fighter/managers/fighter_state_machine.gd" id="7_657b4"]
+[ext_resource type="Script" uid="uid://yfugy82c13d5" path="res://battle/fighter/managers/hitstop_manager.gd" id="8_ts8np"]
 [ext_resource type="Script" uid="uid://dd5gqcqo4uw5l" path="res://battle/fighter/managers/fighter_sprite_manager.gd" id="8_wn1im"]
 [ext_resource type="Script" uid="uid://c7emsuewp3xxs" path="res://battle/fighter/managers/fighter_collision_manager.gd" id="9_vkd1v"]
 [ext_resource type="Script" uid="uid://hhk12w0hmtui" path="res://battle/fighter/managers/scale_distortion_manager.gd" id="10_dpv1y"]
@@ -90,11 +91,17 @@ texture_progress = ExtResource("5_4sxhs")
 
 [node name="Components" type="Node2D" parent="." unique_id=659261010]
 
-[node name="FighterHealthManager" type="Node" parent="Components" unique_id=2041625990 node_paths=PackedStringArray("fighter_death_manager", "health_bar")]
+[node name="FighterHealthManager" type="Node" parent="Components" unique_id=2041625990 node_paths=PackedStringArray("fighter_death_manager", "hitstop_manager", "health_bar")]
 script = ExtResource("6_05pdn")
 fighter_death_manager = NodePath("../FighterDeathManager")
+hitstop_manager = NodePath("HitstopManager")
 health_bar = NodePath("../../FighterPosition/ProgressBar")
 health_gradient = SubResource("Gradient_gb4mi")
+
+[node name="HitstopManager" type="Node" parent="Components/FighterHealthManager" unique_id=337532474]
+process_mode = 3
+script = ExtResource("8_ts8np")
+hitstop_duraction_factor = 0.5
 
 [node name="FighterStateMachine" type="Node" parent="Components" unique_id=1829989557 node_paths=PackedStringArray("fighter", "inactive_timer", "fighter_sprite_manager", "sprite", "colshape")]
 script = ExtResource("7_657b4")

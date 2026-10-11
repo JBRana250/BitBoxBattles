@@ -8,6 +8,7 @@ var squash_offset: Vector2
 func _process(delta: float) -> void:
 	squash_offset = squash_offset.lerp(Vector2.ZERO, spring_recovery * delta)
 	fighter_sprite.scale = Vector2(1.0, 1.0) + squash_offset
+	fighter_sprite.scale = fighter_sprite.scale.clamp(Vector2(0.2, 0.2), Vector2(3.0, 3.0))
 
 func add_impact_squash(impact_velocity: float, is_horizontal: bool) -> void:
 	var intensity = clamp(abs(impact_velocity) / 400.0, 0.2, 1.5)
