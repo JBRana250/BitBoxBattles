@@ -14,7 +14,9 @@ func _on_fighter_body_entered(body: Node) -> void:
 	if owner.get_state() != FighterStateMachine.State.ACTIVE:
 		return
 	body = body as Fighter
-	body.take_damage(owner.contact_damage)
+	var dmg: int = randi_range(owner.contact_damage - owner.contact_damage/2,
+	 owner.contact_damage + owner.contact_damage/2)
+	body.take_damage(dmg)
 	owner.hit_enemy()
 	BattleEventBus.fighter_damaged.emit(owner.fighter_id)
 

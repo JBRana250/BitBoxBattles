@@ -91,7 +91,7 @@ texture_progress = ExtResource("5_4sxhs")
 
 [node name="Components" type="Node2D" parent="." unique_id=659261010]
 
-[node name="FighterHealthManager" type="Node" parent="Components" unique_id=2041625990 node_paths=PackedStringArray("fighter_death_manager", "hitstop_manager", "health_bar")]
+[node name="FighterHealthManager" type="Node" parent="Components" unique_id=500975827 node_paths=PackedStringArray("fighter_death_manager", "hitstop_manager", "health_bar")]
 script = ExtResource("6_05pdn")
 fighter_death_manager = NodePath("../FighterDeathManager")
 hitstop_manager = NodePath("HitstopManager")
