@@ -14,6 +14,7 @@ class_name FighterSpriteManager extends Node
 func init_sprites(active_texture: Texture, inactive_texture: Texture):
 	self.active_texture = active_texture
 	self.inactive_texture = inactive_texture
+	fighter_sprite.material.set_shader_parameter("progress", 0.0)
 	set_sprite_active()
 
 func set_sprite_active() -> void:
@@ -23,8 +24,8 @@ func set_sprite_inactive() -> void:
 	fighter_sprite.texture = inactive_texture
 
 func onhit_flash() -> void:
-	fighter_sprite.modulate = onhit_modulate
+	fighter_sprite.material.set_shader_parameter("modulate_color", onhit_modulate)
 	onhit_timer.start()
 
 func _on_onhit_timer_timeout() -> void:
-	fighter_sprite.modulate = default_modulate
+	fighter_sprite.material.set_shader_parameter("modulate_color", default_modulate)

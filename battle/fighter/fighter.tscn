@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://fwomuuw06drq"]
 
 [ext_resource type="Script" uid="uid://rjp67l3g8phv" path="res://battle/fighter/fighter.gd" id="1_05pdn"]
+[ext_resource type="Shader" uid="uid://4kcn1g0ostja" path="res://battle/fighter/fighter_death/fighter_death.gdshader" id="2_4eqct"]
 [ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="2_ladtm"]
 [ext_resource type="Theme" uid="uid://vurjv1gvv8k" path="res://themes/battle.tres" id="3_4dc5m"]
 [ext_resource type="Texture2D" uid="uid://d2gl08f6vn5a5" path="res://textures/empty_hpbar.png" id="4_gb4mi"]
@@ -9,8 +10,10 @@
 [ext_resource type="Script" uid="uid://da7gvjomliao7" path="res://battle/fighter/managers/fighter_state_machine.gd" id="7_657b4"]
 [ext_resource type="Script" uid="uid://dd5gqcqo4uw5l" path="res://battle/fighter/managers/fighter_sprite_manager.gd" id="8_wn1im"]
 [ext_resource type="Script" uid="uid://c7emsuewp3xxs" path="res://battle/fighter/managers/fighter_collision_manager.gd" id="9_vkd1v"]
+[ext_resource type="Script" uid="uid://hhk12w0hmtui" path="res://battle/fighter/managers/scale_distortion_manager.gd" id="10_dpv1y"]
 [ext_resource type="Script" uid="uid://bqnsyf2nea5g8" path="res://battle/fighter/managers/fighter_event_manager.gd" id="10_wn1im"]
 [ext_resource type="PackedScene" uid="uid://c2qmsvra8ogxh" path="res://battle/fighter/eca_framework/events/repeating_timer_event.tscn" id="11_wn1im"]
+[ext_resource type="Script" uid="uid://brvf05jxgc88u" path="res://battle/fighter/managers/fighter_death_manager.gd" id="12_vkd1v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6hnvb"]
 friction = 0.0
@@ -18,6 +21,12 @@ bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6hnvb"]
 radius = 63.007935
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ts8np"]
+resource_local_to_scene = true
+shader = ExtResource("2_4eqct")
+shader_parameter/progress = 0.0
+shader_parameter/modulate_color = Vector4(1, 1, 1, 1)
 
 [sub_resource type="Gradient" id="Gradient_gb4mi"]
 offsets = PackedFloat32Array(0, 0.5106383, 1)
@@ -39,7 +48,7 @@ onhit_timer = NodePath("Components/FighterSpriteManager/onhitTimer")
 fighter_state_machine = NodePath("Components/FighterStateMachine")
 fighter_sprite_manager = NodePath("Components/FighterSpriteManager")
 fighter_health_manager = NodePath("Components/FighterHealthManager")
-fighter_event_manager = NodePath("FighterEventManager")
+fighter_event_manager = NodePath("Components/FighterEventManager")
 onhit_modulate = Color(0.5659736, 0, 0.1455484, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=732105405]
@@ -58,6 +67,7 @@ clip_children = 1
 polygon = PackedVector2Array(-65, -65, 65, -65, 65, 65, -65, 65)
 
 [node name="Sprite2D" type="Sprite2D" parent="FighterPosition/Polygon2D" unique_id=1995630749]
+material = SubResource("ShaderMaterial_ts8np")
 texture = ExtResource("2_ladtm")
 region_rect = Rect2(0, 0, 128, 128)
 region_filter_clip_enabled = true
@@ -80,10 +90,11 @@ texture_progress = ExtResource("5_4sxhs")
 
 [node name="Components" type="Node2D" parent="." unique_id=659261010]
 
-[node name="FighterHealthManager" type="Node" parent="Components" unique_id=2041625990 node_paths=PackedStringArray("health_bar")]
+[node name="FighterHealthManager" type="Node" parent="Components" unique_id=2041625990 node_paths=PackedStringArray("fighter_death_manager", "health_bar")]
 script = ExtResource("6_05pdn")
-health_gradient = SubResource("Gradient_gb4mi")
+fighter_death_manager = NodePath("../FighterDeathManager")
 health_bar = NodePath("../../FighterPosition/ProgressBar")
+health_gradient = SubResource("Gradient_gb4mi")
 
 [node name="FighterStateMachine" type="Node" parent="Components" unique_id=1829989557 node_paths=PackedStringArray("fighter", "inactive_timer", "fighter_sprite_manager", "sprite", "colshape")]
 script = ExtResource("7_657b4")
@@ -107,14 +118,24 @@ onhit_modulate = Color(1, 0, 0, 1)
 wait_time = 0.05
 one_shot = true
 
-[node name="FighterCollisionManager" type="Node" parent="Components" unique_id=764332491 node_paths=PackedStringArray("fighter_sprite_manager", "fighter_health_manager")]
+[node name="ScaleDistortionManager" type="Node" parent="Components/FighterSpriteManager" unique_id=713198695 node_paths=PackedStringArray("fighter_sprite")]
+script = ExtResource("10_dpv1y")
+fighter_sprite = NodePath("../../../FighterPosition/Polygon2D/Sprite2D")
+spring_recovery = 12.5
+
+[node name="FighterCollisionManager" type="Node" parent="Components" unique_id=764332491 node_paths=PackedStringArray("scale_distortion_manager", "fighter_sprite_manager", "fighter_health_manager")]
 script = ExtResource("9_vkd1v")
+scale_distortion_manager = NodePath("../FighterSpriteManager/ScaleDistortionManager")
 fighter_sprite_manager = NodePath("../FighterSpriteManager")
 fighter_health_manager = NodePath("../FighterHealthManager")
 
-[node name="FighterEventManager" type="Node" parent="." unique_id=1399644554]
+[node name="FighterEventManager" type="Node" parent="Components" unique_id=1399644554]
 script = ExtResource("10_wn1im")
 repeating_timer_event = ExtResource("11_wn1im")
+
+[node name="FighterDeathManager" type="Node" parent="Components" unique_id=1551115349 node_paths=PackedStringArray("fighter_sprite")]
+script = ExtResource("12_vkd1v")
+fighter_sprite = NodePath("../../FighterPosition/Polygon2D/Sprite2D")
 
 [connection signal="body_entered" from="." to="Components/FighterCollisionManager" method="_on_fighter_body_entered"]
 [connection signal="timeout" from="Components/FighterStateMachine/InactiveTimer" to="Components/FighterStateMachine" method="_on_inactive_timer_timeout"]

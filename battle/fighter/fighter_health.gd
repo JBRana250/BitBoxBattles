@@ -1,7 +1,8 @@
 class_name FighterHealthManager extends Node
 
-@export var health_gradient: Gradient
+@export var fighter_death_manager: Node
 @export var health_bar: TextureProgressBar
+@export var health_gradient: Gradient
 
 var max_health: int
 var current_health: int
@@ -35,4 +36,6 @@ func update_health_values() -> void:
 func check_death() -> void:
 	if (current_health <= 0):
 		BattleEventBus.fighter_death.emit(owner.fighter_id)
+		fighter_death_manager.on_death()
+		await get_tree().create_timer(0.25).timeout
 		owner.queue_free()
