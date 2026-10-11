@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dx6rq21thlw8l"]
 
 [ext_resource type="Texture2D" uid="uid://drciia5lg1cxo" path="res://textures/white_square_texture.png" id="1_mqutd"]
-[ext_resource type="Script" uid="uid://yn65x5fxxmky" path="res://battle/arena_wall/arena_wall.gd" id="2_ju8jl"]
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="2_tiqy5"]
 [ext_resource type="Script" uid="uid://cg6bu0aawho42" path="res://battle/title_label.gd" id="3_4mnim"]
 [ext_resource type="Script" uid="uid://d0juuwk2fard8" path="res://battle/on_victory_menu/on_victory_retry_button.gd" id="6_l1kiu"]
@@ -56,34 +55,28 @@ texture = ExtResource("1_mqutd")
 scale = Vector2(750, 750)
 texture = ExtResource("1_mqutd")
 
-[node name="Wall" type="StaticBody2D" parent="Arena" unique_id=230725582 groups=["arena_wall"]]
+[node name="Wall" type="StaticBody2D" parent="Arena" unique_id=230725582]
 position = Vector2(-385, 0)
-script = ExtResource("2_ju8jl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall" unique_id=877982110]
 shape = SubResource("RectangleShape2D_ra0kn")
 
-[node name="Wall2" type="StaticBody2D" parent="Arena" unique_id=497991748 groups=["arena_wall"]]
+[node name="Wall2" type="StaticBody2D" parent="Arena" unique_id=497991748]
 position = Vector2(386, 0)
-script = ExtResource("2_ju8jl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall2" unique_id=274236766]
 shape = SubResource("RectangleShape2D_ra0kn")
 
-[node name="Wall3" type="StaticBody2D" parent="Arena" unique_id=1739745027 groups=["arena_wall"]]
+[node name="Wall3" type="StaticBody2D" parent="Arena" unique_id=1739745027]
 position = Vector2(0, 385)
 rotation = 1.5707964
-script = ExtResource("2_ju8jl")
-wall_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall3" unique_id=700311408]
 shape = SubResource("RectangleShape2D_ra0kn")
 
-[node name="Wall4" type="StaticBody2D" parent="Arena" unique_id=1840024919 groups=["arena_wall"]]
+[node name="Wall4" type="StaticBody2D" parent="Arena" unique_id=1840024919]
 position = Vector2(0, -385)
 rotation = 1.5707964
-script = ExtResource("2_ju8jl")
-wall_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall4" unique_id=1836540888]
 shape = SubResource("RectangleShape2D_ra0kn")

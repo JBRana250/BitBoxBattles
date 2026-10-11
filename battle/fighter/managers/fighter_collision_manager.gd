@@ -8,8 +8,7 @@ extends Node
 var is_squishing: bool
 
 func _on_fighter_body_entered(body: Node) -> void:
-	if body.is_in_group("arena_wall"):
-		_on_collide_arena_wall(body)
+	scale_distortion_manager.add_impact_squash(owner.linear_velocity.length(), is_horizontal(owner.linear_velocity))
 	if !body.is_in_group("fighter"):
 		return
 	if owner.get_state() != FighterStateMachine.State.ACTIVE:
@@ -19,17 +18,8 @@ func _on_fighter_body_entered(body: Node) -> void:
 	owner.hit_enemy()
 	BattleEventBus.fighter_damaged.emit(owner.fighter_id)
 
-func _on_collide_arena_wall(wall: ArenaWall) -> void:
-	var wall_type: ArenaWall.WallType = wall.wall_type
-	
-	match (wall_type):
-		ArenaWall.WallType.VERTICAL:
-			_on_collide_vertical_wall()
-		ArenaWall.WallType.HORIZONTAL:
-			_on_collide_horizontal_wall()
-
-func _on_collide_vertical_wall() -> void:
-	scale_distortion_manager.add_impact_squash(owner.linear_velocity.length(), true)
-
-func _on_collide_horizontal_wall() -> void:
-	scale_distortion_manager.add_impact_squash(owner.linear_velocity.length(), false)
+func is_horizontal(vec: Vector2) -> bool:
+	if abs(vec.x) > abs(vec.y):
+		return true
+	else:
+		return false
