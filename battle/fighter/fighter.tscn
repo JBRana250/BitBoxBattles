@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bqnsyf2nea5g8" path="res://battle/fighter/managers/fighter_event_manager.gd" id="10_wn1im"]
 [ext_resource type="PackedScene" uid="uid://c2qmsvra8ogxh" path="res://battle/fighter/eca_framework/events/repeating_timer_event.tscn" id="11_wn1im"]
 [ext_resource type="Script" uid="uid://brvf05jxgc88u" path="res://battle/fighter/managers/fighter_death_manager.gd" id="12_vkd1v"]
+[ext_resource type="PackedScene" uid="uid://ce13ft4k1vr1h" path="res://battle/fighter/death_particles.tscn" id="16_s2syv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6hnvb"]
 friction = 0.0
@@ -73,6 +74,10 @@ material = SubResource("ShaderMaterial_ts8np")
 texture = ExtResource("2_ladtm")
 region_rect = Rect2(0, 0, 128, 128)
 region_filter_clip_enabled = true
+
+[node name="DeathParticles" parent="VisualRoot/FighterPosition/Polygon2D/Sprite2D" unique_id=1346529278 instance=ExtResource("16_s2syv")]
+rotation = 2.3561945
+emitting = false
 
 [node name="ProgressBar" type="TextureProgressBar" parent="VisualRoot/FighterPosition" unique_id=517349858]
 offset_left = -80.0
@@ -141,9 +146,10 @@ fighter_health_manager = NodePath("../FighterHealthManager")
 script = ExtResource("10_wn1im")
 repeating_timer_event = ExtResource("11_wn1im")
 
-[node name="FighterDeathManager" type="Node" parent="Components" unique_id=1551115349 node_paths=PackedStringArray("fighter_sprite")]
+[node name="FighterDeathManager" type="Node" parent="Components" unique_id=1551115349 node_paths=PackedStringArray("fighter_sprite", "death_particles")]
 script = ExtResource("12_vkd1v")
 fighter_sprite = NodePath("../../VisualRoot/FighterPosition/Polygon2D/Sprite2D")
+death_particles = NodePath("../../VisualRoot/FighterPosition/Polygon2D/Sprite2D/DeathParticles")
 
 [connection signal="body_entered" from="." to="Components/FighterCollisionManager" method="_on_fighter_body_entered"]
 [connection signal="timeout" from="Components/FighterStateMachine/InactiveTimer" to="Components/FighterStateMachine" method="_on_inactive_timer_timeout"]
