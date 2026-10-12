@@ -43,6 +43,8 @@ font_size = 128
 
 [node name="Battle" type="Node2D" unique_id=620461860]
 
+[node name="Particles" type="Node2D" parent="." unique_id=1476477166]
+
 [node name="Arena" type="Node2D" parent="." unique_id=745186057]
 position = Vector2(960, 540)
 
@@ -83,15 +85,18 @@ shape = SubResource("RectangleShape2D_ra0kn")
 
 [node name="Spawners" type="Node2D" parent="." unique_id=929348381]
 
-[node name="FighterSpawner" parent="Spawners" unique_id=160553202 node_paths=PackedStringArray("fighter_manager") instance=ExtResource("7_iorop")]
+[node name="FighterSpawner" parent="Spawners" unique_id=160553202 node_paths=PackedStringArray("fighter_manager", "particles") instance=ExtResource("7_iorop")]
 position = Vector2(752, 340)
 fighter_scene = ExtResource("8_iorop")
 fighter_manager = NodePath("../../FighterManager")
+particles = NodePath("../../Particles")
+fighter_int = null
 
-[node name="FighterSpawner2" parent="Spawners" unique_id=1444415074 node_paths=PackedStringArray("fighter_manager") instance=ExtResource("7_iorop")]
+[node name="FighterSpawner2" parent="Spawners" unique_id=1444415074 node_paths=PackedStringArray("fighter_manager", "particles") instance=ExtResource("7_iorop")]
 position = Vector2(1187, 778)
 fighter_scene = ExtResource("8_iorop")
 fighter_manager = NodePath("../../FighterManager")
+particles = NodePath("../../Particles")
 fighter_int = 1
 
 [node name="FighterManager" type="Node2D" parent="." unique_id=660823832]

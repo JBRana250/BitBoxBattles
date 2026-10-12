@@ -7,7 +7,8 @@ class_name Fighter extends RigidBody2D
 @export var fighter_sprite_manager: FighterSpriteManager
 @export var fighter_health_manager: FighterHealthManager
 @export var fighter_event_manager: FighterEventManager
-@export var fighter_manager: FighterManager
+var fighter_manager: FighterManager
+var particles: Node2D
 
 @export_group("Properties")
 @export var onhit_modulate: Color
@@ -17,9 +18,9 @@ class_name Fighter extends RigidBody2D
 @export var contact_cooldown: float
 @export var fighter_id: String 
 
-func init_fighter(_fighter_manager: FighterManager, fighter_profile: FighterProfile) -> void:
-	
+func init_fighter(_fighter_manager: FighterManager, _particles: Node2D, fighter_profile: FighterProfile) -> void:
 	self.fighter_manager = _fighter_manager
+	self.particles = _particles
 	
 	var init_resource: FighterInitResource = fighter_profile.init_resource
 	var health_resource: FighterHealthResource = fighter_profile.health_resource

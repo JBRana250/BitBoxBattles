@@ -2,8 +2,6 @@ shader_type particles;
 
 uniform sampler2D sprite : source_color, filter_nearest;
 uniform float emitter_size;
-uniform float explosion_rate;
-uniform float explosion_divide_factor;
 
 // Standard Godot hash function
 uint hash(uint x) {

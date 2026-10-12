@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ce13ft4k1vr1h"]
+
+[ext_resource type="Texture2D" uid="uid://drciia5lg1cxo" path="res://textures/white_square_texture.png" id="1_hoqsi"]
+[ext_resource type="Shader" uid="uid://c1nk5gipsvhr4" path="res://battle/fighter/fighter_death/death_particles.gdshader" id="2_hoqsi"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="3_hfvyq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xlpqd"]
+shader = ExtResource("2_hoqsi")
+shader_parameter/sprite = ExtResource("3_hfvyq")
+shader_parameter/emitter_size = 100.0
+shader_parameter/explosion_rate = 1.0
+shader_parameter/explosion_divide_factor = 10000.0
+
+[node name="DeathParticles" type="GPUParticles2D" unique_id=1346529278]
+amount = 10000
+texture = ExtResource("1_hoqsi")
+lifetime = 1.5
+explosiveness = 0.86
+visibility_rect = Rect2(-250, -250, 500, 500)
+process_material = SubResource("ShaderMaterial_xlpqd")
