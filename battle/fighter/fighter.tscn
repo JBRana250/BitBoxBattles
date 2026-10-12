@@ -44,7 +44,7 @@ linear_damp = 0.1
 angular_damp_mode = 1
 angular_damp = 0.1
 script = ExtResource("1_05pdn")
-sprite = NodePath("FighterPosition/Polygon2D/Sprite2D")
+sprite = NodePath("VisualRoot/FighterPosition/Polygon2D/Sprite2D")
 onhit_timer = NodePath("Components/FighterSpriteManager/onhitTimer")
 fighter_state_machine = NodePath("Components/FighterStateMachine")
 fighter_sprite_manager = NodePath("Components/FighterSpriteManager")
@@ -56,24 +56,25 @@ onhit_modulate = Color(0.5659736, 0, 0.1455484, 1)
 shape = SubResource("CircleShape2D_6hnvb")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=322167764]
-remote_path = NodePath("../FighterPosition")
+remote_path = NodePath("../VisualRoot/FighterPosition")
 update_rotation = false
 update_scale = false
 
-[node name="FighterPosition" type="Marker2D" parent="." unique_id=1225624291]
-top_level = true
+[node name="VisualRoot" type="Node" parent="." unique_id=14758754]
 
-[node name="Polygon2D" type="Polygon2D" parent="FighterPosition" unique_id=1028999094]
+[node name="FighterPosition" type="Marker2D" parent="VisualRoot" unique_id=1286403693]
+
+[node name="Polygon2D" type="Polygon2D" parent="VisualRoot/FighterPosition" unique_id=1028999094]
 clip_children = 1
 polygon = PackedVector2Array(-65, -65, 65, -65, 65, 65, -65, 65)
 
-[node name="Sprite2D" type="Sprite2D" parent="FighterPosition/Polygon2D" unique_id=1995630749]
+[node name="Sprite2D" type="Sprite2D" parent="VisualRoot/FighterPosition/Polygon2D" unique_id=1995630749]
 material = SubResource("ShaderMaterial_ts8np")
 texture = ExtResource("2_ladtm")
 region_rect = Rect2(0, 0, 128, 128)
 region_filter_clip_enabled = true
 
-[node name="ProgressBar" type="TextureProgressBar" parent="FighterPosition" unique_id=517349858]
+[node name="ProgressBar" type="TextureProgressBar" parent="VisualRoot/FighterPosition" unique_id=517349858]
 offset_left = -80.0
 offset_top = 68.0
 offset_right = 80.0
@@ -95,13 +96,13 @@ texture_progress = ExtResource("5_4sxhs")
 script = ExtResource("6_05pdn")
 fighter_death_manager = NodePath("../FighterDeathManager")
 hitstop_manager = NodePath("HitstopManager")
-health_bar = NodePath("../../FighterPosition/ProgressBar")
+health_bar = NodePath("../../VisualRoot/FighterPosition/ProgressBar")
 health_gradient = SubResource("Gradient_gb4mi")
 
 [node name="HitstopManager" type="Node" parent="Components/FighterHealthManager" unique_id=337532474]
 process_mode = 3
 script = ExtResource("8_ts8np")
-hitstop_duraction_factor = 0.5
+hitstop_duraction_factor = 0.75
 
 [node name="FighterStateMachine" type="Node" parent="Components" unique_id=1829989557 node_paths=PackedStringArray("fighter", "inactive_timer", "fighter_sprite_manager", "sprite", "colshape")]
 script = ExtResource("7_657b4")
@@ -109,7 +110,7 @@ fighter = NodePath("../..")
 inactive_timer = NodePath("InactiveTimer")
 fighter_sprite_manager = NodePath("../FighterSpriteManager")
 current_state = 1
-sprite = NodePath("../../FighterPosition/Polygon2D/Sprite2D")
+sprite = NodePath("../../VisualRoot/FighterPosition/Polygon2D/Sprite2D")
 colshape = NodePath("../../CollisionShape2D")
 
 [node name="InactiveTimer" type="Timer" parent="Components/FighterStateMachine" unique_id=563924531]
@@ -117,7 +118,7 @@ one_shot = true
 
 [node name="FighterSpriteManager" type="Node" parent="Components" unique_id=1011372442 node_paths=PackedStringArray("fighter_sprite", "onhit_timer")]
 script = ExtResource("8_wn1im")
-fighter_sprite = NodePath("../../FighterPosition/Polygon2D/Sprite2D")
+fighter_sprite = NodePath("../../VisualRoot/FighterPosition/Polygon2D/Sprite2D")
 onhit_timer = NodePath("onhitTimer")
 onhit_modulate = Color(1, 0, 0, 1)
 
@@ -127,7 +128,7 @@ one_shot = true
 
 [node name="ScaleDistortionManager" type="Node" parent="Components/FighterSpriteManager" unique_id=713198695 node_paths=PackedStringArray("fighter_sprite")]
 script = ExtResource("10_dpv1y")
-fighter_sprite = NodePath("../../../FighterPosition/Polygon2D/Sprite2D")
+fighter_sprite = NodePath("../../../VisualRoot/FighterPosition/Polygon2D/Sprite2D")
 spring_recovery = 12.5
 
 [node name="FighterCollisionManager" type="Node" parent="Components" unique_id=764332491 node_paths=PackedStringArray("scale_distortion_manager", "fighter_sprite_manager", "fighter_health_manager")]
@@ -142,7 +143,7 @@ repeating_timer_event = ExtResource("11_wn1im")
 
 [node name="FighterDeathManager" type="Node" parent="Components" unique_id=1551115349 node_paths=PackedStringArray("fighter_sprite")]
 script = ExtResource("12_vkd1v")
-fighter_sprite = NodePath("../../FighterPosition/Polygon2D/Sprite2D")
+fighter_sprite = NodePath("../../VisualRoot/FighterPosition/Polygon2D/Sprite2D")
 
 [connection signal="body_entered" from="." to="Components/FighterCollisionManager" method="_on_fighter_body_entered"]
 [connection signal="timeout" from="Components/FighterStateMachine/InactiveTimer" to="Components/FighterStateMachine" method="_on_inactive_timer_timeout"]

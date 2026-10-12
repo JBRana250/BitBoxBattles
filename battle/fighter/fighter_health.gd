@@ -19,7 +19,10 @@ func init_health(_max_health: int) -> void:
 
 func reduce_health(amount: int) -> void:
 	current_health -= amount
-	hitstop_manager.apply_hitstop(0.01 * amount)
+	if amount >= 25:
+		hitstop_manager.apply_hitstop(0.02 * amount)
+	else:
+		hitstop_manager.apply_hitstop(0.01 * amount)
 	update_health_values()
 
 func set_health(health: int) -> void:
