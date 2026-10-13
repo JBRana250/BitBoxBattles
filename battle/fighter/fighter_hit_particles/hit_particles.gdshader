@@ -1,6 +1,7 @@
 shader_type particles;
 
 uniform sampler2D sprite : source_color, filter_nearest;
+uniform float scale_factor;
 uniform float emitter_size;
 
 // Standard Godot hash function
@@ -25,6 +26,16 @@ float rand_from_seed(inout uint seed) {
 
 
 void start() {
+	// particle scale
+	mat4 scale_mult = mat4(
+		vec4(scale_factor, 0.0, 0.0, 0.0),
+		vec4(0.0, scale_factor, 0.0, 0.0),
+		vec4(0.0, 0.0, scale_factor, 0.0),
+		vec4(0.0, 0.0, 0.0, 0.0)
+	);
+	
+	TRANSFORM *= scale_mult;
+	
 	// track lifetime
 	CUSTOM.x = 0.0;
 	
@@ -50,6 +61,7 @@ void start() {
 	
 	vec4 tex_color = texture(sprite, particle_uv);
 	COLOR = tex_color;
+	
 }
 
 void process() {

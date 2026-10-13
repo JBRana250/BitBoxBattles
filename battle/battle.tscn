@@ -43,8 +43,6 @@ font_size = 128
 
 [node name="Battle" type="Node2D" unique_id=620461860]
 
-[node name="Particles" type="Node2D" parent="." unique_id=1476477166]
-
 [node name="Arena" type="Node2D" parent="." unique_id=745186057]
 position = Vector2(960, 540)
 
@@ -101,6 +99,8 @@ fighter_int = 1
 
 [node name="FighterManager" type="Node2D" parent="." unique_id=660823832]
 script = ExtResource("9_rxlun")
+
+[node name="Particles" type="Node2D" parent="." unique_id=1476477166]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=164281733]
 

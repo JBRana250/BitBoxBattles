@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://b1at6ex4rfk31"]
 
 [ext_resource type="Shader" uid="uid://detlm8x31o3bo" path="res://battle/fighter/fighter_hit_particles/hit_particles.gdshader" id="1_lcihn"]
-[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="2_c1em7"]
 [ext_resource type="Script" uid="uid://cnjojs4xxibhr" path="res://battle/fighter/fighter_hit_particles/hit_particles.gd" id="3_gkjxb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fqek6"]
 shader = ExtResource("1_lcihn")
-shader_parameter/sprite = ExtResource("2_c1em7")
+shader_parameter/scale_factor = 10.0
 shader_parameter/emitter_size = 5.0
 
 [node name="HitParticles" type="GPUParticles2D" unique_id=1769465511]
@@ -16,5 +15,6 @@ one_shot = true
 explosiveness = 0.85
 process_material = SubResource("ShaderMaterial_fqek6")
 script = ExtResource("3_gkjxb")
+intensity_factor = 25.0
 
 [connection signal="finished" from="." to="." method="_on_finished"]
