@@ -20,8 +20,10 @@ func init_health(_max_health: int) -> void:
 func reduce_health(amount: int) -> void:
 	current_health -= amount
 	if amount >= 25:
+		AudioManager.sfx_player.play_heavy_hit()
 		hitstop_manager.apply_hitstop(0.02 * amount)
 	else:
+		AudioManager.sfx_player.play_normal_hit()
 		hitstop_manager.apply_hitstop(0.01 * amount)
 	update_health_values()
 

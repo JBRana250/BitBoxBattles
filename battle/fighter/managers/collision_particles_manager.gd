@@ -6,31 +6,33 @@ class_name ParticlesManager extends Node2D
 @export var hit_spark2: PackedScene
 @export var wall_texture: Texture
 
-func spawn_collision_particles(colliding_body: Node) -> void:
+@export var spark_one_factor: float = 0.025
+@export var spark_two_factor: float = 0.015
+
+func spawn_collision_particles() -> void:
 	var state: PhysicsDirectBodyState2D = PhysicsServer2D.body_get_direct_state(fighter.get_rid())
 	var col_point: Vector2 = state.get_contact_collider_position(0)
 	
-	init_based_on_col_type(colliding_body, col_point)
+	var particles_instance: HitParticles = hit_particles.instantiate()
+	particles_instance.global_position = col_point
+	particles_instance.init_particles(wall_texture, 50)
+	fighter.particles.add_child(particles_instance)
 
-func init_based_on_col_type(colliding_body: Node, col_point: Vector2) -> void:
-	if (colliding_body.is_in_group("fighter")):
+func spawn_hit_particles(intensity: float) -> void:
+	var state: PhysicsDirectBodyState2D = PhysicsServer2D.body_get_direct_state(fighter.get_rid())
+	var col_point: Vector2 = state.get_contact_collider_position(0)
+	
+	var rand_num = randi_range(0, 1)
 		
-		var rand_num = randi_range(0, 1)
-		
-		var particles_instance: AnimatedSprite2D = null
-		if (rand_num == 1):
-			particles_instance = hit_spark.instantiate()
-			particles_instance.init_particles(Vector2(0.25, 0.25))
-		else:
-			particles_instance = hit_spark2.instantiate()
-			particles_instance.init_particles(Vector2(0.15, 0.15))
-		
-		particles_instance.global_position = col_point
-		fighter.particles.add_child(particles_instance)
-		
+	var particles_instance: AnimatedSprite2D = null
+	if (rand_num == 1):
+		particles_instance = hit_spark.instantiate()
+		var adjusted_intensity = spark_one_factor * intensity
+		particles_instance.init_particles(Vector2(adjusted_intensity, adjusted_intensity))
 	else:
-		
-		var particles_instance: HitParticles = hit_particles.instantiate()
-		particles_instance.global_position = col_point
-		particles_instance.init_particles(wall_texture, 50)
-		fighter.particles.add_child(particles_instance)
+		particles_instance = hit_spark2.instantiate()
+		var adjusted_intensity = spark_two_factor * intensity
+		particles_instance.init_particles(Vector2(adjusted_intensity, adjusted_intensity))
+	
+	particles_instance.global_position = col_point
+	fighter.particles.add_child(particles_instance)

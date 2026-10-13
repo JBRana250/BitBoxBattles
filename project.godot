@@ -15,9 +15,14 @@ run/main_scene="uid://beocfr14uysh"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://buyhiqo72h4l4"
+
 [autoload]
 
 BattleEventBus="*uid://bjqxel3uajye2"
+AudioManager="*uid://d0sfishc4e6mo"
 
 [display]
 
@@ -29,8 +34,10 @@ window/stretch/aspect="expand"
 [file_customization]
 
 folder_colors={
+"res://audio/": "pink",
 "res://battle/": "red",
 "res://fighter_creator/": "pink",
+"res://global/": "yellow",
 "res://important_resources/": "orange",
 "res://textures/": "gray",
 "res://themes/": "purple"

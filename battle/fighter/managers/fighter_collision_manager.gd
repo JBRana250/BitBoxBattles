@@ -10,11 +10,14 @@ var is_squishing: bool
 
 func _on_fighter_body_entered(body: Node) -> void:
 	scale_distortion_manager.add_impact_squash(owner.linear_velocity.length(), is_horizontal(owner.linear_velocity))
-	particles_manager.spawn_collision_particles(body)
 	
 	if !body.is_in_group("fighter"):
+		AudioManager.sfx_player.play_collision()
+		particles_manager.spawn_collision_particles()
 		return
 	if owner.get_state() != FighterStateMachine.State.ACTIVE:
+		AudioManager.sfx_player.play_collision()
+		particles_manager.spawn_collision_particles()
 		return
 		
 	body = body as Fighter
@@ -24,6 +27,7 @@ func _on_fighter_body_entered(body: Node) -> void:
 	body.take_damage(dmg)
 	owner.hit_enemy()
 	BattleEventBus.fighter_damaged.emit(owner.fighter_id)
+	particles_manager.spawn_hit_particles(dmg)
 
 func is_horizontal(vec: Vector2) -> bool:
 	if abs(vec.x) > abs(vec.y):
