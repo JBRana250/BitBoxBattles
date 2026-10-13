@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c3qxil40v4t4d"]
+
+[ext_resource type="SpriteFrames" uid="uid://dscs282si0u6l" path="res://textures/hit_effects/yellow_spark/hit_yellow_spark2.tres" id="1_boufj"]
+[ext_resource type="Script" uid="uid://hs61g8s5btew" path="res://battle/fighter/particles/yellow_hit_spark.gd" id="2_j5p5w"]
+
+[node name="YellowHitSpark2" type="AnimatedSprite2D" unique_id=482201418]
+sprite_frames = ExtResource("1_boufj")
+frame = 16
+frame_progress = 1.0
+speed_scale = 10.0
+script = ExtResource("2_j5p5w")

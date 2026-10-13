@@ -101,6 +101,7 @@ fighter_int = 1
 script = ExtResource("9_rxlun")
 
 [node name="Particles" type="Node2D" parent="." unique_id=1476477166]
+top_level = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=164281733]
 
