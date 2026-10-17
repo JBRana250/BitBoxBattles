@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://chkg8vylxbyvv"]
+
+[ext_resource type="Script" uid="uid://ceiu5bvb5fn4v" path="res://battle/fighter/eca_framework/events/deal_contact_damage_event.gd" id="1_wwyxf"]
+
+[node name="DealContactDamageEvent" type="Node" unique_id=957305627]
+script = ExtResource("1_wwyxf")

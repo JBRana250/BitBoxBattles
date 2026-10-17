@@ -17,7 +17,7 @@ var particles: Node2D
 @export var contact_damage: int
 @export var contact_cooldown: float
 @export var contact_knockback: float
-@export var fighter_id: String 
+@export var fighter_id: String
 
 func init_fighter(_fighter_manager: FighterManager, _particles: Node2D, fighter_profile: FighterProfile) -> void:
 	self.fighter_manager = _fighter_manager
