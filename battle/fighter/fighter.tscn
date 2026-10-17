@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rjp67l3g8phv" path="res://battle/fighter/fighter.gd" id="1_05pdn"]
 [ext_resource type="Shader" uid="uid://4kcn1g0ostja" path="res://battle/fighter/fighter_death/fighter_death.gdshader" id="2_4eqct"]
+[ext_resource type="Resource" uid="uid://bekadcgcgw6kh" path="res://battle/fighter/signals/fighter_signals.tres" id="2_5r2x6"]
 [ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="2_ladtm"]
 [ext_resource type="Theme" uid="uid://vurjv1gvv8k" path="res://themes/battle.tres" id="3_4dc5m"]
 [ext_resource type="Texture2D" uid="uid://d2gl08f6vn5a5" path="res://textures/empty_hpbar.png" id="4_gb4mi"]
@@ -60,6 +61,7 @@ fighter_sprite_manager = NodePath("Components/FighterSpriteManager")
 fighter_health_manager = NodePath("Components/FighterHealthManager")
 fighter_event_manager = NodePath("Components/FighterEventManager")
 onhit_modulate = Color(0.5659736, 0, 0.1455484, 1)
+fighter_signals = ExtResource("2_5r2x6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=732105405]
 shape = SubResource("CircleShape2D_6hnvb")
@@ -167,6 +169,7 @@ scale_distortion_manager = NodePath("../FighterSpriteManager/ScaleDistortionMana
 particles_manager = NodePath("../ParticlesManager")
 fighter_sprite_manager = NodePath("../FighterSpriteManager")
 fighter_health_manager = NodePath("../FighterHealthManager")
+fighter_signals = ExtResource("2_5r2x6")
 
 [node name="FighterEventManager" type="Node" parent="Components" unique_id=1399644554]
 script = ExtResource("10_wn1im")

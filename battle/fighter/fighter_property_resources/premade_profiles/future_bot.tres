@@ -7,12 +7,17 @@
 [ext_resource type="Script" uid="uid://dy6f1u2suab0t" path="res://battle/fighter/eca_framework/conditions/state_condition.gd" id="4_5hdlo"]
 [ext_resource type="Script" uid="uid://e8bg70fs2mo0" path="res://battle/fighter/eca_framework/actions/fighter_dash_action.gd" id="5_3idbv"]
 [ext_resource type="Script" uid="uid://daesrn56aihs6" path="res://battle/fighter/eca_framework/events/resource/repeating_timer_event.gd" id="6_8a8sh"]
+[ext_resource type="PackedScene" uid="uid://c2qmsvra8ogxh" path="res://battle/fighter/eca_framework/events/repeating_timer_event.tscn" id="6_vc3w3"]
 [ext_resource type="Script" uid="uid://clf7vf564kpgq" path="res://battle/fighter/eca_framework/actions/health_increase_action.gd" id="7_0vwl5"]
 [ext_resource type="Script" uid="uid://b70xtb2eos81q" path="res://battle/fighter/fighter_property_resources/fighter_action_resource.gd" id="7_vc3w3"]
 [ext_resource type="Script" uid="uid://rg6n5h53gu5k" path="res://battle/fighter/fighter_property_resources/fighter_contact_resource.gd" id="8_el4pe"]
 [ext_resource type="Script" uid="uid://blqpe5hp7jofi" path="res://battle/fighter/fighter_property_resources/fighter_health_resource.gd" id="9_cyn1o"]
+[ext_resource type="Script" uid="uid://b0wfytpcc1gs5" path="res://battle/fighter/eca_framework/actions/play_sfx_action.gd" id="9_el4pe"]
+[ext_resource type="AudioStream" uid="uid://jipgg74pcgn" path="res://audio/sfx/HeavyHit.wav" id="10_cyn1o"]
 [ext_resource type="Script" uid="uid://bbyqng0l5d8mh" path="res://battle/fighter/fighter_property_resources/fighter_init_resource.gd" id="10_ybt4i"]
+[ext_resource type="PackedScene" uid="uid://chkg8vylxbyvv" path="res://battle/fighter/eca_framework/events/deal_contact_damage_event.tscn" id="11_ybt4i"]
 [ext_resource type="Texture2D" uid="uid://deojq6or0epof" path="res://textures/future_robot_idle.png" id="12_j2188"]
+[ext_resource type="Script" uid="uid://cpn6vd5oqwkl4" path="res://battle/fighter/eca_framework/events/resource/deal_contact_damage_event.gd" id="12_jx3t2"]
 [ext_resource type="Texture2D" uid="uid://bnkcbjk3hunw8" path="res://textures/future_robot_thinking.png" id="13_jx3t2"]
 [ext_resource type="Script" uid="uid://bpymebmol4evd" path="res://battle/fighter/fighter_property_resources/fighter_texture_resource.gd" id="14_xr3bg"]
 
@@ -67,9 +72,21 @@ time = 0.5
 actions = Array[ExtResource("2_7snke")]([SubResource("Resource_ghvml")])
 metadata/_custom_type_script = "uid://daesrn56aihs6"
 
+[sub_resource type="Resource" id="Resource_tahlm"]
+script = ExtResource("9_el4pe")
+sfx = ExtResource("10_cyn1o")
+volume_offset = 25.0
+pitch_scalar = 0.75
+metadata/_custom_type_script = "uid://b0wfytpcc1gs5"
+
+[sub_resource type="Resource" id="Resource_wwyxf"]
+script = ExtResource("12_jx3t2")
+actions = Array[ExtResource("2_7snke")]([SubResource("Resource_tahlm")])
+metadata/_custom_type_script = "uid://cpn6vd5oqwkl4"
+
 [sub_resource type="Resource" id="Resource_yhoa3"]
 script = ExtResource("7_vc3w3")
-action_events = Array[ExtResource("1_7snke")]([SubResource("Resource_bebh5"), SubResource("Resource_7wyv5"), SubResource("Resource_72ru7")])
+action_events = Array[ExtResource("1_7snke")]([SubResource("Resource_bebh5"), SubResource("Resource_7wyv5"), SubResource("Resource_72ru7"), SubResource("Resource_wwyxf")])
 metadata/_custom_type_script = "uid://b70xtb2eos81q"
 
 [sub_resource type="Resource" id="Resource_8jxa6"]

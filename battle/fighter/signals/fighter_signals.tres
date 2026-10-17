@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FighterSignals" format=3 uid="uid://bekadcgcgw6kh"]
+
+[ext_resource type="Script" uid="uid://ya1b5vs20n6a" path="res://battle/fighter/signals/fighter_signals.gd" id="1_iyhxe"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_iyhxe")
+metadata/_custom_type_script = "uid://ya1b5vs20n6a"

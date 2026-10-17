@@ -6,6 +6,9 @@ extends Node
 @export var fighter_sprite_manager: FighterSpriteManager
 @export var fighter_health_manager: FighterHealthManager
 
+@export_group("Resources")
+@export var fighter_signals: FighterSignals
+
 var is_squishing: bool
 
 func _on_fighter_body_entered(body: Node) -> void:
@@ -28,6 +31,7 @@ func _on_fighter_body_entered(body: Node) -> void:
 	apply_knockback_force(fighter, owner.contact_knockback)
 	owner.hit_enemy()
 	BattleEventBus.fighter_damaged.emit(owner.fighter_id)
+	fighter_signals.deal_contact_damage.emit()
 	particles_manager.spawn_hit_particles(dmg)
 
 func apply_knockback_force(fighter: Fighter, amount: float) -> void:

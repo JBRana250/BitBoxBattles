@@ -5,11 +5,16 @@
 [ext_resource type="Script" uid="uid://ifw0gnaqvax2" path="res://battle/fighter/eca_framework/actions/action.gd" id="2_6n1oh"]
 [ext_resource type="Script" uid="uid://bjx403himfv61" path="res://battle/fighter/eca_framework/conditions/condition.gd" id="3_p1qvd"]
 [ext_resource type="Script" uid="uid://bqthginsqy3v4" path="res://battle/fighter/eca_framework/actions/accel_dash_action.gd" id="4_bvd3n"]
+[ext_resource type="PackedScene" uid="uid://c2qmsvra8ogxh" path="res://battle/fighter/eca_framework/events/repeating_timer_event.tscn" id="5_f1aas"]
 [ext_resource type="Script" uid="uid://daesrn56aihs6" path="res://battle/fighter/eca_framework/events/resource/repeating_timer_event.gd" id="5_pofq0"]
 [ext_resource type="Script" uid="uid://b70xtb2eos81q" path="res://battle/fighter/fighter_property_resources/fighter_action_resource.gd" id="6_f1aas"]
 [ext_resource type="Script" uid="uid://rg6n5h53gu5k" path="res://battle/fighter/fighter_property_resources/fighter_contact_resource.gd" id="7_4xx52"]
+[ext_resource type="Script" uid="uid://b0wfytpcc1gs5" path="res://battle/fighter/eca_framework/actions/play_sfx_action.gd" id="7_xshpt"]
+[ext_resource type="AudioStream" uid="uid://5jwr1sjgfgop" path="res://audio/sfx/RegularHit.wav" id="8_dxvn1"]
 [ext_resource type="Script" uid="uid://blqpe5hp7jofi" path="res://battle/fighter/fighter_property_resources/fighter_health_resource.gd" id="8_xshpt"]
 [ext_resource type="Script" uid="uid://bbyqng0l5d8mh" path="res://battle/fighter/fighter_property_resources/fighter_init_resource.gd" id="9_dxvn1"]
+[ext_resource type="PackedScene" uid="uid://chkg8vylxbyvv" path="res://battle/fighter/eca_framework/events/deal_contact_damage_event.tscn" id="9_ssc03"]
+[ext_resource type="Script" uid="uid://cpn6vd5oqwkl4" path="res://battle/fighter/eca_framework/events/resource/deal_contact_damage_event.gd" id="10_q43y1"]
 [ext_resource type="Texture2D" uid="uid://b71jpmvkmwfv8" path="res://textures/past_robot_idle.png" id="11_ssc03"]
 [ext_resource type="Texture2D" uid="uid://cfcxo13hw6tav" path="res://textures/past_robot_thinking.png" id="12_q43y1"]
 [ext_resource type="Script" uid="uid://bpymebmol4evd" path="res://battle/fighter/fighter_property_resources/fighter_texture_resource.gd" id="13_rr2ng"]
@@ -25,9 +30,19 @@ time = 0.1
 actions = Array[ExtResource("2_6n1oh")]([SubResource("Resource_d3j3p")])
 metadata/_custom_type_script = "uid://daesrn56aihs6"
 
+[sub_resource type="Resource" id="Resource_tahlm"]
+script = ExtResource("7_xshpt")
+sfx = ExtResource("8_dxvn1")
+metadata/_custom_type_script = "uid://b0wfytpcc1gs5"
+
+[sub_resource type="Resource" id="Resource_wwyxf"]
+script = ExtResource("10_q43y1")
+actions = Array[ExtResource("2_6n1oh")]([SubResource("Resource_tahlm")])
+metadata/_custom_type_script = "uid://cpn6vd5oqwkl4"
+
 [sub_resource type="Resource" id="Resource_yoieg"]
 script = ExtResource("6_f1aas")
-action_events = Array[ExtResource("1_6n1oh")]([SubResource("Resource_5grhf")])
+action_events = Array[ExtResource("1_6n1oh")]([SubResource("Resource_5grhf"), SubResource("Resource_wwyxf")])
 metadata/_custom_type_script = "uid://b70xtb2eos81q"
 
 [sub_resource type="Resource" id="Resource_e1q8b"]

@@ -1,0 +1,4 @@
+class_name FighterSignals extends Resource
+
+signal deal_contact_damage
+signal take_contact_damage

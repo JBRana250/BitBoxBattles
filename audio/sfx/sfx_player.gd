@@ -20,5 +20,5 @@ func play_heavy_hit() -> void:
 	pass
 	#poly_playback.play_stream(heavy_hit_sound)
 
-func play_sfx(sound: AudioStream) -> void:
-	poly_playback.play_stream(sound)
+func play_sfx(sound: AudioStream, volume_offset: float, pitch_scalar: float) -> void:
+	poly_playback.play_stream(sound, 0, volume_offset, pitch_scalar)
