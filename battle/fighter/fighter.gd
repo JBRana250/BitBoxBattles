@@ -62,7 +62,7 @@ func hit_enemy():
 
 func take_damage(amount: int):
 	fighter_health_manager.reduce_health(amount)
-	fighter_sprite_manager.onhit_flash()
+	fighter_sprite_manager.onhit_flash(remap(amount, 0, 50, 0, 2))
 
 func heal(amount: int):
 	fighter_health_manager.increase_health(amount)

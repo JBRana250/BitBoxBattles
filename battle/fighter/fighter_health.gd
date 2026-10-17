@@ -24,7 +24,7 @@ func reduce_health(amount: int) -> void:
 		hitstop_manager.apply_hitstop(0.02 * amount)
 	else:
 		hitstop_manager.apply_hitstop(0.01 * amount)
-	battle_number_manager.display_damage_number(amount)
+	#battle_number_manager.display_damage_number(amount)
 	update_health_values()
 
 func increase_health(amount: int) -> void:

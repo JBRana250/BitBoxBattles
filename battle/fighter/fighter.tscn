@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://bekadcgcgw6kh" path="res://battle/fighter/signals/fighter_signals.tres" id="2_5r2x6"]
 [ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="2_ladtm"]
 [ext_resource type="Theme" uid="uid://vurjv1gvv8k" path="res://themes/battle.tres" id="3_4dc5m"]
+[ext_resource type="Shader" uid="uid://8nqt4gg7d15" path="res://battle/fighter/pulse_shader/pulse.gdshader" id="3_4psr1"]
 [ext_resource type="Texture2D" uid="uid://d2gl08f6vn5a5" path="res://textures/empty_hpbar.png" id="4_gb4mi"]
 [ext_resource type="Texture2D" uid="uid://byjpjy0nht5uk" path="res://textures/full_hpbar.png" id="5_4sxhs"]
 [ext_resource type="Script" uid="uid://dqly1sjufce6k" path="res://battle/fighter/fighter_health.gd" id="6_05pdn"]
@@ -33,15 +34,25 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6hnvb"]
 radius = 63.007935
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ts8np"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4psr1"]
 resource_local_to_scene = true
-shader = ExtResource("2_4eqct")
-shader_parameter/progress = 0.0
-shader_parameter/modulate_color = Vector4(1, 1, 1, 1)
+shader = ExtResource("3_4psr1")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/flash_amount = 0.75
+shader_parameter/pattern = 1.0
+shader_parameter/progress = 1.0
+shader_parameter/blinks = 4.0
+shader_parameter/pulse_speed = 2.0
+shader_parameter/edge_glow = 1.0
 
 [sub_resource type="Gradient" id="Gradient_gb4mi"]
 offsets = PackedFloat32Array(0, 0.5106383, 1)
 colors = PackedColorArray(1, 0, 0, 1, 0.82871497, 0.65557426, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5r2x6"]
+shader = ExtResource("2_4eqct")
+shader_parameter/progress = 0.7
+shader_parameter/modulate_color = Vector4(1, 1, 1, 1)
 
 [node name="fighter" type="RigidBody2D" unique_id=678717569 node_paths=PackedStringArray("sprite", "onhit_timer", "fighter_state_machine", "fighter_sprite_manager", "fighter_health_manager", "fighter_event_manager") groups=["fighter"]]
 mass = 0.01
@@ -55,7 +66,7 @@ angular_damp_mode = 1
 angular_damp = 0.1
 script = ExtResource("1_05pdn")
 sprite = NodePath("FighterRoot/FighterPosition/Polygon2D/Sprite2D")
-onhit_timer = NodePath("Components/FighterSpriteManager/onhitTimer")
+onhit_timer = NodePath("")
 fighter_state_machine = NodePath("Components/FighterStateMachine")
 fighter_sprite_manager = NodePath("Components/FighterSpriteManager")
 fighter_health_manager = NodePath("Components/FighterHealthManager")
@@ -80,7 +91,7 @@ clip_children = 1
 polygon = PackedVector2Array(-65, -65, 65, -65, 65, 65, -65, 65)
 
 [node name="Sprite2D" type="Sprite2D" parent="FighterRoot/FighterPosition/Polygon2D" unique_id=1995630749]
-material = SubResource("ShaderMaterial_ts8np")
+material = SubResource("ShaderMaterial_4psr1")
 texture = ExtResource("2_ladtm")
 region_rect = Rect2(0, 0, 128, 128)
 region_filter_clip_enabled = true
@@ -148,15 +159,9 @@ colshape = NodePath("../../CollisionShape2D")
 [node name="InactiveTimer" type="Timer" parent="Components/FighterStateMachine" unique_id=563924531]
 one_shot = true
 
-[node name="FighterSpriteManager" type="Node" parent="Components" unique_id=1011372442 node_paths=PackedStringArray("fighter_sprite", "onhit_timer")]
+[node name="FighterSpriteManager" type="Node" parent="Components" unique_id=1011372442 node_paths=PackedStringArray("fighter_sprite")]
 script = ExtResource("8_wn1im")
 fighter_sprite = NodePath("../../FighterRoot/FighterPosition/Polygon2D/Sprite2D")
-onhit_timer = NodePath("onhitTimer")
-onhit_modulate = Color(1, 0, 0, 1)
-
-[node name="onhitTimer" type="Timer" parent="Components/FighterSpriteManager" unique_id=1664589322]
-wait_time = 0.05
-one_shot = true
 
 [node name="ScaleDistortionManager" type="Node" parent="Components/FighterSpriteManager" unique_id=713198695 node_paths=PackedStringArray("fighter_sprite")]
 script = ExtResource("10_dpv1y")
@@ -178,6 +183,7 @@ repeating_timer_event = ExtResource("11_wn1im")
 [node name="FighterDeathManager" type="Node" parent="Components" unique_id=1551115349 node_paths=PackedStringArray("fighter_sprite", "death_particles")]
 script = ExtResource("12_vkd1v")
 fighter_sprite = NodePath("../../FighterRoot/FighterPosition/Polygon2D/Sprite2D")
+death_shader = SubResource("ShaderMaterial_5r2x6")
 death_particles = NodePath("../../FighterRoot/FighterPosition/Polygon2D/Sprite2D/DeathParticles")
 
 [node name="ParticlesManager" type="Node2D" parent="Components" unique_id=1544480530 node_paths=PackedStringArray("fighter")]
@@ -190,4 +196,3 @@ wall_texture = ExtResource("19_xanq2")
 
 [connection signal="body_entered" from="." to="Components/FighterCollisionManager" method="_on_fighter_body_entered"]
 [connection signal="timeout" from="Components/FighterStateMachine/InactiveTimer" to="Components/FighterStateMachine" method="_on_inactive_timer_timeout"]
-[connection signal="timeout" from="Components/FighterSpriteManager/onhitTimer" to="Components/FighterSpriteManager" method="_on_onhit_timer_timeout"]

@@ -1,6 +1,7 @@
 extends Node
 
 @export var fighter_sprite: Sprite2D
+@export var death_shader: ShaderMaterial
 @export var death_particles: GPUParticles2D
 
 func on_death() -> void:
@@ -11,4 +12,5 @@ func on_death() -> void:
 	shader_material.set_shader_parameter("sprite", fighter_sprite.texture)
 	death_particles.emitting = true
 	
+	fighter_sprite.material = death_shader
 	tween.tween_property(fighter_sprite.material, "shader_parameter/progress", 1.0, 0.5)
