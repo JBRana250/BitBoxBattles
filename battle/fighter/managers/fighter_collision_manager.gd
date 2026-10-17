@@ -20,7 +20,6 @@ func _on_fighter_body_entered(body: Node) -> void:
 		return
 	if owner.get_state() != FighterStateMachine.State.ACTIVE:
 		AudioManager.sfx_player.play_collision()
-		particles_manager.spawn_collision_particles()
 		return
 		
 	var fighter: Fighter = body as Fighter

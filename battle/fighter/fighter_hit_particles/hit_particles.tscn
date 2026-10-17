@@ -10,7 +10,7 @@ shader_parameter/emitter_size = 5.0
 
 [node name="HitParticles" type="GPUParticles2D" unique_id=1769465511]
 emitting = false
-amount = 35
+amount = 5
 one_shot = true
 explosiveness = 0.85
 process_material = SubResource("ShaderMaterial_fqek6")
