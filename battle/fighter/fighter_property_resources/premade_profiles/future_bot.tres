@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://rg6n5h53gu5k" path="res://battle/fighter/fighter_property_resources/fighter_contact_resource.gd" id="8_el4pe"]
 [ext_resource type="Script" uid="uid://blqpe5hp7jofi" path="res://battle/fighter/fighter_property_resources/fighter_health_resource.gd" id="9_cyn1o"]
 [ext_resource type="Script" uid="uid://b0wfytpcc1gs5" path="res://battle/fighter/eca_framework/actions/play_sfx_action.gd" id="9_el4pe"]
-[ext_resource type="AudioStream" uid="uid://jipgg74pcgn" path="res://audio/sfx/HeavyHit.wav" id="10_cyn1o"]
+[ext_resource type="AudioStream" uid="uid://cusi2f5dhm5j0" path="res://audio/sfx/MegaHit.wav" id="10_vc3w3"]
 [ext_resource type="Script" uid="uid://bbyqng0l5d8mh" path="res://battle/fighter/fighter_property_resources/fighter_init_resource.gd" id="10_ybt4i"]
 [ext_resource type="PackedScene" uid="uid://chkg8vylxbyvv" path="res://battle/fighter/eca_framework/events/deal_contact_damage_event.tscn" id="11_ybt4i"]
 [ext_resource type="Texture2D" uid="uid://deojq6or0epof" path="res://textures/future_robot_idle.png" id="12_j2188"]
@@ -74,9 +74,8 @@ metadata/_custom_type_script = "uid://daesrn56aihs6"
 
 [sub_resource type="Resource" id="Resource_tahlm"]
 script = ExtResource("9_el4pe")
-sfx = ExtResource("10_cyn1o")
-volume_offset = 25.0
-pitch_scalar = 0.75
+sfx = ExtResource("10_vc3w3")
+volume_offset = 5.0
 metadata/_custom_type_script = "uid://b0wfytpcc1gs5"
 
 [sub_resource type="Resource" id="Resource_wwyxf"]
