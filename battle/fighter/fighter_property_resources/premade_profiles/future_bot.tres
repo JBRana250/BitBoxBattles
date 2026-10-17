@@ -58,6 +58,7 @@ metadata/_custom_type_script = "uid://b70xtb2eos81q"
 script = ExtResource("8_el4pe")
 contact_damage = 25
 contact_cooldown = 4.0
+contact_knockback = 100.0
 metadata/_custom_type_script = "uid://rg6n5h53gu5k"
 
 [sub_resource type="Resource" id="Resource_25ord"]

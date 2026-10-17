@@ -16,6 +16,7 @@ var particles: Node2D
 @export var current_health: int
 @export var contact_damage: int
 @export var contact_cooldown: float
+@export var contact_knockback: float
 @export var fighter_id: String 
 
 func init_fighter(_fighter_manager: FighterManager, _particles: Node2D, fighter_profile: FighterProfile) -> void:
@@ -37,7 +38,7 @@ func init_fighter(_fighter_manager: FighterManager, _particles: Node2D, fighter_
 	
 	self.contact_damage = contact_resource.contact_damage
 	self.contact_cooldown = contact_resource.contact_cooldown
-	
+	self.contact_knockback = contact_resource.contact_knockback
 	
 	fighter_sprite_manager.init_sprites(texture_resource.active_image, texture_resource.inactive_image)
 	fighter_state_machine.init_states()
@@ -49,6 +50,9 @@ func init_fighter(_fighter_manager: FighterManager, _particles: Node2D, fighter_
 
 func get_state():
 	return fighter_state_machine.get_state()
+
+func apply_external_force(force: Vector2) -> void:
+	apply_central_force(force)
 
 func hit_enemy():
 	fighter_state_machine.on_hit(contact_cooldown)

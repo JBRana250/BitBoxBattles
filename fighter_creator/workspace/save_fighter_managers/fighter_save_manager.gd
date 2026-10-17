@@ -23,6 +23,7 @@ func save_fighter() -> void:
 	var contact_resource: FighterContactResource = FighterContactResource.new()
 	contact_resource.contact_damage = base_stats.contact_damage
 	contact_resource.contact_cooldown = base_stats.contact_cooldown
+	contact_resource.contact_knockback = base_stats.contact_knockback
 	
 	var texture_resource: FighterTextureResource = FighterTextureResource.new()
 	texture_resource.active_image = sprites.active
