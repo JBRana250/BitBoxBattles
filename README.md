@@ -3,6 +3,9 @@ Credits:
 Health bar - LokiF on opengameart.org
 https://opengameart.org/content/health-bar-and-heart-icon
 
+Damage Number Font - Khurasan on dafont.com
+https://www.dafont.com/matcha-home.font?text=100&l[]=1&back=top
+
 Hit spark effects - Sinestesia on opengameart.org
 https://opengameart.org/content/hit-animation-frame-by-frame
 https://opengameart.org/content/hit-animation-2-frame-by-frame

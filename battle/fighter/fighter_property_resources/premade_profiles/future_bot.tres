@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dy6f1u2suab0t" path="res://battle/fighter/eca_framework/conditions/state_condition.gd" id="4_5hdlo"]
 [ext_resource type="Script" uid="uid://e8bg70fs2mo0" path="res://battle/fighter/eca_framework/actions/fighter_dash_action.gd" id="5_3idbv"]
 [ext_resource type="Script" uid="uid://daesrn56aihs6" path="res://battle/fighter/eca_framework/events/resource/repeating_timer_event.gd" id="6_8a8sh"]
+[ext_resource type="Script" uid="uid://clf7vf564kpgq" path="res://battle/fighter/eca_framework/actions/health_increase_action.gd" id="7_0vwl5"]
 [ext_resource type="Script" uid="uid://b70xtb2eos81q" path="res://battle/fighter/fighter_property_resources/fighter_action_resource.gd" id="7_vc3w3"]
 [ext_resource type="Script" uid="uid://rg6n5h53gu5k" path="res://battle/fighter/fighter_property_resources/fighter_contact_resource.gd" id="8_el4pe"]
 [ext_resource type="Script" uid="uid://blqpe5hp7jofi" path="res://battle/fighter/fighter_property_resources/fighter_health_resource.gd" id="9_cyn1o"]
@@ -49,16 +50,33 @@ time = 0.1
 actions = Array[ExtResource("2_7snke")]([SubResource("Resource_1b53g")])
 metadata/_custom_type_script = "uid://daesrn56aihs6"
 
+[sub_resource type="Resource" id="Resource_7cgly"]
+script = ExtResource("4_5hdlo")
+accepted_states = Array[int]([1])
+metadata/_custom_type_script = "uid://dy6f1u2suab0t"
+
+[sub_resource type="Resource" id="Resource_ghvml"]
+script = ExtResource("7_0vwl5")
+amount = 1
+conditions = Array[ExtResource("3_cktky")]([SubResource("Resource_7cgly")])
+metadata/_custom_type_script = "uid://clf7vf564kpgq"
+
+[sub_resource type="Resource" id="Resource_72ru7"]
+script = ExtResource("6_8a8sh")
+time = 0.5
+actions = Array[ExtResource("2_7snke")]([SubResource("Resource_ghvml")])
+metadata/_custom_type_script = "uid://daesrn56aihs6"
+
 [sub_resource type="Resource" id="Resource_yhoa3"]
 script = ExtResource("7_vc3w3")
-action_events = Array[ExtResource("1_7snke")]([SubResource("Resource_bebh5"), SubResource("Resource_7wyv5")])
+action_events = Array[ExtResource("1_7snke")]([SubResource("Resource_bebh5"), SubResource("Resource_7wyv5"), SubResource("Resource_72ru7")])
 metadata/_custom_type_script = "uid://b70xtb2eos81q"
 
 [sub_resource type="Resource" id="Resource_8jxa6"]
 script = ExtResource("8_el4pe")
 contact_damage = 25
 contact_cooldown = 4.0
-contact_knockback = 100.0
+contact_knockback = 150.0
 metadata/_custom_type_script = "uid://rg6n5h53gu5k"
 
 [sub_resource type="Resource" id="Resource_25ord"]

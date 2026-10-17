@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BattleNumberResource" format=3 uid="uid://24331yf1hfxt"]
+
+[ext_resource type="Script" uid="uid://lyltavrxsidn" path="res://battle/battle_number/battle_number_resource.gd" id="1_rk88s"]
+
+[sub_resource type="Gradient" id="Gradient_i37l2"]
+offsets = PackedFloat32Array(0, 0.4888889)
+colors = PackedColorArray(0.7298961, 0.52430725, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_5r2x6"]
+colors = PackedColorArray(0, 0.38039216, 0, 1, 0, 1, 0.6313726, 1)
+
+[resource]
+script = ExtResource("1_rk88s")
+damage_number_gradient = SubResource("Gradient_i37l2")
+heal_number_gradient = SubResource("Gradient_5r2x6")
+metadata/_custom_type_script = "uid://lyltavrxsidn"

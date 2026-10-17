@@ -11,12 +11,14 @@ func _ready() -> void:
 	poly_playback = get_stream_playback()
 
 func play_collision() -> void:
-	poly_playback.play_stream(collision_sound, 0, -25.0)
+	poly_playback.play_stream(collision_sound, 0, -30.0)
 
 func play_normal_hit() -> void:
-	pass
-	#poly_playback.play_stream(normal_hit_sound, 0, -10.0, 1.5)
+	poly_playback.play_stream(normal_hit_sound, 0, -15.0, 0.75)
 
 func play_heavy_hit() -> void:
 	pass
 	#poly_playback.play_stream(heavy_hit_sound)
+
+func play_sfx(sound: AudioStream) -> void:
+	poly_playback.play_stream(sound)

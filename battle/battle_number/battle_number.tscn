@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c717fxfgs85o"]
+
+[ext_resource type="FontFile" uid="uid://cq8y3pe6k0m52" path="res://themes/Matcha Home.ttf" id="1_yk6p6"]
+[ext_resource type="Script" uid="uid://csbp8kxwcpsxq" path="res://battle/battle_number/battle_number.gd" id="2_43dxf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8eofp"]
+resource_local_to_scene = true
+font = ExtResource("1_yk6p6")
+shadow_color = Color(0, 0, 0, 0.29411766)
+
+[node name="BattleNumber" type="Label" unique_id=1198202200 node_paths=PackedStringArray("timer")]
+offset_left = -19.0
+offset_top = -11.0
+offset_right = 21.0
+offset_bottom = 12.0
+size_flags_horizontal = 4
+text = "100"
+label_settings = SubResource("LabelSettings_8eofp")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_43dxf")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="." unique_id=668979497]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

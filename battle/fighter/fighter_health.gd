@@ -1,6 +1,7 @@
 class_name FighterHealthManager extends Node
 
 @export var fighter_death_manager: Node
+@export var battle_number_manager: Node
 @export var hitstop_manager: Node
 @export var health_bar: TextureProgressBar
 @export var health_gradient: Gradient
@@ -25,6 +26,12 @@ func reduce_health(amount: int) -> void:
 	else:
 		AudioManager.sfx_player.play_normal_hit()
 		hitstop_manager.apply_hitstop(0.01 * amount)
+	battle_number_manager.display_damage_number(amount)
+	update_health_values()
+
+func increase_health(amount: int) -> void:
+	current_health += amount
+	battle_number_manager.display_heal_number(amount)
 	update_health_values()
 
 func set_health(health: int) -> void:
@@ -44,7 +51,6 @@ func check_death() -> void:
 	if (current_health <= 0):
 		BattleEventBus.fighter_death.emit(owner.fighter_id)
 		fighter_death_manager.on_death()
-		hitstop_manager.apply_hitstop(5)
 		await get_tree().create_timer(0.25).timeout
 		owner.queue_free()
 		
