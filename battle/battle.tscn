@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://kgatr1mesxo0" path="res://title/nav_button.gd" id="11_qybyd"]
 [ext_resource type="Script" uid="uid://bgb5jwns30d2e" path="res://battle/pause_menu/pause_menu.gd" id="11_rgsk0"]
 [ext_resource type="Script" uid="uid://b5bgwuhwkgq4u" path="res://battle/pause_menu/paused_retry_button.gd" id="12_eu6g2"]
+[ext_resource type="Shader" uid="uid://8nqt4gg7d15" path="res://battle/fighter/pulse_shader/pulse.gdshader" id="12_xmbur"]
 [ext_resource type="Script" uid="uid://c5aiwuhvnquby" path="res://battle/pause_menu/resume_button.gd" id="13_t8p1f"]
 [ext_resource type="Texture2D" uid="uid://bsqctw6duiwt5" path="res://textures/unknown splash.png" id="14_as1q7"]
 [ext_resource type="Script" uid="uid://08k437rqynhu" path="res://battle/on_victory_menu/on_victory_menu.gd" id="14_tkkqt"]
@@ -38,6 +39,16 @@ font_size = 72
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1h2v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6sf6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ju8jl"]
+shader = ExtResource("12_xmbur")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_amount = 0.0
+shader_parameter/pattern = 5.0
+shader_parameter/progress = 1.0
+shader_parameter/blinks = 4.0
+shader_parameter/pulse_speed = 0.50000001723023
+shader_parameter/edge_glow = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ra0kn"]
 font_size = 32
@@ -83,7 +94,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5),
 "transitions": PackedFloat32Array(1.6245052, 1.5157163, 0.8408964, 0.5358867),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-25, -25), Vector2(-25, 0), Vector2(0, -25)]
+"values": [Vector2(0, 0), Vector2(-45, -45), Vector2(-45, 0), Vector2(0, -45)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -92,10 +103,10 @@ tracks/1/path = NodePath("FighterTexture:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.23333333, 0.5, 1, 1.2333333, 1.5000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.025, 1.025)]
+"values": [Vector2(1, 1), Vector2(0.9, 1.1), Vector2(1, 1), Vector2(1, 1), Vector2(0.9, 1.1), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_as1q7"]
@@ -111,6 +122,16 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6cnnf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68qna"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmbur"]
+shader = ExtResource("12_xmbur")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_amount = 0.0
+shader_parameter/pattern = 5.0
+shader_parameter/progress = 1.0
+shader_parameter/blinks = 4.0
+shader_parameter/pulse_speed = 0.50000001723023
+shader_parameter/edge_glow = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_phvbk"]
 font = ExtResource("2_tiqy5")
@@ -260,14 +281,17 @@ fighter_menu = NodePath("../../FighterMenu")
 fighter_label = NodePath("FighterOneLabel")
 fighter_texture_rect = NodePath("FighterTexture")
 anim_player = NodePath("FighterAnimationPlayer")
+hover_flash_amount = 0.25
 
 [node name="FighterTexture" type="TextureRect" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=1249035118]
+material = SubResource("ShaderMaterial_ju8jl")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(390, 390)
 texture = ExtResource("14_as1q7")
 expand_mode = 1
 
@@ -303,8 +327,10 @@ fighter_menu = NodePath("../../FighterMenu")
 fighter_label = NodePath("FighterTwoLabel")
 fighter_texture_rect = NodePath("FighterTexture")
 anim_player = NodePath("FighterAnimationPlayer")
+hover_flash_amount = 0.25
 
 [node name="FighterTexture" type="TextureRect" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=1628877097]
+material = SubResource("ShaderMaterial_xmbur")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -517,7 +543,11 @@ script = ExtResource("7_7fucf")
 
 [connection signal="pressed" from="CanvasLayer/OnVictoryMenu/RetryButton" to="CanvasLayer/OnVictoryMenu/RetryButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/OnVictoryMenu/CreateButton" to="CanvasLayer/OnVictoryMenu/CreateButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/BattleSetup/FighterOne" to="CanvasLayer/BattleSetup/FighterOne" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BattleSetup/FighterOne" to="CanvasLayer/BattleSetup/FighterOne" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/BattleSetup/FighterOne" to="CanvasLayer/BattleSetup/FighterOne" method="_on_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/BattleSetup/FighterTwo" to="CanvasLayer/BattleSetup/FighterTwo" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BattleSetup/FighterTwo" to="CanvasLayer/BattleSetup/FighterTwo" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/BattleSetup/FighterTwo" to="CanvasLayer/BattleSetup/FighterTwo" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/BattleSetup/FightButton" to="CanvasLayer/BattleSetup/FightButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/CreateButton" to="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/CreateButton" method="_on_pressed"]

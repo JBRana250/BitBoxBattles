@@ -7,10 +7,18 @@ extends Button
 @export var anim_player: AnimationPlayer
 
 @onready var fighter_chosen: bool = false
+@export var hover_flash_amount: float = 0.1
+var idle_flash_amount: float = 0.0
 var fighter_profile: FighterProfile
 
 func _on_pressed() -> void:
 	fighter_menu.open_fighter_menu(self)
+
+func _on_mouse_entered() -> void:
+	set_hover_pulse(true)
+
+func _on_mouse_exited() -> void:
+	set_hover_pulse(false)
 
 func choose_fighter(profile: FighterProfile):
 	fighter_label.text = profile.init_resource.fighter_id
@@ -23,3 +31,12 @@ func choose_fighter(profile: FighterProfile):
 
 func get_fighter_profile() -> FighterProfile:
 	return fighter_profile
+
+func set_hover_pulse(enabled: bool) -> void:
+	var amount: float
+	if enabled:
+		amount = hover_flash_amount
+	else:
+		amount = idle_flash_amount
+	
+	fighter_texture_rect.material.set_shader_parameter("flash_amount", amount)
