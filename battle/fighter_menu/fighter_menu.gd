@@ -4,9 +4,9 @@ extends Control
 @export var fighter_option_scene: PackedScene
 @export var fighter_profiles: FighterProfiles
 
-var current_fighter: TextureButton
+var current_fighter: Button
 
-func open_fighter_menu(fighter: TextureButton) -> void:
+func open_fighter_menu(fighter: Button) -> void:
 	clear_options()
 	current_fighter = fighter
 	for profile: FighterProfile in fighter_profiles.profiles:

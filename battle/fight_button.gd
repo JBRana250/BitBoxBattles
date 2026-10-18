@@ -1,8 +1,8 @@
 extends Button
 
 @export var battle_setup_menu: Control
-@export var fighter_one_button: TextureButton
-@export var fighter_two_button: TextureButton
+@export var fighter_one_button: Button
+@export var fighter_two_button: Button
 
 func _on_pressed() -> void:
 	var fighter_one_profile: FighterProfile = fighter_one_button.get_fighter_profile()

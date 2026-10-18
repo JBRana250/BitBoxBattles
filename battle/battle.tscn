@@ -31,8 +31,86 @@ size = Vector2(20, 750)
 font = ExtResource("2_tiqy5")
 font_size = 72
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ra0kn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vjyn1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1h2v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6sf6"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_ra0kn"]
 font_size = 32
+
+[sub_resource type="Animation" id="Animation_ju8jl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FighterTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FighterTexture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xmbur"]
+resource_name = "ready_anim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FighterTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1.6245052, 1.5157163, 0.8408964, 0.5358867),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-25, -25), Vector2(-25, 0), Vector2(0, -25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FighterTexture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.025, 1.025)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_as1q7"]
+_data = {
+&"RESET": SubResource("Animation_ju8jl"),
+&"ready_anim": SubResource("Animation_xmbur")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q5qh1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ws2t2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6cnnf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68qna"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_phvbk"]
 font = ExtResource("2_tiqy5")
@@ -167,18 +245,31 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="FighterOne" type="TextureButton" parent="CanvasLayer/BattleSetup" unique_id=91583964 node_paths=PackedStringArray("fighter_menu", "fighter_label")]
+[node name="FighterOne" type="Button" parent="CanvasLayer/BattleSetup" unique_id=2136616644 node_paths=PackedStringArray("fighter_menu", "fighter_label", "fighter_texture_rect", "anim_player")]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 180.0
 offset_right = 836.0
 offset_bottom = 960.0
-texture_normal = ExtResource("14_as1q7")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ra0kn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vjyn1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g1h2v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e6sf6")
 script = ExtResource("19_ju8jl")
 fighter_menu = NodePath("../../FighterMenu")
 fighter_label = NodePath("FighterOneLabel")
+fighter_texture_rect = NodePath("FighterTexture")
+anim_player = NodePath("FighterAnimationPlayer")
+
+[node name="FighterTexture" type="TextureRect" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=1249035118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_as1q7")
+expand_mode = 1
 
 [node name="FighterOneLabel" type="Label" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=279484243]
 layout_mode = 1
@@ -194,19 +285,35 @@ label_settings = SubResource("LabelSettings_ra0kn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FighterTwo" type="TextureButton" parent="CanvasLayer/BattleSetup" unique_id=360017332 node_paths=PackedStringArray("fighter_menu", "fighter_label")]
+[node name="FighterAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=670934395]
+libraries/ = SubResource("AnimationLibrary_as1q7")
+
+[node name="FighterTwo" type="Button" parent="CanvasLayer/BattleSetup" unique_id=791736188 node_paths=PackedStringArray("fighter_menu", "fighter_label", "fighter_texture_rect", "anim_player")]
 layout_mode = 0
 offset_left = 1047.0
 offset_top = 178.0
 offset_right = 1827.0
 offset_bottom = 958.0
-texture_normal = ExtResource("14_as1q7")
-ignore_texture_size = true
-stretch_mode = 0
-flip_h = true
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q5qh1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ws2t2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6cnnf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_68qna")
 script = ExtResource("19_ju8jl")
 fighter_menu = NodePath("../../FighterMenu")
 fighter_label = NodePath("FighterTwoLabel")
+fighter_texture_rect = NodePath("FighterTexture")
+anim_player = NodePath("FighterAnimationPlayer")
+
+[node name="FighterTexture" type="TextureRect" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=1628877097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_as1q7")
+expand_mode = 1
+flip_h = true
 
 [node name="FighterTwoLabel" type="Label" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=1582143036]
 layout_mode = 1
@@ -221,6 +328,10 @@ text = "Choose a Fighter"
 label_settings = SubResource("LabelSettings_ra0kn")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FighterAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=104116506]
+libraries/ = SubResource("AnimationLibrary_as1q7")
+speed_scale = 1.1
 
 [node name="FighterCorner" type="TextureRect" parent="CanvasLayer/BattleSetup" unique_id=1129662748]
 modulate = Color(0.5870347, 0.72250885, 1, 1)
