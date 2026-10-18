@@ -26,11 +26,19 @@ func choose_fighter(profile: FighterProfile):
 		fighter_texture_rect.texture = profile.texture_resource.setup_image
 	else:
 		fighter_texture_rect.texture = profile.texture_resource.active_image
-	anim_player.play("ready_anim")
 	fighter_profile = profile
+	play_ready_animation()
 
 func get_fighter_profile() -> FighterProfile:
 	return fighter_profile
+
+func play_ready_animation() -> void:
+	var anim_type: FighterInitResource.ReadyAnimType = fighter_profile.init_resource.ready_anim_type
+	
+	if anim_type == FighterInitResource.ReadyAnimType.EXCITED:
+		anim_player.play("excited_ready_anim")
+	if anim_type == FighterInitResource.ReadyAnimType.IDLE:
+		anim_player.play("idle_ready_anim")
 
 func set_hover_pulse(enabled: bool) -> void:
 	var amount: float

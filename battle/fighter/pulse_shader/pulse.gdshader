@@ -37,7 +37,7 @@ float flash_curve(float p, float pat) {
 		float k = fract(p * blinks);
 		return step(k, 0.5) * (1.0 - p * 0.8) * step(p, 0.999);
 	}
-	return 0.5 + 0.5 * sin(TIME * pulse_speed * TAU);                                      // Pulse
+	return 1.0 + 0.5 * sin(TIME * pulse_speed * TAU);                                      // Pulse
 }
 
 void fragment() {
