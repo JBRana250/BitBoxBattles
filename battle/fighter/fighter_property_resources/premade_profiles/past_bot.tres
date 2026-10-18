@@ -18,10 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://b71jpmvkmwfv8" path="res://textures/past_robot_idle.png" id="11_ssc03"]
 [ext_resource type="Texture2D" uid="uid://cfcxo13hw6tav" path="res://textures/past_robot_thinking.png" id="12_q43y1"]
 [ext_resource type="Script" uid="uid://bpymebmol4evd" path="res://battle/fighter/fighter_property_resources/fighter_texture_resource.gd" id="13_rr2ng"]
+[ext_resource type="Texture2D" uid="uid://c01xnhl8buut2" path="res://textures/past bot splash.png" id="19_4xx52"]
 
 [sub_resource type="Resource" id="Resource_d3j3p"]
 script = ExtResource("4_bvd3n")
-accel_dash_force = 0.1
+accel_dash_force = 0.3
 metadata/_custom_type_script = "uid://bqthginsqy3v4"
 
 [sub_resource type="Resource" id="Resource_5grhf"]
@@ -67,6 +68,7 @@ metadata/_custom_type_script = "uid://bbyqng0l5d8mh"
 script = ExtResource("13_rr2ng")
 active_image = ExtResource("11_ssc03")
 inactive_image = ExtResource("12_q43y1")
+setup_image = ExtResource("19_4xx52")
 metadata/_custom_type_script = "uid://bpymebmol4evd"
 
 [resource]

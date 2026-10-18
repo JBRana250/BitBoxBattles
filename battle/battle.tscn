@@ -13,10 +13,11 @@
 [ext_resource type="Script" uid="uid://bgb5jwns30d2e" path="res://battle/pause_menu/pause_menu.gd" id="11_rgsk0"]
 [ext_resource type="Script" uid="uid://b5bgwuhwkgq4u" path="res://battle/pause_menu/paused_retry_button.gd" id="12_eu6g2"]
 [ext_resource type="Script" uid="uid://c5aiwuhvnquby" path="res://battle/pause_menu/resume_button.gd" id="13_t8p1f"]
+[ext_resource type="Texture2D" uid="uid://bsqctw6duiwt5" path="res://textures/unknown splash.png" id="14_as1q7"]
 [ext_resource type="Script" uid="uid://08k437rqynhu" path="res://battle/on_victory_menu/on_victory_menu.gd" id="14_tkkqt"]
 [ext_resource type="Script" uid="uid://bqc5pdtjjd6jg" path="res://battle/on_victory_menu/on_victory_create_button.gd" id="16_a56dj"]
+[ext_resource type="Texture2D" uid="uid://c5dx5eeyfdj3k" path="res://textures/fighter_corner.png" id="16_as1q7"]
 [ext_resource type="Theme" uid="uid://vurjv1gvv8k" path="res://themes/battle.tres" id="17_dxsh4"]
-[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="18_phvbk"]
 [ext_resource type="Script" uid="uid://goe8f14nwnw0" path="res://battle/fighter_menu/fighter_menu.gd" id="19_ihybe"]
 [ext_resource type="Script" uid="uid://b2f1d03gu37ec" path="res://battle/setup_fighter_button.gd" id="19_ju8jl"]
 [ext_resource type="PackedScene" uid="uid://ddarcnyau851b" path="res://battle/fighter_menu/fighter_option.tscn" id="19_sf8fp"]
@@ -29,6 +30,9 @@ size = Vector2(20, 750)
 [sub_resource type="LabelSettings" id="LabelSettings_mqutd"]
 font = ExtResource("2_tiqy5")
 font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_ra0kn"]
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_phvbk"]
 font = ExtResource("2_tiqy5")
@@ -161,94 +165,109 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.78431374)
+color = Color(0, 0, 0, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/BattleSetup" unique_id=45227492]
+[node name="FighterOne" type="TextureButton" parent="CanvasLayer/BattleSetup" unique_id=91583964 node_paths=PackedStringArray("fighter_menu", "fighter_label")]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 180.0
+offset_right = 836.0
+offset_bottom = 960.0
+texture_normal = ExtResource("14_as1q7")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("19_ju8jl")
+fighter_menu = NodePath("../../FighterMenu")
+fighter_label = NodePath("FighterOneLabel")
+
+[node name="FighterOneLabel" type="Label" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=279484243]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -327.0
+offset_right = 327.0
+offset_bottom = 111.0
 grow_horizontal = 2
-grow_vertical = 2
+text = "Choose a Fighter"
+label_settings = SubResource("LabelSettings_ra0kn")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/BattleSetup/CenterContainer" unique_id=172846764]
-layout_mode = 2
+[node name="FighterTwo" type="TextureButton" parent="CanvasLayer/BattleSetup" unique_id=360017332 node_paths=PackedStringArray("fighter_menu", "fighter_label")]
+layout_mode = 0
+offset_left = 1047.0
+offset_top = 178.0
+offset_right = 1827.0
+offset_bottom = 958.0
+texture_normal = ExtResource("14_as1q7")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+script = ExtResource("19_ju8jl")
+fighter_menu = NodePath("../../FighterMenu")
+fighter_label = NodePath("FighterTwoLabel")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer" unique_id=721719303]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+[node name="FighterTwoLabel" type="Label" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=1582143036]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -327.0
+offset_right = 327.0
+offset_bottom = 111.0
+grow_horizontal = 2
+text = "Choose a Fighter"
+label_settings = SubResource("LabelSettings_ra0kn")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer" unique_id=1533805449]
-layout_mode = 2
-theme_override_constants/separation = 10
+[node name="FighterCorner" type="TextureRect" parent="CanvasLayer/BattleSetup" unique_id=1129662748]
+modulate = Color(0.5870347, 0.72250885, 1, 1)
+layout_mode = 0
+offset_left = -12.0
+offset_top = 471.0
+offset_right = 1012.0
+offset_bottom = 1495.0
+mouse_filter = 2
+texture = ExtResource("16_as1q7")
 
-[node name="Label" type="Label" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=205284719]
-layout_mode = 2
+[node name="FighterCorner2" type="TextureRect" parent="CanvasLayer/BattleSetup" unique_id=1807260550]
+modulate = Color(1, 0.7405732, 0.69833827, 1)
+layout_mode = 0
+offset_left = 900.0
+offset_top = 453.0
+offset_right = 1924.0
+offset_bottom = 1477.0
+mouse_filter = 2
+texture = ExtResource("16_as1q7")
+flip_h = true
+
+[node name="BattleSetupTitle" type="Label" parent="CanvasLayer/BattleSetup" unique_id=205284719]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 20.0
+offset_right = 1442.0
+offset_bottom = 172.0
 text = "Setup Battle"
 label_settings = SubResource("LabelSettings_phvbk")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1837868824]
-layout_mode = 2
-alignment = 1
-
-[node name="FighterOne" type="PanelContainer" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=850886293]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FighterOne" unique_id=2127405776]
-layout_mode = 2
-
-[node name="FighterOne" type="Label" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FighterOne/VBoxContainer" unique_id=362551659]
-layout_mode = 2
-text = "Choose Fighter"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SetupFighterButton" type="TextureButton" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FighterOne/VBoxContainer" unique_id=1185180020 node_paths=PackedStringArray("fighter_menu", "fighter_label")]
-layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("18_phvbk")
-script = ExtResource("19_ju8jl")
-fighter_menu = NodePath("../../../../../../../../../FighterMenu")
-fighter_label = NodePath("../FighterOne")
-
-[node name="VS" type="Label" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1131232645]
-layout_mode = 2
-text = "VS"
-
-[node name="FighterOne2" type="PanelContainer" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1832724488]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FighterOne2" unique_id=1623978338]
-layout_mode = 2
-
-[node name="FighterTwo" type="Label" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FighterOne2/VBoxContainer" unique_id=37491223]
-layout_mode = 2
-text = "Choose Fighter"
-horizontal_alignment = 1
-
-[node name="SetupFighterButton" type="TextureButton" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FighterOne2/VBoxContainer" unique_id=424373077 node_paths=PackedStringArray("fighter_menu", "fighter_label")]
-layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("18_phvbk")
-script = ExtResource("19_ju8jl")
-fighter_menu = NodePath("../../../../../../../../../FighterMenu")
-fighter_label = NodePath("../FighterTwo")
-
-[node name="FightButton" type="Button" parent="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=138762680 node_paths=PackedStringArray("battle_setup_menu", "fighter_one_button", "fighter_two_button")]
-layout_mode = 2
+[node name="FightButton" type="Button" parent="CanvasLayer/BattleSetup" unique_id=138762680 node_paths=PackedStringArray("battle_setup_menu", "fighter_one_button", "fighter_two_button")]
+layout_mode = 0
+offset_left = 874.0
+offset_top = 965.0
+offset_right = 950.0
+offset_bottom = 992.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.9485989, 0, 0.19708595, 1)
 theme_override_fonts/font = ExtResource("2_tiqy5")
 text = "FIGHT"
 script = ExtResource("20_xmbur")
-battle_setup_menu = NodePath("../../../../..")
-fighter_one_button = NodePath("../HBoxContainer/FighterOne/VBoxContainer/SetupFighterButton")
-fighter_two_button = NodePath("../HBoxContainer/FighterOne2/VBoxContainer/SetupFighterButton")
+battle_setup_menu = NodePath("..")
+fighter_one_button = NodePath("../FighterOne")
+fighter_two_button = NodePath("../FighterTwo")
 
 [node name="FighterMenu" type="Control" parent="CanvasLayer" unique_id=641071806 node_paths=PackedStringArray("fighter_options_hflow")]
 visible = false
@@ -387,9 +406,9 @@ script = ExtResource("7_7fucf")
 
 [connection signal="pressed" from="CanvasLayer/OnVictoryMenu/RetryButton" to="CanvasLayer/OnVictoryMenu/RetryButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/OnVictoryMenu/CreateButton" to="CanvasLayer/OnVictoryMenu/CreateButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FighterOne/VBoxContainer/SetupFighterButton" to="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FighterOne/VBoxContainer/SetupFighterButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FighterOne2/VBoxContainer/SetupFighterButton" to="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FighterOne2/VBoxContainer/SetupFighterButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/FightButton" to="CanvasLayer/BattleSetup/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/FightButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/BattleSetup/FighterOne" to="CanvasLayer/BattleSetup/FighterOne" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/BattleSetup/FighterTwo" to="CanvasLayer/BattleSetup/FighterTwo" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/BattleSetup/FightButton" to="CanvasLayer/BattleSetup/FightButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/CreateButton" to="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/CreateButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/RetryButton" to="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/RetryButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/ResumeButton" to="CanvasLayer/PauseMenu/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/ResumeButton" method="_on_pressed"]

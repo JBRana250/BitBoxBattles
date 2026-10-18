@@ -12,7 +12,10 @@ func _on_pressed() -> void:
 
 func choose_fighter(profile: FighterProfile):
 	fighter_label.text = profile.init_resource.fighter_id
-	texture_normal = profile.texture_resource.active_image
+	if profile.texture_resource.setup_image:
+		texture_normal = profile.texture_resource.setup_image
+	else:
+		texture_normal = profile.texture_resource.active_image
 	fighter_profile = profile
 
 func get_fighter_profile() -> FighterProfile:

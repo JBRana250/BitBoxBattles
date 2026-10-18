@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cpn6vd5oqwkl4" path="res://battle/fighter/eca_framework/events/resource/deal_contact_damage_event.gd" id="12_jx3t2"]
 [ext_resource type="Texture2D" uid="uid://bnkcbjk3hunw8" path="res://textures/future_robot_thinking.png" id="13_jx3t2"]
 [ext_resource type="Script" uid="uid://bpymebmol4evd" path="res://battle/fighter/fighter_property_resources/fighter_texture_resource.gd" id="14_xr3bg"]
+[ext_resource type="Texture2D" uid="uid://bn8a5lrtgueda" path="res://textures/future bot splash.png" id="21_el4pe"]
 
 [sub_resource type="Resource" id="Resource_1k8hw"]
 script = ExtResource("4_5hdlo")
@@ -62,7 +63,7 @@ metadata/_custom_type_script = "uid://dy6f1u2suab0t"
 
 [sub_resource type="Resource" id="Resource_ghvml"]
 script = ExtResource("7_0vwl5")
-amount = 1
+amount = 3
 conditions = Array[ExtResource("3_cktky")]([SubResource("Resource_7cgly")])
 metadata/_custom_type_script = "uid://clf7vf564kpgq"
 
@@ -92,7 +93,7 @@ metadata/_custom_type_script = "uid://b70xtb2eos81q"
 script = ExtResource("8_el4pe")
 contact_damage = 25
 contact_cooldown = 4.0
-contact_knockback = 150.0
+contact_knockback = 100.0
 metadata/_custom_type_script = "uid://rg6n5h53gu5k"
 
 [sub_resource type="Resource" id="Resource_25ord"]
@@ -111,6 +112,7 @@ metadata/_custom_type_script = "uid://bbyqng0l5d8mh"
 script = ExtResource("14_xr3bg")
 active_image = ExtResource("12_j2188")
 inactive_image = ExtResource("13_jx3t2")
+setup_image = ExtResource("21_el4pe")
 metadata/_custom_type_script = "uid://bpymebmol4evd"
 
 [resource]
