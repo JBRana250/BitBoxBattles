@@ -1,9 +1,7 @@
-extends Button
+extends RetryButton
 
-@export var battle_setup_menu: Control
 @export var on_victory_menu: HBoxContainer
 
 func _on_pressed() -> void:
-	Engine.time_scale = 1.0
-	battle_setup_menu.visible = true
 	on_victory_menu.visible = false
+	_retry()
