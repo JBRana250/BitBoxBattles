@@ -1,6 +1,6 @@
 class_name RetryButton extends Button
 
-@export var battle_setup_menu: Control
+@export var battle_setup_menu: BattleSetup
 @export var curtains: Curtains
 
 func _on_pressed() -> void:
