@@ -39,6 +39,7 @@ folder_colors={
 "res://fighter_creator/": "pink",
 "res://global/": "yellow",
 "res://important_resources/": "orange",
+"res://shaders/": "gray",
 "res://textures/": "gray",
 "res://themes/": "purple"
 }

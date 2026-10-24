@@ -13,6 +13,9 @@ https://opengameart.org/content/hit-animation-2-frame-by-frame
 Hit flash shader - dimensionalmios on GodotShaders.com
 https://godotshaders.com/shader/hit-flash-with-rhythm-patterns/
 
+Double Dither shader - nojoule on GodotShaders.com
+https://godotshaders.com/shader/double-dither-stylized-transparency-shadows-retro-masks/
+
 Hit sound effects - Universfield on Pixabay
 Sound Effect by <a href="https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&
 utm_medium=referral&utm_campaign=music&utm_content=567196">Official Profile</a> from <a href="https://pixabay.com

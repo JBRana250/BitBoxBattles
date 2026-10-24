@@ -14,12 +14,13 @@
 [ext_resource type="Script" uid="uid://bgb5jwns30d2e" path="res://battle/pause_menu/pause_menu.gd" id="11_rgsk0"]
 [ext_resource type="Script" uid="uid://bsvv7sv48mec2" path="res://battle/battle_setup.gd" id="12_2t7ue"]
 [ext_resource type="Script" uid="uid://b5bgwuhwkgq4u" path="res://battle/pause_menu/paused_retry_button.gd" id="12_eu6g2"]
-[ext_resource type="Shader" uid="uid://8nqt4gg7d15" path="res://battle/fighter/pulse_shader/pulse.gdshader" id="12_xmbur"]
+[ext_resource type="Shader" uid="uid://8nqt4gg7d15" path="res://shaders/pulse.gdshader" id="12_xmbur"]
 [ext_resource type="Script" uid="uid://c5aiwuhvnquby" path="res://battle/pause_menu/resume_button.gd" id="13_t8p1f"]
 [ext_resource type="Texture2D" uid="uid://bsqctw6duiwt5" path="res://textures/unknown splash.png" id="14_as1q7"]
 [ext_resource type="Script" uid="uid://08k437rqynhu" path="res://battle/on_victory_menu/on_victory_menu.gd" id="14_tkkqt"]
 [ext_resource type="Script" uid="uid://bqc5pdtjjd6jg" path="res://battle/on_victory_menu/on_victory_create_button.gd" id="16_a56dj"]
 [ext_resource type="Texture2D" uid="uid://c5dx5eeyfdj3k" path="res://textures/fighter_corner.png" id="16_as1q7"]
+[ext_resource type="Shader" uid="uid://1t2j78lk2nk6" path="res://shaders/double_dither.gdshader" id="17_45gir"]
 [ext_resource type="Theme" uid="uid://vurjv1gvv8k" path="res://themes/battle.tres" id="17_dxsh4"]
 [ext_resource type="Texture2D" uid="uid://c6ydy1hsrpknf" path="res://textures/fight_button/stand.png" id="17_kc5qh"]
 [ext_resource type="Texture2D" uid="uid://368etdn0gbrj" path="res://textures/fight_button/button.png" id="18_1e446"]
@@ -27,6 +28,7 @@
 [ext_resource type="Script" uid="uid://goe8f14nwnw0" path="res://battle/fighter_menu/fighter_menu.gd" id="19_ihybe"]
 [ext_resource type="Script" uid="uid://b2f1d03gu37ec" path="res://battle/setup_fighter_button.gd" id="19_ju8jl"]
 [ext_resource type="PackedScene" uid="uid://ddarcnyau851b" path="res://battle/fighter_menu/fighter_option.tscn" id="19_sf8fp"]
+[ext_resource type="Texture2D" uid="uid://bo8bwioext41y" path="res://textures/display_sign.png" id="20_1e446"]
 [ext_resource type="Resource" uid="uid://82lu7qbnryuy" path="res://important_resources/fighter_profiles.tres" id="20_220ih"]
 [ext_resource type="Script" uid="uid://d01buyhtgthea" path="res://battle/fight_button.gd" id="20_xmbur"]
 [ext_resource type="Script" uid="uid://did2wehuqotfa" path="res://battle/curtains.gd" id="24_7njrs"]
@@ -209,6 +211,73 @@ _data = {
 &"setup_intro_animB": SubResource("Animation_45gir")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra0kn"]
+shader = ExtResource("17_45gir")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.0
+shader_parameter/pixel_size = 2.0
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/dither_offset = Vector2(2, 0)
+shader_parameter/bayer_size = 2
+shader_parameter/interpolate = false
+shader_parameter/invert = false
+shader_parameter/falloff = 0.65000002761512
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_rtunx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2r8ok"]
+resource_name = "display_change_anim"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.50000030875]
+}
+
+[sub_resource type="Animation" id="Animation_lc3t0"]
+resource_name = "static_to_display"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.50000030875, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_58keo"]
+_data = {
+&"RESET": SubResource("Animation_rtunx"),
+&"display_to_static": SubResource("Animation_2r8ok"),
+&"static_to_display": SubResource("Animation_lc3t0")
+}
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q5qh1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ws2t2"]
@@ -227,9 +296,19 @@ shader_parameter/blinks = 4.0
 shader_parameter/pulse_speed = 0.50000001723023
 shader_parameter/edge_glow = 1.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_phvbk"]
-font = ExtResource("2_tiqy5")
-font_size = 64
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45gir"]
+resource_local_to_scene = true
+shader = ExtResource("17_45gir")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.0
+shader_parameter/pixel_size = 2.0
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/dither_offset = Vector2(2, 0)
+shader_parameter/bayer_size = 2
+shader_parameter/interpolate = false
+shader_parameter/invert = false
+shader_parameter/falloff = 0.65000002761512
+shader_parameter/color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kc5qh"]
 shader = ExtResource("12_xmbur")
@@ -286,6 +365,10 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgsx2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qxe4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_phvbk"]
+font = ExtResource("2_tiqy5")
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_sf8fp"]
 font = ExtResource("2_tiqy5")
@@ -569,7 +652,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="FighterOne" type="Button" parent="CanvasLayer/BattleSetup" unique_id=2136616644 node_paths=PackedStringArray("fighter_menu", "fighter_label", "fighter_texture_rect", "anim_player")]
+[node name="FighterOne" type="Button" parent="CanvasLayer/BattleSetup" unique_id=2136616644 node_paths=PackedStringArray("fighter_menu", "fighter_label", "fighter_texture_rect", "anim_player", "display_anim_player")]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 180.0
@@ -584,6 +667,7 @@ fighter_menu = NodePath("../../FighterMenu")
 fighter_label = NodePath("FighterOneLabel")
 fighter_texture_rect = NodePath("FighterTexture")
 anim_player = NodePath("FighterAnimationPlayer")
+display_anim_player = NodePath("FighterDisplayAnimPlayer")
 type = "A"
 hover_flash_amount = 0.25
 
@@ -602,14 +686,24 @@ pivot_offset = Vector2(390, 390)
 texture = ExtResource("14_as1q7")
 expand_mode = 1
 
+[node name="displaysign" type="TextureRect" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=1309177241]
+layout_mode = 0
+offset_left = 35.0
+offset_top = -176.0
+offset_right = 598.0
+offset_bottom = 186.0
+texture = ExtResource("20_1e446")
+expand_mode = 1
+
 [node name="FighterOneLabel" type="Label" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=279484243]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -327.0
-offset_right = 327.0
-offset_bottom = 111.0
+offset_left = -396.0
+offset_top = -155.0
+offset_right = 258.0
+offset_bottom = -44.0
 grow_horizontal = 2
 text = "Choose a Fighter"
 label_settings = SubResource("LabelSettings_ra0kn")
@@ -619,7 +713,18 @@ vertical_alignment = 1
 [node name="FighterAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=670934395]
 libraries/ = SubResource("AnimationLibrary_as1q7")
 
-[node name="FighterTwo" type="Button" parent="CanvasLayer/BattleSetup" unique_id=791736188 node_paths=PackedStringArray("fighter_menu", "fighter_label", "fighter_texture_rect", "anim_player")]
+[node name="Static" type="ColorRect" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=1690824910]
+material = SubResource("ShaderMaterial_ra0kn")
+layout_mode = 0
+offset_left = 140.0
+offset_top = -142.0
+offset_right = 493.0
+offset_bottom = -64.0
+
+[node name="FighterDisplayAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=1383909011]
+libraries/ = SubResource("AnimationLibrary_58keo")
+
+[node name="FighterTwo" type="Button" parent="CanvasLayer/BattleSetup" unique_id=791736188 node_paths=PackedStringArray("fighter_menu", "fighter_label", "fighter_texture_rect", "anim_player", "display_anim_player")]
 layout_mode = 0
 offset_left = 1047.0
 offset_top = 178.0
@@ -634,6 +739,7 @@ fighter_menu = NodePath("../../FighterMenu")
 fighter_label = NodePath("FighterTwoLabel")
 fighter_texture_rect = NodePath("FighterTexture")
 anim_player = NodePath("FighterAnimationPlayer")
+display_anim_player = NodePath("FighterDisplayAnimPlayer")
 type = "B"
 hover_flash_amount = 0.25
 
@@ -652,14 +758,24 @@ texture = ExtResource("14_as1q7")
 expand_mode = 1
 flip_h = true
 
+[node name="displaysign" type="TextureRect" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=1206015841]
+layout_mode = 0
+offset_left = 197.0
+offset_top = -168.0
+offset_right = 760.0
+offset_bottom = 194.0
+texture = ExtResource("20_1e446")
+expand_mode = 1
+
 [node name="FighterTwoLabel" type="Label" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=1582143036]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -327.0
-offset_right = 327.0
-offset_bottom = 111.0
+offset_left = -234.0
+offset_top = -147.0
+offset_right = 420.0
+offset_bottom = -36.0
 grow_horizontal = 2
 text = "Choose a Fighter"
 label_settings = SubResource("LabelSettings_ra0kn")
@@ -669,16 +785,16 @@ vertical_alignment = 1
 [node name="FighterAnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=104116506]
 libraries/ = SubResource("AnimationLibrary_as1q7")
 
-[node name="BattleSetupTitle" type="Label" parent="CanvasLayer/BattleSetup" unique_id=205284719]
+[node name="FighterDisplayAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=379449696]
+libraries/ = SubResource("AnimationLibrary_58keo")
+
+[node name="Static" type="ColorRect" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=226301153]
+material = SubResource("ShaderMaterial_45gir")
 layout_mode = 0
-offset_left = 494.0
-offset_top = 20.0
-offset_right = 1442.0
-offset_bottom = 172.0
-text = "Setup Battle"
-label_settings = SubResource("LabelSettings_phvbk")
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 304.0
+offset_top = -135.0
+offset_right = 657.0
+offset_bottom = -57.0
 
 [node name="FightButton" type="Control" parent="CanvasLayer/BattleSetup" unique_id=2055331456]
 anchors_preset = 0
@@ -742,6 +858,31 @@ button_texture_rect = NodePath("../Button")
 holder_texture_rect = NodePath("../Holder")
 fight_button_anim_player = NodePath("../FightButtonAnimPlayer")
 hover_flash_amount = 0.15
+
+[node name="BattleSetupTitle" type="Control" parent="CanvasLayer/BattleSetup" unique_id=1756173986]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BattleSetup/BattleSetupTitle" unique_id=1262639579]
+layout_mode = 0
+offset_left = 587.0
+offset_top = -22.0
+offset_right = 1339.0
+offset_bottom = 627.0
+texture = ExtResource("20_1e446")
+expand_mode = 1
+
+[node name="BattleSetupTitle" type="Label" parent="CanvasLayer/BattleSetup/BattleSetupTitle" unique_id=205284719]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 37.0
+offset_right = 1442.0
+offset_bottom = 189.0
+text = "Setup Battle"
+label_settings = SubResource("LabelSettings_phvbk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="FighterMenu" type="Control" parent="CanvasLayer" unique_id=641071806 node_paths=PackedStringArray("fighter_options_hflow")]
 visible = false

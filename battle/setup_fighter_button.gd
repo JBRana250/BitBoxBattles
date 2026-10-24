@@ -4,6 +4,7 @@ class_name FighterSetupButton extends Button
 @export var fighter_label: Label
 @export var fighter_texture_rect: TextureRect
 @export var anim_player: AnimationPlayer
+@export var display_anim_player: AnimationPlayer
 @export var type: String
 
 @onready var fighter_chosen: bool = false
@@ -21,7 +22,10 @@ func _on_mouse_exited() -> void:
 	set_hover_pulse(false)
 
 func choose_fighter(profile: FighterProfile):
+	display_anim_player.play("display_to_static")
+	await display_anim_player.animation_finished
 	fighter_label.text = profile.init_resource.fighter_id
+	display_anim_player.play("static_to_display")
 	if profile.texture_resource.setup_image:
 		fighter_texture_rect.texture = profile.texture_resource.setup_image
 	else:
