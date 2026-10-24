@@ -22,16 +22,20 @@ func _on_mouse_exited() -> void:
 	set_hover_pulse(false)
 
 func choose_fighter(profile: FighterProfile):
-	display_anim_player.play("display_to_static")
-	await display_anim_player.animation_finished
-	fighter_label.text = profile.init_resource.fighter_id
-	display_anim_player.play("static_to_display")
+	change_display_name(profile)
 	if profile.texture_resource.setup_image:
 		fighter_texture_rect.texture = profile.texture_resource.setup_image
 	else:
 		fighter_texture_rect.texture = profile.texture_resource.active_image
 	fighter_profile = profile
 	play_ready_animation()
+
+func change_display_name(profile: FighterProfile) -> void:
+	display_anim_player.play("display_to_static")
+	await display_anim_player.animation_finished
+	fighter_label.text = profile.init_resource.fighter_id
+	display_anim_player.play("static_to_display")
+	
 
 func get_fighter_profile() -> FighterProfile:
 	return fighter_profile
