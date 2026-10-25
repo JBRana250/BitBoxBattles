@@ -839,6 +839,14 @@ battle_setup_bg = NodePath("../BattleSetupBG")
 type = "A"
 hover_flash_amount = 0.25
 
+[node name="holder" type="ColorRect" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=716109832]
+layout_mode = 0
+offset_left = 289.0
+offset_top = -182.0
+offset_right = 337.0
+offset_bottom = -142.0
+color = Color(0.10980392, 0.10980392, 0.10980392, 1)
+
 [node name="FighterTexture" type="TextureRect" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=1249035118]
 material = SubResource("ShaderMaterial_ju8jl")
 layout_mode = 1
@@ -911,6 +919,14 @@ display_anim_player = NodePath("FighterDisplayAnimPlayer")
 battle_setup_bg = NodePath("../BattleSetupBG")
 type = "B"
 hover_flash_amount = 0.25
+
+[node name="holder" type="ColorRect" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=2086034964]
+layout_mode = 0
+offset_left = 451.0
+offset_top = -179.0
+offset_right = 499.0
+offset_bottom = -139.0
+color = Color(0.10980392, 0.10980392, 0.10980392, 1)
 
 [node name="FighterTexture" type="TextureRect" parent="CanvasLayer/BattleSetup/FighterTwo" unique_id=1628877097]
 material = SubResource("ShaderMaterial_xmbur")
@@ -1032,6 +1048,14 @@ hover_flash_amount = 0.15
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="holder" type="ColorRect" parent="CanvasLayer/BattleSetup/BattleSetupTitle" unique_id=1526525596]
+layout_mode = 0
+offset_left = 904.0
+offset_top = -4.0
+offset_right = 1016.0
+offset_bottom = 36.0
+color = Color(0.10980392, 0.10980392, 0.10980392, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BattleSetup/BattleSetupTitle" unique_id=1262639579]
 layout_mode = 0
