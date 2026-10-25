@@ -40,6 +40,73 @@ size = Vector2(20, 750)
 font = ExtResource("2_tiqy5")
 font_size = 72
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra0kn"]
+shader = ExtResource("17_45gir")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.0
+shader_parameter/pixel_size = 2.0
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/dither_offset = Vector2(2, 0)
+shader_parameter/bayer_size = 2
+shader_parameter/interpolate = false
+shader_parameter/invert = false
+shader_parameter/falloff = 0.65000002761512
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_rtunx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2r8ok"]
+resource_name = "display_change_anim"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.50000030875]
+}
+
+[sub_resource type="Animation" id="Animation_lc3t0"]
+resource_name = "static_to_display"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.50000030875, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_58keo"]
+_data = {
+&"RESET": SubResource("Animation_rtunx"),
+&"display_to_static": SubResource("Animation_2r8ok"),
+&"static_to_display": SubResource("Animation_lc3t0")
+}
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ra0kn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vjyn1"]
@@ -209,73 +276,6 @@ _data = {
 &"idle_ready_anim": SubResource("Animation_as1q7"),
 &"setup_intro_animA": SubResource("Animation_1e446"),
 &"setup_intro_animB": SubResource("Animation_45gir")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra0kn"]
-shader = ExtResource("17_45gir")
-shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/radius = 0.0
-shader_parameter/pixel_size = 2.0
-shader_parameter/resolution = Vector2(1920, 1080)
-shader_parameter/dither_offset = Vector2(2, 0)
-shader_parameter/bayer_size = 2
-shader_parameter/interpolate = false
-shader_parameter/invert = false
-shader_parameter/falloff = 0.65000002761512
-shader_parameter/color = Color(1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_rtunx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Static:material:shader_parameter/radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_2r8ok"]
-resource_name = "display_change_anim"
-length = 0.19999999999999998
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Static:material:shader_parameter/radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.19999999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.50000030875]
-}
-
-[sub_resource type="Animation" id="Animation_lc3t0"]
-resource_name = "static_to_display"
-length = 0.35
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Static:material:shader_parameter/radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.35),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [6.50000030875, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_58keo"]
-_data = {
-&"RESET": SubResource("Animation_rtunx"),
-&"display_to_static": SubResource("Animation_2r8ok"),
-&"static_to_display": SubResource("Animation_lc3t0")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q5qh1"]
@@ -590,16 +590,52 @@ script = ExtResource("5_as1q7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=164281733]
 
-[node name="Title" type="Label" parent="CanvasLayer" unique_id=710436953]
-offset_left = 436.0
-offset_top = 29.0
-offset_right = 1489.0
-offset_bottom = 146.0
+[node name="BattleTitle" type="Control" parent="CanvasLayer" unique_id=1884342671]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DisplaySign" type="NinePatchRect" parent="CanvasLayer/BattleTitle" unique_id=1665915727]
+layout_mode = 0
+offset_left = 564.0
+offset_top = 1.0
+offset_right = 1355.0
+offset_bottom = 144.0
+texture = ExtResource("20_1e446")
+region_rect = Rect2(163.2041, 63.7994, 698.8103, 274.37946)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Title" type="Label" parent="CanvasLayer/BattleTitle" unique_id=710436953 node_paths=PackedStringArray("display_anim_player")]
+custom_maximum_size = Vector2(740, 120)
+layout_mode = 0
+offset_left = 592.0
+offset_top = 17.0
+offset_right = 1332.0
+offset_bottom = 137.0
 mouse_filter = 1
-text = "BATTLE"
+text = "Battle"
 label_settings = SubResource("LabelSettings_mqutd")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 5
 script = ExtResource("3_4mnim")
+display_anim_player = NodePath("../DisplayAnimPlayer")
+
+[node name="Static" type="ColorRect" parent="CanvasLayer/BattleTitle" unique_id=640868919]
+material = SubResource("ShaderMaterial_ra0kn")
+layout_mode = 0
+offset_left = 592.0
+offset_top = 24.0
+offset_right = 1327.0
+offset_bottom = 125.0
+
+[node name="DisplayAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/BattleTitle" unique_id=1688390062]
+libraries/ = SubResource("AnimationLibrary_58keo")
 
 [node name="OnVictoryMenu" type="HBoxContainer" parent="CanvasLayer" unique_id=2141523448]
 visible = false
@@ -632,6 +668,7 @@ on_victory_menu = NodePath("..")
 scene_path = "res://fighter_creator/fighter_creator.tscn"
 
 [node name="BattleSetup" type="Control" parent="CanvasLayer" unique_id=2114394733 node_paths=PackedStringArray("fighter_one", "fighter_two")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
