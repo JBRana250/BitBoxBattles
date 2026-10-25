@@ -12,12 +12,13 @@
 [ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://themes/default.theme" id="10_hvjow"]
 [ext_resource type="Script" uid="uid://kgatr1mesxo0" path="res://title/nav_button.gd" id="11_qybyd"]
 [ext_resource type="Script" uid="uid://bgb5jwns30d2e" path="res://battle/pause_menu/pause_menu.gd" id="11_rgsk0"]
-[ext_resource type="Script" uid="uid://bsvv7sv48mec2" path="res://battle/battle_setup.gd" id="12_2t7ue"]
+[ext_resource type="Script" uid="uid://bsvv7sv48mec2" path="res://battle/battle_setup/battle_setup.gd" id="12_2t7ue"]
 [ext_resource type="Script" uid="uid://b5bgwuhwkgq4u" path="res://battle/pause_menu/paused_retry_button.gd" id="12_eu6g2"]
 [ext_resource type="Shader" uid="uid://8nqt4gg7d15" path="res://shaders/pulse.gdshader" id="12_xmbur"]
 [ext_resource type="Script" uid="uid://c5aiwuhvnquby" path="res://battle/pause_menu/resume_button.gd" id="13_t8p1f"]
 [ext_resource type="Texture2D" uid="uid://bsqctw6duiwt5" path="res://textures/unknown splash.png" id="14_as1q7"]
 [ext_resource type="Script" uid="uid://08k437rqynhu" path="res://battle/on_victory_menu/on_victory_menu.gd" id="14_tkkqt"]
+[ext_resource type="Script" uid="uid://bhe2vo34n2b65" path="res://battle/battle_setup/battle_setup_bg.gd" id="15_nuj1b"]
 [ext_resource type="Script" uid="uid://bqc5pdtjjd6jg" path="res://battle/on_victory_menu/on_victory_create_button.gd" id="16_a56dj"]
 [ext_resource type="Texture2D" uid="uid://c5dx5eeyfdj3k" path="res://textures/fighter_corner.png" id="16_as1q7"]
 [ext_resource type="Shader" uid="uid://1t2j78lk2nk6" path="res://shaders/double_dither.gdshader" id="17_45gir"]
@@ -25,13 +26,14 @@
 [ext_resource type="Texture2D" uid="uid://c6ydy1hsrpknf" path="res://textures/fight_button/stand.png" id="17_kc5qh"]
 [ext_resource type="Texture2D" uid="uid://368etdn0gbrj" path="res://textures/fight_button/button.png" id="18_1e446"]
 [ext_resource type="Texture2D" uid="uid://hjkmji85u0v0" path="res://textures/fight_button/button_holder.png" id="19_45gir"]
-[ext_resource type="Script" uid="uid://goe8f14nwnw0" path="res://battle/fighter_menu/fighter_menu.gd" id="19_ihybe"]
-[ext_resource type="Script" uid="uid://b2f1d03gu37ec" path="res://battle/setup_fighter_button.gd" id="19_ju8jl"]
-[ext_resource type="PackedScene" uid="uid://ddarcnyau851b" path="res://battle/fighter_menu/fighter_option.tscn" id="19_sf8fp"]
+[ext_resource type="Script" uid="uid://goe8f14nwnw0" path="res://battle/battle_setup/fighter_menu/fighter_menu.gd" id="19_ihybe"]
+[ext_resource type="Script" uid="uid://b2f1d03gu37ec" path="res://battle/battle_setup/setup_fighter_button.gd" id="19_ju8jl"]
+[ext_resource type="PackedScene" uid="uid://ddarcnyau851b" path="res://battle/battle_setup/fighter_menu/fighter_option.tscn" id="19_sf8fp"]
 [ext_resource type="Texture2D" uid="uid://bo8bwioext41y" path="res://textures/display_sign.png" id="20_1e446"]
 [ext_resource type="Resource" uid="uid://82lu7qbnryuy" path="res://important_resources/fighter_profiles.tres" id="20_220ih"]
-[ext_resource type="Script" uid="uid://d01buyhtgthea" path="res://battle/fight_button.gd" id="20_xmbur"]
-[ext_resource type="Script" uid="uid://did2wehuqotfa" path="res://battle/curtains.gd" id="24_7njrs"]
+[ext_resource type="Script" uid="uid://d01buyhtgthea" path="res://battle/battle_setup/fight_button.gd" id="20_xmbur"]
+[ext_resource type="Shader" uid="uid://dk3b2nkq600aq" path="res://shaders/sawtooth.gdshader" id="22_upqw6"]
+[ext_resource type="Script" uid="uid://did2wehuqotfa" path="res://battle/battle_setup/curtains.gd" id="24_7njrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0kn"]
 size = Vector2(20, 750)
@@ -105,6 +107,98 @@ _data = {
 &"RESET": SubResource("Animation_rtunx"),
 &"display_to_static": SubResource("Animation_2r8ok"),
 &"static_to_display": SubResource("Animation_lc3t0")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nuj1b"]
+shader = ExtResource("22_upqw6")
+shader_parameter/horizontal = true
+shader_parameter/reverse = true
+shader_parameter/wave_size = 0.10000000475
+shader_parameter/wave_freq = 0.075
+shader_parameter/cutoff = 1.0
+shader_parameter/aspect = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_upqw6"]
+shader = ExtResource("22_upqw6")
+shader_parameter/horizontal = true
+shader_parameter/reverse = false
+shader_parameter/wave_size = 0.10000000475
+shader_parameter/wave_freq = 0.075
+shader_parameter/cutoff = 1.0
+shader_parameter/aspect = 0.5
+
+[sub_resource type="Animation" id="Animation_jgq81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueFighterBG:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_58keo"]
+resource_name = "blue_fighter_wave_start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueFighterBG:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.05),
+"update": 0,
+"values": [1.0, 0.30000001425]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jgq81"]
+_data = {
+&"RESET": SubResource("Animation_jgq81"),
+&"blue_fighter_wave_start": SubResource("Animation_58keo")
+}
+
+[sub_resource type="Animation" id="Animation_ycmbc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedFighterBG:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_5wpbc"]
+resource_name = "red_fighter_wave_start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedFighterBG:material:shader_parameter/cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.05),
+"update": 0,
+"values": [1.0, 0.450000021375]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b7ybl"]
+_data = {
+&"RESET": SubResource("Animation_ycmbc"),
+&"red_fighter_wave_start": SubResource("Animation_5wpbc")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ra0kn"]
@@ -668,7 +762,6 @@ on_victory_menu = NodePath("..")
 scene_path = "res://fighter_creator/fighter_creator.tscn"
 
 [node name="BattleSetup" type="Control" parent="CanvasLayer" unique_id=2114394733 node_paths=PackedStringArray("fighter_one", "fighter_two")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -680,7 +773,18 @@ script = ExtResource("12_2t7ue")
 fighter_one = NodePath("FighterOne")
 fighter_two = NodePath("FighterTwo")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/BattleSetup" unique_id=831935897]
+[node name="BattleSetupBG" type="Control" parent="CanvasLayer/BattleSetup" unique_id=246747720 node_paths=PackedStringArray("blue_bg_anim_player", "red_bg_anim_player")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_nuj1b")
+blue_bg_anim_player = NodePath("BlueBGAnimPlayer")
+red_bg_anim_player = NodePath("RedBGAnimPlayer")
+
+[node name="BlackBG" type="ColorRect" parent="CanvasLayer/BattleSetup/BattleSetupBG" unique_id=831935897]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -689,7 +793,33 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="FighterOne" type="Button" parent="CanvasLayer/BattleSetup" unique_id=2136616644 node_paths=PackedStringArray("fighter_menu", "fighter_label", "fighter_texture_rect", "anim_player", "display_anim_player")]
+[node name="BlueFighterBG" type="ColorRect" parent="CanvasLayer/BattleSetup/BattleSetupBG" unique_id=286864538]
+material = SubResource("ShaderMaterial_nuj1b")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.39215687, 1)
+
+[node name="RedFighterBG" type="ColorRect" parent="CanvasLayer/BattleSetup/BattleSetupBG" unique_id=1522408985]
+material = SubResource("ShaderMaterial_upqw6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39215687, 0, 0, 1)
+
+[node name="BlueBGAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/BattleSetup/BattleSetupBG" unique_id=224785345]
+libraries/ = SubResource("AnimationLibrary_jgq81")
+
+[node name="RedBGAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/BattleSetup/BattleSetupBG" unique_id=663121329]
+libraries/ = SubResource("AnimationLibrary_b7ybl")
+
+[node name="FighterOne" type="Button" parent="CanvasLayer/BattleSetup" unique_id=2136616644 node_paths=PackedStringArray("fighter_menu", "fighter_label", "fighter_texture_rect", "anim_player", "display_anim_player", "battle_setup_bg")]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 180.0
@@ -705,6 +835,7 @@ fighter_label = NodePath("FighterOneLabel")
 fighter_texture_rect = NodePath("FighterTexture")
 anim_player = NodePath("FighterAnimationPlayer")
 display_anim_player = NodePath("FighterDisplayAnimPlayer")
+battle_setup_bg = NodePath("../BattleSetupBG")
 type = "A"
 hover_flash_amount = 0.25
 
@@ -761,7 +892,7 @@ offset_bottom = -64.0
 [node name="FighterDisplayAnimPlayer" type="AnimationPlayer" parent="CanvasLayer/BattleSetup/FighterOne" unique_id=1383909011]
 libraries/ = SubResource("AnimationLibrary_58keo")
 
-[node name="FighterTwo" type="Button" parent="CanvasLayer/BattleSetup" unique_id=791736188 node_paths=PackedStringArray("fighter_menu", "fighter_label", "fighter_texture_rect", "anim_player", "display_anim_player")]
+[node name="FighterTwo" type="Button" parent="CanvasLayer/BattleSetup" unique_id=791736188 node_paths=PackedStringArray("fighter_menu", "fighter_label", "fighter_texture_rect", "anim_player", "display_anim_player", "battle_setup_bg")]
 layout_mode = 0
 offset_left = 1047.0
 offset_top = 178.0
@@ -777,6 +908,7 @@ fighter_label = NodePath("FighterTwoLabel")
 fighter_texture_rect = NodePath("FighterTexture")
 anim_player = NodePath("FighterAnimationPlayer")
 display_anim_player = NodePath("FighterDisplayAnimPlayer")
+battle_setup_bg = NodePath("../BattleSetupBG")
 type = "B"
 hover_flash_amount = 0.25
 

@@ -5,6 +5,7 @@ class_name FighterSetupButton extends Button
 @export var fighter_texture_rect: TextureRect
 @export var anim_player: AnimationPlayer
 @export var display_anim_player: AnimationPlayer
+@export var battle_setup_bg: BattleSetupBG
 @export var type: String
 
 @onready var fighter_chosen: bool = false
@@ -28,6 +29,16 @@ func choose_fighter(profile: FighterProfile):
 	change_display_name(profile)
 	await play_fighter_change_animation(profile)
 	play_ready_animation(profile)
+	
+	if fighter_chosen:
+		return
+	
+	if type == "A":
+		battle_setup_bg.play_blue_bg()
+	else:
+		battle_setup_bg.play_red_bg()
+	
+	fighter_chosen = true
 
 func play_fighter_change_animation(profile: FighterProfile) -> void:
 	anim_player.play_backwards("setup_intro_anim" + type)

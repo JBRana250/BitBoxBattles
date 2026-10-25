@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ddarcnyau851b"]
 
-[ext_resource type="Script" uid="uid://yauxkd3cjgmm" path="res://battle/fighter_menu/fighter_option.gd" id="1_4y7y0"]
+[ext_resource type="Script" uid="uid://yauxkd3cjgmm" path="res://battle/battle_setup/fighter_menu/fighter_option.gd" id="1_4y7y0"]
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="1_kh3q8"]
 [ext_resource type="Texture2D" uid="uid://dx2yqcwpf1bmq" path="res://textures/cropped_fighter.png" id="2_kh3q8"]
 
