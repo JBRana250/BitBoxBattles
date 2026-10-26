@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bhlkjhb2trj5u" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_graphnode.tscn" id="2_r1u37"]
 [ext_resource type="PackedScene" uid="uid://bjog6lpfgpuno" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_sprites_graphnode.tscn" id="3_ixpcg"]
 [ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_abilities_graphnode.tscn" id="4_g0213"]
+[ext_resource type="PackedScene" uid="uid://c2qmsvra8ogxh" path="res://battle/fighter/eca_framework/events/repeating_timer_event.tscn" id="4_uqm0g"]
+[ext_resource type="Script" uid="uid://cv68g6fsg3bnu" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/repeating_timer_event_node.gd" id="5_nrvvc"]
 
 [sub_resource type="Resource" id="Resource_kj607"]
 script = ExtResource("1_jycob")
@@ -20,10 +22,17 @@ graph_node_name = "Fighter Base Sprites"
 position_offset = Vector2(500, 550)
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 
+[sub_resource type="Resource" id="Resource_dxequ"]
+script = ExtResource("5_nrvvc")
+graph_node_scene = ExtResource("4_uqm0g")
+graph_node_name = "Repeated Timer Event"
+metadata/_custom_type_script = "uid://cv68g6fsg3bnu"
+
 [sub_resource type="Resource" id="Resource_l4my3"]
 script = ExtResource("1_jycob")
 graph_node_scene = ExtResource("4_g0213")
 graph_node_name = "Fighter Abilities"
+connected_nodes = Array[ExtResource("1_jycob")]([SubResource("Resource_dxequ")])
 position_offset = Vector2(500, 900)
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 

@@ -1,14 +1,6 @@
 [gd_scene format=3 uid="uid://p12n3hbyafh7"]
 
 [ext_resource type="Script" uid="uid://hsd15ik6cjje" path="res://fighter_creator/workspace/nodes/graph_node_scripts/state_graph_node.gd" id="1_t4a3m"]
-[ext_resource type="Script" uid="uid://qs3vcnlh5jvs" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/state_node_resource.gd" id="2_rn6ej"]
-
-[sub_resource type="Resource" id="Resource_wsq7n"]
-script = ExtResource("2_rn6ej")
-state = 1
-graph_node_scene = null
-graph_node_name = "State"
-metadata/_custom_type_script = "uid://qs3vcnlh5jvs"
 
 [node name="InactiveState" type="GraphNode" unique_id=1145134151]
 title = "State"
@@ -23,7 +15,6 @@ slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_t4a3m")
 state = 1
-node_resource = SubResource("Resource_wsq7n")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=14695670]
 layout_mode = 2
