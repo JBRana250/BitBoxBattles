@@ -5,7 +5,14 @@
 [ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="2_47pta"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_ce041"]
 [ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="3_ce041"]
+[ext_resource type="Script" uid="uid://beshw8nic01n4" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/accel_dash_action_node.gd" id="3_y0n2k"]
 [ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="6_5b7no"]
+
+[sub_resource type="Resource" id="Resource_el4pe"]
+script = ExtResource("3_y0n2k")
+graph_node_scene = null
+graph_node_name = "Accel Dash Action"
+metadata/_custom_type_script = "uid://beshw8nic01n4"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w17tl"]
 bg_color = Color(0, 0.8745098, 0.38039216, 1)
@@ -61,6 +68,7 @@ script = ExtResource("1_ce041")
 force_progbar = NodePath("Properties/Force/MarginContainer/VBoxContainer/ProgressBar")
 slot = ExtResource("2_ce041")
 output_slot_color = Color(0, 1, 0, 1)
+node_resource = SubResource("Resource_el4pe")
 
 [node name="Properties" type="PanelContainer" parent="." unique_id=1731946883]
 layout_mode = 2

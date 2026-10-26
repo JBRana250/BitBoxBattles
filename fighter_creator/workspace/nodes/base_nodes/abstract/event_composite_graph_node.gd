@@ -5,6 +5,6 @@ func process_event() -> Event:
 
 func get_actions() -> Array[Action]:
 	var actions: Array[Action] = []
-	for action_node: ActionCompositeGraphNode in output_nodes:
+	for action_node: ActionCompositeGraphNode in output_nodes.values():
 		actions.append(action_node.process_action())
 	return actions

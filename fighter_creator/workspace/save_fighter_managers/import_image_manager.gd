@@ -6,19 +6,27 @@ enum FighterSpriteType {
 }
 
 @export var fighter_sprite_type: FighterSpriteType
+@export var image: TextureRect
 @export var viewport: SubViewport
 
 func get_sprite() -> ImageTexture:
-	
-	# Wait for Godot to complete the current render frame
 	await RenderingServer.frame_post_draw
 	
-	# 1. Grab the rendered texture from the SubViewport
 	var viewport_tex = viewport.get_texture()
 	var img = viewport_tex.get_image()
 	
-	# 2. Ensure transparency / alpha channel is preserved
 	img.convert(Image.FORMAT_RGBA8)
 	
-	# 3. Return an ImageTexture if you want to use it directly in-game
 	return ImageTexture.create_from_image(img)
+
+func set_sprite(texture: Texture, position: Vector2, scale: Vector2) -> void:
+	image.texture = texture
+	image.position = position
+	image.scale = scale
+
+func get_properties() -> Dictionary:
+	return {
+		"texture": image.texture,
+		"position": image.position,
+		"scale": image.scale
+	}

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="NodeResource" format=3 uid="uid://dp7mfg3j7qjob"]
+
+[ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/node_resource.gd" id="1_jycob"]
+[ext_resource type="PackedScene" uid="uid://c5hclxce3idvn" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_stats_graphnode.tscn" id="2_dxequ"]
+[ext_resource type="PackedScene" uid="uid://bhlkjhb2trj5u" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_graphnode.tscn" id="2_r1u37"]
+[ext_resource type="PackedScene" uid="uid://bjog6lpfgpuno" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_sprites_graphnode.tscn" id="3_ixpcg"]
+[ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_abilities_graphnode.tscn" id="4_g0213"]
+
+[sub_resource type="Resource" id="Resource_kj607"]
+script = ExtResource("1_jycob")
+graph_node_scene = ExtResource("2_dxequ")
+graph_node_name = "Fighter Base Stats"
+position_offset = Vector2(500, 100)
+metadata/_custom_type_script = "uid://wvfaicrfo161"
+
+[sub_resource type="Resource" id="Resource_k1jmw"]
+script = ExtResource("1_jycob")
+graph_node_scene = ExtResource("3_ixpcg")
+graph_node_name = "Fighter Base Sprites"
+position_offset = Vector2(500, 550)
+metadata/_custom_type_script = "uid://wvfaicrfo161"
+
+[sub_resource type="Resource" id="Resource_l4my3"]
+script = ExtResource("1_jycob")
+graph_node_scene = ExtResource("4_g0213")
+graph_node_name = "Fighter Abilities"
+position_offset = Vector2(500, 900)
+metadata/_custom_type_script = "uid://wvfaicrfo161"
+
+[resource]
+script = ExtResource("1_jycob")
+graph_node_scene = ExtResource("2_r1u37")
+graph_node_name = "Fighter"
+connected_nodes = Array[ExtResource("1_jycob")]([SubResource("Resource_kj607"), SubResource("Resource_k1jmw"), SubResource("Resource_l4my3")])
+position_offset = Vector2(160, 570)
+metadata/_custom_type_script = "uid://wvfaicrfo161"

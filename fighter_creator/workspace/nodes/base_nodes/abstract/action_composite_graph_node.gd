@@ -5,6 +5,6 @@ func process_action() -> Action:
 
 func get_conditions() -> Array[Condition]:
 	var conditions: Array[Condition] = []
-	for condition_node: ConditionCompositeGraphNode in output_nodes:
+	for condition_node: ConditionCompositeGraphNode in output_nodes.values():
 		conditions.append(condition_node.process_condition())
 	return conditions

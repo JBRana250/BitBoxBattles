@@ -7,6 +7,6 @@ func process_condition() -> Condition:
 
 func get_states() -> Array[FighterStateMachine.State]:
 	var accepted_states: Array[FighterStateMachine.State] = []
-	for output_node: StateGraphNode in output_nodes:
+	for output_node: StateGraphNode in output_nodes.values():
 		accepted_states.append(output_node.state)
 	return accepted_states

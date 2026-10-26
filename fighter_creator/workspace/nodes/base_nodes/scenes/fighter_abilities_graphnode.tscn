@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://d7nsvke63fxb"]
+
+[ext_resource type="Script" uid="uid://dio6j25c7nf5o" path="res://fighter_creator/workspace/nodes/base_nodes/fighter_abilities_graphnode.gd" id="1_xm1rm"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_xm1rm"]
+[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="4_c7v2t"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="5_4j3a5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v8ccr"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v8ccr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7aum2"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ospfe"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+
+[node name="FighterAbilities" type="GraphNode" unique_id=645370397]
+offset_left = 354.9375
+offset_top = 694.6875
+offset_right = 818.9375
+offset_bottom = 937.6875
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+position_offset = Vector2(473.25, 926.25)
+title = "Fighter Abilities"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(0.79123324, 0.41937134, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_xm1rm")
+slot = ExtResource("2_xm1rm")
+
+[node name="FighterSlot0" type="Control" parent="." unique_id=146271004]
+layout_mode = 2
+
+[node name="AddEvent" type="PanelContainer" parent="." unique_id=1290931823]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AddEvent" unique_id=1522050918]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="AddEvent/HBoxContainer" unique_id=938104483]
+modulate = Color(0, 0.91779244, 0, 1)
+layout_mode = 2
+texture = ExtResource("4_c7v2t")
+expand_mode = 2
+
+[node name="Button" type="Label" parent="AddEvent/HBoxContainer" unique_id=1254654868]
+layout_mode = 2
+text = "Event"
+label_settings = SubResource("LabelSettings_v8ccr")
+vertical_alignment = 1
+
+[node name="AddEventButton" type="Button" parent="AddEvent" unique_id=568813639 node_paths=PackedStringArray("owner_node")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v8ccr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
+script = ExtResource("5_4j3a5")
+owner_node = NodePath("../..")
+
+[connection signal="pressed" from="AddEvent/AddEventButton" to="AddEvent/AddEventButton" method="_on_pressed"]

@@ -3,33 +3,24 @@
 [ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://themes/default.theme" id="1_bfom8"]
 [ext_resource type="LabelSettings" uid="uid://ssy37mkivlh4" path="res://themes/scene_header.tres" id="2_bfom8"]
 [ext_resource type="Script" uid="uid://kgatr1mesxo0" path="res://title/nav_button.gd" id="3_8g1jf"]
-[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="4_2cfr6"]
 [ext_resource type="Script" uid="uid://dnt6btjnq20h" path="res://fighter_creator/workspace/save_fighter_managers/save_fighter_button.gd" id="4_ospfe"]
 [ext_resource type="Resource" uid="uid://82lu7qbnryuy" path="res://important_resources/fighter_profiles.tres" id="5_0kk2c"]
-[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="5_e4q62"]
-[ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="5_hvy83"]
 [ext_resource type="Theme" uid="uid://t0356dc8uyvi" path="res://themes/fighter_workspace.tres" id="6_w17tl"]
 [ext_resource type="Script" uid="uid://b00qu3b3ric6m" path="res://fighter_creator/workspace/workspace.gd" id="7_4k6nc"]
-[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="7_hvy83"]
-[ext_resource type="Script" uid="uid://s848whytimwr" path="res://fighter_creator/import_player_image.gd" id="8_au8nn"]
-[ext_resource type="Script" uid="uid://dultqiu6evion" path="res://fighter_creator/imported_image_controller.gd" id="8_e0bke"]
-[ext_resource type="Script" uid="uid://dtdmle4hynxr7" path="res://fighter_creator/workspace/save_fighter_managers/base_stat_manager.gd" id="9_tirwg"]
-[ext_resource type="PackedScene" uid="uid://c55k6irkrvoyf" path="res://fighter_creator/file_dialog_image_downloads.tscn" id="10_pyiuw"]
-[ext_resource type="Script" uid="uid://cm63lxdka3b1a" path="res://fighter_creator/open_file_dialog_image_download.gd" id="10_v6bhd"]
-[ext_resource type="Script" uid="uid://re51mesvaa4b" path="res://fighter_creator/workspace/save_fighter_managers/import_image_manager.gd" id="13_5x8o3"]
-[ext_resource type="Script" uid="uid://bn3b1d3b8jdgj" path="res://fighter_creator/fighter_sprite_manager.gd" id="16_7aum2"]
-[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="18_v8ccr"]
+[ext_resource type="PackedScene" uid="uid://bhlkjhb2trj5u" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_graphnode.tscn" id="7_rdcvk"]
+[ext_resource type="PackedScene" uid="uid://c5hclxce3idvn" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_stats_graphnode.tscn" id="9_4yduf"]
+[ext_resource type="PackedScene" uid="uid://bjog6lpfgpuno" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_sprites_graphnode.tscn" id="10_pfspe"]
+[ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_abilities_graphnode.tscn" id="11_tirwg"]
 [ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_event_popup/add_event_popup_menu.gd" id="19_au8nn"]
-[ext_resource type="Script" uid="uid://e7dme8cl2jih" path="res://fighter_creator/workspace/nodes/base_nodes/fighter_abilities_graph_node.gd" id="19_nmg4h"]
-[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="19_tirwg"]
-[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="19_v6bhd"]
 [ext_resource type="Script" uid="uid://bku060rexjoog" path="res://fighter_creator/popups/add_event_popup/add_event_cancel_button.gd" id="20_pyiuw"]
 [ext_resource type="Script" uid="uid://caos305qgk772" path="res://fighter_creator/popups/add_event_popup/create_event_button.gd" id="21_e0bke"]
 [ext_resource type="Resource" uid="uid://bh1np0mqmlwtt" path="res://fighter_creator/workspace/nodes/graph_node_resources/repeating_timer_event_node.tres" id="22_5x8o3"]
 [ext_resource type="Script" uid="uid://b2qmdplex0fek" path="res://fighter_creator/popups/popup_menus.gd" id="22_pfspe"]
-[ext_resource type="Script" uid="uid://s0kpam316qdb" path="res://fighter_creator/workspace/save_fighter_managers/fighter_abilities_manager.gd" id="23_g7w7c"]
+[ext_resource type="Script" uid="uid://dstuhxcuediw6" path="res://fighter_creator/popups/profile_selection/new_fighter.gd" id="22_tirwg"]
+[ext_resource type="Resource" uid="uid://dp7mfg3j7qjob" path="res://fighter_creator/workspace/premade_workspaces/base_workspace.tres" id="23_0kk2c"]
 [ext_resource type="Resource" uid="uid://bwqe50uk8mere" path="res://fighter_creator/workspace/nodes/graph_node_resources/accel_dash_action_node.tres" id="26_0kk2c"]
 [ext_resource type="Script" uid="uid://bcgunl33x4jcb" path="res://fighter_creator/workspace/node_creation_manager.gd" id="26_7aum2"]
+[ext_resource type="Script" uid="uid://cijun50hwehwk" path="res://fighter_creator/workspace/save_fighter_managers/load_workspace_manager.gd" id="26_w17tl"]
 [ext_resource type="Resource" uid="uid://cxbxo1tso2sk1" path="res://fighter_creator/workspace/nodes/graph_node_resources/fighter_dash_action_node.tres" id="27_w17tl"]
 [ext_resource type="Resource" uid="uid://dwo7fllcswk55" path="res://fighter_creator/workspace/nodes/graph_node_resources/active_state_node.tres" id="30_1mh7u"]
 [ext_resource type="Resource" uid="uid://chwd2uyr73xp0" path="res://fighter_creator/workspace/nodes/graph_node_resources/contact_damage_increase_action_node.tres" id="30_4yduf"]
@@ -37,114 +28,16 @@
 [ext_resource type="Resource" uid="uid://crrlcocjbx1oq" path="res://fighter_creator/workspace/nodes/graph_node_resources/inactive_state_node.tres" id="31_qrd11"]
 [ext_resource type="Script" uid="uid://ys20qwe1vhw4" path="res://fighter_creator/workspace/save_fighter_managers/fighter_save_manager.gd" id="35_a0ebg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tirwg"]
-bg_color = Color(0.288518, 0.28851798, 0.28851798, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="LabelSettings" id="LabelSettings_vjyn1"]
+font_size = 64
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aalt6"]
-bg_color = Color(0, 0.6313726, 0.11764706, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5qh1"]
+bg_color = Color(0.19076231, 0.19076234, 0.19076222, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q2d6"]
-bg_color = Color(8.615404e-06, 0.762326, 0.15058672, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws2t2"]
+bg_color = Color(0.6624523, 0.66245234, 0.66245216, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cfr6"]
-bg_color = Color(0, 0.81960785, 0.91764706, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w17tl"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyfq3"]
-bg_color = Color(0.6, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4q62"]
-bg_color = Color(0.8012637, 1.540184e-06, 6.738305e-07, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbb47"]
-bg_color = Color(0.6960143, 0.70306516, 0.68547404, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hbte0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tj8sy"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qg2f3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puomn"]
-bg_color = Color(0, 0.6749431, 0.7624917, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5x8o3"]
-bg_color = Color(4.6205523e-06, 0.7723315, 0.87017477, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ie0h"]
-bg_color = Color(0.6751786, 0.6824716, 0.66426766, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukhtx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yduf"]
-bg_color = Color(0.59321326, 0.369349, 0.43842345, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sc8l"]
-bg_color = Color(0.5921569, 0.36862746, 0.4392157, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdcvk"]
-bg_color = Color(0.6575287, 0.42188397, 0.49549645, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pfspe"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au8nn"]
-bg_color = Color(0.5882353, 0.3764706, 0.19607843, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvy83"]
-bg_color = Color(0.5883991, 0.37530592, 0.19577149, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8ccr"]
-bg_color = Color(0.7398162, 0.48789412, 0.27649614, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6bhd"]
-bg_color = Color(0.65882355, 0.34509805, 0.2509804, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyiuw"]
-bg_color = Color(0.660289, 0.3464246, 0.25146827, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0bke"]
-bg_color = Color(0.7602619, 0.41724962, 0.3143985, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ra0kn"]
-
-[sub_resource type="Theme" id="Theme_pyiuw"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ra0kn"]
-bg_color = Color(0.029506553, 0.029506562, 0.029506536, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1h2v"]
-bg_color = Color(0.33288068, 0.3328807, 0.33288056, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjyn1"]
-bg_color = Color(0.18717611, 0.18717617, 0.18717602, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="LabelSettings" id="LabelSettings_v8ccr"]
-font_size = 24
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v8ccr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7aum2"]
-bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ospfe"]
-bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cnnf"]
 
 [node name="FighterCreator" type="Node" unique_id=1672563842]
 
@@ -251,744 +144,22 @@ zoom = 0.75
 script = ExtResource("7_4k6nc")
 popup_menu_manager = NodePath("../../PopupMenuManager")
 
-[node name="FighterBaseStats" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1472307853]
-custom_minimum_size = Vector2(200, 200)
+[node name="Fighter" parent="UI/VBoxContainer/Workspace" unique_id=1702544155 instance=ExtResource("7_rdcvk")]
 layout_mode = 0
-offset_left = 375.75
-offset_top = 87.1875
-offset_right = 875.75
-offset_bottom = 471.1875
-scale = Vector2(0.75, 0.75)
-mouse_filter = 1
-position_offset = Vector2(501, 116.25)
-title = "Fighter Base Stats"
-slot/0/left_enabled = true
-slot/0/left_type = 0
-slot/0/left_color = Color(0.9999998, 0.60250616, 0.2572266, 1)
-slot/0/left_icon = null
-slot/0/right_enabled = false
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
-slot/0/draw_stylebox = true
 
-[node name="BaseStats" type="Control" parent="UI/VBoxContainer/Workspace/FighterBaseStats" unique_id=1300843360]
-clip_contents = true
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.6
-
-[node name="BaseStatManager" type="Node" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats" unique_id=108270244 node_paths=PackedStringArray("fighter_id_line_edit", "health_bar", "contact_damage_bar", "contact_cooldown_bar", "contact_knockback_bar", "mass_bar", "starting_force_bar")]
-script = ExtResource("9_tirwg")
-fighter_id_line_edit = NodePath("../MarginContainer/VBoxContainer/FighterID/MarginContainer/VBoxContainer/FighterIDLineEdit")
-health_bar = NodePath("../MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar")
-contact_damage_bar = NodePath("../MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar")
-contact_cooldown_bar = NodePath("../MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar")
-contact_knockback_bar = NodePath("../MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar")
-mass_bar = NodePath("../MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar")
-starting_force_bar = NodePath("../MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats" unique_id=2090782930]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer" unique_id=175600548]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="FighterID" type="Control" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer" unique_id=537239213]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/FighterID" unique_id=851212626]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -7.5
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/FighterID/MarginContainer" unique_id=915992279]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/FighterID/MarginContainer/VBoxContainer" unique_id=1240093533]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/FighterID/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1708355164]
-layout_mode = 2
-text = "Fighter ID"
-
-[node name="FighterIDLineEdit" type="LineEdit" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/FighterID/MarginContainer/VBoxContainer" unique_id=545125952]
-custom_minimum_size = Vector2(200, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_uneditable_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_colors/caret_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_hvy83")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_tirwg")
-
-[node name="HP" type="Control" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer" unique_id=498475916]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP" unique_id=527900804]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -7.5
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer" unique_id=1296257984]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer" unique_id=631726840]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/HBoxContainer" unique_id=822178827]
-layout_mode = 2
-text = "Health"
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer" unique_id=1564812090]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_aalt6")
-min_value = 1.0
-max_value = 250.0
-value = 100.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("4_2cfr6")
-default_fill = SubResource("StyleBoxFlat_aalt6")
-hover_fill = SubResource("StyleBoxFlat_1q2d6")
-hover_bg = SubResource("StyleBoxFlat_2cfr6")
-
-[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" unique_id=1673956528]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("5_e4q62")
-
-[node name="Contact" type="PanelContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer" unique_id=2076954562]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_w17tl")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact" unique_id=238062232]
-layout_mode = 2
-
-[node name="Contact Damage" type="Control" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer" unique_id=1021652659]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage" unique_id=1931925546]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer" unique_id=2072645440]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer" unique_id=1317411241]
-layout_mode = 2
-text = "Contact Damage"
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer" unique_id=5958722]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_dyfq3")
-max_value = 25.0
-value = 10.0
-allow_greater = true
-allow_lesser = true
-show_percentage = false
-script = ExtResource("4_2cfr6")
-default_fill = SubResource("StyleBoxFlat_dyfq3")
-hover_fill = SubResource("StyleBoxFlat_e4q62")
-hover_bg = SubResource("StyleBoxFlat_dbb47")
-
-[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" unique_id=1852455514]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_hbte0")
-theme_override_styles/read_only = SubResource("StyleBoxEmpty_tj8sy")
-theme_override_styles/focus = SubResource("StyleBoxTexture_qg2f3")
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("5_e4q62")
-negative_allowed = true
-
-[node name="Contact Cooldown" type="Control" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer" unique_id=546572878]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown" unique_id=1445168497]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer" unique_id=1198940768]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer" unique_id=1414993140]
-layout_mode = 2
-text = "Contact Cooldown"
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer" unique_id=2137878855]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_puomn")
-max_value = 10.0
-value = 1.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("4_2cfr6")
-default_fill = SubResource("StyleBoxFlat_puomn")
-hover_fill = SubResource("StyleBoxFlat_5x8o3")
-hover_bg = SubResource("StyleBoxFlat_7ie0h")
-
-[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" unique_id=595631195]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ukhtx")
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("5_e4q62")
-negative_allowed = true
-
-[node name="Contact Knockback" type="Control" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer" unique_id=1328055848]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback" unique_id=1887243816]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer" unique_id=2098102918]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer" unique_id=650853771]
-layout_mode = 2
-text = "Contact Knockback"
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer" unique_id=19301967]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_4yduf")
-max_value = 10.0
-value = 1.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("4_2cfr6")
-default_fill = SubResource("StyleBoxFlat_6sc8l")
-hover_fill = SubResource("StyleBoxFlat_rdcvk")
-hover_bg = SubResource("StyleBoxFlat_7ie0h")
-
-[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" unique_id=217382535]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ukhtx")
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("5_e4q62")
-negative_allowed = true
-
-[node name="Physics" type="PanelContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer" unique_id=190833598]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_pfspe")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics" unique_id=1495792505]
-layout_mode = 2
-
-[node name="Mass" type="Control" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer" unique_id=175549138]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass" unique_id=1048780747]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer" unique_id=1512182446]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer" unique_id=2110407727]
-layout_mode = 2
-text = "Mass"
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer" unique_id=1879338130]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_au8nn")
-value = 25.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("4_2cfr6")
-default_fill = SubResource("StyleBoxFlat_hvy83")
-hover_fill = SubResource("StyleBoxFlat_v8ccr")
-hover_bg = SubResource("StyleBoxFlat_dbb47")
-
-[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" unique_id=929811127]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("5_e4q62")
-negative_allowed = true
-
-[node name="Starting Force" type="Control" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer" unique_id=975135684]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force" unique_id=552050798]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer" unique_id=1425546487]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer" unique_id=1096422735]
-layout_mode = 2
-text = "Starting Force"
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer" unique_id=1093658925]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_v6bhd")
-max_value = 250.0
-value = 100.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("4_2cfr6")
-default_fill = SubResource("StyleBoxFlat_pyiuw")
-hover_fill = SubResource("StyleBoxFlat_e0bke")
-hover_bg = SubResource("StyleBoxFlat_7ie0h")
-
-[node name="LineEdit" type="LineEdit" parent="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" unique_id=573980200]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("5_e4q62")
-negative_allowed = true
-
-[node name="Fighter" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1116060944]
+[node name="FighterBaseStats" parent="UI/VBoxContainer/Workspace" unique_id=55001274 instance=ExtResource("9_4yduf")]
 layout_mode = 0
-offset_left = 124.875
-offset_top = 428.625
-offset_right = 277.875
-offset_bottom = 540.625
-scale = Vector2(0.75, 0.75)
-mouse_filter = 1
-position_offset = Vector2(166.5, 571.5)
-title = "Fighter"
-slot/0/left_enabled = false
-slot/0/left_type = 0
-slot/0/left_color = Color(1, 1, 1, 1)
-slot/0/left_icon = null
-slot/0/right_enabled = true
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
-slot/0/draw_stylebox = true
-slot/1/left_enabled = false
-slot/1/left_type = 0
-slot/1/left_color = Color(1, 1, 1, 1)
-slot/1/left_icon = null
-slot/1/right_enabled = true
-slot/1/right_type = 1
-slot/1/right_color = Color(1, 1, 1, 1)
-slot/1/right_icon = null
-slot/1/draw_stylebox = true
-slot/2/left_enabled = false
-slot/2/left_type = 0
-slot/2/left_color = Color(1, 1, 1, 1)
-slot/2/left_icon = null
-slot/2/right_enabled = true
-slot/2/right_type = 2
-slot/2/right_color = Color(1, 1, 1, 1)
-slot/2/right_icon = null
-slot/2/draw_stylebox = true
+offset_left = 733.5
+offset_top = 27.5625
+offset_right = 1233.5
+offset_bottom = 411.5625
+position_offset = Vector2(978, 36.75)
 
-[node name="Slot1" type="PanelContainer" parent="UI/VBoxContainer/Workspace/Fighter" unique_id=1764027746]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/Fighter/Slot1" unique_id=2019371490]
-layout_mode = 2
-text = "BaseStats"
-
-[node name="Slot2" type="PanelContainer" parent="UI/VBoxContainer/Workspace/Fighter" unique_id=945145630]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/Fighter/Slot2" unique_id=2092226338]
-layout_mode = 2
-text = "BaseSprites"
-
-[node name="Slot3" type="PanelContainer" parent="UI/VBoxContainer/Workspace/Fighter" unique_id=861707778]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/Fighter/Slot3" unique_id=2126707030]
-layout_mode = 2
-text = "Abilities"
-
-[node name="FighterBaseSprites" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=1379392962]
+[node name="FighterBaseSprites" parent="UI/VBoxContainer/Workspace" unique_id=370798223 instance=ExtResource("10_pfspe")]
 layout_mode = 0
-offset_left = 365.66016
-offset_top = 423.52734
-offset_right = 770.66016
-offset_bottom = 702.52734
-scale = Vector2(0.75, 0.75)
-mouse_filter = 1
-position_offset = Vector2(487.54688, 564.7031)
-title = "Fighter Base Sprites"
-slot/0/left_enabled = true
-slot/0/left_type = 0
-slot/0/left_color = Color(0, 1, 0, 1)
-slot/0/left_icon = null
-slot/0/right_enabled = false
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
-slot/0/draw_stylebox = true
 
-[node name="ImportImages" type="Control" parent="UI/VBoxContainer/Workspace/FighterBaseSprites" unique_id=751864212]
-clip_contents = true
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages" unique_id=1883635892]
+[node name="FighterAbilities" parent="UI/VBoxContainer/Workspace" unique_id=645370397 instance=ExtResource("11_tirwg")]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 20.0
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer" unique_id=60491763]
-layout_mode = 2
-theme_override_constants/separation = 25
-
-[node name="Active" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer" unique_id=69685810]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active" unique_id=121632082]
-layout_mode = 2
-text = "ACTIVE"
-label_settings = SubResource("LabelSettings_ra0kn")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="PanelContainer" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active" unique_id=1272526213 node_paths=PackedStringArray("texture_rect")]
-custom_minimum_size = Vector2(150, 150)
-custom_maximum_size = Vector2(150, 150)
-clip_contents = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-script = ExtResource("8_e0bke")
-texture_rect = NodePath("SubViewportContainer/SubViewport/ImportedImage")
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/Control" unique_id=1269418590]
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/Control/SubViewportContainer" unique_id=917273258]
-disable_3d = true
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(150, 150)
-render_target_update_mode = 4
-
-[node name="ImportedImage" type="TextureRect" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/Control/SubViewportContainer/SubViewport" unique_id=1473756439]
-offset_left = 11.0
-offset_top = 13.0
-offset_right = 139.0
-offset_bottom = 141.0
-texture = ExtResource("7_hvy83")
-script = ExtResource("8_au8nn")
-
-[node name="Button" type="Button" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active" unique_id=1714117830 node_paths=PackedStringArray("file_dialog")]
-layout_mode = 2
-theme = SubResource("Theme_pyiuw")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxFlat_ra0kn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_g1h2v")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vjyn1")
-text = "Change Image"
-script = ExtResource("10_v6bhd")
-file_dialog = NodePath("../FileDialog")
-
-[node name="FileDialog" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active" unique_id=5957504 instance=ExtResource("10_pyiuw")]
-hidden_files_toggle_enabled = false
-
-[node name="ImportImageManager" type="Node" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active" unique_id=584770149 node_paths=PackedStringArray("viewport")]
-script = ExtResource("13_5x8o3")
-viewport = NodePath("../Control/SubViewportContainer/SubViewport")
-
-[node name="Inactive" type="VBoxContainer" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer" unique_id=1157583423]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive" unique_id=958159489]
-layout_mode = 2
-text = "INACTIVE"
-label_settings = SubResource("LabelSettings_ra0kn")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="PanelContainer" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive" unique_id=207524570 node_paths=PackedStringArray("texture_rect")]
-custom_minimum_size = Vector2(150, 150)
-custom_maximum_size = Vector2(150, 150)
-clip_contents = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-script = ExtResource("8_e0bke")
-texture_rect = NodePath("SubViewportContainer/SubViewport/ImportedImage")
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Control" unique_id=626811128]
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Control/SubViewportContainer" unique_id=604950702]
-disable_3d = true
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(150, 150)
-render_target_update_mode = 4
-
-[node name="ImportedImage" type="TextureRect" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Control/SubViewportContainer/SubViewport" unique_id=535689980]
-offset_left = 11.0
-offset_top = 13.0
-offset_right = 139.0
-offset_bottom = 141.0
-texture = ExtResource("7_hvy83")
-script = ExtResource("8_au8nn")
-
-[node name="Button" type="Button" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive" unique_id=1528434231 node_paths=PackedStringArray("file_dialog")]
-layout_mode = 2
-theme = SubResource("Theme_pyiuw")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxFlat_ra0kn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_g1h2v")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vjyn1")
-text = "Change Image"
-script = ExtResource("10_v6bhd")
-file_dialog = NodePath("../FileDialog")
-
-[node name="FileDialog" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive" unique_id=936139690 instance=ExtResource("10_pyiuw")]
-hidden_files_toggle_enabled = false
-
-[node name="ImportImageManager" type="Node" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive" unique_id=1351788137 node_paths=PackedStringArray("viewport")]
-script = ExtResource("13_5x8o3")
-fighter_sprite_type = 1
-viewport = NodePath("../../Active/Control/SubViewportContainer/SubViewport")
-
-[node name="FighterSpriteManager" type="Node" parent="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages" unique_id=1222869207 node_paths=PackedStringArray("active_import_image_manager", "inactive_import_image_manager")]
-script = ExtResource("16_7aum2")
-active_import_image_manager = NodePath("../MarginContainer/HBoxContainer/Active/ImportImageManager")
-inactive_import_image_manager = NodePath("../MarginContainer/HBoxContainer/Inactive/ImportImageManager")
-
-[node name="FighterAbilities" type="GraphNode" parent="UI/VBoxContainer/Workspace" unique_id=594931252 node_paths=PackedStringArray("workspace")]
-layout_mode = 0
-offset_left = 354.9375
-offset_top = 694.6875
-offset_right = 818.9375
-offset_bottom = 937.6875
-scale = Vector2(0.75, 0.75)
-mouse_filter = 1
-position_offset = Vector2(473.25, 926.25)
-title = "Fighter Abilities"
-slot/0/left_enabled = true
-slot/0/left_type = 0
-slot/0/left_color = Color(0.79123324, 0.41937134, 1, 1)
-slot/0/left_icon = null
-slot/0/right_enabled = false
-slot/0/right_type = 0
-slot/0/right_color = Color(1, 1, 1, 1)
-slot/0/right_icon = null
-slot/0/draw_stylebox = true
-slot/1/left_enabled = false
-slot/1/left_type = 0
-slot/1/left_color = Color(1, 1, 1, 1)
-slot/1/left_icon = null
-slot/1/right_enabled = false
-slot/1/right_type = 0
-slot/1/right_color = Color(1, 1, 1, 1)
-slot/1/right_icon = null
-slot/1/draw_stylebox = true
-script = ExtResource("19_nmg4h")
-slot = ExtResource("19_tirwg")
-workspace = NodePath("..")
-output_slot_color = Color(0.7921569, 0.41960785, 1, 1)
-
-[node name="FighterSlot0" type="Control" parent="UI/VBoxContainer/Workspace/FighterAbilities" unique_id=957609407]
-layout_mode = 2
-
-[node name="AddEvent" type="PanelContainer" parent="UI/VBoxContainer/Workspace/FighterAbilities" unique_id=562641754]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent" unique_id=1220260014]
-layout_mode = 2
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent/HBoxContainer" unique_id=218215853]
-modulate = Color(0, 0.91779244, 0, 1)
-layout_mode = 2
-texture = ExtResource("18_v8ccr")
-expand_mode = 2
-
-[node name="Button" type="Label" parent="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent/HBoxContainer" unique_id=588638057]
-layout_mode = 2
-text = "Event"
-label_settings = SubResource("LabelSettings_v8ccr")
-vertical_alignment = 1
-
-[node name="AddEventButton" type="Button" parent="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent" unique_id=1870206087 node_paths=PackedStringArray("owner_node")]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_v8ccr")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7aum2")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ospfe")
-script = ExtResource("19_v6bhd")
-owner_node = NodePath("../..")
-
-[node name="FighterAbilitiesManager" type="Node" parent="UI/VBoxContainer/Workspace/FighterAbilities" unique_id=218499516 node_paths=PackedStringArray("fighter_abilities")]
-script = ExtResource("23_g7w7c")
-fighter_abilities = NodePath("..")
 
 [node name="PopupMenuManager" type="Control" parent="UI" unique_id=592969624 node_paths=PackedStringArray("workspace", "event_popup_menu", "action_popup_menu", "condition_popup_menu", "state_popup_menu")]
 layout_mode = 3
@@ -1319,62 +490,64 @@ text = "Cancel"
 script = ExtResource("20_pyiuw")
 add_event_popup_menu = NodePath("../../../../../..")
 
+[node name="ProfileSelection" type="Control" parent="UI/PopupMenuManager" unique_id=614286401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/ProfileSelection" unique_id=2060094736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="UI/PopupMenuManager/ProfileSelection" unique_id=1638090697]
+layout_mode = 0
+offset_left = 717.0
+offset_top = 73.0
+offset_right = 1269.0
+offset_bottom = 149.0
+text = "Creation Menu"
+label_settings = SubResource("LabelSettings_vjyn1")
+
+[node name="NewFighter" type="Button" parent="UI/PopupMenuManager/ProfileSelection" unique_id=317943827 node_paths=PackedStringArray("profile_selection_popup", "load_workspace_manager")]
+layout_mode = 0
+offset_left = 803.0
+offset_top = 933.0
+offset_right = 1145.0
+offset_bottom = 990.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_q5qh1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ws2t2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6cnnf")
+text = "New Fighter"
+script = ExtResource("22_tirwg")
+profile_selection_popup = NodePath("..")
+load_workspace_manager = NodePath("../../../../Components/LoadWorkspaceManager")
+base_workspace = ExtResource("23_0kk2c")
+
 [node name="Components" type="Node" parent="." unique_id=828218517]
 
 [node name="NodeCreationManager" type="Node" parent="Components" unique_id=1446744500 node_paths=PackedStringArray("workspace")]
 script = ExtResource("26_7aum2")
 workspace = NodePath("../../UI/VBoxContainer/Workspace")
 
-[node name="FighterSaveManager" type="Node" parent="Components" unique_id=2016473248 node_paths=PackedStringArray("base_stat_manager", "fighter_sprite_manager", "fighter_abilities_manager")]
+[node name="FighterSaveManager" type="Node" parent="Components" unique_id=2016473248]
 script = ExtResource("35_a0ebg")
-base_stat_manager = NodePath("../../UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/BaseStatManager")
-fighter_sprite_manager = NodePath("../../UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/FighterSpriteManager")
-fighter_abilities_manager = NodePath("../../UI/VBoxContainer/Workspace/FighterAbilities/FighterAbilitiesManager")
 fighter_profiles = ExtResource("5_0kk2c")
+
+[node name="LoadWorkspaceManager" type="Node" parent="Components" unique_id=1185493305 node_paths=PackedStringArray("workspace", "fighter_save_manager")]
+script = ExtResource("26_w17tl")
+workspace = NodePath("../../UI/VBoxContainer/Workspace")
+fighter_save_manager = NodePath("../FighterSaveManager")
 
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/BattleButton" to="UI/VBoxContainer/TopBar/BattleButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/SaveFighterButton" to="UI/VBoxContainer/TopBar/SaveFighterButton" method="_on_pressed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="UI/VBoxContainer/Workspace/FighterBaseStats/BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="pressed" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/Button" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/Button" method="_on_pressed"]
-[connection signal="file_selected" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/FileDialog" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Active/Control/SubViewportContainer/SubViewport/ImportedImage" method="_on_file_dialog_file_selected"]
-[connection signal="pressed" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Button" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Button" method="_on_pressed"]
-[connection signal="file_selected" from="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/FileDialog" to="UI/VBoxContainer/Workspace/FighterBaseSprites/ImportImages/MarginContainer/HBoxContainer/Inactive/Control/SubViewportContainer/SubViewport/ImportedImage" method="_on_file_dialog_file_selected"]
-[connection signal="pressed" from="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent/AddEventButton" to="UI/VBoxContainer/Workspace/FighterAbilities/AddEvent/AddEventButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" to="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" method="_on_pressed"]
@@ -1386,3 +559,4 @@ fighter_profiles = ExtResource("5_0kk2c")
 [connection signal="pressed" from="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateStateButton" to="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateStateButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateStateButton" to="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateStateButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ProfileSelection/NewFighter" to="UI/PopupMenuManager/ProfileSelection/NewFighter" method="_on_pressed"]

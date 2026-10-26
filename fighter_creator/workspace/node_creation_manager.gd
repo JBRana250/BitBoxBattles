@@ -6,6 +6,6 @@ class_name GraphNodeCreationManager extends Node
 func create_node(parent_node: CompositeGraphNode, node_resource: NodeResource) -> void:
 	var instance: CompositeGraphNode = node_resource.graph_node_scene.instantiate()
 	instance.position_offset = parent_node.position_offset + child_position_offset
-	instance.init_node(workspace)
+	instance.set_workspace(workspace)
 	workspace.add_child(instance)
 	parent_node.add_output_node(node_resource, instance)

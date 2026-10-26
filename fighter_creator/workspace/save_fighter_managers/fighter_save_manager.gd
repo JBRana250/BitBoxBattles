@@ -1,16 +1,13 @@
 extends Node
 
-@export var base_stat_manager: Node
-@export var fighter_sprite_manager: Node
-@export var fighter_abilities_manager: Node
-
+var fighter: BaseCompositeGraphNode
 @export var fighter_profiles: FighterProfiles
 
 func save_fighter() -> void:
-	var base_stats: Dictionary = base_stat_manager.get_base_stats()
-	var sprites: Dictionary = await fighter_sprite_manager.get_fighter_sprites()
-	var abilities: Array[Event] = fighter_abilities_manager.get_abilities()
-	
+	var base_stats: Dictionary = fighter.base_stats_node.get_base_stats()
+	var sprites: Dictionary = await fighter.base_sprites_node.get_fighter_sprites()
+	var abilities: Array[Event] = fighter.abilities_node.fighter_abilities_manager.get_abilities()
+	var workspace_data: NodeResource = fighter.get_node_resource()
 	
 	var init_resource: FighterInitResource = FighterInitResource.new()
 	init_resource.fighter_id = base_stats.fighter_id
@@ -38,5 +35,6 @@ func save_fighter() -> void:
 	fighter_profile.contact_resource = contact_resource
 	fighter_profile.texture_resource = texture_resource
 	fighter_profile.action_resource = action_resource
+	fighter_profile.workspace_data = workspace_data
 	
 	fighter_profiles.profiles.append(fighter_profile)

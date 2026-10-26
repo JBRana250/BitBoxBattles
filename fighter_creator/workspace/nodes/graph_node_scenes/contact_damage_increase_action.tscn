@@ -4,8 +4,15 @@
 [ext_resource type="Script" uid="uid://drufef1lebfpw" path="res://fighter_creator/workspace/nodes/graph_node_scripts/contact_damage_increase_action.gd" id="1_wca25"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_ljv6o"]
 [ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="2_wca25"]
+[ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/node_resource.gd" id="3_dmwf5"]
 [ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="3_ljv6o"]
 [ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="4_dmwf5"]
+
+[sub_resource type="Resource" id="Resource_uug63"]
+script = ExtResource("3_dmwf5")
+graph_node_scene = null
+graph_node_name = "Contact Damage Increase Action"
+metadata/_custom_type_script = "uid://wvfaicrfo161"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ohdi"]
 bg_color = Color(1, 0.18039216, 0.1764706, 1)
@@ -61,6 +68,7 @@ script = ExtResource("1_wca25")
 amount_progbar = NodePath("Properties/Amount/MarginContainer/VBoxContainer/ProgressBar")
 slot = ExtResource("2_ljv6o")
 output_slot_color = Color(1, 0, 0, 1)
+node_resource = SubResource("Resource_uug63")
 
 [node name="Properties" type="PanelContainer" parent="." unique_id=1422160321]
 layout_mode = 2
