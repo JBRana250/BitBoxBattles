@@ -6,7 +6,7 @@ var fighter: BaseCompositeGraphNode
 func save_fighter() -> void:
 	var base_stats: Dictionary = fighter.base_stats_node.get_base_stats()
 	var sprites: Dictionary = await fighter.base_sprites_node.get_fighter_sprites()
-	var abilities: Array[Event] = fighter.abilities_node.fighter_abilities_manager.get_abilities()
+	var abilities: Array[Event] = fighter.abilities_node.get_abilities()
 	var workspace_data: NodeResource = fighter.get_node_resource()
 	
 	var init_resource: FighterInitResource = FighterInitResource.new()

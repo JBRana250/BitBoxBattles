@@ -45,6 +45,7 @@ slot/1/right_icon = null
 slot/1/draw_stylebox = true
 script = ExtResource("1_xm1rm")
 slot = ExtResource("2_xm1rm")
+output_slot_color = Color(0.7921569, 0.41960785, 1, 1)
 
 [node name="FighterSlot0" type="Control" parent="." unique_id=146271004]
 layout_mode = 2

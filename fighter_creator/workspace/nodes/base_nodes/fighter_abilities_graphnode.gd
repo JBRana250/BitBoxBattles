@@ -3,7 +3,7 @@ class_name FighterAbilitiesNode extends BaseCompositeGraphNode
 # Override
 # On load workspace, set all values of this graphnode
 # to be the last saved values
-func init_node(node_res: NodeResource) -> void:
+func init_node(_node_res: NodeResource) -> void:
 	pass
 
 # Override
