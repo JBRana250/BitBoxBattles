@@ -21,6 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://bnkcbjk3hunw8" path="res://textures/future_robot_thinking.png" id="13_jx3t2"]
 [ext_resource type="Script" uid="uid://bpymebmol4evd" path="res://battle/fighter/fighter_property_resources/fighter_texture_resource.gd" id="14_xr3bg"]
 [ext_resource type="Texture2D" uid="uid://bn8a5lrtgueda" path="res://textures/future bot splash.png" id="21_el4pe"]
+[ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/node_resource.gd" id="22_ybt4i"]
+[ext_resource type="PackedScene" uid="uid://bhlkjhb2trj5u" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_graphnode.tscn" id="23_j2188"]
+[ext_resource type="PackedScene" uid="uid://c5hclxce3idvn" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_stats_graphnode.tscn" id="23_xr3bg"]
+[ext_resource type="PackedScene" uid="uid://bjog6lpfgpuno" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_sprites_graphnode.tscn" id="24_eobe0"]
+[ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_abilities_graphnode.tscn" id="25_qt1er"]
 
 [sub_resource type="Resource" id="Resource_1k8hw"]
 script = ExtResource("4_5hdlo")
@@ -116,6 +121,35 @@ inactive_image = ExtResource("13_jx3t2")
 setup_image = ExtResource("21_el4pe")
 metadata/_custom_type_script = "uid://bpymebmol4evd"
 
+[sub_resource type="Resource" id="Resource_kj607"]
+script = ExtResource("22_ybt4i")
+graph_node_scene = ExtResource("23_xr3bg")
+graph_node_name = "Fighter Base Stats"
+position_offset = Vector2(500, 100)
+metadata/_custom_type_script = "uid://wvfaicrfo161"
+
+[sub_resource type="Resource" id="Resource_k1jmw"]
+script = ExtResource("22_ybt4i")
+graph_node_scene = ExtResource("24_eobe0")
+graph_node_name = "Fighter Base Sprites"
+position_offset = Vector2(500, 550)
+metadata/_custom_type_script = "uid://wvfaicrfo161"
+
+[sub_resource type="Resource" id="Resource_l4my3"]
+script = ExtResource("22_ybt4i")
+graph_node_scene = ExtResource("25_qt1er")
+graph_node_name = "Fighter Abilities"
+position_offset = Vector2(500, 900)
+metadata/_custom_type_script = "uid://wvfaicrfo161"
+
+[sub_resource type="Resource" id="Resource_6i1va"]
+script = ExtResource("22_ybt4i")
+graph_node_scene = ExtResource("23_j2188")
+graph_node_name = "Fighter"
+connected_nodes = Array[ExtResource("22_ybt4i")]([SubResource("Resource_kj607"), SubResource("Resource_k1jmw"), SubResource("Resource_l4my3")])
+position_offset = Vector2(160, 570)
+metadata/_custom_type_script = "uid://wvfaicrfo161"
+
 [resource]
 script = ExtResource("1_677sl")
 init_resource = SubResource("Resource_x7fqq")
@@ -123,4 +157,5 @@ health_resource = SubResource("Resource_25ord")
 contact_resource = SubResource("Resource_8jxa6")
 texture_resource = SubResource("Resource_8t2w3")
 action_resource = SubResource("Resource_yhoa3")
+workspace_data = SubResource("Resource_6i1va")
 metadata/_custom_type_script = "uid://co45optnb8qec"

@@ -2,7 +2,7 @@ extends Label
 
 @export var timer: Timer
 
-func init_battle_number(amount: int, color: Color, _scale: float, duration: float) -> void:
+func init_battle_number(_amount: int, color: Color, _scale: float, duration: float) -> void:
 	scale = Vector2(_scale, _scale)
 	label_settings.font_color = color
 	#text = str(amount)

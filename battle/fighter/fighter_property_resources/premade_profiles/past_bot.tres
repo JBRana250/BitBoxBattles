@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cfcxo13hw6tav" path="res://textures/past_robot_thinking.png" id="12_q43y1"]
 [ext_resource type="Script" uid="uid://bpymebmol4evd" path="res://battle/fighter/fighter_property_resources/fighter_texture_resource.gd" id="13_rr2ng"]
 [ext_resource type="Texture2D" uid="uid://c01xnhl8buut2" path="res://textures/past bot splash.png" id="19_4xx52"]
+[ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/node_resource.gd" id="20_xshpt"]
 
 [sub_resource type="Resource" id="Resource_d3j3p"]
 script = ExtResource("4_bvd3n")
@@ -71,6 +72,10 @@ inactive_image = ExtResource("12_q43y1")
 setup_image = ExtResource("19_4xx52")
 metadata/_custom_type_script = "uid://bpymebmol4evd"
 
+[sub_resource type="Resource" id="Resource_pfspe"]
+script = ExtResource("20_xshpt")
+metadata/_custom_type_script = "uid://wvfaicrfo161"
+
 [resource]
 script = ExtResource("1_ue2ji")
 init_resource = SubResource("Resource_kmc63")
@@ -78,4 +83,5 @@ health_resource = SubResource("Resource_ombfh")
 contact_resource = SubResource("Resource_e1q8b")
 texture_resource = SubResource("Resource_566rp")
 action_resource = SubResource("Resource_yoieg")
+workspace_data = SubResource("Resource_pfspe")
 metadata/_custom_type_script = "uid://co45optnb8qec"

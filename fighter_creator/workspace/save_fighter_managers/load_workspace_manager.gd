@@ -1,13 +1,15 @@
 class_name LoadWorkspaceManager extends Node
 
 @export var workspace: Workspace
-@export var fighter_save_manager: Node
+@export var fighter_save_manager: FighterSaveManager
 
-func init_workspace(rootnode: NodeResource) -> void:
+func init_workspace(rootnode: NodeResource, id: int = -1) -> void:
 	for node in workspace.get_children():
 		if node is GraphNode:
 			node.queue_free()
 	workspace.clear_connections()
+	
+	fighter_save_manager.existing_fighter_id = id
 	
 	var root_fighter_instance: BaseCompositeGraphNode = instance_graphnode_tree(rootnode)
 	fighter_save_manager.fighter = root_fighter_instance

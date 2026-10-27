@@ -1,7 +1,9 @@
-extends Node
+class_name FighterSaveManager extends Node
 
+var existing_fighter_id = -1
 var fighter: BaseCompositeGraphNode
 @export var fighter_profiles: FighterProfiles
+@export var profile_selection: Control
 
 func save_fighter() -> void:
 	var base_stats: Dictionary = fighter.base_stats_node.get_base_stats()
@@ -37,4 +39,9 @@ func save_fighter() -> void:
 	fighter_profile.action_resource = action_resource
 	fighter_profile.workspace_data = workspace_data
 	
-	fighter_profiles.profiles.append(fighter_profile)
+	if existing_fighter_id == -1: # New Fighter
+		fighter_profiles.add_new_profile(fighter_profile)
+		
+	else: #existing fighter
+		fighter_profiles.modify_existing_profile(existing_fighter_id, fighter_profile)
+	profile_selection.init_profile_selection()
