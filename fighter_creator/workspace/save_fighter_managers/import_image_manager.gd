@@ -2,7 +2,8 @@ class_name ImportImageManager extends Node
 
 enum FighterSpriteType {
 	ACTIVE,
-	INACTIVE
+	INACTIVE,
+	SETUP
 }
 
 @export var fighter_sprite_type: FighterSpriteType

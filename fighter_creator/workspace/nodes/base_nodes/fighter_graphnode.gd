@@ -1,6 +1,7 @@
 class_name FighterGraphNode extends BaseCompositeGraphNode
 
 var base_stats_node
+var setup_node
 var base_sprites_node
 var abilities_node
 
@@ -22,5 +23,7 @@ func add_output_node(_node_resource: NodeResource, output_node: CompositeGraphNo
 		base_sprites_node = output_node
 	elif output_node is FighterAbilitiesNode:
 		abilities_node = output_node
+	elif output_node is FighterSetupNode:
+		setup_node = output_node
 	else:
 		print_debug("Error: Wrong Node!")

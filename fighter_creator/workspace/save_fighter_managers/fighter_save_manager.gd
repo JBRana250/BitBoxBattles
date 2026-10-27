@@ -7,6 +7,7 @@ var fighter: BaseCompositeGraphNode
 
 func save_fighter() -> void:
 	var base_stats: Dictionary = fighter.base_stats_node.get_base_stats()
+	var setup: Dictionary = await fighter.setup_node.get_fighter_setup()
 	var sprites: Dictionary = await fighter.base_sprites_node.get_fighter_sprites()
 	var abilities: Array[Event] = fighter.abilities_node.get_abilities()
 	var workspace_data: NodeResource = fighter.get_node_resource()
@@ -15,6 +16,7 @@ func save_fighter() -> void:
 	init_resource.fighter_id = base_stats.fighter_id
 	init_resource.fighter_mass = base_stats.mass
 	init_resource.starting_force = base_stats.starting_force
+	init_resource.setup_anim_type = setup.setup_anim_type
 	
 	var health_resource: FighterHealthResource = FighterHealthResource.new()
 	health_resource.max_health = base_stats.health
@@ -27,6 +29,7 @@ func save_fighter() -> void:
 	var texture_resource: FighterTextureResource = FighterTextureResource.new()
 	texture_resource.active_image = sprites.active
 	texture_resource.inactive_image = sprites.inactive
+	texture_resource.setup_image = setup.setup_image
 	
 	var action_resource: FighterActionResource = FighterActionResource.new()
 	action_resource.action_events = abilities

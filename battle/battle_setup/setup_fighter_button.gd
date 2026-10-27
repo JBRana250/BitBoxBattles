@@ -28,7 +28,7 @@ func _on_mouse_exited() -> void:
 func choose_fighter(profile: FighterProfile):
 	change_display_name(profile)
 	await play_fighter_change_animation(profile)
-	play_ready_animation(profile)
+	play_setup_animation(profile)
 	
 	if fighter_chosen:
 		return
@@ -60,15 +60,15 @@ func change_display_name(profile: FighterProfile) -> void:
 	display_anim_player.play("static_to_display")
 
 
-func play_ready_animation(profile: FighterProfile) -> void:
-	var anim_type: FighterInitResource.ReadyAnimType = profile.init_resource.ready_anim_type
+func play_setup_animation(profile: FighterProfile) -> void:
+	var anim_type: FighterInitResource.SetupAnimType = profile.init_resource.setup_anim_type
 	
-	if anim_type == FighterInitResource.ReadyAnimType.EXCITED:
-		anim_player.play("excited_ready_anim")
-	if anim_type == FighterInitResource.ReadyAnimType.IDLE:
-		anim_player.play("idle_ready_anim")
+	if anim_type == FighterInitResource.SetupAnimType.EXCITED:
+		anim_player.play("excited_setup_anim")
+	if anim_type == FighterInitResource.SetupAnimType.IDLE:
+		anim_player.play("idle_setup_anim")
 
-func play_setup_animation() -> void:
+func play_intro_animation() -> void:
 	anim_player.play("setup_intro_anim" + type)
 
 func set_hover_pulse(enabled: bool) -> void:

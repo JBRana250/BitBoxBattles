@@ -9,7 +9,7 @@ var current_fighter: Button
 func open_fighter_menu(fighter: Button) -> void:
 	clear_options()
 	current_fighter = fighter
-	for profile: FighterProfile in fighter_profiles.profiles:
+	for profile: FighterProfile in fighter_profiles.profiles.values():
 		instance_fighter_profile_as_option(profile)
 	visible = true
 

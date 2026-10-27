@@ -4,9 +4,9 @@ class_name BattleSetup extends Control
 @export var fighter_two: FighterSetupButton
 
 func _ready() -> void:
-	setup()
+	intro()
 
-func setup() -> void:
+func intro() -> void:
 	visible = true
-	fighter_one.play_setup_animation()
-	fighter_two.play_setup_animation()
+	fighter_one.play_intro_animation()
+	fighter_two.play_intro_animation()

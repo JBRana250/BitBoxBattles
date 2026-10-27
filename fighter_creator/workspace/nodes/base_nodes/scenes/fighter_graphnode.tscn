@@ -39,27 +39,44 @@ slot/2/right_type = 2
 slot/2/right_color = Color(1, 1, 1, 1)
 slot/2/right_icon = null
 slot/2/draw_stylebox = true
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color(1, 1, 1, 1)
+slot/3/left_icon = null
+slot/3/right_enabled = true
+slot/3/right_type = 0
+slot/3/right_color = Color(1, 1, 1, 1)
+slot/3/right_icon = null
+slot/3/draw_stylebox = true
 script = ExtResource("1_ibyfo")
 slot = ExtResource("2_xprry")
 output_slot_color = Color(1, 1, 1, 1)
+slot/3/right_enabled = true
 
-[node name="Slot1" type="PanelContainer" parent="." unique_id=958279559]
+[node name="BaseStats" type="PanelContainer" parent="." unique_id=958279559]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Slot1" unique_id=304155648]
+[node name="Label" type="Label" parent="BaseStats" unique_id=304155648]
 layout_mode = 2
 text = "BaseStats"
 
-[node name="Slot2" type="PanelContainer" parent="." unique_id=1140522632]
+[node name="Setup" type="PanelContainer" parent="." unique_id=901314500]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Slot2" unique_id=875176110]
+[node name="Label" type="Label" parent="Setup" unique_id=527988051]
+layout_mode = 2
+text = "Setup"
+
+[node name="BaseSprites" type="PanelContainer" parent="." unique_id=1140522632]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BaseSprites" unique_id=875176110]
 layout_mode = 2
 text = "BaseSprites"
 
-[node name="Slot3" type="PanelContainer" parent="." unique_id=1222767815]
+[node name="Abilities" type="PanelContainer" parent="." unique_id=1222767815]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Slot3" unique_id=912367686]
+[node name="Label" type="Label" parent="Abilities" unique_id=912367686]
 layout_mode = 2
 text = "Abilities"
