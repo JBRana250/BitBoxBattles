@@ -13,7 +13,7 @@ config_version=5
 config/name="BitBoxBattles"
 run/main_scene="uid://beocfr14uysh"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://textures/icon.svg"
 
 [audio]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://txsvsuvjd744" path="res://fighter_creator/workspace/nodes/base_nodes/fighter_base_sprites_graphnode.gd" id="1_0hihr"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_0hihr"]
 [ext_resource type="Script" uid="uid://dultqiu6evion" path="res://fighter_creator/imported_image_controller.gd" id="2_tvjs8"]
-[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="3_cxcrk"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://textures/icon.svg" id="3_cxcrk"]
 [ext_resource type="Script" uid="uid://s848whytimwr" path="res://fighter_creator/import_player_image.gd" id="4_vfwjk"]
 [ext_resource type="Script" uid="uid://cm63lxdka3b1a" path="res://fighter_creator/open_file_dialog_image_download.gd" id="5_hi5a5"]
 [ext_resource type="PackedScene" uid="uid://c55k6irkrvoyf" path="res://fighter_creator/file_dialog_image_downloads.tscn" id="6_0c678"]

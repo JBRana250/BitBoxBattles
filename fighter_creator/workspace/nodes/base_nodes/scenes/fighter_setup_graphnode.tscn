@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_7gl26"]
 [ext_resource type="Script" uid="uid://dftplx4ep38h0" path="res://fighter_creator/workspace/nodes/base_nodes/setup_anim_menu_button.gd" id="3_fd3k2"]
 [ext_resource type="Script" uid="uid://dultqiu6evion" path="res://fighter_creator/imported_image_controller.gd" id="4_t2ik0"]
-[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="5_2nu82"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://textures/icon.svg" id="5_2nu82"]
 [ext_resource type="Script" uid="uid://s848whytimwr" path="res://fighter_creator/import_player_image.gd" id="6_32fnd"]
 [ext_resource type="Script" uid="uid://cm63lxdka3b1a" path="res://fighter_creator/open_file_dialog_image_download.gd" id="7_lceh1"]
 [ext_resource type="PackedScene" uid="uid://c55k6irkrvoyf" path="res://fighter_creator/file_dialog_image_downloads.tscn" id="8_5i81i"]

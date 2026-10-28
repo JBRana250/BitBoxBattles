@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://drciia5lg1cxo" path="res://textures/white_square_texture.png" id="1_hoqsi"]
 [ext_resource type="Shader" uid="uid://c1nk5gipsvhr4" path="res://shaders/death_particles.gdshader" id="2_hoqsi"]
-[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="3_hfvyq"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://textures/icon.svg" id="3_hfvyq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xlpqd"]
 shader = ExtResource("2_hoqsi")

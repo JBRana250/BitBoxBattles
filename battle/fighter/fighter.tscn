@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://rjp67l3g8phv" path="res://battle/fighter/fighter.gd" id="1_05pdn"]
 [ext_resource type="Shader" uid="uid://4kcn1g0ostja" path="res://shaders/fighter_death.gdshader" id="2_4eqct"]
 [ext_resource type="Resource" uid="uid://bekadcgcgw6kh" path="res://battle/fighter/signals/fighter_signals.tres" id="2_5r2x6"]
-[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://icon.svg" id="2_ladtm"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://textures/icon.svg" id="2_ladtm"]
 [ext_resource type="Theme" uid="uid://vurjv1gvv8k" path="res://themes/battle.tres" id="3_4dc5m"]
 [ext_resource type="Shader" uid="uid://8nqt4gg7d15" path="res://shaders/pulse.gdshader" id="3_4psr1"]
 [ext_resource type="Texture2D" uid="uid://d2gl08f6vn5a5" path="res://textures/empty_hpbar.png" id="4_gb4mi"]

@@ -30,7 +30,7 @@
 [ext_resource type="Script" uid="uid://b2f1d03gu37ec" path="res://battle/battle_setup/setup_fighter_button.gd" id="19_ju8jl"]
 [ext_resource type="PackedScene" uid="uid://ddarcnyau851b" path="res://battle/battle_setup/fighter_menu/fighter_option.tscn" id="19_sf8fp"]
 [ext_resource type="Texture2D" uid="uid://bo8bwioext41y" path="res://textures/display_sign.png" id="20_1e446"]
-[ext_resource type="Resource" uid="uid://82lu7qbnryuy" path="res://important_resources/fighter_profiles.tres" id="20_220ih"]
+[ext_resource type="Resource" uid="uid://cn3huiujkxg51" path="res://important_resources/fighter_profiles.tres" id="20_220ih"]
 [ext_resource type="Script" uid="uid://d01buyhtgthea" path="res://battle/battle_setup/fight_button.gd" id="20_xmbur"]
 [ext_resource type="Shader" uid="uid://dk3b2nkq600aq" path="res://shaders/sawtooth.gdshader" id="22_upqw6"]
 [ext_resource type="Script" uid="uid://did2wehuqotfa" path="res://battle/battle_setup/curtains.gd" id="24_7njrs"]
