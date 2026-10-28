@@ -62,7 +62,7 @@ func change_display_name(profile: FighterProfile) -> void:
 
 func play_setup_animation(profile: FighterProfile) -> void:
 	var anim_type: FighterInitResource.SetupAnimType = profile.init_resource.setup_anim_type
-	
+
 	if anim_type == FighterInitResource.SetupAnimType.EXCITED:
 		anim_player.play("excited_setup_anim")
 	if anim_type == FighterInitResource.SetupAnimType.IDLE:

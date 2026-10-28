@@ -1,5 +1,8 @@
 class_name PopupMenuManager extends Control
 
+func _ready() -> void:
+	visible = true
+
 enum MenuType {
 	EVENT,
 	ACTION,

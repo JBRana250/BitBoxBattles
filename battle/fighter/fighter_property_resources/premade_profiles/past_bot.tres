@@ -63,6 +63,7 @@ script = ExtResource("9_dxvn1")
 fighter_id = "Past Bot"
 starting_force = 500.0
 fighter_mass = 10.0
+setup_anim_type = 2
 metadata/_custom_type_script = "uid://bbyqng0l5d8mh"
 
 [sub_resource type="Resource" id="Resource_566rp"]

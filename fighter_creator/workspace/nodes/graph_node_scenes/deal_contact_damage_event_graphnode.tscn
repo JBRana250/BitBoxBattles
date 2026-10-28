@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://bofyq2w5e3omw"]
+
+[ext_resource type="Script" uid="uid://drvfsvtrm70ih" path="res://fighter_creator/workspace/nodes/graph_node_scripts/deal_contact_damage_event_graphnode.gd" id="1_uh487"]
+[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="1_vsunc"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_k03xj"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="2_uh487"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7w7c"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a0ebg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yduf"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sc8l"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+
+[node name="DealContactDamageEvent" type="GraphNode" unique_id=46934645]
+offset_left = 779.0625
+offset_top = 584.4375
+offset_right = 1048.0625
+offset_bottom = 664.4375
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+position_offset = Vector2(1038.75, 779.25)
+title = "Deal Contact Damage Event"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(0.6594783, 0.40358737, 6.738305e-07, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_uh487")
+slot = ExtResource("2_k03xj")
+output_slot_color = Color(0.65882355, 0.40392157, 0, 1)
+
+[node name="Actions" type="PanelContainer" parent="." unique_id=1960576169]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Actions" unique_id=377146491]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Actions/HBoxContainer" unique_id=355020570]
+modulate = Color(0, 0.91779244, 0, 1)
+layout_mode = 2
+texture = ExtResource("1_vsunc")
+expand_mode = 2
+
+[node name="Button" type="Label" parent="Actions/HBoxContainer" unique_id=83591101]
+layout_mode = 2
+text = "Action"
+label_settings = SubResource("LabelSettings_g7w7c")
+vertical_alignment = 1
+
+[node name="AddActionButton" type="Button" parent="Actions" unique_id=1070032206 node_paths=PackedStringArray("owner_node")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a0ebg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4yduf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6sc8l")
+script = ExtResource("2_uh487")
+owner_node = NodePath("../..")
+menu_type = 1
+
+[connection signal="pressed" from="Actions/AddActionButton" to="Actions/AddActionButton" method="_on_pressed"]

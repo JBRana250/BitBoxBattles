@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bjog6lpfgpuno" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_sprites_graphnode.tscn" id="10_pfspe"]
 [ext_resource type="PackedScene" uid="uid://dlnk1eud1w452" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_setup_graphnode.tscn" id="11_4k6nc"]
 [ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_abilities_graphnode.tscn" id="11_tirwg"]
+[ext_resource type="PackedScene" uid="uid://bofyq2w5e3omw" path="res://fighter_creator/workspace/nodes/graph_node_scenes/deal_contact_damage_event_graphnode.tscn" id="12_1mh7u"]
+[ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/node_resource.gd" id="17_qrd11"]
 [ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_event_popup/add_event_popup_menu.gd" id="19_au8nn"]
 [ext_resource type="Script" uid="uid://bku060rexjoog" path="res://fighter_creator/popups/add_event_popup/add_event_cancel_button.gd" id="20_pyiuw"]
 [ext_resource type="Script" uid="uid://caos305qgk772" path="res://fighter_creator/popups/add_event_popup/create_event_button.gd" id="21_e0bke"]
@@ -30,6 +32,12 @@
 [ext_resource type="Resource" uid="uid://edka8c4s8nol" path="res://fighter_creator/workspace/nodes/graph_node_resources/state_condition_node.tres" id="30_nmg4h"]
 [ext_resource type="Resource" uid="uid://crrlcocjbx1oq" path="res://fighter_creator/workspace/nodes/graph_node_resources/inactive_state_node.tres" id="31_qrd11"]
 [ext_resource type="Script" uid="uid://ys20qwe1vhw4" path="res://fighter_creator/workspace/save_fighter_managers/fighter_save_manager.gd" id="35_a0ebg"]
+
+[sub_resource type="Resource" id="Resource_k03xj"]
+script = ExtResource("17_qrd11")
+graph_node_scene = ExtResource("12_1mh7u")
+graph_node_name = "Deal Contact Damage Event"
+metadata/_custom_type_script = "uid://wvfaicrfo161"
 
 [sub_resource type="LabelSettings" id="LabelSettings_vjyn1"]
 font_size = 64
@@ -140,11 +148,17 @@ connections = Array[Dictionary]([{
 "from_node": &"Fighter",
 "from_port": 1,
 "keep_alive": true,
-"to_node": &"FighterBaseSprites",
+"to_node": &"FighterSetup",
 "to_port": 0
 }, {
 "from_node": &"Fighter",
 "from_port": 2,
+"keep_alive": true,
+"to_node": &"FighterBaseSprites",
+"to_port": 0
+}, {
+"from_node": &"Fighter",
+"from_port": 3,
 "keep_alive": true,
 "to_node": &"FighterAbilities",
 "to_port": 0
@@ -189,7 +203,11 @@ offset_right = 1112.0
 offset_bottom = 341.5
 position_offset = Vector2(1020, 50)
 
+[node name="DealContactDamageEvent" parent="UI/VBoxContainer/Workspace" unique_id=46934645 instance=ExtResource("12_1mh7u")]
+layout_mode = 0
+
 [node name="PopupMenuManager" type="Control" parent="UI" unique_id=592969624 node_paths=PackedStringArray("workspace", "event_popup_menu", "action_popup_menu", "condition_popup_menu", "state_popup_menu")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -251,10 +269,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Add Event Node"
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=174018075]
+[node name="RepeatedTimerEvent" type="PanelContainer" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=174018075]
 layout_mode = 2
 
-[node name="CreateEventButton" type="Button" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1064190608 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
+[node name="CreateEventButton" type="Button" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RepeatedTimerEvent" unique_id=1064190608 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "RepeatedTimerEvent"
@@ -262,6 +280,18 @@ script = ExtResource("21_e0bke")
 add_event_popup_menu = NodePath("../../../../../..")
 node_creation_manager = NodePath("../../../../../../../../../Components/NodeCreationManager")
 node_resource = ExtResource("22_5x8o3")
+
+[node name="DealContactDamageEvent" type="PanelContainer" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1883550277]
+layout_mode = 2
+
+[node name="CreateEventButton" type="Button" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/DealContactDamageEvent" unique_id=2110506332 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "DealContactDamageEvent"
+script = ExtResource("21_e0bke")
+add_event_popup_menu = NodePath("../../../../../..")
+node_creation_manager = NodePath("../../../../../../../../../Components/NodeCreationManager")
+node_resource = SubResource("Resource_k03xj")
 
 [node name="PanelContainer2" type="PanelContainer" parent="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2032369111]
 layout_mode = 2
@@ -519,6 +549,7 @@ script = ExtResource("20_pyiuw")
 add_event_popup_menu = NodePath("../../../../../..")
 
 [node name="ProfileSelection" type="Control" parent="UI/PopupMenuManager" unique_id=614286401 node_paths=PackedStringArray("load_workspace_manager", "profiles_hflow")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -618,7 +649,8 @@ fighter_save_manager = NodePath("../FighterSaveManager")
 
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/BattleButton" to="UI/VBoxContainer/TopBar/BattleButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/SaveFighterButton" to="UI/VBoxContainer/TopBar/SaveFighterButton" method="_on_pressed"]
-[connection signal="pressed" from="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" to="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateEventButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RepeatedTimerEvent/CreateEventButton" to="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RepeatedTimerEvent/CreateEventButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/DealContactDamageEvent/CreateEventButton" to="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/DealContactDamageEvent/CreateEventButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenuManager/AddEventPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateActionButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateActionButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateActionButton" method="_on_pressed"]
