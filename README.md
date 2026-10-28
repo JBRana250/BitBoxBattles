@@ -1,17 +1,41 @@
 Credits:
-
+-- IMAGES --
 Health bar - LokiF on opengameart.org
 https://opengameart.org/content/health-bar-and-heart-icon
-
-Damage Number Font - Khurasan on dafont.com
-https://www.dafont.com/matcha-home.font?text=100&l[]=1&back=top
 
 Hit spark effects - Sinestesia on opengameart.org
 https://opengameart.org/content/hit-animation-frame-by-frame
 https://opengameart.org/content/hit-animation-2-frame-by-frame
 
+UI Pack - Kenney "www.kenney.nl" on opengameart.org
+https://opengameart.org/content/ui-pack
+
+-- FONTS --
+Damage Number Font - Khurasan on dafont.com
+https://www.dafont.com/matcha-home.font?text=100&l[]=1&back=top
+
+-- SHADERS --
 Hit flash shader - dimensionalmios on GodotShaders.com
 https://godotshaders.com/shader/hit-flash-with-rhythm-patterns/
+
+Copyright 2026 dimensionalmios
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal 
+in the Software without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
+of the Software, and to permit persons to whom the Software is furnished to do 
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all 
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 Double Dither shader - nojoule on GodotShaders.com
 https://godotshaders.com/shader/double-dither-stylized-transparency-shadows-retro-masks/
@@ -19,6 +43,10 @@ https://godotshaders.com/shader/double-dither-stylized-transparency-shadows-retr
 Triangle Wave shader - shawcat on GodotShaders.com
 https://godotshaders.com/shader/triangle-wave/
 
+Audio Waveforms shader - pend00 on GodotShaders.com
+https://godotshaders.com/shader/waveforms/
+
+-- SFX --
 Hit sound effects - Universfield on Pixabay
 Sound Effect by <a href="https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&
 utm_medium=referral&utm_campaign=music&utm_content=567196">Official Profile</a> from <a href="https://pixabay.com
@@ -32,6 +60,3 @@ Collision SFX - M_R_Farenheit on Pixabay
 Sound Effect by <a href="https://pixabay.com/users/m_r_fahrenheit-49128609/?utm_source=link-attribution&
 utm_medium=referral&utm_campaign=music&utm_content=382573">Amber Smith</a> from <a href="https://pixabay.com
 /sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=382573">Pixabay</a>
-
-UI Pack - Kenney "www.kenney.nl" on opengameart.org
-https://opengameart.org/content/ui-pack

@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://c1hmnq3gryeje"]
+
+[ext_resource type="PackedScene" uid="uid://c55k6irkrvoyf" path="res://fighter_creator/file_dialog_image_downloads.tscn" id="1_ate5i"]
+[ext_resource type="Script" uid="uid://cdnk387672vtt" path="res://fighter_creator/workspace/nodes/graph_node_scripts/play_sfx_action_graphnode.gd" id="1_lf6pl"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_52y1j"]
+[ext_resource type="Shader" uid="uid://ddr7s32ecy71h" path="res://shaders/audio_waveform.gdshader" id="2_lf6pl"]
+[ext_resource type="Script" uid="uid://cm63lxdka3b1a" path="res://fighter_creator/open_file_dialog_image_download.gd" id="3_52y1j"]
+[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="6_ctn4s"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="7_q0i3f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a0ebg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7w7c"]
+resource_local_to_scene = true
+shader = ExtResource("2_lf6pl")
+shader_parameter/lines = 80
+shader_parameter/amplitude = 1.0
+shader_parameter/frequency = 0.1
+shader_parameter/intensity = 1.0
+shader_parameter/line_sharpness = 0.0
+shader_parameter/line_size = 0.8
+shader_parameter/fade = 0.5
+shader_parameter/rest_size = -0.9999999525
+shader_parameter/edge = 0.05
+shader_parameter/speed = 1.0
+shader_parameter/color = Color(0.8, 0.25, 0.5, 1)
+shader_parameter/dot_matrix = false
+shader_parameter/dot_matriz_size = 80
+shader_parameter/speech_sim = true
+shader_parameter/speech_intensity = 0.8
+shader_parameter/progress = 0.0
+
+[sub_resource type="Theme" id="Theme_g7w7c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0ebg"]
+bg_color = Color(0.029506553, 0.029506562, 0.029506536, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yduf"]
+bg_color = Color(0.33288068, 0.3328807, 0.33288056, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sc8l"]
+bg_color = Color(0.18717611, 0.18717617, 0.18717602, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_rcr0d"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7pcb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1ds2"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8h1l"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+
+[node name="PlaySFXAction" type="GraphNode" unique_id=935528103 node_paths=PackedStringArray("sfx_label", "waveform_visualiser")]
+offset_left = 761.625
+offset_top = 586.125
+offset_right = 1199.625
+offset_bottom = 696.125
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+position_offset = Vector2(1015.5, 781.5)
+title = "Play SFX Action"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(0.80186355, 0.3119001, 0.525774, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_lf6pl")
+sfx_label = NodePath("PanelContainer/VBoxContainer2/SFX/VBoxContainer/Label")
+waveform_visualiser = NodePath("PanelContainer/VBoxContainer2/SFX/VBoxContainer/SFXWaveform")
+slot = ExtResource("2_52y1j")
+output_slot_color = Color(0.8, 0.3137255, 0.5254902, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1598372544]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer" unique_id=478640193]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SFX" type="PanelContainer" parent="PanelContainer/VBoxContainer2" unique_id=2090750228]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer2/SFX" unique_id=978229165]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FileDialog" parent="PanelContainer/VBoxContainer2/SFX/VBoxContainer" unique_id=5957504 instance=ExtResource("1_ate5i")]
+filters = PackedStringArray("*.wav", "*.mp3")
+hidden_files_toggle_enabled = false
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer2/SFX/VBoxContainer" unique_id=1664898839]
+layout_mode = 2
+text = "Nothing"
+label_settings = SubResource("LabelSettings_a0ebg")
+horizontal_alignment = 1
+
+[node name="SFXWaveform" type="ColorRect" parent="PanelContainer/VBoxContainer2/SFX/VBoxContainer" unique_id=122962787]
+material = SubResource("ShaderMaterial_g7w7c")
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ChangeSFXButton" type="Button" parent="PanelContainer/VBoxContainer2/SFX/VBoxContainer" unique_id=1078459621 node_paths=PackedStringArray("file_dialog")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_g7w7c")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0ebg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4yduf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6sc8l")
+text = "Change SFX"
+script = ExtResource("3_52y1j")
+file_dialog = NodePath("../FileDialog")
+
+[node name="ImportSoundManager" type="Node" parent="PanelContainer/VBoxContainer2/SFX/VBoxContainer" unique_id=1464272573]
+
+[node name="Conditions" type="PanelContainer" parent="PanelContainer/VBoxContainer2" unique_id=1128118119]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer2/Conditions" unique_id=1733346095]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer2/Conditions/HBoxContainer" unique_id=1483774560]
+modulate = Color(0, 0.91779244, 0, 1)
+layout_mode = 2
+texture = ExtResource("6_ctn4s")
+expand_mode = 2
+
+[node name="Button" type="Label" parent="PanelContainer/VBoxContainer2/Conditions/HBoxContainer" unique_id=320550402]
+layout_mode = 2
+text = "Condition"
+label_settings = SubResource("LabelSettings_rcr0d")
+vertical_alignment = 1
+
+[node name="AddConditionButton" type="Button" parent="PanelContainer/VBoxContainer2/Conditions" unique_id=1502124384 node_paths=PackedStringArray("owner_node")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k7pcb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s1ds2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n8h1l")
+script = ExtResource("7_q0i3f")
+owner_node = NodePath("../../../..")
+menu_type = 2
+
+[connection signal="file_selected" from="PanelContainer/VBoxContainer2/SFX/VBoxContainer/FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer2/SFX/VBoxContainer/ChangeSFXButton" to="PanelContainer/VBoxContainer2/SFX/VBoxContainer/ChangeSFXButton" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer2/Conditions/AddConditionButton" to="PanelContainer/VBoxContainer2/Conditions/AddConditionButton" method="_on_pressed"]
