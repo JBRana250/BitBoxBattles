@@ -4,7 +4,7 @@
 [ext_resource type="LabelSettings" uid="uid://ssy37mkivlh4" path="res://themes/scene_header.tres" id="2_bfom8"]
 [ext_resource type="Script" uid="uid://kgatr1mesxo0" path="res://title/nav_button.gd" id="3_8g1jf"]
 [ext_resource type="Script" uid="uid://dnt6btjnq20h" path="res://fighter_creator/workspace/save_fighter_managers/save_fighter_button.gd" id="4_ospfe"]
-[ext_resource type="Resource" uid="uid://82lu7qbnryuy" path="res://important_resources/fighter_profiles.tres" id="5_0kk2c"]
+[ext_resource type="Resource" path="res://important_resources/fighter_profiles.tres" id="5_0kk2c"]
 [ext_resource type="Theme" uid="uid://t0356dc8uyvi" path="res://themes/fighter_workspace.tres" id="6_w17tl"]
 [ext_resource type="Script" uid="uid://b00qu3b3ric6m" path="res://fighter_creator/workspace/workspace.gd" id="7_4k6nc"]
 [ext_resource type="PackedScene" uid="uid://bhlkjhb2trj5u" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_graphnode.tscn" id="7_rdcvk"]
@@ -183,7 +183,7 @@ popup_menu_manager = NodePath("../../PopupMenuManager")
 
 [node name="Fighter" parent="UI/VBoxContainer/Workspace" unique_id=1702544155 instance=ExtResource("7_rdcvk")]
 layout_mode = 0
-offset_bottom = 4847.875
+offset_bottom = 561.625
 
 [node name="FighterBaseStats" parent="UI/VBoxContainer/Workspace" unique_id=55001274 instance=ExtResource("9_4yduf")]
 layout_mode = 0
@@ -195,27 +195,27 @@ position_offset = Vector2(488.25, 44.25)
 
 [node name="FighterBaseSprites" parent="UI/VBoxContainer/Workspace" unique_id=370798223 instance=ExtResource("10_pfspe")]
 layout_mode = 0
-offset_left = 369.0
-offset_top = 344.8125
-offset_right = 774.0
-offset_bottom = 623.8125
-position_offset = Vector2(492, 459.75)
+offset_left = 375.1875
+offset_top = 356.0625
+offset_right = 780.1875
+offset_bottom = 635.0625
+position_offset = Vector2(500.25, 474.75)
 
 [node name="FighterAbilities" parent="UI/VBoxContainer/Workspace" unique_id=645370397 instance=ExtResource("11_tirwg")]
 layout_mode = 0
-offset_left = 370.6875
-offset_top = 583.875
-offset_right = 834.6875
-offset_bottom = 826.875
-position_offset = Vector2(494.25, 778.5)
+offset_left = 371.8125
+offset_top = 617.0625
+offset_right = 835.8125
+offset_bottom = 860.0625
+position_offset = Vector2(495.75, 822.75)
 
 [node name="FighterSetup" parent="UI/VBoxContainer/Workspace" unique_id=1271536354 instance=ExtResource("11_4k6nc")]
 layout_mode = 0
-offset_left = 765.0
-offset_top = 37.5
-offset_right = 1161.0
-offset_bottom = 491.5
-position_offset = Vector2(1020, 50)
+offset_left = 767.25
+offset_top = 36.5625
+offset_right = 1114.25
+offset_bottom = 340.5625
+position_offset = Vector2(1023, 48.75)
 
 [node name="PopupMenuManager" type="Control" parent="UI" unique_id=592969624 node_paths=PackedStringArray("workspace", "event_popup_menu", "action_popup_menu", "condition_popup_menu", "state_popup_menu")]
 visible = false
