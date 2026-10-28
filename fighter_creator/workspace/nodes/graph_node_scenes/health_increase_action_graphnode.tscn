@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://bpvm13r2d0en8"]
+
+[ext_resource type="Script" uid="uid://dlsx2068bafwk" path="res://fighter_creator/workspace/nodes/graph_node_scripts/health_increase_action_graphnode.gd" id="1_alc7p"]
+[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="1_l1w14"]
+[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="2_alc7p"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_r68tn"]
+[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="3_r68tn"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="4_d2c6v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sc8l"]
+bg_color = Color(0, 0.6313726, 0.11764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdcvk"]
+bg_color = Color(8.615404e-06, 0.762326, 0.15058672, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ohdi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ohdi"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uuieq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vqhb"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbqos"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+
+[node name="HealthIncreaseAction" type="GraphNode" unique_id=1619022957 node_paths=PackedStringArray("amount_progbar")]
+offset_left = 750.375
+offset_top = 588.9375
+offset_right = 973.375
+offset_bottom = 712.9375
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+position_offset = Vector2(1000.5, 785.25)
+title = "Health Increase Action"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(0, 1, 0, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_alc7p")
+amount_progbar = NodePath("VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar")
+slot = ExtResource("2_r68tn")
+output_slot_color = Color(0, 1, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1518110750]
+layout_mode = 2
+
+[node name="HP" type="Control" parent="VBoxContainer" unique_id=297650953]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HP" unique_id=1717614516]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HP/MarginContainer" unique_id=634171821]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HP/MarginContainer/VBoxContainer" unique_id=1134746917]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HP/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2038197380]
+layout_mode = 2
+text = "Amount"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HP/MarginContainer/VBoxContainer" unique_id=1967509175]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_6sc8l")
+min_value = 1.0
+max_value = 250.0
+value = 100.0
+allow_greater = true
+show_percentage = false
+script = ExtResource("1_l1w14")
+default_fill = SubResource("StyleBoxFlat_6sc8l")
+hover_fill = SubResource("StyleBoxFlat_rdcvk")
+hover_bg = SubResource("StyleBoxFlat_0ohdi")
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" unique_id=206876473]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.25
+offset_top = -15.5
+offset_right = 4.75
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("2_alc7p")
+
+[node name="Conditions" type="PanelContainer" parent="VBoxContainer" unique_id=925135635]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Conditions" unique_id=1263682062]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Conditions/HBoxContainer" unique_id=700237250]
+modulate = Color(0, 0.91779244, 0, 1)
+layout_mode = 2
+texture = ExtResource("3_r68tn")
+expand_mode = 2
+
+[node name="Button" type="Label" parent="VBoxContainer/Conditions/HBoxContainer" unique_id=260445063]
+layout_mode = 2
+text = "Condition"
+label_settings = SubResource("LabelSettings_0ohdi")
+vertical_alignment = 1
+
+[node name="AddConditionButton" type="Button" parent="VBoxContainer/Conditions" unique_id=2139284772 node_paths=PackedStringArray("owner_node")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uuieq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8vqhb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jbqos")
+script = ExtResource("4_d2c6v")
+owner_node = NodePath("../../..")
+menu_type = 2
+
+[connection signal="mouse_entered" from="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
+[connection signal="text_changed" from="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+[connection signal="pressed" from="VBoxContainer/Conditions/AddConditionButton" to="VBoxContainer/Conditions/AddConditionButton" method="_on_pressed"]

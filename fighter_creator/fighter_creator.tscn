@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dlnk1eud1w452" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_setup_graphnode.tscn" id="11_4k6nc"]
 [ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_abilities_graphnode.tscn" id="11_tirwg"]
 [ext_resource type="PackedScene" uid="uid://bofyq2w5e3omw" path="res://fighter_creator/workspace/nodes/graph_node_scenes/deal_contact_damage_event_graphnode.tscn" id="12_1mh7u"]
+[ext_resource type="PackedScene" uid="uid://bpvm13r2d0en8" path="res://fighter_creator/workspace/nodes/graph_node_scenes/health_increase_action_graphnode.tscn" id="12_g7w7c"]
 [ext_resource type="PackedScene" uid="uid://c1hmnq3gryeje" path="res://fighter_creator/workspace/nodes/graph_node_scenes/play_sfx_action_graphnode.tscn" id="12_nmg4h"]
 [ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/node_resource.gd" id="17_qrd11"]
 [ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_event_popup/add_event_popup_menu.gd" id="19_au8nn"]
@@ -44,6 +45,12 @@ metadata/_custom_type_script = "uid://wvfaicrfo161"
 script = ExtResource("17_qrd11")
 graph_node_scene = ExtResource("12_nmg4h")
 graph_node_name = "Play SFX Action"
+metadata/_custom_type_script = "uid://wvfaicrfo161"
+
+[sub_resource type="Resource" id="Resource_a0ebg"]
+script = ExtResource("17_qrd11")
+graph_node_scene = ExtResource("12_g7w7c")
+graph_node_name = "Health Increase Action"
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 
 [sub_resource type="LabelSettings" id="LabelSettings_vjyn1"]
@@ -176,7 +183,7 @@ popup_menu_manager = NodePath("../../PopupMenuManager")
 
 [node name="Fighter" parent="UI/VBoxContainer/Workspace" unique_id=1702544155 instance=ExtResource("7_rdcvk")]
 layout_mode = 0
-offset_bottom = 3133.375
+offset_bottom = 4847.875
 
 [node name="FighterBaseStats" parent="UI/VBoxContainer/Workspace" unique_id=55001274 instance=ExtResource("9_4yduf")]
 layout_mode = 0
@@ -206,14 +213,9 @@ position_offset = Vector2(494.25, 778.5)
 layout_mode = 0
 offset_left = 765.0
 offset_top = 37.5
-offset_right = 1112.0
-offset_bottom = 341.5
+offset_right = 1161.0
+offset_bottom = 491.5
 position_offset = Vector2(1020, 50)
-
-[node name="PlaySFXAction" parent="UI/VBoxContainer/Workspace" unique_id=935528103 instance=ExtResource("12_nmg4h")]
-layout_mode = 0
-offset_right = 921.625
-offset_bottom = 736.125
 
 [node name="PopupMenuManager" type="Control" parent="UI" unique_id=592969624 node_paths=PackedStringArray("workspace", "event_popup_menu", "action_popup_menu", "condition_popup_menu", "state_popup_menu")]
 visible = false
@@ -406,6 +408,18 @@ script = ExtResource("21_e0bke")
 add_event_popup_menu = NodePath("../../../../../..")
 node_creation_manager = NodePath("../../../../../../../../../Components/NodeCreationManager")
 node_resource = SubResource("Resource_ra0kn")
+
+[node name="PanelContainer6" type="PanelContainer" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1470525516]
+layout_mode = 2
+
+[node name="CreateActionButton" type="Button" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer6" unique_id=11095807 node_paths=PackedStringArray("add_event_popup_menu", "node_creation_manager")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "HealthIncreaseAction"
+script = ExtResource("21_e0bke")
+add_event_popup_menu = NodePath("../../../../../..")
+node_creation_manager = NodePath("../../../../../../../../../Components/NodeCreationManager")
+node_resource = SubResource("Resource_a0ebg")
 
 [node name="PanelContainer2" type="PanelContainer" parent="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1210833578]
 layout_mode = 2
@@ -677,6 +691,7 @@ fighter_save_manager = NodePath("../FighterSaveManager")
 [connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateActionButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateActionButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer4/CreateActionButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer4/CreateActionButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer5/CreateActionButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer5/CreateActionButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer6/CreateActionButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer6/CreateActionButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenuManager/AddActionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateConditionButton" to="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateConditionButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenuManager/AddConditionPopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
