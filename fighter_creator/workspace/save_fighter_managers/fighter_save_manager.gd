@@ -48,5 +48,5 @@ func save_fighter() -> void:
 	else: #existing fighter
 		fighter_profiles.modify_existing_profile(existing_fighter_id, fighter_profile)
 	
-	ResourceSaver.save(fighter_profiles, "user://fighter_profiles.tres")
+	SaveManager.save_fighter_profiles()
 	profile_selection.init_profile_selection()

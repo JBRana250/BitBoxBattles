@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://buyhiqo72h4l4"
 
 BattleEventBus="*uid://bjqxel3uajye2"
 AudioManager="*uid://d0sfishc4e6mo"
+SaveManager="*uid://c1f1fc0duc1j2"
 
 [display]
 
