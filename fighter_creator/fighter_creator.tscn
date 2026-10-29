@@ -34,6 +34,8 @@
 [ext_resource type="Script" uid="uid://csiokkb8j1gly" path="res://fighter_creator/popups/profile_selection/reload_profiles.gd" id="30_a0ebg"]
 [ext_resource type="Resource" uid="uid://edka8c4s8nol" path="res://fighter_creator/workspace/nodes/graph_node_resources/state_condition_node.tres" id="30_nmg4h"]
 [ext_resource type="Resource" uid="uid://crrlcocjbx1oq" path="res://fighter_creator/workspace/nodes/graph_node_resources/inactive_state_node.tres" id="31_qrd11"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://textures/icon.svg" id="33_4yduf"]
+[ext_resource type="Script" uid="uid://ijv8idhm2de3" path="res://fighter_creator/popups/profile_options/profile_options.gd" id="33_6sc8l"]
 [ext_resource type="Script" uid="uid://ys20qwe1vhw4" path="res://fighter_creator/workspace/save_fighter_managers/fighter_save_manager.gd" id="35_a0ebg"]
 
 [sub_resource type="Resource" id="Resource_k03xj"]
@@ -73,6 +75,12 @@ bg_color = Color(0.19076231, 0.19076234, 0.19076222, 1)
 bg_color = Color(0.6624523, 0.66245234, 0.66245216, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cnnf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sc8l"]
+bg_color = Color(0.4313402, 0.43134028, 0.43134007, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yduf"]
+bg_color = Color(0.6147242, 0, 0.11844764, 1)
 
 [node name="FighterCreator" type="Node" unique_id=1672563842]
 
@@ -586,7 +594,7 @@ text = "Cancel"
 script = ExtResource("20_pyiuw")
 add_event_popup_menu = NodePath("../../../../../..")
 
-[node name="ProfileSelection" type="Control" parent="UI/PopupMenuManager" unique_id=614286401 node_paths=PackedStringArray("load_workspace_manager", "profiles_hflow", "reload_profiles_button")]
+[node name="ProfileSelection" type="Control" parent="UI/PopupMenuManager" unique_id=614286401 node_paths=PackedStringArray("profiles_hflow", "reload_profiles_button", "profile_options")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -594,11 +602,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("22_4k6nc")
-load_workspace_manager = NodePath("../../../Components/LoadWorkspaceManager")
 profiles_hflow = NodePath("VBoxContainer/PanelContainer2/MarginContainer3/HFlowContainer")
 profile_option = ExtResource("22_w17tl")
 fighter_profiles = ExtResource("5_0kk2c")
 reload_profiles_button = NodePath("VBoxContainer/PanelContainer/MarginContainer2/HBoxContainer/ReloadProfiles")
+profile_options = NodePath("../ProfileOptions")
 
 [node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/ProfileSelection" unique_id=2060094736]
 layout_mode = 1
@@ -706,6 +714,90 @@ profile_selection_popup = NodePath("../../../..")
 load_workspace_manager = NodePath("../../../../../../../Components/LoadWorkspaceManager")
 base_workspace = ExtResource("23_0kk2c")
 
+[node name="ProfileOptions" type="Control" parent="UI/PopupMenuManager" unique_id=2033871030 node_paths=PackedStringArray("name_label", "fighter_texture", "load_workspace_manager")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("33_6sc8l")
+name_label = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/NameLabel")
+fighter_texture = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/FighterTexture")
+load_workspace_manager = NodePath("../../../Components/LoadWorkspaceManager")
+
+[node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/ProfileOptions" unique_id=1517447662]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.9019608)
+
+[node name="LeaveMenu" type="Button" parent="UI/PopupMenuManager/ProfileOptions" unique_id=1540965129]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PopupMenuManager/ProfileOptions" unique_id=61691588]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/ProfileOptions/CenterContainer" unique_id=2001029370]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer" unique_id=733012827]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer/MarginContainer" unique_id=1091191828]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NameLabel" type="Label" parent="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1582929124]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "<ProfileName>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FighterTexture" type="TextureRect" parent="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1110055055]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+texture = ExtResource("33_4yduf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Options" type="HBoxContainer" parent="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=478240470]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Edit" type="Button" parent="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options" unique_id=2118941624]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6sc8l")
+text = "Edit"
+
+[node name="Rename" type="Button" parent="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options" unique_id=382717511]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6sc8l")
+text = "Rename"
+
+[node name="Delete" type="Button" parent="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options" unique_id=388800024]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4yduf")
+text = "Delete"
+
 [node name="Components" type="Node" parent="." unique_id=828218517]
 
 [node name="NodeCreationManager" type="Node" parent="Components" unique_id=1446744500 node_paths=PackedStringArray("workspace")]
@@ -717,10 +809,11 @@ script = ExtResource("35_a0ebg")
 fighter_profiles = ExtResource("5_0kk2c")
 profile_selection = NodePath("../../UI/PopupMenuManager/ProfileSelection")
 
-[node name="LoadWorkspaceManager" type="Node" parent="Components" unique_id=1185493305 node_paths=PackedStringArray("workspace", "fighter_save_manager")]
+[node name="LoadWorkspaceManager" type="Node" parent="Components" unique_id=1185493305 node_paths=PackedStringArray("workspace", "fighter_save_manager", "popup_menu_manager")]
 script = ExtResource("26_w17tl")
 workspace = NodePath("../../UI/VBoxContainer/Workspace")
 fighter_save_manager = NodePath("../FighterSaveManager")
+popup_menu_manager = NodePath("../../UI/PopupMenuManager")
 
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/BattleButton" to="UI/VBoxContainer/TopBar/BattleButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/TopBar/SaveFighterButton" to="UI/VBoxContainer/TopBar/SaveFighterButton" method="_on_pressed"]
@@ -741,3 +834,7 @@ fighter_save_manager = NodePath("../FighterSaveManager")
 [connection signal="pressed" from="UI/PopupMenuManager/ProfileSelection/VBoxContainer/PanelContainer/MarginContainer2/HBoxContainer/ToBattle" to="UI/PopupMenuManager/ProfileSelection/VBoxContainer/PanelContainer/MarginContainer2/HBoxContainer/ToBattle" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/ProfileSelection/VBoxContainer/PanelContainer/MarginContainer2/HBoxContainer/ReloadProfiles" to="UI/PopupMenuManager/ProfileSelection/VBoxContainer/PanelContainer/MarginContainer2/HBoxContainer/ReloadProfiles" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/ProfileSelection/VBoxContainer/PanelContainer3/MarginContainer2/NewFighter" to="UI/PopupMenuManager/ProfileSelection/VBoxContainer/PanelContainer3/MarginContainer2/NewFighter" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ProfileOptions/LeaveMenu" to="UI/PopupMenuManager/ProfileOptions" method="_on_leave_menu_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options/Edit" to="UI/PopupMenuManager/ProfileOptions" method="_on_edit_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options/Rename" to="UI/PopupMenuManager/ProfileOptions" method="_on_rename_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ProfileOptions/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options/Delete" to="UI/PopupMenuManager/ProfileOptions" method="_on_delete_pressed"]

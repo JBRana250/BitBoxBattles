@@ -26,3 +26,7 @@ func open_menu(type: MenuType, parent_node: CompositeGraphNode):
 			condition_popup_menu.open_menu(parent_node)
 		MenuType.STATE:
 			state_popup_menu.open_menu(parent_node)
+
+func close_all_popups() -> void:
+	for child: Control in get_children():
+		child.hide()

@@ -2,8 +2,10 @@ class_name LoadWorkspaceManager extends Node
 
 @export var workspace: Workspace
 @export var fighter_save_manager: FighterSaveManager
+@export var popup_menu_manager: PopupMenuManager
 
 func init_workspace(rootnode: NodeResource, id: int = -1) -> void:
+	popup_menu_manager.close_all_popups()
 	for node in workspace.get_children():
 		if node is GraphNode:
 			node.queue_free()

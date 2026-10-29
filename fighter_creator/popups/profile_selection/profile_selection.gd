@@ -1,10 +1,10 @@
 extends Control
 
-@export var load_workspace_manager: LoadWorkspaceManager
 @export var profiles_hflow: HFlowContainer
 @export var profile_option: PackedScene
 @export var fighter_profiles: FighterProfiles
 @export var reload_profiles_button: Button
+@export var profile_options: Control
 
 func _ready() -> void:
 	init_profile_selection()
@@ -22,8 +22,7 @@ func init_profile_selection() -> void:
 		profiles_hflow.add_child(profile_option_instance)
 
 func choose_fighter(profile: FighterProfile, id: int) -> void:
-	load_workspace_manager.init_workspace(profile.workspace_data, id)
-	visible = false
+	profile_options.init_profile_options(profile, id)
 
 func reload() -> void:
 	reload_profiles_button.disabled = true 
