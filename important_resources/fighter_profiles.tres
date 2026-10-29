@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="FighterProfiles" format=3 uid="uid://cn3huiujkxg51"]
+[gd_resource type="Resource" script_class="FighterProfiles" format=3 uid="uid://bj26n7jwwji05"]
 
 [ext_resource type="Script" uid="uid://co45optnb8qec" path="res://battle/fighter/fighter_property_resources/fighter_profile.gd" id="1_bomdd"]
 [ext_resource type="Script" uid="uid://kx3al7hfk68c" path="res://important_resources/fighter_profiles.gd" id="15_idyst"]
 
 [resource]
 script = ExtResource("15_idyst")
-next_id = 1
 metadata/_custom_type_script = "uid://kx3al7hfk68c"
