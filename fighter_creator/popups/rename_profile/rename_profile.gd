@@ -19,6 +19,7 @@ func _on_cancel_pressed() -> void:
 func _on_rename_pressed() -> void:
 	var new_name: String = rename_lineedit.text
 	profile.init_resource.fighter_id = new_name
+	profile.workspace_data.connected_nodes[0].properties.fighter_id = new_name
 	visible = false
 	
 	SaveManager.save_fighter_profiles()
