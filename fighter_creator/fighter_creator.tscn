@@ -200,7 +200,7 @@ popup_menu_manager = NodePath("../../PopupMenuManager")
 
 [node name="Fighter" parent="UI/VBoxContainer/Workspace" unique_id=1702544155 instance=ExtResource("7_rdcvk")]
 layout_mode = 0
-offset_bottom = 2704.75
+offset_bottom = 3133.375
 
 [node name="FighterBaseStats" parent="UI/VBoxContainer/Workspace" unique_id=55001274 instance=ExtResource("9_4yduf")]
 layout_mode = 0
@@ -714,6 +714,7 @@ load_workspace_manager = NodePath("../../../../../../../Components/LoadWorkspace
 base_workspace = ExtResource("23_0kk2c")
 
 [node name="ProfileOptions" type="Control" parent="UI/PopupMenuManager" unique_id=2033871030 node_paths=PackedStringArray("name_label", "fighter_texture", "load_workspace_manager", "profile_selection", "rename_profile", "delete_profile")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -819,6 +820,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.9019608)
 
 [node name="LeaveMenu" type="Button" parent="UI/PopupMenuManager/ProfileOptions/RenameProfile" unique_id=70378140]
@@ -836,6 +838,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/ProfileOptions/RenameProfile/CenterContainer" unique_id=1203331730]
 layout_mode = 2
@@ -897,6 +900,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.9019608)
 
 [node name="LeaveMenu" type="Button" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile" unique_id=805186293]
@@ -914,6 +918,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile/CenterContainer" unique_id=1067779209]
 layout_mode = 2
