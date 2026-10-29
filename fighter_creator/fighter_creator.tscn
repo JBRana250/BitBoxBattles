@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://ijv8idhm2de3" path="res://fighter_creator/popups/profile_options/profile_options.gd" id="33_6sc8l"]
 [ext_resource type="Script" uid="uid://ys20qwe1vhw4" path="res://fighter_creator/workspace/save_fighter_managers/fighter_save_manager.gd" id="35_a0ebg"]
 [ext_resource type="Script" uid="uid://dqajhtkxje5i" path="res://fighter_creator/popups/rename_profile/rename_profile.gd" id="35_rdcvk"]
+[ext_resource type="Script" uid="uid://ct0oilwtx8525" path="res://fighter_creator/popups/delete_profile/delete_profile.gd" id="36_0ohdi"]
 
 [sub_resource type="Resource" id="Resource_k03xj"]
 script = ExtResource("17_qrd11")
@@ -234,7 +235,6 @@ offset_bottom = 340.5625
 position_offset = Vector2(1023, 48.75)
 
 [node name="PopupMenuManager" type="Control" parent="UI" unique_id=592969624 node_paths=PackedStringArray("workspace", "event_popup_menu", "action_popup_menu", "condition_popup_menu", "state_popup_menu")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -713,8 +713,7 @@ profile_selection_popup = NodePath("../../../..")
 load_workspace_manager = NodePath("../../../../../../../Components/LoadWorkspaceManager")
 base_workspace = ExtResource("23_0kk2c")
 
-[node name="ProfileOptions" type="Control" parent="UI/PopupMenuManager" unique_id=2033871030 node_paths=PackedStringArray("name_label", "fighter_texture", "load_workspace_manager", "rename_profile")]
-visible = false
+[node name="ProfileOptions" type="Control" parent="UI/PopupMenuManager" unique_id=2033871030 node_paths=PackedStringArray("name_label", "fighter_texture", "load_workspace_manager", "profile_selection", "rename_profile", "delete_profile")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -725,7 +724,9 @@ script = ExtResource("33_6sc8l")
 name_label = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/NameLabel")
 fighter_texture = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/FighterTexture")
 load_workspace_manager = NodePath("../../../Components/LoadWorkspaceManager")
+profile_selection = NodePath("../ProfileSelection")
 rename_profile = NodePath("RenameProfile")
+delete_profile = NodePath("DeleteProfile")
 
 [node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/ProfileOptions" unique_id=1517447662]
 layout_mode = 1
@@ -799,7 +800,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_4yduf")
 text = "Delete"
 
-[node name="RenameProfile" type="Control" parent="UI/PopupMenuManager/ProfileOptions" unique_id=1339142051 node_paths=PackedStringArray("rename_lineedit", "profile_selection", "profile_options")]
+[node name="RenameProfile" type="Control" parent="UI/PopupMenuManager/ProfileOptions" unique_id=1339142051 node_paths=PackedStringArray("rename_lineedit", "profile_options")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -809,7 +810,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("35_rdcvk")
 rename_lineedit = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/LineEdit")
-profile_selection = NodePath("../../ProfileSelection")
 profile_options = NodePath("..")
 
 [node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/ProfileOptions/RenameProfile" unique_id=1061306972]
@@ -877,6 +877,81 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_6sc8l")
 text = "Rename"
 
+[node name="DeleteProfile" type="Control" parent="UI/PopupMenuManager/ProfileOptions" unique_id=1344724666 node_paths=PackedStringArray("profile_options", "title_label")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("36_0ohdi")
+profile_options = NodePath("..")
+fighter_profiles = ExtResource("5_0kk2c")
+title_label = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Title")
+
+[node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile" unique_id=634570598]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.9019608)
+
+[node name="LeaveMenu" type="Button" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile" unique_id=805186293]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile" unique_id=928998319]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile/CenterContainer" unique_id=1067779209]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rdcvk")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile/CenterContainer/PanelContainer" unique_id=724352641]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile/CenterContainer/PanelContainer/MarginContainer" unique_id=2027060061]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1008678967]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Are you sure
+ you want to delete
+ <Name>?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="HBoxContainer" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1855597186]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Cancel" type="Button" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options" unique_id=1893162542]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6sc8l")
+text = "Cancel"
+
+[node name="Delete" type="Button" parent="UI/PopupMenuManager/ProfileOptions/DeleteProfile/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options" unique_id=1984179447]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4yduf")
+text = "Delete"
+
 [node name="Components" type="Node" parent="." unique_id=828218517]
 
 [node name="NodeCreationManager" type="Node" parent="Components" unique_id=1446744500 node_paths=PackedStringArray("workspace")]
@@ -920,3 +995,6 @@ popup_menu_manager = NodePath("../../UI/PopupMenuManager")
 [connection signal="pressed" from="UI/PopupMenuManager/ProfileOptions/RenameProfile/LeaveMenu" to="UI/PopupMenuManager/ProfileOptions/RenameProfile" method="_on_leave_menu_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/ProfileOptions/RenameProfile/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options/Cancel" to="UI/PopupMenuManager/ProfileOptions/RenameProfile" method="_on_cancel_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/ProfileOptions/RenameProfile/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options/Rename" to="UI/PopupMenuManager/ProfileOptions/RenameProfile" method="_on_rename_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ProfileOptions/DeleteProfile/LeaveMenu" to="UI/PopupMenuManager/ProfileOptions/DeleteProfile" method="_on_leave_menu_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ProfileOptions/DeleteProfile/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options/Cancel" to="UI/PopupMenuManager/ProfileOptions/DeleteProfile" method="_on_cancel_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ProfileOptions/DeleteProfile/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Options/Delete" to="UI/PopupMenuManager/ProfileOptions/DeleteProfile" method="_on_delete_pressed"]

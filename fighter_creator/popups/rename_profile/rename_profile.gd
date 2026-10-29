@@ -1,7 +1,6 @@
 extends Control
 
 @export var rename_lineedit: LineEdit
-@export var profile_selection: Control
 @export var profile_options: Control
 var profile: FighterProfile
 
@@ -25,4 +24,3 @@ func _on_rename_pressed() -> void:
 	SaveManager.save_fighter_profiles()
 	
 	profile_options.update_name(new_name)
-	profile_selection.init_profile_selection()
