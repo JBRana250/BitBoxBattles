@@ -1,6 +1,7 @@
 extends EventCompositeGraphNode
 
 @export var time_progbar: ProgressBar
+@export var fighter_event_scene: PackedScene
 
 # Override
 # On load workspace, set all values of this graphnode
@@ -23,6 +24,7 @@ func get_properties() -> Dictionary:
 # Obtains the battle-ready Event for the actual Fighter
 func process_event() -> Event:
 	var repeating_timer_event: RepeatingTimerEvent = RepeatingTimerEvent.new()
+	repeating_timer_event.repeating_timer_event_scene = fighter_event_scene
 	repeating_timer_event.time = time_progbar.value
 	repeating_timer_event.actions = get_actions()
 	return repeating_timer_event

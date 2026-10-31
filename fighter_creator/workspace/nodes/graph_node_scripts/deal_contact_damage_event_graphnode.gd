@@ -1,5 +1,7 @@
 extends EventCompositeGraphNode
 
+@export var fighter_event_scene: PackedScene
+
 # Override
 # On load workspace, set all values of this graphnode
 # to be the last saved values
@@ -18,5 +20,6 @@ func get_properties() -> Dictionary:
 # Obtains the battle-ready Event for the actual Fighter
 func process_event() -> Event:
 	var deal_contact_damage_event: DealContactDamageEvent = DealContactDamageEvent.new()
+	deal_contact_damage_event.deal_contact_damage_event_scene = fighter_event_scene
 	deal_contact_damage_event.actions = get_actions()
 	return deal_contact_damage_event

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://j23bomr56xa1"]
+
+[ext_resource type="Script" uid="uid://dadgxvb4gsdgw" path="res://global/loading/loading_screen.gd" id="1_wy4fx"]
+
+[node name="LoadingScreen" type="Control" unique_id=1854125205 node_paths=PackedStringArray("progress_bar", "min_timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wy4fx")
+progress_bar = NodePath("CenterContainer/VBoxContainer/ProgressBar")
+min_timer = NodePath("MinimumLoadTime")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=584566226]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1090189866]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=2143713605]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=641275656]
+layout_mode = 2
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/VBoxContainer" unique_id=843479443]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="MinimumLoadTime" type="Timer" parent="." unique_id=126031047]
+wait_time = 0.05
+one_shot = true

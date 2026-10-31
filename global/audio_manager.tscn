@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://d0sfishc4e6mo"]
 
-[ext_resource type="Script" uid="uid://blkyucn1tduw0" path="res://audio/sfx/sfx_player.gd" id="1_ap5g2"]
-[ext_resource type="Script" uid="uid://c105lwx0udcra" path="res://audio/audio_manager.gd" id="1_saq03"]
-[ext_resource type="AudioStream" uid="uid://ddbrulwrpwuon" path="res://audio/sfx/Collision.wav" id="3_5hfb4"]
-[ext_resource type="AudioStream" uid="uid://5jwr1sjgfgop" path="res://audio/sfx/RegularHit.wav" id="4_1juyv"]
-[ext_resource type="AudioStream" uid="uid://jipgg74pcgn" path="res://audio/sfx/HeavyHit.wav" id="5_te3lc"]
+[ext_resource type="Script" uid="uid://c105lwx0udcra" path="res://audio/audio_manager.gd" id="1_hd106"]
+[ext_resource type="Script" uid="uid://blkyucn1tduw0" path="res://audio/sfx/sfx_player.gd" id="2_2gpri"]
+[ext_resource type="AudioStream" uid="uid://ddbrulwrpwuon" path="res://audio/sfx/Collision.wav" id="3_alawa"]
+[ext_resource type="AudioStream" uid="uid://5jwr1sjgfgop" path="res://audio/sfx/RegularHit.wav" id="4_6na8m"]
+[ext_resource type="AudioStream" uid="uid://jipgg74pcgn" path="res://audio/sfx/HeavyHit.wav" id="5_mwgfe"]
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_1juyv"]
 
 [node name="AudioManager" type="Node" unique_id=1675278443 node_paths=PackedStringArray("sfx_player", "music_player", "ui_audio_player")]
 process_mode = 3
-script = ExtResource("1_saq03")
+script = ExtResource("1_hd106")
 sfx_player = NodePath("SFXPlayer")
 music_player = NodePath("MusicPlayer")
 ui_audio_player = NodePath("UIAudioPlayer")
@@ -19,10 +19,10 @@ ui_audio_player = NodePath("UIAudioPlayer")
 stream = SubResource("AudioStreamPolyphonic_1juyv")
 max_polyphony = 32
 bus = &"SFX"
-script = ExtResource("1_ap5g2")
-collision_sound = ExtResource("3_5hfb4")
-normal_hit_sound = ExtResource("4_1juyv")
-heavy_hit_sound = ExtResource("5_te3lc")
+script = ExtResource("2_2gpri")
+collision_sound = ExtResource("3_alawa")
+normal_hit_sound = ExtResource("4_6na8m")
+heavy_hit_sound = ExtResource("5_mwgfe")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1027679840]
 bus = &"Music"

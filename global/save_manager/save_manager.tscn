@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://c1f1fc0duc1j2"]
-
-[ext_resource type="Script" uid="uid://dnb3ay0x3f7e4" path="res://global/save_manager/save_manager.gd" id="1_sc3fc"]
-[ext_resource type="Resource" uid="uid://bj26n7jwwji05" path="res://important_resources/fighter_profiles.tres" id="2_djg6t"]
-
-[node name="SaveManager" type="Node" unique_id=193483364]
-script = ExtResource("1_sc3fc")
-fighter_profiles = ExtResource("2_djg6t")

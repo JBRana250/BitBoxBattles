@@ -1,7 +1,7 @@
 class_name DealContactDamageEvent extends Event
 
 #@export var actions: Array[Action] = []
-@export var deal_contact_damage_event_scene: PackedScene = preload("res://battle/fighter/eca_framework/events/deal_contact_damage_event.tscn")
+@export var deal_contact_damage_event_scene: PackedScene
 
 func trigger(context: Dictionary = {}) -> void:
 	for action in actions:

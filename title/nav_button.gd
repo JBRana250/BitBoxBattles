@@ -4,4 +4,4 @@ extends Button
 
 func _on_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file(scene_path)
+	LoadManager.load_scene_with_loading_screen(scene_path)

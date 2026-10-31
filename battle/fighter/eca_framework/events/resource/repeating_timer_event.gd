@@ -1,7 +1,7 @@
 class_name RepeatingTimerEvent extends Event
 
 #@export var actions: Array[Action] = []
-@export var repeating_timer_event_scene: PackedScene = preload("res://battle/fighter/eca_framework/events/repeating_timer_event.tscn")
+@export var repeating_timer_event_scene: PackedScene
 @export var time: float
 
 func trigger(context: Dictionary = {}) -> void:

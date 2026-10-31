@@ -12,7 +12,6 @@ enum FighterSpriteType {
 
 func get_sprite() -> ImageTexture:
 	await RenderingServer.frame_post_draw
-	
 	var viewport_tex = viewport.get_texture()
 	var img = viewport_tex.get_image()
 	

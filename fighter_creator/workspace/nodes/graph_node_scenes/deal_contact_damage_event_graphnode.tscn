@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="1_vsunc"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_k03xj"]
 [ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/base_nodes/add_node_button.gd" id="2_uh487"]
+[ext_resource type="PackedScene" uid="uid://chkg8vylxbyvv" path="res://battle/fighter/eca_framework/events/deal_contact_damage_event.tscn" id="2_wh0ge"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g7w7c"]
 font_size = 24
@@ -35,6 +36,7 @@ slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_uh487")
+fighter_event_scene = ExtResource("2_wh0ge")
 slot = ExtResource("2_k03xj")
 output_slot_color = Color(0.65882355, 0.40392157, 0, 1)
 
