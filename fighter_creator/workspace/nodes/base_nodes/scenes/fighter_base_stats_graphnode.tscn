@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c5hclxce3idvn"]
 
 [ext_resource type="Script" uid="uid://d2d47yvndbsf4" path="res://fighter_creator/workspace/nodes/base_nodes/fighter_base_stats_graphnode.gd" id="1_32pe2"]
+[ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://themes/default.theme" id="1_pujda"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_32pe2"]
 [ext_resource type="FontFile" uid="uid://dbykyhloqml1k" path="res://themes/PixelDragz.ttf" id="4_8l8ce"]
-[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="5_kiuke"]
-[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="6_asebu"]
+[ext_resource type="PackedScene" uid="uid://dyrmlawkuynjd" path="res://fighter_creator/workspace/node_components/draggable_progress_bar.tscn" id="4_pujda"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tirwg"]
 bg_color = Color(0.288518, 0.28851798, 0.28851798, 1)
@@ -12,71 +12,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aalt6"]
-bg_color = Color(0, 0.6313726, 0.11764706, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q2d6"]
-bg_color = Color(8.615404e-06, 0.762326, 0.15058672, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cfr6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w17tl"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyfq3"]
-bg_color = Color(0.6, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4q62"]
-bg_color = Color(0.8012637, 1.540184e-06, 6.738305e-07, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbb47"]
-bg_color = Color(0.6960143, 0.70306516, 0.68547404, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hbte0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tj8sy"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qg2f3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puomn"]
-bg_color = Color(0, 0.6749431, 0.7624917, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5x8o3"]
-bg_color = Color(4.6205523e-06, 0.7723315, 0.87017477, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ie0h"]
-bg_color = Color(0.6751786, 0.6824716, 0.66426766, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukhtx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yduf"]
-bg_color = Color(0.59321326, 0.369349, 0.43842345, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sc8l"]
-bg_color = Color(0.5921569, 0.36862746, 0.4392157, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdcvk"]
-bg_color = Color(0.6575287, 0.42188397, 0.49549645, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pfspe"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au8nn"]
-bg_color = Color(0.5882353, 0.3764706, 0.19607843, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvy83"]
-bg_color = Color(0.5883991, 0.37530592, 0.19577149, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8ccr"]
-bg_color = Color(0.7398162, 0.48789412, 0.27649614, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6bhd"]
-bg_color = Color(0.65882355, 0.34509805, 0.2509804, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyiuw"]
-bg_color = Color(0.660289, 0.3464246, 0.25146827, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0bke"]
-bg_color = Color(0.7602619, 0.41724962, 0.3143985, 1)
 
 [node name="FighterBaseStats" type="GraphNode" unique_id=55001274 node_paths=PackedStringArray("fighter_id_line_edit", "health_bar", "contact_damage_bar", "contact_cooldown_bar", "contact_knockback_bar", "mass_bar", "starting_force_bar")]
 custom_minimum_size = Vector2(200, 200)
@@ -86,6 +21,7 @@ offset_right = 875.75
 offset_bottom = 471.1875
 scale = Vector2(0.75, 0.75)
 mouse_filter = 1
+theme = ExtResource("1_pujda")
 position_offset = Vector2(501, 116.25)
 title = "Fighter Base Stats"
 slot/0/left_enabled = true
@@ -99,15 +35,15 @@ slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_32pe2")
 fighter_id_line_edit = NodePath("BaseStats/MarginContainer/VBoxContainer/FighterID/MarginContainer/VBoxContainer/FighterIDLineEdit")
-health_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar")
-contact_damage_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar")
-contact_cooldown_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar")
-contact_knockback_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar")
-mass_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar")
-starting_force_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar")
+health_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/HP")
+contact_damage_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/ContactDamage")
+contact_cooldown_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/ContactCooldown")
+contact_knockback_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/ContactKnockback")
+mass_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/Mass")
+starting_force_bar = NodePath("BaseStats/MarginContainer/VBoxContainer/StartingForce")
 slot = ExtResource("2_32pe2")
 
-[node name="BaseStats" type="Control" parent="." unique_id=1962814174]
+[node name="BaseStats" type="PanelContainer" parent="." unique_id=450891375]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -116,12 +52,7 @@ size_flags_stretch_ratio = 0.6
 [node name="BaseStatManager" type="Node" parent="BaseStats" unique_id=1321253967]
 
 [node name="MarginContainer" type="MarginContainer" parent="BaseStats" unique_id=474993176]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 30
@@ -129,23 +60,18 @@ theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BaseStats/MarginContainer" unique_id=698816153]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 5
 
-[node name="FighterID" type="Control" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=848914596]
-custom_minimum_size = Vector2(0, 40)
+[node name="FighterID" type="PanelContainer" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=979914731]
 layout_mode = 2
 size_flags_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="BaseStats/MarginContainer/VBoxContainer/FighterID" unique_id=1386854557]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -7.5
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BaseStats/MarginContainer/VBoxContainer/FighterID/MarginContainer" unique_id=818441553]
 custom_minimum_size = Vector2(0, 30)
@@ -171,400 +97,38 @@ theme_override_fonts/font = ExtResource("4_8l8ce")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_tirwg")
 
-[node name="HP" type="Control" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=736056127]
-custom_minimum_size = Vector2(0, 40)
+[node name="HP" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=1936042985 instance=ExtResource("4_pujda")]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 1
+label_text = "Health"
+bar_color = Color(0, 0.7294118, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="BaseStats/MarginContainer/VBoxContainer/HP" unique_id=1411286436]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -7.5
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer" unique_id=1590096038]
-custom_minimum_size = Vector2(0, 30)
+[node name="ContactDamage" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=646769141 instance=ExtResource("4_pujda")]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 1
+label_text = "Contact Damage"
+bar_color = Color(0.6, 0, 0, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer" unique_id=1964316342]
+[node name="ContactCooldown" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=412324800 instance=ExtResource("4_pujda")]
 layout_mode = 2
+size_flags_horizontal = 1
+label_text = "Contact Cooldown"
+bar_color = Color(0, 0.6745098, 0.7607843, 1)
 
-[node name="Label" type="Label" parent="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/HBoxContainer" unique_id=482714351]
+[node name="ContactKnockback" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=322005382 instance=ExtResource("4_pujda")]
 layout_mode = 2
-text = "Health"
+size_flags_horizontal = 1
+label_text = "Contact Knockback"
+bar_color = Color(0.5921569, 0.36862746, 0.4392157, 1)
 
-[node name="ProgressBar" type="ProgressBar" parent="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer" unique_id=38773232]
+[node name="Mass" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=1916289204 instance=ExtResource("4_pujda")]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_aalt6")
-min_value = 1.0
-max_value = 250.0
-value = 100.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("5_kiuke")
-default_fill = SubResource("StyleBoxFlat_aalt6")
-hover_fill = SubResource("StyleBoxFlat_1q2d6")
-hover_bg = SubResource("StyleBoxFlat_2cfr6")
+size_flags_horizontal = 1
+label_text = "Mass"
+bar_color = Color(0.5882353, 0.3764706, 0.19607843, 1)
 
-[node name="LineEdit" type="LineEdit" parent="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" unique_id=1127848782]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("6_asebu")
-
-[node name="Contact" type="PanelContainer" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=338022259]
+[node name="StartingForce" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=389632676 instance=ExtResource("4_pujda")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_w17tl")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BaseStats/MarginContainer/VBoxContainer/Contact" unique_id=106968895]
-layout_mode = 2
-
-[node name="Contact Damage" type="Control" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer" unique_id=113003524]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage" unique_id=222704456]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer" unique_id=944102897]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer" unique_id=1903510169]
-layout_mode = 2
-text = "Contact Damage"
-
-[node name="ProgressBar" type="ProgressBar" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer" unique_id=1486184894]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_dyfq3")
-max_value = 25.0
-value = 10.0
-allow_greater = true
-allow_lesser = true
-show_percentage = false
-script = ExtResource("5_kiuke")
-default_fill = SubResource("StyleBoxFlat_dyfq3")
-hover_fill = SubResource("StyleBoxFlat_e4q62")
-hover_bg = SubResource("StyleBoxFlat_dbb47")
-
-[node name="LineEdit" type="LineEdit" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" unique_id=1783627572]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_hbte0")
-theme_override_styles/read_only = SubResource("StyleBoxEmpty_tj8sy")
-theme_override_styles/focus = SubResource("StyleBoxTexture_qg2f3")
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("6_asebu")
-negative_allowed = true
-
-[node name="Contact Cooldown" type="Control" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer" unique_id=1455430643]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown" unique_id=1804223990]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer" unique_id=741369563]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer" unique_id=830144305]
-layout_mode = 2
-text = "Contact Cooldown"
-
-[node name="ProgressBar" type="ProgressBar" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer" unique_id=1000617205]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_puomn")
-max_value = 10.0
-value = 1.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("5_kiuke")
-default_fill = SubResource("StyleBoxFlat_puomn")
-hover_fill = SubResource("StyleBoxFlat_5x8o3")
-hover_bg = SubResource("StyleBoxFlat_7ie0h")
-
-[node name="LineEdit" type="LineEdit" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" unique_id=1179738187]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ukhtx")
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("6_asebu")
-negative_allowed = true
-
-[node name="Contact Knockback" type="Control" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer" unique_id=305248341]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback" unique_id=1605122012]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer" unique_id=1216450102]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer" unique_id=1453470101]
-layout_mode = 2
-text = "Contact Knockback"
-
-[node name="ProgressBar" type="ProgressBar" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer" unique_id=814646414]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_4yduf")
-max_value = 10.0
-value = 1.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("5_kiuke")
-default_fill = SubResource("StyleBoxFlat_6sc8l")
-hover_fill = SubResource("StyleBoxFlat_rdcvk")
-hover_bg = SubResource("StyleBoxFlat_7ie0h")
-
-[node name="LineEdit" type="LineEdit" parent="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" unique_id=655891709]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ukhtx")
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("6_asebu")
-negative_allowed = true
-
-[node name="Physics" type="PanelContainer" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=70709001]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_pfspe")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BaseStats/MarginContainer/VBoxContainer/Physics" unique_id=410501045]
-layout_mode = 2
-
-[node name="Mass" type="Control" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer" unique_id=1666571670]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass" unique_id=2127985031]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer" unique_id=777217817]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer" unique_id=2067533529]
-layout_mode = 2
-text = "Mass"
-
-[node name="ProgressBar" type="ProgressBar" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer" unique_id=1710764224]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_au8nn")
-value = 25.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("5_kiuke")
-default_fill = SubResource("StyleBoxFlat_hvy83")
-hover_fill = SubResource("StyleBoxFlat_v8ccr")
-hover_bg = SubResource("StyleBoxFlat_dbb47")
-
-[node name="LineEdit" type="LineEdit" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" unique_id=2055465061]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("6_asebu")
-negative_allowed = true
-
-[node name="Starting Force" type="Control" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer" unique_id=1722760343]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force" unique_id=923836117]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer" unique_id=1915391489]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer" unique_id=72257361]
-layout_mode = 2
-text = "Starting Force"
-
-[node name="ProgressBar" type="ProgressBar" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer" unique_id=1076588501]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_v6bhd")
-max_value = 250.0
-value = 100.0
-allow_greater = true
-show_percentage = false
-script = ExtResource("5_kiuke")
-default_fill = SubResource("StyleBoxFlat_pyiuw")
-hover_fill = SubResource("StyleBoxFlat_e0bke")
-hover_bg = SubResource("StyleBoxFlat_7ie0h")
-
-[node name="LineEdit" type="LineEdit" parent="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" unique_id=470536364]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.25
-offset_top = -15.5
-offset_right = 4.75
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "XX"
-alignment = 1
-editable = false
-expand_to_text_length = true
-virtual_keyboard_type = 2
-script = ExtResource("6_asebu")
-negative_allowed = true
-
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/HP/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Damage/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Cooldown/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Contact/VBoxContainer/Contact Knockback/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Mass/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
-[connection signal="value_changed" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_progress_bar_value_changed"]
-[connection signal="mouse_entered" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_mouse_exited"]
-[connection signal="text_changed" from="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" to="BaseStats/MarginContainer/VBoxContainer/Physics/VBoxContainer/Starting Force/MarginContainer/VBoxContainer/ProgressBar/LineEdit" method="_on_text_changed"]
+size_flags_horizontal = 1
+label_text = "StartingForce"
+bar_color = Color(0.65882355, 0.34509805, 0.2509804, 1)

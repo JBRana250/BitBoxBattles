@@ -1,12 +1,12 @@
 class_name FighterBaseStatsNode extends BaseCompositeGraphNode
 
 @export var fighter_id_line_edit: LineEdit
-@export var health_bar: ProgressBar
-@export var contact_damage_bar: ProgressBar
-@export var contact_cooldown_bar: ProgressBar
-@export var contact_knockback_bar: ProgressBar
-@export var mass_bar: ProgressBar
-@export var starting_force_bar: ProgressBar
+@export var health_bar: DraggableProgressBar
+@export var contact_damage_bar: DraggableProgressBar
+@export var contact_cooldown_bar: DraggableProgressBar
+@export var contact_knockback_bar: DraggableProgressBar
+@export var mass_bar: DraggableProgressBar
+@export var starting_force_bar: DraggableProgressBar
 
 # Override
 # On load workspace, set all values of this graphnode

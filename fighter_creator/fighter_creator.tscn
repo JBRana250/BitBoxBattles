@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://kgatr1mesxo0" path="res://title/nav_button.gd" id="3_8g1jf"]
 [ext_resource type="Script" uid="uid://dnt6btjnq20h" path="res://fighter_creator/workspace/save_fighter_managers/save_fighter_button.gd" id="4_ospfe"]
 [ext_resource type="Resource" uid="uid://bj26n7jwwji05" path="res://important_resources/fighter_profiles.tres" id="5_0kk2c"]
-[ext_resource type="Theme" uid="uid://t0356dc8uyvi" path="res://themes/fighter_workspace.tres" id="6_w17tl"]
 [ext_resource type="Script" uid="uid://b00qu3b3ric6m" path="res://fighter_creator/workspace/workspace.gd" id="7_4k6nc"]
 [ext_resource type="PackedScene" uid="uid://bhlkjhb2trj5u" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_graphnode.tscn" id="7_rdcvk"]
 [ext_resource type="PackedScene" uid="uid://c5hclxce3idvn" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_stats_graphnode.tscn" id="9_4yduf"]
@@ -16,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bpvm13r2d0en8" path="res://fighter_creator/workspace/nodes/graph_node_scenes/health_increase_action_graphnode.tscn" id="12_g7w7c"]
 [ext_resource type="PackedScene" uid="uid://c1hmnq3gryeje" path="res://fighter_creator/workspace/nodes/graph_node_scenes/play_sfx_action_graphnode.tscn" id="12_nmg4h"]
 [ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/node_resource.gd" id="17_qrd11"]
-[ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_event_popup/add_event_popup_menu.gd" id="19_au8nn"]
+[ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_node_popup_menu.gd" id="19_au8nn"]
 [ext_resource type="Script" uid="uid://bku060rexjoog" path="res://fighter_creator/popups/add_event_popup/add_event_cancel_button.gd" id="20_pyiuw"]
 [ext_resource type="Script" uid="uid://caos305qgk772" path="res://fighter_creator/popups/add_event_popup/create_event_button.gd" id="21_e0bke"]
 [ext_resource type="Script" uid="uid://bfhawm718ejqt" path="res://fighter_creator/popups/profile_selection/profile_selection.gd" id="22_4k6nc"]
@@ -39,6 +38,7 @@
 [ext_resource type="Script" uid="uid://ys20qwe1vhw4" path="res://fighter_creator/workspace/save_fighter_managers/fighter_save_manager.gd" id="35_a0ebg"]
 [ext_resource type="Script" uid="uid://dqajhtkxje5i" path="res://fighter_creator/popups/rename_profile/rename_profile.gd" id="35_rdcvk"]
 [ext_resource type="Script" uid="uid://ct0oilwtx8525" path="res://fighter_creator/popups/delete_profile/delete_profile.gd" id="36_0ohdi"]
+[ext_resource type="Script" uid="uid://dhmxtyv46ugpa" path="res://fighter_creator/popups/import_popup_menu.gd" id="37_uuieq"]
 
 [sub_resource type="Resource" id="Resource_k03xj"]
 script = ExtResource("17_qrd11")
@@ -57,6 +57,9 @@ script = ExtResource("17_qrd11")
 graph_node_scene = ExtResource("12_g7w7c")
 graph_node_name = "Health Increase Action"
 metadata/_custom_type_script = "uid://wvfaicrfo161"
+
+[sub_resource type="LabelSettings" id="LabelSettings_uuieq"]
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_vjyn1"]
 font_size = 64
@@ -168,7 +171,6 @@ fighter_save_manager = NodePath("../../../../Components/FighterSaveManager")
 [node name="Workspace" type="GraphEdit" parent="UI/VBoxContainer" unique_id=2145063965 node_paths=PackedStringArray("popup_menu_manager")]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("6_w17tl")
 connections = Array[Dictionary]([{
 "from_node": &"Fighter",
 "from_port": 0,
@@ -200,41 +202,42 @@ popup_menu_manager = NodePath("../../PopupMenuManager")
 
 [node name="Fighter" parent="UI/VBoxContainer/Workspace" unique_id=1702544155 instance=ExtResource("7_rdcvk")]
 layout_mode = 0
-offset_bottom = 3562.0
+offset_bottom = 7419.625
 
 [node name="FighterBaseStats" parent="UI/VBoxContainer/Workspace" unique_id=55001274 instance=ExtResource("9_4yduf")]
 layout_mode = 0
-offset_left = 366.1875
-offset_top = 33.1875
-offset_right = 866.1875
-offset_bottom = 417.1875
-position_offset = Vector2(488.25, 44.25)
+offset_left = 375.0
+offset_top = 33.75
+offset_right = 875.0
+offset_bottom = 695.75
+position_offset = Vector2(500, 45)
 
 [node name="FighterBaseSprites" parent="UI/VBoxContainer/Workspace" unique_id=370798223 instance=ExtResource("10_pfspe")]
 layout_mode = 0
-offset_left = 375.1875
-offset_top = 356.0625
-offset_right = 780.1875
-offset_bottom = 635.0625
-position_offset = Vector2(500.25, 474.75)
+offset_left = 768.75
+offset_top = 281.25
+offset_right = 1173.75
+offset_bottom = 560.25
+position_offset = Vector2(1025, 375)
 
 [node name="FighterAbilities" parent="UI/VBoxContainer/Workspace" unique_id=645370397 instance=ExtResource("11_tirwg")]
 layout_mode = 0
-offset_left = 371.8125
-offset_top = 617.0625
-offset_right = 835.8125
-offset_bottom = 860.0625
-position_offset = Vector2(495.75, 822.75)
+offset_left = 375.0
+offset_top = 637.5
+offset_right = 839.0
+offset_bottom = 880.5
+position_offset = Vector2(500, 850)
 
 [node name="FighterSetup" parent="UI/VBoxContainer/Workspace" unique_id=1271536354 instance=ExtResource("11_4k6nc")]
 layout_mode = 0
-offset_left = 767.25
-offset_top = 36.5625
-offset_right = 1114.25
-offset_bottom = 340.5625
-position_offset = Vector2(1023, 48.75)
+offset_left = 768.75
+offset_top = 33.75
+offset_right = 1115.75
+offset_bottom = 337.75
+position_offset = Vector2(1025, 45)
 
-[node name="PopupMenuManager" type="Control" parent="UI" unique_id=592969624 node_paths=PackedStringArray("workspace", "event_popup_menu", "action_popup_menu", "condition_popup_menu", "state_popup_menu")]
+[node name="PopupMenuManager" type="Control" parent="UI" unique_id=592969624 node_paths=PackedStringArray("workspace", "event_popup_menu", "action_popup_menu", "condition_popup_menu", "state_popup_menu", "image_popup_menu")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -249,6 +252,7 @@ event_popup_menu = NodePath("AddEventPopupMenu")
 action_popup_menu = NodePath("AddActionPopupMenu")
 condition_popup_menu = NodePath("AddConditionPopupMenu")
 state_popup_menu = NodePath("AddStatePopupMenu")
+image_popup_menu = NodePath("ImportImagePopup")
 
 [node name="AddEventPopupMenu" type="Control" parent="UI/PopupMenuManager" unique_id=1721226689]
 visible = false
@@ -599,7 +603,93 @@ text = "Cancel"
 script = ExtResource("20_pyiuw")
 add_event_popup_menu = NodePath("../../../../../..")
 
+[node name="ImportImagePopup" type="Control" parent="UI/PopupMenuManager" unique_id=573991543]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("37_uuieq")
+
+[node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/ImportImagePopup" unique_id=899987580]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/PopupMenuManager/ImportImagePopup" unique_id=585426655]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer" unique_id=1227801975]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control" unique_id=1164884762]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="MarginContainer" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer" unique_id=678727654]
+layout_mode = 2
+theme_override_constants/margin_top = 75
+
+[node name="Label" type="Label" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Title" unique_id=755333692]
+layout_mode = 2
+text = "Import Image"
+label_settings = SubResource("LabelSettings_uuieq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer" unique_id=1758837543]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/MarginContainer" unique_id=842234339]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1334100985]
+layout_mode = 2
+text = "Resolution"
+
+[node name="ImagePreview" type="PanelContainer" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer" unique_id=877474769]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview" unique_id=1997787216]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview/MarginContainer" unique_id=1898301556]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview/MarginContainer/CenterContainer" unique_id=892115214]
+custom_minimum_size = Vector2(500, 500)
+custom_maximum_size = Vector2(1000, 1000)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview/MarginContainer/CenterContainer/SubViewportContainer" unique_id=1191833191]
+handle_input_locally = false
+size = Vector2i(500, 500)
+render_target_update_mode = 0
+
 [node name="ProfileSelection" type="Control" parent="UI/PopupMenuManager" unique_id=614286401 node_paths=PackedStringArray("profiles_hflow", "reload_profiles_button", "profile_options")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,11 +1,12 @@
 extends LineEdit
 
+@export var prog_bar: ProgressBar
 @export var allow_decimal: bool
 @export var negative_allowed: bool
 
 func _ready() -> void:
 	# Set the initial text of the label
-	_update_label_text(get_parent().value)
+	_update_label_text(prog_bar.value)
 
 # This function runs every time the progress bar value alters
 func _on_progress_bar_value_changed(new_value: float) -> void:
@@ -32,7 +33,7 @@ func _gui_input(event):
 			editable = false
 			release_focus()
 			get_viewport().set_input_as_handled()
-			get_parent().value = text.to_int()
+			prog_bar.value = text.to_int()
 			return
 		if event.unicode >= 48 and event.unicode <= 57:
 			return
@@ -41,7 +42,7 @@ func _gui_input(event):
 		if event.keycode in [KEY_BACKSPACE, KEY_DELETE, KEY_LEFT, KEY_RIGHT]:
 			return
 		get_viewport().set_input_as_handled()
-		get_parent().value = text.to_int()
+		prog_bar.value = text.to_int()
 
 # Change font color on hover
 func _on_mouse_entered():

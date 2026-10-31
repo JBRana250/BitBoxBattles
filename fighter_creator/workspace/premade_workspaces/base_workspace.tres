@@ -11,28 +11,28 @@
 script = ExtResource("1_jycob")
 graph_node_scene = ExtResource("2_dxequ")
 graph_node_name = "Fighter Base Stats"
-position_offset = Vector2(500, 100)
+position_offset = Vector2(500, 45)
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 
 [sub_resource type="Resource" id="Resource_vx5ds"]
 script = ExtResource("1_jycob")
 graph_node_scene = ExtResource("5_ixpcg")
 graph_node_name = "Fighter Setup"
-position_offset = Vector2(1050, 100)
+position_offset = Vector2(1025, 45)
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 
 [sub_resource type="Resource" id="Resource_k1jmw"]
 script = ExtResource("1_jycob")
 graph_node_scene = ExtResource("3_ixpcg")
 graph_node_name = "Fighter Base Sprites"
-position_offset = Vector2(500, 550)
+position_offset = Vector2(1025, 375)
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 
 [sub_resource type="Resource" id="Resource_l4my3"]
 script = ExtResource("1_jycob")
 graph_node_scene = ExtResource("4_g0213")
 graph_node_name = "Fighter Abilities"
-position_offset = Vector2(500, 900)
+position_offset = Vector2(500, 850)
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 
 [resource]

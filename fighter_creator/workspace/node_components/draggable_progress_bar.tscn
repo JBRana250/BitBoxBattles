@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dyrmlawkuynjd"]
+
+[ext_resource type="Script" uid="uid://dhb72phcu05hg" path="res://fighter_creator/stats/prog_bar_drag.gd" id="1_71rf6"]
+[ext_resource type="Script" uid="uid://s25oj5uwur47" path="res://fighter_creator/workspace/node_components/draggable_progress_bar.gd" id="1_j0tvp"]
+[ext_resource type="Script" uid="uid://daldqvoxr7eig" path="res://fighter_creator/stats/label_update_stats.gd" id="2_j0tvp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpufa"]
+bg_color = Color(0.6, 0.6, 0.6, 0.49803922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0tvp"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cfr6"]
+
+[node name="HP" type="PanelContainer" unique_id=1618141640 node_paths=PackedStringArray("prog_bar", "label")]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 273.0
+offset_bottom = 41.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_j0tvp")
+prog_bar = NodePath("MarginContainer/VBoxContainer/ProgressBar")
+label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Label")
+label_text = "SetLabelTextPropertyInInspector!!!!"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=110623224]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=858352619]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=533500555]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1958204538]
+layout_mode = 2
+text = "SetInspector!"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=949202391]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_bpufa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_j0tvp")
+min_value = 1.0
+max_value = 250.0
+value = 100.0
+allow_greater = true
+show_percentage = false
+script = ExtResource("1_71rf6")
+hover_bg = SubResource("StyleBoxFlat_2cfr6")
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=1118659827 node_paths=PackedStringArray("prog_bar")]
+layout_mode = 2
+text = "XX"
+alignment = 1
+editable = false
+expand_to_text_length = true
+virtual_keyboard_type = 2
+script = ExtResource("2_j0tvp")
+prog_bar = NodePath("../ProgressBar")
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/ProgressBar" to="MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/ProgressBar" to="MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ProgressBar" to="MarginContainer/VBoxContainer/LineEdit" method="_on_progress_bar_value_changed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/LineEdit" to="MarginContainer/VBoxContainer/LineEdit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/LineEdit" to="MarginContainer/VBoxContainer/LineEdit" method="_on_mouse_exited"]

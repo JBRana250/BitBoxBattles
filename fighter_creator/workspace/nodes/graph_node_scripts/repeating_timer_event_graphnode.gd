@@ -1,6 +1,6 @@
 extends EventCompositeGraphNode
 
-@export var time_progbar: ProgressBar
+@export var time_progbar: DraggableProgressBar
 @export var fighter_event_scene: PackedScene
 
 # Override
