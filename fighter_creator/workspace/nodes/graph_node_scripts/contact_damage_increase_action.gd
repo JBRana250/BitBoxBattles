@@ -1,6 +1,6 @@
 extends ActionCompositeGraphNode
 
-@export var amount_progbar: ProgressBar
+@export var amount_progbar: DraggableProgressBar
 
 # Override
 # On load workspace, set all values of this graphnode
