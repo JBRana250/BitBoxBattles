@@ -12,7 +12,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cfr6"]
 
-[node name="DraggableValue" type="PanelContainer" unique_id=1618141640 node_paths=PackedStringArray("prog_bar", "label")]
+[node name="DraggableValue" type="PanelContainer" unique_id=1618141640 node_paths=PackedStringArray("prog_bar", "line_edit", "label")]
 custom_minimum_size = Vector2(0, 40)
 offset_right = 273.0
 offset_bottom = 41.0
@@ -20,8 +20,13 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_j0tvp")
 prog_bar = NodePath("MarginContainer/VBoxContainer/ProgressBar")
+line_edit = NodePath("MarginContainer/VBoxContainer/LineEdit")
 label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Label")
-label_text = "SetLabelTextPropertyInInspector!!!!"
+allow_decimal = null
+max_value = 250.0
+min_value = 1.0
+value = 100.0
+label_text = "<text>"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=110623224]
 layout_mode = 2
@@ -40,7 +45,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1958204538]
 layout_mode = 2
-text = "SetInspector!"
+text = "<text>"
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=949202391]
 custom_minimum_size = Vector2(0, 10)
@@ -51,7 +56,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_j0tvp")
 min_value = 1.0
 max_value = 250.0
 value = 100.0
-allow_greater = true
 show_percentage = false
 script = ExtResource("1_71rf6")
 hover_bg = SubResource("StyleBoxFlat_2cfr6")
@@ -68,6 +72,7 @@ prog_bar = NodePath("../ProgressBar")
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/ProgressBar" to="MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/ProgressBar" to="MarginContainer/VBoxContainer/ProgressBar" method="_on_mouse_exited"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ProgressBar" to="." method="_on_progress_bar_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/ProgressBar" to="MarginContainer/VBoxContainer/LineEdit" method="_on_progress_bar_value_changed"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/LineEdit" to="MarginContainer/VBoxContainer/LineEdit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/LineEdit" to="MarginContainer/VBoxContainer/LineEdit" method="_on_mouse_exited"]

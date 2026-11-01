@@ -31,10 +31,10 @@ func open_node_creation_menu(type: MenuType, parent_node: CompositeGraphNode):
 		MenuType.STATE:
 			state_popup_menu.open_menu(parent_node)
 
-func open_import_menu(type: MenuType):
+func open_import_menu(type: MenuType, importer: Importer):
 	match (type):
 		MenuType.IMAGE:
-			image_popup_menu.open_menu()
+			image_popup_menu.open_menu(importer)
 
 func close_all_popups() -> void:
 	for child: Control in get_children():

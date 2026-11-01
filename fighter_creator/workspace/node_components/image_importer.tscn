@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cqpaoa570mjp6"]
+
+[ext_resource type="Script" uid="uid://b1xt6lqws50n0" path="res://fighter_creator/workspace/node_components/image_importer.gd" id="1_kwjcq"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://textures/icon.svg" id="2_s2h5c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ra0kn"]
+
+[node name="ImageImporter" type="PanelContainer" unique_id=806275029 node_paths=PackedStringArray("label")]
+script = ExtResource("1_kwjcq")
+label = NodePath("Active/Label")
+label_text = "<text>"
+
+[node name="Active" type="VBoxContainer" parent="." unique_id=1933480765]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Active" unique_id=916208630]
+layout_mode = 2
+text = "<text>"
+label_settings = SubResource("LabelSettings_ra0kn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Active" unique_id=1358037838]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_s2h5c")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="Active/TextureButton" to="." method="_on_texture_button_pressed"]
