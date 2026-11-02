@@ -4,12 +4,13 @@
 [ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://themes/default.theme" id="1_y01fs"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_7gl26"]
 [ext_resource type="Script" uid="uid://dftplx4ep38h0" path="res://fighter_creator/workspace/nodes/base_nodes/setup_anim_menu_button.gd" id="3_fd3k2"]
-[ext_resource type="PackedScene" uid="uid://cqpaoa570mjp6" path="res://fighter_creator/workspace/node_components/image_importer.tscn" id="4_hl8sc"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://textures/icon.svg" id="3_jq2kf"]
+[ext_resource type="PackedScene" uid="uid://cqpaoa570mjp6" path="res://fighter_creator/popups/import_image_popup/image_importer.tscn" id="4_hl8sc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbqos"]
 bg_color = Color(0.20152655, 0.20152661, 0.20152646, 1)
 
-[node name="FighterSetup" type="GraphNode" unique_id=1271536354 node_paths=PackedStringArray("setup_anim_type_menu_button")]
+[node name="FighterSetup" type="GraphNode" unique_id=1271536354 node_paths=PackedStringArray("setup_image_importer", "setup_anim_type_menu_button")]
 offset_left = 764.4375
 offset_top = 36.0
 offset_right = 1111.4375
@@ -29,7 +30,9 @@ slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("1_vx5ds")
+setup_image_importer = NodePath("MarginContainer/VBoxContainer/ImageImporter")
 setup_anim_type_menu_button = NodePath("MarginContainer/VBoxContainer/AnimType/MenuButton")
+default_image = ExtResource("3_jq2kf")
 slot = ExtResource("2_7gl26")
 metadata/_custom_type_script = "uid://cck24xps8hh7b"
 

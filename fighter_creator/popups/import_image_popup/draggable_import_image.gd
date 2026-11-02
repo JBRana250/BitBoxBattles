@@ -9,6 +9,10 @@ var is_dragging = false
 signal position_changed
 signal scale_changed
 
+func init_imported_image(_texture: Texture, popup: ImportPopupMenu) -> void:
+	texture = _texture
+	import_image_popup = popup
+
 func _gui_input(event):
 	# Handle Dragging (Left Click)
 	if event is InputEventMouseButton:
@@ -28,12 +32,6 @@ func _gui_input(event):
 		position_changed.emit()
 	
 	get_viewport().set_input_as_handled()
-
-func _on_file_dialog_file_selected(path: String) -> void:
-	var image: Image = Image.load_from_file(path)
-	if (image):
-		var _texture: Texture = ImageTexture.create_from_image(image)
-		self.texture = _texture
 
 func zoom_image(factor: float):
 	var new_scale = scale * factor

@@ -30,19 +30,23 @@
 [ext_resource type="PackedScene" uid="uid://dyrmlawkuynjd" path="res://fighter_creator/workspace/node_components/draggable_progress_bar.tscn" id="27_uuieq"]
 [ext_resource type="Resource" uid="uid://cxbxo1tso2sk1" path="res://fighter_creator/workspace/nodes/graph_node_resources/fighter_dash_action_node.tres" id="27_w17tl"]
 [ext_resource type="Texture2D" uid="uid://cukse6n0ifsdu" path="res://textures/Transparency10.png" id="28_5ocln"]
+[ext_resource type="PackedScene" uid="uid://drump3mxmnt3s" path="res://fighter_creator/popups/import_image_popup/imported_image.tscn" id="28_iieqv"]
 [ext_resource type="PackedScene" uid="uid://c55k6irkrvoyf" path="res://fighter_creator/file_dialog_image_downloads.tscn" id="29_8vqhb"]
-[ext_resource type="Script" uid="uid://cwqiadig41otn" path="res://fighter_creator/workspace/node_components/draggable_import_image.gd" id="29_v6s0s"]
 [ext_resource type="Resource" uid="uid://dwo7fllcswk55" path="res://fighter_creator/workspace/nodes/graph_node_resources/active_state_node.tres" id="30_1mh7u"]
 [ext_resource type="Resource" uid="uid://chwd2uyr73xp0" path="res://fighter_creator/workspace/nodes/graph_node_resources/contact_damage_increase_action_node.tres" id="30_4yduf"]
 [ext_resource type="Script" uid="uid://csiokkb8j1gly" path="res://fighter_creator/popups/profile_selection/reload_profiles.gd" id="30_a0ebg"]
-[ext_resource type="Script" uid="uid://re51mesvaa4b" path="res://fighter_creator/workspace/save_fighter_managers/import_image_manager.gd" id="30_jbqos"]
+[ext_resource type="Script" uid="uid://re51mesvaa4b" path="res://fighter_creator/popups/import_image_popup/import_image_manager.gd" id="30_jbqos"]
 [ext_resource type="Resource" uid="uid://edka8c4s8nol" path="res://fighter_creator/workspace/nodes/graph_node_resources/state_condition_node.tres" id="30_nmg4h"]
 [ext_resource type="Resource" uid="uid://crrlcocjbx1oq" path="res://fighter_creator/workspace/nodes/graph_node_resources/inactive_state_node.tres" id="31_qrd11"]
 [ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://textures/icon.svg" id="33_4yduf"]
 [ext_resource type="Script" uid="uid://ijv8idhm2de3" path="res://fighter_creator/popups/profile_options/profile_options.gd" id="33_6sc8l"]
+[ext_resource type="Script" uid="uid://cip77vxf0eg6v" path="res://fighter_creator/popups/import_image_popup/progbar_to_image.gd" id="33_iieqv"]
+[ext_resource type="Script" uid="uid://drant5bhl5hdv" path="res://fighter_creator/popups/import_image_popup/import_image_data_manager.gd" id="34_ggudd"]
 [ext_resource type="Script" uid="uid://ys20qwe1vhw4" path="res://fighter_creator/workspace/save_fighter_managers/fighter_save_manager.gd" id="35_a0ebg"]
+[ext_resource type="Script" uid="uid://dgpapc6r1mj6w" path="res://fighter_creator/popups/import_image_popup/image_to_ui.gd" id="35_mw0q0"]
 [ext_resource type="Script" uid="uid://dqajhtkxje5i" path="res://fighter_creator/popups/rename_profile/rename_profile.gd" id="35_rdcvk"]
 [ext_resource type="Script" uid="uid://ct0oilwtx8525" path="res://fighter_creator/popups/delete_profile/delete_profile.gd" id="36_0ohdi"]
+[ext_resource type="Script" uid="uid://bqp4gghmlelvn" path="res://fighter_creator/popups/import_image_popup/import_image_load.gd" id="36_hn7rv"]
 [ext_resource type="Script" uid="uid://dhmxtyv46ugpa" path="res://fighter_creator/popups/import_popup_menu.gd" id="37_uuieq"]
 
 [sub_resource type="Resource" id="Resource_k03xj"]
@@ -218,7 +222,7 @@ popup_menu_manager = NodePath("../../PopupMenuManager")
 
 [node name="Fighter" parent="UI/VBoxContainer/Workspace" unique_id=1702544155 instance=ExtResource("7_rdcvk")]
 layout_mode = 0
-offset_bottom = 19849.75
+offset_bottom = 24993.25
 
 [node name="FighterBaseStats" parent="UI/VBoxContainer/Workspace" unique_id=55001274 instance=ExtResource("9_4yduf")]
 layout_mode = 0
@@ -618,7 +622,7 @@ text = "Cancel"
 script = ExtResource("20_pyiuw")
 add_event_popup_menu = NodePath("../../../../../..")
 
-[node name="ImportImagePopup" type="Control" parent="UI/PopupMenuManager" unique_id=573991543 node_paths=PackedStringArray("title_label", "viewport_container", "x_resolution_progbar", "y_resolution_progbar", "x_offset_progbar", "y_offset_progbar", "scale_progbar", "imported_image", "file_dialog")]
+[node name="ImportImagePopup" type="Control" parent="UI/PopupMenuManager" unique_id=573991543 node_paths=PackedStringArray("title_label", "import_image_load")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -627,14 +631,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("37_uuieq")
 title_label = NodePath("HBoxContainer/Control/VBoxContainer/Title/Label")
-viewport_container = NodePath("HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer")
-x_resolution_progbar = NodePath("HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/XResolution")
-y_resolution_progbar = NodePath("HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/YResolution")
-x_offset_progbar = NodePath("HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/XOffset")
-y_offset_progbar = NodePath("HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/YOffset")
-scale_progbar = NodePath("HBoxContainer/Control/VBoxContainer/Scale/Scale")
-imported_image = NodePath("HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image")
-file_dialog = NodePath("FileDialog")
+import_image_load = NodePath("Components/ImportImageLoad")
 
 [node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/ImportImagePopup" unique_id=899987580]
 layout_mode = 1
@@ -687,8 +684,8 @@ layout_mode = 2
 [node name="XResolution" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer" unique_id=1618141640 instance=ExtResource("27_uuieq")]
 layout_mode = 2
 size_flags_horizontal = 1
-allow_decimal = false
 max_value = 1000.0
+default_value = 300.0
 value = 300.0
 label_text = "X Resolution"
 bar_color = Color(0.73719335, 0.73719287, 0.7371929, 1)
@@ -696,8 +693,8 @@ bar_color = Color(0.73719335, 0.73719287, 0.7371929, 1)
 [node name="YResolution" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer" unique_id=398241616 instance=ExtResource("27_uuieq")]
 layout_mode = 2
 size_flags_horizontal = 1
-allow_decimal = false
 max_value = 1000.0
+default_value = 300.0
 value = 300.0
 label_text = "Y Resolution"
 bar_color = Color(0.7372549, 0.7372549, 0.7372549, 1)
@@ -713,9 +710,9 @@ layout_mode = 2
 [node name="XOffset" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer" unique_id=1564206757 instance=ExtResource("27_uuieq")]
 layout_mode = 2
 size_flags_horizontal = 1
-allow_decimal = false
 max_value = 500.0
 min_value = -500.0
+default_value = 0.0
 value = 0.0
 label_text = "X Offset"
 bar_color = Color(0.8424482, 0.1472112, 0, 1)
@@ -723,9 +720,9 @@ bar_color = Color(0.8424482, 0.1472112, 0, 1)
 [node name="YOffset" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer" unique_id=1081707910 instance=ExtResource("27_uuieq")]
 layout_mode = 2
 size_flags_horizontal = 1
-allow_decimal = false
 max_value = 500.0
 min_value = -500.0
+default_value = 0.0
 value = 0.0
 label_text = "Y Offset"
 bar_color = Color(0.27375424, 0.88016397, 7.70092e-07, 1)
@@ -741,7 +738,8 @@ size_flags_horizontal = 1
 allow_decimal = true
 max_value = 10.0
 min_value = 0.5
-value = 1.0
+default_value = 2.35
+value = 2.35
 label_text = "Scale"
 bar_color = Color(0.82740957, 0.4805742, 0, 1)
 
@@ -819,33 +817,53 @@ handle_input_locally = false
 size = Vector2i(300, 300)
 render_target_update_mode = 4
 
-[node name="Image" type="TextureRect" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport" unique_id=902366133 node_paths=PackedStringArray("import_image_popup")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -64.0
-offset_right = 63.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("33_4yduf")
-expand_mode = 1
-stretch_mode = 5
-script = ExtResource("29_v6s0s")
+[node name="Image" parent="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport" unique_id=1567035833 node_paths=PackedStringArray("import_image_popup") instance=ExtResource("28_iieqv")]
 import_image_popup = NodePath("../../../../../../../..")
-max_scale = Vector2(10, 10)
 
 [node name="FileDialog" parent="UI/PopupMenuManager/ImportImagePopup" unique_id=5957504 instance=ExtResource("29_8vqhb")]
 hidden_files_toggle_enabled = false
 
-[node name="ImportImageManager" type="Node" parent="UI/PopupMenuManager/ImportImagePopup" unique_id=279100390 node_paths=PackedStringArray("image", "viewport")]
+[node name="Components" type="Node" parent="UI/PopupMenuManager/ImportImagePopup" unique_id=57497031]
+
+[node name="ImportImageSaveManager" type="Node" parent="UI/PopupMenuManager/ImportImagePopup/Components" unique_id=279100390 node_paths=PackedStringArray("popup", "import_image_popup_menu", "imported_image", "x_offset_progbar", "y_offset_progbar", "data_manager", "viewport")]
 script = ExtResource("30_jbqos")
-image = NodePath("../HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image")
-viewport = NodePath("../HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport")
+popup = NodePath("../..")
+import_image_popup_menu = NodePath("../..")
+imported_image = NodePath("../../HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image")
+x_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/XOffset")
+y_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/YOffset")
+data_manager = NodePath("../ImportImageDataManager")
+viewport = NodePath("../../HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport")
+
+[node name="UIToImportedImage" type="Node" parent="UI/PopupMenuManager/ImportImagePopup/Components" unique_id=472777043 node_paths=PackedStringArray("data_manager", "viewport_container", "file_dialog", "imported_image", "x_offset_progbar", "y_offset_progbar")]
+script = ExtResource("33_iieqv")
+data_manager = NodePath("../ImportImageDataManager")
+viewport_container = NodePath("../../HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer")
+file_dialog = NodePath("../../FileDialog")
+imported_image = NodePath("../../HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image")
+x_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/XOffset")
+y_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/YOffset")
+
+[node name="ImportImageDataManager" type="Node" parent="UI/PopupMenuManager/ImportImagePopup/Components" unique_id=472479425 node_paths=PackedStringArray("imported_image")]
+script = ExtResource("34_ggudd")
+imported_image = NodePath("../../HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image")
+
+[node name="ImageToUI" type="Node" parent="UI/PopupMenuManager/ImportImagePopup/Components" unique_id=1802050436 node_paths=PackedStringArray("data_manager", "imported_image", "x_offset_progbar", "y_offset_progbar", "scale_progbar")]
+script = ExtResource("35_mw0q0")
+data_manager = NodePath("../ImportImageDataManager")
+imported_image = NodePath("../../HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image")
+x_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/XOffset")
+y_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/YOffset")
+scale_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Scale/Scale")
+
+[node name="ImportImageLoad" type="Node" parent="UI/PopupMenuManager/ImportImagePopup/Components" unique_id=1831495246 node_paths=PackedStringArray("popup", "x_offset_progbar", "y_offset_progbar", "x_resolution_progbar", "y_resolution_progbar", "scale_progbar")]
+script = ExtResource("36_hn7rv")
+popup = NodePath("../..")
+x_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/XOffset")
+y_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/YOffset")
+x_resolution_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/XResolution")
+y_resolution_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/YResolution")
+scale_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Scale/Scale")
 
 [node name="ProfileSelection" type="Control" parent="UI/PopupMenuManager" unique_id=614286401 node_paths=PackedStringArray("profiles_hflow", "reload_profiles_button", "profile_options")]
 visible = false
@@ -1239,17 +1257,17 @@ popup_menu_manager = NodePath("../../UI/PopupMenuManager")
 [connection signal="pressed" from="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateStateButton" to="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateStateButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateStateButton" to="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateStateButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
-[connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/XResolution" to="UI/PopupMenuManager/ImportImagePopup" method="_on_x_resolution_value_changed"]
-[connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/YResolution" to="UI/PopupMenuManager/ImportImagePopup" method="_on_y_resolution_value_changed"]
-[connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/XOffset" to="UI/PopupMenuManager/ImportImagePopup" method="_on_x_offset_value_changed"]
-[connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/YOffset" to="UI/PopupMenuManager/ImportImagePopup" method="_on_y_offset_value_changed"]
-[connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Scale/Scale" to="UI/PopupMenuManager/ImportImagePopup" method="_on_scale_value_changed"]
-[connection signal="pressed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/ResetPosition/ResetPositionButton" to="UI/PopupMenuManager/ImportImagePopup" method="_on_reset_position_button_pressed"]
-[connection signal="pressed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Import/ImportButton" to="UI/PopupMenuManager/ImportImagePopup" method="_on_import_button_pressed"]
-[connection signal="pressed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/MarginContainer2/SaveButton" to="UI/PopupMenuManager/ImportImagePopup" method="_on_save_button_pressed"]
-[connection signal="position_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image" to="UI/PopupMenuManager/ImportImagePopup" method="_on_image_position_changed"]
-[connection signal="scale_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image" to="UI/PopupMenuManager/ImportImagePopup" method="_on_image_scale_changed"]
-[connection signal="file_selected" from="UI/PopupMenuManager/ImportImagePopup/FileDialog" to="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image" method="_on_file_dialog_file_selected"]
+[connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/XResolution" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_x_resolution_value_changed"]
+[connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/YResolution" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_y_resolution_value_changed"]
+[connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/XOffset" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_x_offset_value_changed"]
+[connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/YOffset" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_y_offset_value_changed"]
+[connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Scale/Scale" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_scale_value_changed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/ResetPosition/ResetPositionButton" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_reset_position_button_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Import/ImportButton" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_import_button_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/MarginContainer2/SaveButton" to="UI/PopupMenuManager/ImportImagePopup/Components/ImportImageSaveManager" method="_on_save_button_pressed"]
+[connection signal="position_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image" to="UI/PopupMenuManager/ImportImagePopup/Components/ImageToUI" method="_on_image_position_changed"]
+[connection signal="scale_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image" to="UI/PopupMenuManager/ImportImagePopup/Components/ImageToUI" method="_on_image_scale_changed"]
+[connection signal="file_selected" from="UI/PopupMenuManager/ImportImagePopup/FileDialog" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_file_dialog_file_selected"]
 [connection signal="pressed" from="UI/PopupMenuManager/ProfileSelection/VBoxContainer/TopBar/MarginContainer2/HBoxContainer/ToBattle" to="UI/PopupMenuManager/ProfileSelection/VBoxContainer/TopBar/MarginContainer2/HBoxContainer/ToBattle" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/ProfileSelection/VBoxContainer/TopBar/MarginContainer2/HBoxContainer/ReloadProfiles" to="UI/PopupMenuManager/ProfileSelection/VBoxContainer/TopBar/MarginContainer2/HBoxContainer/ReloadProfiles" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/ProfileSelection/VBoxContainer/BottomBar/MarginContainer2/NewFighter" to="UI/PopupMenuManager/ProfileSelection/VBoxContainer/BottomBar/MarginContainer2/NewFighter" method="_on_pressed"]

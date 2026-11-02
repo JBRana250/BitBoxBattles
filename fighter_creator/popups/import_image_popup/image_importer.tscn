@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://cqpaoa570mjp6"]
 
-[ext_resource type="Script" uid="uid://b1xt6lqws50n0" path="res://fighter_creator/workspace/node_components/image_importer.gd" id="1_kwjcq"]
+[ext_resource type="Script" uid="uid://b1xt6lqws50n0" path="res://fighter_creator/popups/import_image_popup/image_importer.gd" id="1_kwjcq"]
 [ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://textures/icon.svg" id="2_s2h5c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ra0kn"]
 
-[node name="ImageImporter" type="PanelContainer" unique_id=806275029 node_paths=PackedStringArray("label")]
+[node name="ImageImporter" type="PanelContainer" unique_id=806275029 node_paths=PackedStringArray("label", "thumbnail_button")]
 script = ExtResource("1_kwjcq")
 label = NodePath("Active/Label")
+thumbnail_button = NodePath("Active/TextureButton")
 label_text = "<text>"
 
 [node name="Active" type="VBoxContainer" parent="." unique_id=1933480765]

@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://txsvsuvjd744" path="res://fighter_creator/workspace/nodes/base_nodes/fighter_base_sprites_graphnode.gd" id="1_0hihr"]
 [ext_resource type="Theme" uid="uid://cj7ro5psi4ydt" path="res://themes/default.theme" id="1_htond"]
 [ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_0hihr"]
-[ext_resource type="PackedScene" uid="uid://cqpaoa570mjp6" path="res://fighter_creator/workspace/node_components/image_importer.tscn" id="3_s3gfe"]
+[ext_resource type="Texture2D" uid="uid://q5tifbrx8262" path="res://textures/icon.svg" id="3_g26oi"]
+[ext_resource type="PackedScene" uid="uid://cqpaoa570mjp6" path="res://fighter_creator/popups/import_image_popup/image_importer.tscn" id="3_s3gfe"]
 
 [node name="FighterBaseSprites" type="GraphNode" unique_id=370798223 node_paths=PackedStringArray("active_importer", "inactive_importer")]
 offset_left = 365.66016
@@ -27,6 +28,7 @@ slot/0/draw_stylebox = true
 script = ExtResource("1_0hihr")
 active_importer = NodePath("ImportImages/MarginContainer/HBoxContainer/Active")
 inactive_importer = NodePath("ImportImages/MarginContainer/HBoxContainer/Inactive")
+default_image = ExtResource("3_g26oi")
 slot = ExtResource("2_0hihr")
 
 [node name="ImportImages" type="PanelContainer" parent="." unique_id=1100011394]

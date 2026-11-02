@@ -25,6 +25,7 @@ signal value_changed(new_value)
 
 # This basically is linked to the value of the progress bar
 # but has an additional inspector_value variable to keep track in the inspector
+@export var default_value: float = value
 @export var value: float:
 	set(val):
 		inspector_value = val
@@ -93,6 +94,8 @@ func get_hover_stylebox(default_color: Color) -> StyleBoxFlat:
 	box.bg_color = color
 	return box
 
+func reset_to_default() -> void:
+	value = default_value
 
 func _on_progress_bar_value_changed(new_value: float) -> void:
 	value_changed.emit(new_value)
