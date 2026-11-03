@@ -21,7 +21,7 @@ func get_properties() -> Dictionary:
 	return {
 		"thumbnail": await get_sprite(),
 		"texture": imported_image.texture,
-		"position": Vector2(x_offset_progbar.value, y_offset_progbar.value),
+		"position": imported_image.position,
 		"scale": imported_image.scale.x,
 		"resolution": data_manager.resolution
 	}

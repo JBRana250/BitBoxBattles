@@ -35,8 +35,6 @@ func _on_file_dialog_file_selected(path: String) -> void:
 		imported_image.texture = _texture
 
 func _on_reset_position_button_pressed() -> void:
-	if imported_image == null:
-		return
 	imported_image.position = data_manager.center
 	x_offset_progbar.value = 0.0
 	y_offset_progbar.value = 0.0

@@ -222,7 +222,7 @@ popup_menu_manager = NodePath("../../PopupMenuManager")
 
 [node name="Fighter" parent="UI/VBoxContainer/Workspace" unique_id=1702544155 instance=ExtResource("7_rdcvk")]
 layout_mode = 0
-offset_bottom = 24993.25
+offset_bottom = 25421.875
 
 [node name="FighterBaseStats" parent="UI/VBoxContainer/Workspace" unique_id=55001274 instance=ExtResource("9_4yduf")]
 layout_mode = 0
@@ -856,7 +856,7 @@ x_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VB
 y_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/YOffset")
 scale_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Scale/Scale")
 
-[node name="ImportImageLoad" type="Node" parent="UI/PopupMenuManager/ImportImagePopup/Components" unique_id=1831495246 node_paths=PackedStringArray("popup", "x_offset_progbar", "y_offset_progbar", "x_resolution_progbar", "y_resolution_progbar", "scale_progbar")]
+[node name="ImportImageLoad" type="Node" parent="UI/PopupMenuManager/ImportImagePopup/Components" unique_id=1831495246 node_paths=PackedStringArray("popup", "x_offset_progbar", "y_offset_progbar", "x_resolution_progbar", "y_resolution_progbar", "scale_progbar", "imported_image", "data_manager")]
 script = ExtResource("36_hn7rv")
 popup = NodePath("../..")
 x_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/XOffset")
@@ -864,6 +864,9 @@ y_offset_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Offset/VB
 x_resolution_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/XResolution")
 y_resolution_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/YResolution")
 scale_progbar = NodePath("../../HBoxContainer/Control/VBoxContainer/Scale/Scale")
+imported_image = NodePath("../../HBoxContainer/ImagePreview/MarginContainer/CenterContainer/PanelContainer/SubViewportContainer/SubViewport/Image")
+data_manager = NodePath("../ImportImageDataManager")
+default_texture = ExtResource("33_4yduf")
 
 [node name="ProfileSelection" type="Control" parent="UI/PopupMenuManager" unique_id=614286401 node_paths=PackedStringArray("profiles_hflow", "reload_profiles_button", "profile_options")]
 visible = false
