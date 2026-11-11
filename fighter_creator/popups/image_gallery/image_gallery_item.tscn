@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://duspoms067aqo"]
+
+[ext_resource type="Texture2D" uid="uid://bn8a5lrtgueda" path="res://textures/static_textures/future_bot_splash.png" id="1_beq6s"]
+[ext_resource type="Script" uid="uid://dp2cicu0kbbqm" path="res://fighter_creator/popups/image_gallery/image_gallery_item.gd" id="1_htyov"]
+
+[node name="ImageGalleryItem" type="PanelContainer" unique_id=1262365303 node_paths=PackedStringArray("texture_rect")]
+script = ExtResource("1_htyov")
+texture_rect = NodePath("MarginContainer/TextureRect")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=403309736]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=1709547897]
+custom_maximum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_beq6s")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="." unique_id=524228492]
+layout_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

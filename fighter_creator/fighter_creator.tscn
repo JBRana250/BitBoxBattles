@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bjog6lpfgpuno" path="res://fighter_creator/workspace/nodes/graph_node_scenes/base_sprites_graphnode.tscn" id="10_pfspe"]
 [ext_resource type="PackedScene" uid="uid://dlnk1eud1w452" path="res://fighter_creator/workspace/nodes/graph_node_scenes/setup_graphnode.tscn" id="11_4k6nc"]
 [ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/graph_node_scenes/abilities_graphnode.tscn" id="11_tirwg"]
+[ext_resource type="Script" uid="uid://bh52jgx15dqk0" path="res://fighter_creator/popups/image_gallery/image_gallery_popup.gd" id="16_0ohdi"]
 [ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/node_resource.gd" id="17_qrd11"]
+[ext_resource type="PackedScene" uid="uid://duspoms067aqo" path="res://fighter_creator/popups/image_gallery/image_gallery_item.tscn" id="17_uuieq"]
 [ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_node_popup_menu.gd" id="19_au8nn"]
 [ext_resource type="Script" uid="uid://bku060rexjoog" path="res://fighter_creator/popups/add_event_popup/add_event_cancel_button.gd" id="20_pyiuw"]
 [ext_resource type="Script" uid="uid://caos305qgk772" path="res://fighter_creator/popups/add_event_popup/create_event_button.gd" id="21_e0bke"]
@@ -89,6 +91,12 @@ metadata/_custom_type_script = "uid://qs3vcnlh5jvs"
 [sub_resource type="Resource" id="Resource_rh3qi"]
 script = SubResource("GDScript_hn7rv")
 metadata/_custom_type_script = "uid://qs3vcnlh5jvs"
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ohdi"]
+font_size = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ohdi"]
+bg_color = Color(0.25565878, 0.2556588, 0.2556587, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_uuieq"]
 font_size = 48
@@ -245,7 +253,7 @@ popup_menu_manager = NodePath("../../PopupMenuManager")
 
 [node name="Fighter" parent="UI/VBoxContainer/Workspace" unique_id=1702544155 instance=ExtResource("7_rdcvk")]
 layout_mode = 0
-offset_bottom = 6991.0
+offset_bottom = 9134.125
 
 [node name="FighterBaseStats" parent="UI/VBoxContainer/Workspace" unique_id=55001274 instance=ExtResource("9_4yduf")]
 layout_mode = 0
@@ -280,7 +288,6 @@ offset_bottom = 300.75
 position_offset = Vector2(1025, 45)
 
 [node name="PopupMenuManager" type="Control" parent="UI" unique_id=592969624 node_paths=PackedStringArray("workspace", "event_popup_menu", "action_popup_menu", "condition_popup_menu", "state_popup_menu", "image_popup_menu")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -295,7 +302,7 @@ event_popup_menu = NodePath("AddEventPopupMenu")
 action_popup_menu = NodePath("AddActionPopupMenu")
 condition_popup_menu = NodePath("AddConditionPopupMenu")
 state_popup_menu = NodePath("AddStatePopupMenu")
-image_popup_menu = NodePath("ImportImagePopup")
+image_popup_menu = NodePath("ImageGalleryPopup")
 
 [node name="AddEventPopupMenu" type="Control" parent="UI/PopupMenuManager" unique_id=1721226689]
 visible = false
@@ -646,6 +653,86 @@ text = "Cancel"
 script = ExtResource("20_pyiuw")
 add_event_popup_menu = NodePath("../../../../../..")
 
+[node name="ImageGalleryPopup" type="Control" parent="UI/PopupMenuManager" unique_id=938842177 node_paths=PackedStringArray("title_label", "static_gallery_hflow")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_0ohdi")
+title_label = NodePath("MarginContainer/VBoxContainer/TitleLabel")
+static_gallery_hflow = NodePath("MarginContainer/VBoxContainer/MarginContainer/StaticGallery/ScrollContainer/MarginContainer/HFlowContainer")
+
+[node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/ImageGalleryPopup" unique_id=90308421]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/ImageGalleryPopup" unique_id=602624731]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer" unique_id=1286938416]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer" unique_id=1066226042]
+layout_mode = 2
+text = "Choose <TEXT> Image"
+label_settings = SubResource("LabelSettings_0ohdi")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer" unique_id=1261085666]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="StaticGallery" type="PanelContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer" unique_id=530712636]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/StaticGallery" unique_id=435032556]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/StaticGallery/ScrollContainer" unique_id=2052013194]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="HFlowContainer" type="HFlowContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/StaticGallery/ScrollContainer/MarginContainer" unique_id=44496625]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ImageGalleryItem" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/StaticGallery/ScrollContainer/MarginContainer/HFlowContainer" unique_id=1262365303 instance=ExtResource("17_uuieq")]
+layout_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer" unique_id=1521196071]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ohdi")
+text = "CONFIRM"
+
 [node name="ImportImagePopup" type="Control" parent="UI/PopupMenuManager" unique_id=573991543 node_paths=PackedStringArray("title_label", "import_image_load")]
 visible = false
 layout_mode = 1
@@ -892,6 +979,7 @@ data_manager = NodePath("../ImportImageDataManager")
 default_texture = ExtResource("33_4yduf")
 
 [node name="ProfileSelection" type="Control" parent="UI/PopupMenuManager" unique_id=614286401 node_paths=PackedStringArray("profiles_hflow", "reload_profiles_button", "profile_options")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1279,6 +1367,7 @@ base_graph_node_scene = ExtResource("46_ggudd")
 [connection signal="pressed" from="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateStateButton" to="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/CreateStateButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateStateButton" to="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer3/CreateStateButton" method="_on_pressed"]
 [connection signal="pressed" from="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" to="UI/PopupMenuManager/AddStatePopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer2/CancelButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/ConfirmButton" to="UI/PopupMenuManager/ImageGalleryPopup" method="_on_confirm_button_pressed"]
 [connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/XResolution" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_x_resolution_value_changed"]
 [connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Resolution/VBoxContainer/YResolution" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_y_resolution_value_changed"]
 [connection signal="value_changed" from="UI/PopupMenuManager/ImportImagePopup/HBoxContainer/Control/VBoxContainer/Offset/VBoxContainer/XOffset" to="UI/PopupMenuManager/ImportImagePopup/Components/UIToImportedImage" method="_on_x_offset_value_changed"]

@@ -15,10 +15,10 @@
 [ext_resource type="Script" uid="uid://bbyqng0l5d8mh" path="res://battle/fighter/fighter_property_resources/fighter_init_resource.gd" id="9_dxvn1"]
 [ext_resource type="PackedScene" uid="uid://chkg8vylxbyvv" path="res://battle/fighter/eca_framework/events/deal_contact_damage_event.tscn" id="9_ssc03"]
 [ext_resource type="Script" uid="uid://cpn6vd5oqwkl4" path="res://battle/fighter/eca_framework/events/resource/deal_contact_damage_event.gd" id="10_q43y1"]
-[ext_resource type="Texture2D" uid="uid://b71jpmvkmwfv8" path="res://textures/past_robot_idle.png" id="11_ssc03"]
-[ext_resource type="Texture2D" uid="uid://cfcxo13hw6tav" path="res://textures/past_robot_thinking.png" id="12_q43y1"]
+[ext_resource type="Texture2D" uid="uid://b71jpmvkmwfv8" path="res://textures/static_textures/past_bot_idle.png" id="11_ssc03"]
+[ext_resource type="Texture2D" uid="uid://cfcxo13hw6tav" path="res://textures/static_textures/past_bot_thinking.png" id="12_q43y1"]
 [ext_resource type="Script" uid="uid://bpymebmol4evd" path="res://battle/fighter/fighter_property_resources/fighter_texture_resource.gd" id="13_rr2ng"]
-[ext_resource type="Texture2D" uid="uid://c01xnhl8buut2" path="res://textures/past bot splash.png" id="19_4xx52"]
+[ext_resource type="Texture2D" uid="uid://c01xnhl8buut2" path="res://textures/static_textures/past_bot_splash.png" id="19_4xx52"]
 [ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/node_resource.gd" id="20_xshpt"]
 
 [sub_resource type="Resource" id="Resource_d3j3p"]

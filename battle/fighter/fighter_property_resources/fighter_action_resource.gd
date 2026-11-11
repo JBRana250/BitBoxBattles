@@ -5,7 +5,9 @@ class_name FighterActionResource extends Resource
 func _init(profile_data: Dictionary = {}) -> void:
 	if profile_data.is_empty():
 		return
-	#action_events = profile_data.action_events TEMP
+	if profile_data.action_events.is_empty():
+		return
+	action_events = profile_data.action_events
 
 func to_dict() -> Dictionary:
 	return {

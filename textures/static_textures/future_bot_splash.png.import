@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfcxo13hw6tav"
-path="res://.godot/imported/past_robot_thinking.png-838f3e983d4d8051a68c839118a125cb.ctex"
+uid="uid://bn8a5lrtgueda"
+path="res://.godot/imported/future_bot_splash.png-dd13f0054b4555065fba51e4411d11bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/past_robot_thinking.png"
-dest_files=["res://.godot/imported/past_robot_thinking.png-838f3e983d4d8051a68c839118a125cb.ctex"]
+source_file="res://textures/static_textures/future_bot_splash.png"
+dest_files=["res://.godot/imported/future_bot_splash.png-dd13f0054b4555065fba51e4411d11bb.ctex"]
 
 [params]
 

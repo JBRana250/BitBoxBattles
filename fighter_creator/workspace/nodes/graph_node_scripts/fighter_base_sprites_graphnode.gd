@@ -11,29 +11,24 @@ func init_node(node_res: NodeResource) -> void:
 	var properties: Dictionary = node_res.properties
 	if properties.is_empty():
 		return
-	active_importer.init_from_properties(properties.active_properties)
-	inactive_importer.init_from_properties(properties.inactive_properties)
+	active_importer.init_from_id(properties.active_id)
+	inactive_importer.init_from_id(properties.inactive_id)
 
 # Override
 # On save workspace, it saves all values of this graphnode
 # so that when init_node is called it can load it
 func get_properties() -> Dictionary:
-	var active_properties: Dictionary = active_importer.properties
-	var inactive_properties: Dictionary = inactive_importer.properties
+	var active_id = StaticTextures.ID.GODOT
+	var inactive_id = StaticTextures.ID.GODOT
+	if active_importer.id != null:
+		active_id = active_importer.id
+	if inactive_importer.id != null:
+		inactive_id = inactive_importer.id
+	
 	return {
-		"active_properties": active_properties,
-		"inactive_properties": inactive_properties
+		"active_id": active_id,
+		"inactive_id": inactive_id
 	}
 
 func get_fighter_sprites() -> Dictionary:
-	var active_sprite = default_image
-	var inactive_sprite = default_image
-	if not active_importer.properties.is_empty():
-		active_sprite = active_importer.properties.thumbnail
-	if not inactive_importer.properties.is_empty():
-		inactive_sprite = inactive_importer.properties.thumbnail
-	
-	return {
-		"active_image": active_sprite,
-		"inactive_image": inactive_sprite
-	}
+	return get_properties()

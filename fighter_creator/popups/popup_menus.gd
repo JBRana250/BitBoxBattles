@@ -18,7 +18,7 @@ enum MenuType {
 @export var condition_popup_menu: AddNodePopupMenu
 @export var state_popup_menu: AddNodePopupMenu
 
-@export var image_popup_menu: ImportPopupMenu
+@export var image_popup_menu: ImageGalleryPopup
 
 func open_node_creation_menu(type: MenuType, parent_node: CompositeGraphNode):
 	match (type):

@@ -13,11 +13,6 @@ func save_fighter() -> void:
 	var abilities: Array[Event] = fighter.abilities_node.get_abilities()
 	var workspace_data: NodeResource = fighter.get_node_resource()
 	
-	# TEMP
-	setup.setup_image_id = 0
-	sprites.active_image_id = 0
-	sprites.inactive_image_id = 0
-	
 	var profile_data: Dictionary = base_stats.merged(setup).merged(sprites)
 	profile_data.action_events = abilities
 	profile_data.workspace_data = workspace_data.to_dict()

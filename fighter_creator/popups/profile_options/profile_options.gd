@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func init_profile_options(fighter_profile: FighterProfile, _index: int) -> void:
 	name_label.text = fighter_profile.init_resource.name
-	#fighter_texture.texture = fighter_profile.texture_resource.active_image TEMP
+	fighter_texture.texture = StaticData.get_texture(fighter_profile.texture_resource.active_image_id)
 	profile = fighter_profile
 	self.index = _index
 	visible = true
