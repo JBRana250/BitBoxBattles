@@ -54,6 +54,11 @@ output_slot_color = Color(0.8862745, 0.78039217, 0.9607843, 1)
 [node name="Time" parent="." unique_id=1618141640 instance=ExtResource("4_4gm0w")]
 layout_mode = 2
 size_flags_horizontal = 1
+allow_decimal = true
+max_value = 5.0
+min_value = 0.05
+default_value = 2.5
+value = 2.5
 label_text = "Time"
 bar_color = Color(0.19563612, 0.74813586, 0.64252055, 1)
 

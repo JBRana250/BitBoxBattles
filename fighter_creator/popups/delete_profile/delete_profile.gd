@@ -1,9 +1,8 @@
 extends Control
 
 @export var profile_options: Control
-@export var fighter_profiles: FighterProfiles
-
 @export var title_label: Label
+@onready var fighter_profiles: FighterProfiles = UserData.get_profiles()
 var index: int
 
 func init_delete_profile_menu(profile: FighterProfile, _index: int) -> void:
@@ -21,6 +20,5 @@ func _on_cancel_pressed() -> void:
 
 func _on_delete_pressed() -> void:
 	fighter_profiles.delete_profile(index)
-	SaveManager.save_fighter_profiles()
 	visible = false
 	profile_options.profile_deleted()

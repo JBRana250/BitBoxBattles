@@ -14,8 +14,8 @@ func _ready() -> void:
 	visible = false
 
 func init_profile_options(fighter_profile: FighterProfile, _index: int) -> void:
-	name_label.text = fighter_profile.init_resource.fighter_id
-	fighter_texture.texture = fighter_profile.texture_resource.active_image
+	name_label.text = fighter_profile.init_resource.name
+	#fighter_texture.texture = fighter_profile.texture_resource.active_image TEMP
 	profile = fighter_profile
 	self.index = _index
 	visible = true

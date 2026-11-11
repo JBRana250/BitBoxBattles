@@ -10,8 +10,6 @@ func _ready() -> void:
 	min_timer.start()
 	ResourceLoader.load_threaded_request(path_to_load)
 
-# Update progress bar with current load progress
-# If the minimum time has not been exceeded yet 
 func _process(_delta: float) -> void:
 	var status = ResourceLoader.load_threaded_get_status(path_to_load, progress)
 	

@@ -34,6 +34,6 @@ func get_fighter_sprites() -> Dictionary:
 		inactive_sprite = inactive_importer.properties.thumbnail
 	
 	return {
-		"active": active_sprite,
-		"inactive": inactive_sprite
+		"active_image": active_sprite,
+		"inactive_image": inactive_sprite
 	}

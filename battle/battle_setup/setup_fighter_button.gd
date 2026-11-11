@@ -44,10 +44,12 @@ func play_fighter_change_animation(profile: FighterProfile) -> void:
 	anim_player.play_backwards("setup_intro_anim" + type)
 	await anim_player.animation_finished
 	
-	if profile.texture_resource.setup_image:
-		fighter_texture_rect.texture = profile.texture_resource.setup_image
+	if profile.texture_resource.setup_image_id:
+		pass
+		# fighter_texture_rect.texture = profile.texture_resource.setup_image TEMP
 	else:
-		fighter_texture_rect.texture = profile.texture_resource.active_image
+		pass
+		# fighter_texture_rect.texture = profile.texture_resource.active_image TEMP
 	fighter_profile = profile
 	
 	anim_player.play("setup_intro_anim" + type)
@@ -56,7 +58,7 @@ func play_fighter_change_animation(profile: FighterProfile) -> void:
 func change_display_name(profile: FighterProfile) -> void:
 	display_anim_player.play("display_to_static")
 	await display_anim_player.animation_finished
-	fighter_label.text = profile.init_resource.fighter_id
+	fighter_label.text = profile.init_resource.name
 	display_anim_player.play("static_to_display")
 
 

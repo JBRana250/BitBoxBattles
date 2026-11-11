@@ -15,8 +15,8 @@ func init_node(node_res: NodeResource) -> void:
 	var properties: Dictionary = node_res.properties
 	if properties.is_empty():
 		return
-	fighter_id_line_edit.text = properties.fighter_id
-	health_bar.value = properties.health
+	fighter_id_line_edit.text = properties.name
+	health_bar.value = properties.max_health
 	contact_damage_bar.value = properties.contact_damage
 	contact_cooldown_bar.value = properties.contact_cooldown
 	contact_knockback_bar.value = properties.contact_knockback
@@ -31,8 +31,8 @@ func get_properties() -> Dictionary:
 
 func get_base_stats() -> Dictionary:
 	var base_stats: Dictionary = {}
-	base_stats.fighter_id = fighter_id_line_edit.text
-	base_stats.health = health_bar.value
+	base_stats.name = fighter_id_line_edit.text
+	base_stats.max_health = health_bar.value
 	base_stats.contact_damage = contact_damage_bar.value
 	base_stats.contact_cooldown = contact_cooldown_bar.value
 	base_stats.contact_knockback = contact_knockback_bar.value

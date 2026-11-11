@@ -22,8 +22,10 @@ script = ExtResource("1_j0tvp")
 prog_bar = NodePath("MarginContainer/VBoxContainer/ProgressBar")
 line_edit = NodePath("MarginContainer/VBoxContainer/LineEdit")
 label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Label")
+allow_lesser = null
 max_value = 250.0
 min_value = 1.0
+default_value = 0.0
 value = 100.0
 label_text = "<text>"
 

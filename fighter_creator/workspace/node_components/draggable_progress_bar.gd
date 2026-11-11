@@ -8,6 +8,7 @@ class_name DraggableProgressBar extends Control
 signal value_changed(new_value)
 
 @export var allow_greater: bool
+@export var allow_lesser: bool
 @export var allow_decimal: bool:
 	set(val):
 		allow_decimal = val
@@ -53,6 +54,7 @@ func _ready():
 	apply_progbar_min()
 	apply_progbar_value()
 	prog_bar.allow_greater = allow_greater
+	prog_bar.allow_lesser = allow_lesser
 
 func apply_text():
 	if not is_node_ready():

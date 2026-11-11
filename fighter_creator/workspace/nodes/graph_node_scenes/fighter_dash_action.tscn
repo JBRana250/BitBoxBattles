@@ -52,6 +52,7 @@ output_slot_color = Color(0.68235296, 0.72156864, 0, 1)
 [node name="Force" parent="." unique_id=1618141640 instance=ExtResource("3_b8w7k")]
 layout_mode = 2
 size_flags_horizontal = 1
+allow_lesser = true
 label_text = "Force"
 bar_color = Color(0.6431373, 1, 0.6156863, 1)
 

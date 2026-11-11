@@ -27,8 +27,8 @@ func change_text(new_text: String) -> void:
 	display_anim_player.play("static_to_display")
 
 func on_start_battle(fighter_one_profile: FighterProfile, fighter_two_profile: FighterProfile) -> void:
-	var fighter_one_id: String = fighter_one_profile.init_resource.fighter_id
-	var fighter_two_id: String = fighter_two_profile.init_resource.fighter_id
+	var fighter_one_id: String = fighter_one_profile.init_resource.name
+	var fighter_two_id: String = fighter_two_profile.init_resource.name
 	fighters = [fighter_one_id, fighter_two_id]
 	text = fighter_one_id + " vs " + fighter_two_id
 	label_settings.font_size = 36

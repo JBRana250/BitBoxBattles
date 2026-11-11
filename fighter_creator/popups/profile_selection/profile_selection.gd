@@ -2,15 +2,16 @@ extends Control
 
 @export var profiles_hflow: HFlowContainer
 @export var profile_option: PackedScene
-@export var fighter_profiles: FighterProfiles
 @export var reload_profiles_button: Button
 @export var profile_options: Control
+
+var fighter_profiles: FighterProfiles
 
 func _ready() -> void:
 	init_profile_selection()
 
 func init_profile_selection() -> void:
-	reload()
+	fighter_profiles = UserData.profiles_manager.fighter_profiles
 	for option: ProfileOption in profiles_hflow.get_children():
 		option.queue_free()
 	visible = true
@@ -23,27 +24,3 @@ func init_profile_selection() -> void:
 
 func choose_fighter(profile: FighterProfile, id: int) -> void:
 	profile_options.init_profile_options(profile, id)
-
-func reload() -> void:
-	reload_profiles_button.disabled = true 
-	# Run the saving logic on a separate background thread
-	var task_id = WorkerThreadPool.add_task(_reload_profiles_async)
-	WorkerThreadPool.wait_for_task_completion(task_id)
-	_on_reload_complete()
-
-func _on_reload_complete() -> void:
-	reload_profiles_button.disabled = false
-
-func _reload_profiles_async() -> void:
-	var new_profiles: FighterProfiles = load_user_profiles()
-	if !new_profiles:
-		return
-	fighter_profiles.next_id = new_profiles.next_id
-	fighter_profiles.profiles = new_profiles.profiles
-
-func load_user_profiles() -> FighterProfiles:
-	var path = "user://fighter_profiles.tres"
-	if ResourceLoader.exists(path):
-		var profiles = ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE)
-		return profiles
-	return null

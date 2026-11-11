@@ -21,6 +21,4 @@ func _on_rename_pressed() -> void:
 	profile.workspace_data.connected_nodes[0].properties.fighter_id = new_name
 	visible = false
 	
-	SaveManager.save_fighter_profiles()
-	
 	profile_options.update_name(new_name)

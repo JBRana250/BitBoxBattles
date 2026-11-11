@@ -100,35 +100,65 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_tirwg")
 [node name="HP" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=1936042985 instance=ExtResource("4_pujda")]
 layout_mode = 2
 size_flags_horizontal = 1
+allow_lesser = false
+default_value = 100.0
 label_text = "Health"
 bar_color = Color(0, 0.7294118, 0, 1)
 
 [node name="ContactDamage" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=646769141 instance=ExtResource("4_pujda")]
 layout_mode = 2
 size_flags_horizontal = 1
+allow_lesser = false
+max_value = 50.0
+default_value = 10.0
+value = 10.0
 label_text = "Contact Damage"
 bar_color = Color(0.6, 0, 0, 1)
 
 [node name="ContactCooldown" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=412324800 instance=ExtResource("4_pujda")]
 layout_mode = 2
 size_flags_horizontal = 1
+allow_greater = true
+allow_lesser = false
+allow_decimal = true
+max_value = 5.0
+min_value = 0.0
+default_value = 1.0
+value = 1.0
 label_text = "Contact Cooldown"
 bar_color = Color(0, 0.6745098, 0.7607843, 1)
 
 [node name="ContactKnockback" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=322005382 instance=ExtResource("4_pujda")]
 layout_mode = 2
 size_flags_horizontal = 1
+allow_lesser = false
+allow_decimal = true
+max_value = 10.0
+min_value = 0.0
+default_value = 1.0
+value = 1.0
 label_text = "Contact Knockback"
 bar_color = Color(0.5921569, 0.36862746, 0.4392157, 1)
 
 [node name="Mass" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=1916289204 instance=ExtResource("4_pujda")]
 layout_mode = 2
 size_flags_horizontal = 1
+allow_lesser = false
+allow_decimal = true
+max_value = 5.0
+min_value = 0.05
+default_value = 1.0
+value = 1.0
 label_text = "Mass"
 bar_color = Color(0.5882353, 0.3764706, 0.19607843, 1)
 
 [node name="StartingForce" parent="BaseStats/MarginContainer/VBoxContainer" unique_id=389632676 instance=ExtResource("4_pujda")]
 layout_mode = 2
 size_flags_horizontal = 1
+allow_lesser = false
+max_value = 10.0
+min_value = 0.0
+default_value = 5.0
+value = 5.0
 label_text = "StartingForce"
 bar_color = Color(0.65882355, 0.34509805, 0.2509804, 1)

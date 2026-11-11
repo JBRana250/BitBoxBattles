@@ -2,7 +2,8 @@ extends Control
 
 @export var fighter_options_hflow: HFlowContainer
 @export var fighter_option_scene: PackedScene
-@export var fighter_profiles: FighterProfiles
+
+@onready var fighter_profiles: FighterProfiles = UserData.get_profiles()
 
 var current_fighter: Button
 

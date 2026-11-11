@@ -7,8 +7,8 @@ var profile_selection_manager: Control
 var id: int
 
 func init_fighter_option(profile: FighterProfile, _profile_selection_manager: Control, _id: int):
-	label.text = profile.init_resource.fighter_id
-	texture_rect.texture = profile.texture_resource.active_image
+	label.text = profile.init_resource.name
+	#texture_rect.texture = profile.texture_resource.active_image TEMP
 	self.fighter_profile = profile
 	self.profile_selection_manager = _profile_selection_manager
 	self.id = _id

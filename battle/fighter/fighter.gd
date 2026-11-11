@@ -29,10 +29,10 @@ func init_fighter(_fighter_manager: FighterManager, _particles: Node2D, fighter_
 	var init_resource: FighterInitResource = fighter_profile.init_resource
 	var health_resource: FighterHealthResource = fighter_profile.health_resource
 	var contact_resource: FighterContactResource = fighter_profile.contact_resource
-	var texture_resource: FighterTextureResource = fighter_profile.texture_resource
+	var _texture_resource: FighterTextureResource = fighter_profile.texture_resource
 	var action_resource: FighterActionResource = fighter_profile.action_resource
 	
-	self.fighter_id = init_resource.fighter_id
+	self.fighter_id = init_resource.name
 	self.position = init_resource.position
 	self.rotation = init_resource.rotation
 	self.mass = init_resource.fighter_mass / 1000
@@ -43,7 +43,7 @@ func init_fighter(_fighter_manager: FighterManager, _particles: Node2D, fighter_
 	self.contact_cooldown = contact_resource.contact_cooldown
 	self.contact_knockback = contact_resource.contact_knockback
 	
-	fighter_sprite_manager.init_sprites(texture_resource.active_image, texture_resource.inactive_image)
+	#fighter_sprite_manager.init_sprites(texture_resource.active_image, texture_resource.inactive_image) TEMP
 	fighter_state_machine.init_states()
 	fighter_health_manager.init_health(health_resource.max_health)
 	if (action_resource != null):

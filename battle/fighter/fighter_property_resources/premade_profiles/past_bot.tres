@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FighterProfile" format=3 uid="uid://dxglvxvxwft3x"]
 
 [ext_resource type="Script" uid="uid://ds7a348a1ofw8" path="res://battle/fighter/eca_framework/events/resource/event.gd" id="1_6n1oh"]
-[ext_resource type="Script" uid="uid://co45optnb8qec" path="res://battle/fighter/fighter_property_resources/fighter_profile.gd" id="1_ue2ji"]
+[ext_resource type="Script" uid="uid://co45optnb8qec" path="res://global/data/user_data/profiles/fighter_profile.gd" id="1_ue2ji"]
 [ext_resource type="Script" uid="uid://ifw0gnaqvax2" path="res://battle/fighter/eca_framework/actions/action.gd" id="2_6n1oh"]
 [ext_resource type="Script" uid="uid://bjx403himfv61" path="res://battle/fighter/eca_framework/conditions/condition.gd" id="3_p1qvd"]
 [ext_resource type="Script" uid="uid://bqthginsqy3v4" path="res://battle/fighter/eca_framework/actions/accel_dash_action.gd" id="4_bvd3n"]

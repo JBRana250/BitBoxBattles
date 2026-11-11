@@ -9,6 +9,7 @@ extends Node
 @export var imported_image: DraggableImportImage
 @export var data_manager: ImportImageDataManager
 @export var default_texture: Texture
+@export var minimum_wrangles: int = 10
 
 func reset_to_default() -> void:
 	imported_image.texture = default_texture
@@ -33,11 +34,12 @@ func load_previous(properties: Dictionary) -> void:
 	imported_image.scale_changed.emit()
 	
 	wrangle_position(properties.position)
-	
 	popup.visible = true
 
 func wrangle_position(target_pos: Vector2) -> void:
-	for i in range(10):
+	var wrangles = 0
+	while imported_image.position != target_pos or wrangles < minimum_wrangles:
 		await get_tree().create_timer(0.05).timeout
 		imported_image.position = target_pos
+		wrangles += 1
 	imported_image.position_changed.emit()

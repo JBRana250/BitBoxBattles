@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d3h3bgyvaqkeg"]
+
+[ext_resource type="Script" uid="uid://dnb3ay0x3f7e4" path="res://global/saving/save_manager.gd" id="1_cjir4"]
+[ext_resource type="Script" uid="uid://bmyikrovm6xi1" path="res://global/saving/save_on_exit.gd" id="2_jjget"]
+
+[node name="SaveManager" type="Node" unique_id=382478677]
+script = ExtResource("1_cjir4")
+
+[node name="SaveOnExit" type="Node" parent="." unique_id=465873751]
+script = ExtResource("2_jjget")

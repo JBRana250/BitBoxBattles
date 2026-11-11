@@ -7,8 +7,8 @@ extends PanelContainer
 var fighter_menu: Control
 
 func init_fighter_option(profile: FighterProfile, _fighter: Button, _menu: Control):
-	label.text = profile.init_resource.fighter_id
-	texture_button.texture_normal = profile.texture_resource.active_image
+	label.text = profile.init_resource.name
+	#texture_button.texture_normal = profile.texture_resource.active_image TEMP
 	self.fighter = _fighter
 	self.fighter_profile = profile
 	fighter_menu = _menu
