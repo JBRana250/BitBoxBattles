@@ -2,6 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://bn8a5lrtgueda" path="res://textures/static_textures/future_bot_splash.png" id="1_beq6s"]
 [ext_resource type="Script" uid="uid://dp2cicu0kbbqm" path="res://fighter_creator/popups/image_gallery/image_gallery_item.gd" id="1_htyov"]
+[ext_resource type="Shader" uid="uid://8nqt4gg7d15" path="res://shaders/pulse.gdshader" id="2_b11xs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75fdc"]
+resource_local_to_scene = true
+shader = ExtResource("2_b11xs")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_amount = 0.0
+shader_parameter/pattern = 5.0
+shader_parameter/progress = 0.0
+shader_parameter/blinks = 5.0
+shader_parameter/pulse_speed = 1.0000000409802299
+shader_parameter/edge_glow = 1.0
 
 [node name="ImageGalleryItem" type="PanelContainer" unique_id=1262365303 node_paths=PackedStringArray("texture_rect")]
 script = ExtResource("1_htyov")
@@ -13,6 +25,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=1709547897]
+material = SubResource("ShaderMaterial_75fdc")
 custom_maximum_size = Vector2(500, 500)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -23,4 +36,6 @@ stretch_mode = 5
 [node name="Button" type="Button" parent="." unique_id=524228492]
 layout_mode = 2
 
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

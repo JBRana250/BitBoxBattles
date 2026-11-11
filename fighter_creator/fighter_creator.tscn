@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/graph_node_scenes/abilities_graphnode.tscn" id="11_tirwg"]
 [ext_resource type="Script" uid="uid://bh52jgx15dqk0" path="res://fighter_creator/popups/image_gallery/image_gallery_popup.gd" id="16_0ohdi"]
 [ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/node_resource.gd" id="17_qrd11"]
-[ext_resource type="PackedScene" uid="uid://duspoms067aqo" path="res://fighter_creator/popups/image_gallery/image_gallery_item.tscn" id="17_uuieq"]
 [ext_resource type="Script" uid="uid://dl6cwrysku5s2" path="res://fighter_creator/popups/add_node_popup_menu.gd" id="19_au8nn"]
 [ext_resource type="Script" uid="uid://bku060rexjoog" path="res://fighter_creator/popups/add_event_popup/add_event_cancel_button.gd" id="20_pyiuw"]
 [ext_resource type="Script" uid="uid://caos305qgk772" path="res://fighter_creator/popups/add_event_popup/create_event_button.gd" id="21_e0bke"]
@@ -253,7 +252,7 @@ popup_menu_manager = NodePath("../../PopupMenuManager")
 
 [node name="Fighter" parent="UI/VBoxContainer/Workspace" unique_id=1702544155 instance=ExtResource("7_rdcvk")]
 layout_mode = 0
-offset_bottom = 9134.125
+offset_bottom = 9991.375
 
 [node name="FighterBaseStats" parent="UI/VBoxContainer/Workspace" unique_id=55001274 instance=ExtResource("9_4yduf")]
 layout_mode = 0
@@ -723,9 +722,6 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
-
-[node name="ImageGalleryItem" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/StaticGallery/ScrollContainer/MarginContainer/HFlowContainer" unique_id=1262365303 instance=ExtResource("17_uuieq")]
-layout_mode = 2
 
 [node name="ConfirmButton" type="Button" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer" unique_id=1521196071]
 layout_mode = 2
