@@ -1,44 +1,38 @@
 [gd_resource type="Resource" script_class="NodeResource" format=3 uid="uid://dp7mfg3j7qjob"]
 
-[ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/node_resource.gd" id="1_jycob"]
-[ext_resource type="PackedScene" uid="uid://c5hclxce3idvn" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_stats_graphnode.tscn" id="2_dxequ"]
-[ext_resource type="PackedScene" uid="uid://bhlkjhb2trj5u" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_graphnode.tscn" id="2_r1u37"]
-[ext_resource type="PackedScene" uid="uid://bjog6lpfgpuno" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_sprites_graphnode.tscn" id="3_ixpcg"]
-[ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_abilities_graphnode.tscn" id="4_g0213"]
-[ext_resource type="PackedScene" uid="uid://dlnk1eud1w452" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_setup_graphnode.tscn" id="5_ixpcg"]
+[ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/node_resource.gd" id="1_r1u37"]
 
-[sub_resource type="Resource" id="Resource_kj607"]
-script = ExtResource("1_jycob")
-graph_node_scene = ExtResource("2_dxequ")
-graph_node_name = "Fighter Base Stats"
-position_offset = Vector2(500, 45)
+[sub_resource type="Resource" id="Resource_0ohdi"]
+script = ExtResource("1_r1u37")
+graph_node_name = "Base Stats"
+position_offset = Vector2(500, 100)
+scene_type = 1
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 
-[sub_resource type="Resource" id="Resource_vx5ds"]
-script = ExtResource("1_jycob")
-graph_node_scene = ExtResource("5_ixpcg")
-graph_node_name = "Fighter Setup"
-position_offset = Vector2(1025, 45)
+[sub_resource type="Resource" id="Resource_r1u37"]
+script = ExtResource("1_r1u37")
+graph_node_name = "Setup"
+position_offset = Vector2(1050, 100)
+scene_type = 3
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 
-[sub_resource type="Resource" id="Resource_k1jmw"]
-script = ExtResource("1_jycob")
-graph_node_scene = ExtResource("3_ixpcg")
-graph_node_name = "Fighter Base Sprites"
-position_offset = Vector2(1025, 325)
+[sub_resource type="Resource" id="Resource_feicn"]
+script = ExtResource("1_r1u37")
+graph_node_name = "Base Sprites"
+position_offset = Vector2(1050, 450)
+scene_type = 2
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 
-[sub_resource type="Resource" id="Resource_l4my3"]
-script = ExtResource("1_jycob")
-graph_node_scene = ExtResource("4_g0213")
-graph_node_name = "Fighter Abilities"
+[sub_resource type="Resource" id="Resource_avriw"]
+script = ExtResource("1_r1u37")
+graph_node_name = "Abilities"
 position_offset = Vector2(500, 850)
+scene_type = 4
 metadata/_custom_type_script = "uid://wvfaicrfo161"
 
 [resource]
-script = ExtResource("1_jycob")
-graph_node_scene = ExtResource("2_r1u37")
+script = ExtResource("1_r1u37")
 graph_node_name = "Fighter"
-connected_nodes = Array[ExtResource("1_jycob")]([SubResource("Resource_kj607"), SubResource("Resource_vx5ds"), SubResource("Resource_k1jmw"), SubResource("Resource_l4my3")])
-position_offset = Vector2(160, 570)
+position_offset = Vector2(100, 750)
+connected_nodes = Array[ExtResource("1_r1u37")]([SubResource("Resource_0ohdi"), SubResource("Resource_r1u37"), SubResource("Resource_feicn"), SubResource("Resource_avriw")])
 metadata/_custom_type_script = "uid://wvfaicrfo161"

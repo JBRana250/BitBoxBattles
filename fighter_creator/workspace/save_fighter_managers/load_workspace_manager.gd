@@ -3,6 +3,7 @@ class_name LoadWorkspaceManager extends Node
 @export var workspace: Workspace
 @export var fighter_save_manager: FighterSaveManager
 @export var popup_menu_manager: PopupMenuManager
+@export var base_graph_node_scene: PackedScene
 
 func init_workspace(rootnode: NodeResource, id: int = -1) -> void:
 	popup_menu_manager.close_all_popups()
@@ -17,7 +18,9 @@ func init_workspace(rootnode: NodeResource, id: int = -1) -> void:
 	fighter_save_manager.fighter = root_fighter_instance
 
 func instance_graphnode_tree(graphnode: NodeResource) -> CompositeGraphNode:
-	var root_instance: CompositeGraphNode = graphnode.graph_node_scene.instantiate()
+	var root_instance: BaseCompositeGraphNode
+	root_instance = StaticData.get_graphnode_scene(graphnode.scene_type).instantiate()
+	
 	workspace.add_child(root_instance)
 	root_instance.set_workspace(workspace)
 	root_instance.position_offset = graphnode.position_offset

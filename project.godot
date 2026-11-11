@@ -25,6 +25,7 @@ BattleEventBus="*uid://bjqxel3uajye2"
 AudioManager="*uid://d0sfishc4e6mo"
 LoadManager="*uid://dnvkh6b8u12bp"
 UserData="*uid://dnb3ay0x3f7e4"
+StaticData="*uid://desa5xiupikt5"
 
 [display]
 

@@ -54,7 +54,6 @@ func import_all_json_from_folder(path: String) -> Array:
 	var all_json = []
 	for file_name: String in files:
 		var json: Variant = import_json_file(path + "/" + file_name)
-		print(json)
 		all_json.append(json)
 	return all_json
 
@@ -80,7 +79,6 @@ func get_all_files_from_folder(path: String) -> Array[String]:
 
 #region Export Data
 func export_json_file(data: Variant, filepath: String) -> void:
-	print(filepath)
 	var file = FileAccess.open(filepath, FileAccess.WRITE)
 	if file == null:
 		print_debug("ERROR OPENING SAVEFILE ", FileAccess.get_open_error())

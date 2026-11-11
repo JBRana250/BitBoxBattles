@@ -27,3 +27,7 @@ func to_dict() -> Dictionary:
 		"starting_force": starting_force,
 		"mass": fighter_mass
 	}
+
+# set in battle
+var position: Vector2
+var rotation: float

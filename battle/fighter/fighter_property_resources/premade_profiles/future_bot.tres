@@ -21,11 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://bnkcbjk3hunw8" path="res://textures/future_robot_thinking.png" id="13_jx3t2"]
 [ext_resource type="Script" uid="uid://bpymebmol4evd" path="res://battle/fighter/fighter_property_resources/fighter_texture_resource.gd" id="14_xr3bg"]
 [ext_resource type="Texture2D" uid="uid://bn8a5lrtgueda" path="res://textures/future bot splash.png" id="21_el4pe"]
-[ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/resource_scripts/node_resource.gd" id="22_ybt4i"]
-[ext_resource type="PackedScene" uid="uid://bhlkjhb2trj5u" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_graphnode.tscn" id="23_j2188"]
-[ext_resource type="PackedScene" uid="uid://c5hclxce3idvn" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_stats_graphnode.tscn" id="23_xr3bg"]
-[ext_resource type="PackedScene" uid="uid://bjog6lpfgpuno" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_base_sprites_graphnode.tscn" id="24_eobe0"]
-[ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/base_nodes/scenes/fighter_abilities_graphnode.tscn" id="25_qt1er"]
+[ext_resource type="Script" uid="uid://wvfaicrfo161" path="res://fighter_creator/workspace/nodes/graph_node_resources/node_resource.gd" id="22_ybt4i"]
+[ext_resource type="PackedScene" uid="uid://bhlkjhb2trj5u" path="res://fighter_creator/workspace/nodes/graph_node_scenes/root_graphnode.tscn" id="23_j2188"]
+[ext_resource type="PackedScene" uid="uid://c5hclxce3idvn" path="res://fighter_creator/workspace/nodes/graph_node_scenes/base_stats_graphnode.tscn" id="23_xr3bg"]
+[ext_resource type="PackedScene" uid="uid://bjog6lpfgpuno" path="res://fighter_creator/workspace/nodes/graph_node_scenes/base_sprites_graphnode.tscn" id="24_eobe0"]
+[ext_resource type="PackedScene" uid="uid://d7nsvke63fxb" path="res://fighter_creator/workspace/nodes/graph_node_scenes/abilities_graphnode.tscn" id="25_qt1er"]
 
 [sub_resource type="Resource" id="Resource_1k8hw"]
 script = ExtResource("4_5hdlo")

@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bpvm13r2d0en8"]
+
+[ext_resource type="Script" uid="uid://dlsx2068bafwk" path="res://fighter_creator/workspace/nodes/graph_node_scripts/health_increase_action_graphnode.gd" id="1_alc7p"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_r68tn"]
+[ext_resource type="PackedScene" uid="uid://dyrmlawkuynjd" path="res://fighter_creator/workspace/modules/draggable_progress_bar.tscn" id="3_alc7p"]
+[ext_resource type="Texture2D" uid="uid://bwy5wotd4d74q" path="res://textures/button_plus_flat.png" id="3_r68tn"]
+[ext_resource type="Script" uid="uid://bn0hc4gnbtrgy" path="res://fighter_creator/workspace/nodes/graph_node_scripts/add_node_button.gd" id="4_d2c6v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ohdi"]
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uuieq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vqhb"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbqos"]
+bg_color = Color(0.6, 0.6, 0.6, 0.19607843)
+
+[node name="HealthIncreaseAction" type="GraphNode" unique_id=1619022957 node_paths=PackedStringArray("amount_progbar")]
+offset_left = 750.375
+offset_top = 588.9375
+offset_right = 973.375
+offset_bottom = 712.9375
+scale = Vector2(0.75, 0.75)
+mouse_filter = 1
+position_offset = Vector2(1000.5, 785.25)
+title = "Health Increase Action"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(0, 1, 0, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_alc7p")
+amount_progbar = NodePath("VBoxContainer/Amount")
+slot = ExtResource("2_r68tn")
+output_slot_color = Color(0, 1, 0, 1)
+scene_type = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1518110750]
+layout_mode = 2
+
+[node name="Amount" parent="VBoxContainer" unique_id=1618141640 instance=ExtResource("3_alc7p")]
+layout_mode = 2
+size_flags_horizontal = 1
+label_text = "Amount"
+bar_color = Color(0, 0.6313726, 0.11764706, 1)
+
+[node name="Conditions" type="PanelContainer" parent="VBoxContainer" unique_id=925135635]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Conditions" unique_id=1263682062]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Conditions/HBoxContainer" unique_id=700237250]
+modulate = Color(0, 0.91779244, 0, 1)
+layout_mode = 2
+texture = ExtResource("3_r68tn")
+expand_mode = 2
+
+[node name="Button" type="Label" parent="VBoxContainer/Conditions/HBoxContainer" unique_id=260445063]
+layout_mode = 2
+text = "Condition"
+label_settings = SubResource("LabelSettings_0ohdi")
+vertical_alignment = 1
+
+[node name="AddConditionButton" type="Button" parent="VBoxContainer/Conditions" unique_id=2139284772 node_paths=PackedStringArray("owner_node")]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uuieq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8vqhb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jbqos")
+script = ExtResource("4_d2c6v")
+owner_node = NodePath("../../..")
+menu_type = 2
+
+[connection signal="pressed" from="VBoxContainer/Conditions/AddConditionButton" to="VBoxContainer/Conditions/AddConditionButton" method="_on_pressed"]

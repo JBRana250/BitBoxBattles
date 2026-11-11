@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c2oo467fcfyc3"]
+
+[ext_resource type="Script" uid="uid://cck24xps8hh7b" path="res://fighter_creator/workspace/nodes/graph_node_scripts/base_composite_graph_node.gd" id="1_gguxk"]
+[ext_resource type="PackedScene" uid="uid://b10jqdids3ob8" path="res://fighter_creator/workspace/nodes/slots/slot.tscn" id="2_girey"]
+
+[node name="BaseCompositeGraphNode" type="GraphNode" unique_id=264950904 node_paths=PackedStringArray("modules")]
+offset_right = 9.0
+offset_bottom = 55.0
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_gguxk")
+modules = NodePath("Modules")
+slot = ExtResource("2_girey")
+metadata/_custom_type_script = "uid://cck24xps8hh7b"
+
+[node name="Modules" type="VBoxContainer" parent="." unique_id=612752000]
+layout_mode = 2
