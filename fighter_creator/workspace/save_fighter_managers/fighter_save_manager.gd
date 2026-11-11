@@ -20,7 +20,7 @@ func save_fighter() -> void:
 	
 	var profile_data: Dictionary = base_stats.merged(setup).merged(sprites)
 	profile_data.action_events = abilities
-	profile_data.workspace_data = workspace_data
+	profile_data.workspace_data = workspace_data.to_dict()
 	
 	var fighter_profile: FighterProfile = FighterProfile.new(profile_data)
 	

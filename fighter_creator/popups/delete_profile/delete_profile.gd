@@ -8,7 +8,7 @@ var index: int
 func init_delete_profile_menu(profile: FighterProfile, _index: int) -> void:
 	title_label.text = "Are you sure you 
 	want to delete 
-	'" + profile.init_resource.fighter_id + "' ?"
+	'" + profile.init_resource.name + "' ?"
 	self.index = _index
 	visible = true
 

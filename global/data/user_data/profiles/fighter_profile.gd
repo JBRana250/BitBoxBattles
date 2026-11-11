@@ -20,7 +20,7 @@ func _init(profile_data: Dictionary = {}) -> void:
 	action_resource = FighterActionResource.new(profile_data)
 	
 	if profile_data.has("workspace_data"):
-		workspace_data = profile_data.workspace_data
+		workspace_data = NodeResource.new(profile_data.workspace_data)
 
 func get_profile_data() -> Dictionary:
 	var init = init_resource.to_dict()
@@ -28,4 +28,6 @@ func get_profile_data() -> Dictionary:
 	var contact = contact_resource.to_dict()
 	var texture = texture_resource.to_dict()
 	var action = action_resource.to_dict()
-	return init.merged(health).merged(contact).merged(texture).merged(action)
+	var combined = init.merged(health).merged(contact).merged(texture).merged(action)
+	combined.workspace_data = workspace_data.to_dict()
+	return combined
