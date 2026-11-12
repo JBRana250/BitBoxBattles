@@ -8,7 +8,7 @@ var fighter_menu: Control
 
 func init_fighter_option(profile: FighterProfile, _fighter: Button, _menu: Control):
 	label.text = profile.init_resource.name
-	texture_button.texture_normal = StaticData.get_texture(profile.texture_resource.active_image_id)
+	texture_button.texture_normal = profile.texture_resource.active_image_ptr.execute()
 	self.fighter = _fighter
 	self.fighter_profile = profile
 	fighter_menu = _menu

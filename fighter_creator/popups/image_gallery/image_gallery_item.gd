@@ -52,7 +52,8 @@ func _ready() -> void:
 	gal.item_selected.connect(_on_item_selected)
 
 func _on_button_pressed() -> void:
-	gal.on_gallery_item_pressed(id, self)
+	var ptr = TexturePointer.new(id, TexturePointer.Type.STATIC)
+	gal.on_static_gallery_item_pressed(ptr, self)
 	current_state = State.SELECTED
 
 func _on_button_mouse_entered() -> void:

@@ -43,8 +43,8 @@ func init_fighter(_fighter_manager: FighterManager, _particles: Node2D, fighter_
 	self.contact_cooldown = contact_resource.contact_cooldown
 	self.contact_knockback = contact_resource.contact_knockback
 	
-	fighter_sprite_manager.init_sprites(StaticData.get_texture(texture_resource.active_image_id), 
-	StaticData.get_texture(texture_resource.inactive_image_id))
+	fighter_sprite_manager.init_sprites(texture_resource.active_image_ptr.execute(), 
+	texture_resource.inactive_image_ptr.execute())
 	
 	fighter_state_machine.init_states()
 	fighter_health_manager.init_health(health_resource.max_health)

@@ -252,7 +252,7 @@ popup_menu_manager = NodePath("../../PopupMenuManager")
 
 [node name="Fighter" parent="UI/VBoxContainer/Workspace" unique_id=1702544155 instance=ExtResource("7_rdcvk")]
 layout_mode = 0
-offset_bottom = 9991.375
+offset_bottom = 11277.25
 
 [node name="FighterBaseStats" parent="UI/VBoxContainer/Workspace" unique_id=55001274 instance=ExtResource("9_4yduf")]
 layout_mode = 0
@@ -652,7 +652,7 @@ text = "Cancel"
 script = ExtResource("20_pyiuw")
 add_event_popup_menu = NodePath("../../../../../..")
 
-[node name="ImageGalleryPopup" type="Control" parent="UI/PopupMenuManager" unique_id=938842177 node_paths=PackedStringArray("title_label", "static_gallery_hflow")]
+[node name="ImageGalleryPopup" type="Control" parent="UI/PopupMenuManager" unique_id=938842177 node_paths=PackedStringArray("title_label", "static_gallery_hflow", "user_gallery_hflow")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -661,7 +661,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("16_0ohdi")
 title_label = NodePath("MarginContainer/VBoxContainer/TitleLabel")
-static_gallery_hflow = NodePath("MarginContainer/VBoxContainer/MarginContainer/StaticGallery/ScrollContainer/MarginContainer/HFlowContainer")
+static_gallery_hflow = NodePath("MarginContainer/VBoxContainer/MarginContainer/TabContainer/Static Gallery/ScrollContainer/MarginContainer/HFlowContainer")
+user_gallery_hflow = NodePath("MarginContainer/VBoxContainer/MarginContainer/TabContainer/User Gallery/ScrollContainer/MarginContainer/HFlowContainer")
 
 [node name="ColorRect" type="ColorRect" parent="UI/PopupMenuManager/ImageGalleryPopup" unique_id=90308421]
 layout_mode = 1
@@ -701,15 +702,21 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="StaticGallery" type="PanelContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer" unique_id=530712636]
+[node name="TabContainer" type="TabContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer" unique_id=2074361377]
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/StaticGallery" unique_id=435032556]
+[node name="Static Gallery" type="PanelContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/TabContainer" unique_id=530712636]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Static Gallery" unique_id=435032556]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/StaticGallery/ScrollContainer" unique_id=2052013194]
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Static Gallery/ScrollContainer" unique_id=2052013194]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -718,7 +725,31 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 20
 
-[node name="HFlowContainer" type="HFlowContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/StaticGallery/ScrollContainer/MarginContainer" unique_id=44496625]
+[node name="HFlowContainer" type="HFlowContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Static Gallery/ScrollContainer/MarginContainer" unique_id=44496625]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="User Gallery" type="PanelContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/TabContainer" unique_id=1521778449]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/TabContainer/User Gallery" unique_id=745399708]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/TabContainer/User Gallery/ScrollContainer" unique_id=1431562301]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="HFlowContainer" type="HFlowContainer" parent="UI/PopupMenuManager/ImageGalleryPopup/MarginContainer/VBoxContainer/MarginContainer/TabContainer/User Gallery/ScrollContainer/MarginContainer" unique_id=641053025]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1

@@ -3,6 +3,14 @@ class_name FighterProfiles extends Resource
 @export var next_id: int
 @export var profiles: Dictionary[int, FighterProfile]
 
+func _init(profiles_json: Array) -> void:
+	if profiles_json.is_empty():
+		return
+	
+	for profile_data: Dictionary in profiles_json:
+		var profile = FighterProfile.new(profile_data)
+		add_new_profile(profile)
+
 func get_profiles_data() -> Array:
 	var profiles_data = []
 	for profile: FighterProfile in profiles.values():

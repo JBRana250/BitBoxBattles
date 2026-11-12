@@ -3,7 +3,8 @@ class_name ImageGalleryPopup extends Control
 var importer: ImageImporter
 @export var title_label: Label
 @export var static_gallery_hflow: HFlowContainer
-var current_id: StaticTextures.ID
+@export var user_gallery_hflow: HFlowContainer
+var current_ptr: TexturePointer
 
 signal item_selected(item: ImageGalleryItem)
 
@@ -24,13 +25,16 @@ func populate_static_gallery() -> void:
 	var item_scene: PackedScene = ImageGalleryItem.load_scene()
 	
 	for id: StaticTextures.ID in StaticTextures.get_ids():
-		var item_instance = ImageGalleryItem.create(id, self, item_scene, importer.id == id)
+		var selected: bool = importer.ptr.id == id and importer.ptr.type == TexturePointer.Type.STATIC
+		var item_instance = ImageGalleryItem.create(id, self, item_scene, selected)
+		if selected:
+			current_ptr = TexturePointer.new(id)
 		static_gallery_hflow.add_child(item_instance)
 
-func on_gallery_item_pressed(id: StaticTextures.ID, item: ImageGalleryItem) -> void:
-	current_id = id
+func on_static_gallery_item_pressed(ptr: TexturePointer, item: ImageGalleryItem) -> void:
+	current_ptr = ptr
 	item_selected.emit(item)
 
 func _on_confirm_button_pressed() -> void:
-	importer.set_image(StaticData.get_texture(current_id), current_id)
+	importer.set_image(current_ptr.execute(), current_ptr)
 	visible = false

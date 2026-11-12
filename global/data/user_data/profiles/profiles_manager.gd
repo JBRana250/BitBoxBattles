@@ -6,14 +6,7 @@ var DEFAULT_PROFILES_PATH: String = "res://global/data/profiles/default_fighter_
 
 func _init() -> void:
 	var profiles: Array = UserData.import_all_json_from_folder(FIGHTER_PROFILES_PATH)
-	fighter_profiles = FighterProfiles.new()
-	
-	if profiles.is_empty():
-		return
-	
-	for profile_data: Dictionary in profiles:
-		var profile = FighterProfile.new(profile_data)
-		fighter_profiles.add_new_profile(profile)
+	fighter_profiles = FighterProfiles.new(profiles)
 
 func get_profiles() -> FighterProfiles:
 	return fighter_profiles

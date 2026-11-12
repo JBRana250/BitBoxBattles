@@ -65,6 +65,3 @@ SOFTWARE.
 ```
 
 </details>
-
-
-

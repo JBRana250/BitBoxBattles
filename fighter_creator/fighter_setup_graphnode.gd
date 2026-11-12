@@ -11,20 +11,22 @@ func init_node(node_res: NodeResource) -> void:
 	var properties: Dictionary = node_res.properties
 	if properties.is_empty():
 		return
-	setup_image_importer.init_from_id(properties.setup_id)
+	setup_image_importer.init_from_ptr(TexturePointer.create_from_dict(properties.setup_ptr))
 	setup_anim_type_menu_button.set_checked_item(properties.setup_anim_type)
 
 # Override
 # On save workspace, it saves all values of this graphnode
 # so that when init_node is called it can load it
 func get_properties() -> Dictionary:
-	var setup_id = StaticTextures.ID.GODOT
-	if setup_image_importer.id != null:
-		setup_id = setup_image_importer.id
+	var setup_ptr: TexturePointer
+	if setup_image_importer.ptr != null:
+		setup_ptr = setup_image_importer.ptr
+	else:
+		setup_ptr = TexturePointer.new(StaticTextures.ID.GODOT, TexturePointer.Type.STATIC)
 	
 	return {
 		"setup_anim_type": setup_anim_type_menu_button.get_anim_type(),
-		"setup_id": setup_id
+		"setup_ptr": setup_ptr.to_dict()
 	}
 
 func get_fighter_setup() -> Dictionary:

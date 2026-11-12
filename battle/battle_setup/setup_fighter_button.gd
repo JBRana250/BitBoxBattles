@@ -44,10 +44,10 @@ func play_fighter_change_animation(profile: FighterProfile) -> void:
 	anim_player.play_backwards("setup_intro_anim" + type)
 	await anim_player.animation_finished
 	
-	if profile.texture_resource.setup_image_id:
-		fighter_texture_rect.texture = StaticData.get_texture(profile.texture_resource.setup_image_id)
+	if profile.texture_resource.setup_image_ptr:
+		fighter_texture_rect.texture = profile.texture_resource.setup_image_ptr.execute()
 	else:
-		fighter_texture_rect.texture = StaticData.get_texture(profile.texture_resource.active_image_id)
+		fighter_texture_rect.texture = profile.texture_resource.active_image_ptr.execute()
 	fighter_profile = profile
 	
 	anim_player.play("setup_intro_anim" + type)
